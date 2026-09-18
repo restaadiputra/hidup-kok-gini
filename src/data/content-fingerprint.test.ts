@@ -28,7 +28,7 @@ function stableStringify(value: unknown): string {
   return JSON.stringify(value);
 }
 
-const endingProbe = (stats: Stats): Player => ({ id: 0, name: "Probe", position: 0, stats });
+const endingProbe = (stats: Stats): Player => ({ id: 0, name: "Probe", position: 0, stats, statuses: [] });
 
 function contentFingerprint() {
   return sha({

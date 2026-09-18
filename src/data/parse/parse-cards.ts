@@ -1,19 +1,7 @@
-import { STATS } from "../../game/stats";
-import type { Category, Choice, EventCard, Stats } from "../../game/types";
+import type { Category, Choice, EventCard } from "../../game/types";
 import { DataError } from "./data-error";
-import { expectArray, expectInteger, expectOneOf, expectRecord, expectText } from "./primitives";
-
-// Effects keep the order they are written in: the engine draws one random
-// number per effect in that order, so reordering would change saved games.
-function parseEffects(value: unknown, path: string): Partial<Stats> {
-  const effects: Partial<Stats> = {};
-  for (const [key, amount] of Object.entries(expectRecord(value, path))) {
-    const stat = expectOneOf(key, STATS, `${path}.${key}`);
-    effects[stat] = expectInteger(amount, `${path}.${key}`);
-  }
-  if (Object.keys(effects).length === 0) throw new DataError(path, "a choice needs at least one effect");
-  return effects;
-}
+import { parseEffects } from "./parse-effects";
+import { expectArray, expectRecord, expectText } from "./primitives";
 
 function parseChoice(value: unknown, path: string): Choice {
   const fields = expectRecord(value, path);

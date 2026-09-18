@@ -12,6 +12,26 @@ export type Stat = "dompet" | "kewarasan" | "relasi" | "hoki" | "hutang";
 export type BoundedStat = "kewarasan" | "relasi" | "hoki";
 export type MoneyStat = "dompet" | "hutang";
 export type Stats = Record<Stat, number>;
+export type StatusTrigger =
+  | { stat: BoundedStat; atMost: number; clearAbove: number }
+  | { stat: "hutang"; above: number };
+export interface StatusDef {
+  id: string;
+  label: string;
+  icon: string;
+  months: number | null;
+  payday: Partial<Stats>;
+  trigger: StatusTrigger | null;
+}
+export type StatusCatalog = Record<string, StatusDef>;
+export interface ActiveStatus {
+  id: string;
+  untilMonth: number | null;
+}
+export interface StatusEffect {
+  status: string;
+  effects: Partial<Stats>;
+}
 export interface Choice {
   label: string;
   effects: Partial<Stats>;
@@ -68,6 +88,7 @@ export interface Player {
   name: string;
   position: number;
   stats: Stats;
+  statuses: ActiveStatus[];
 }
 export type Phase = "ready" | "payday" | "event" | "resolved" | "finished";
 export interface Paycheck {

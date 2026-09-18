@@ -14,6 +14,7 @@ export function useSetupDraft() {
     name: name.trim() || DEFAULT_NAMES[id],
     position: 0,
     stats: INITIAL_STATS,
+    statuses: [],
   }));
 
   function rename(index: number, value: string) {

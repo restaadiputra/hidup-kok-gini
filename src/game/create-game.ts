@@ -23,6 +23,7 @@ export function createGame(names: string[], seed: number): GameState {
       name: name.trim(),
       position: 0,
       stats: { ...INITIAL_STATS },
+      statuses: [],
     })),
     currentPlayer: 0,
     month: 1,
