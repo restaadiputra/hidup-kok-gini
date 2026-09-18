@@ -8,7 +8,8 @@
     "typecheck": "tsc --noEmit",
     "build": "npm run typecheck && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "vitest run"
+    "test": "vitest run",
+    "tune": "node scripts/tune-balance.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",

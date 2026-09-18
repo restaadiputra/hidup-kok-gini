@@ -1,10 +1,13 @@
 import assert from "node:assert/strict";
+import { writeFileSync } from "node:fs";
 import { test } from "vitest";
 import { replaySession, SAVE_VERSION } from "./replay";
 import { BOUNDED_STATS } from "./stats";
-import { measureBalance, POLICIES, simulateGame } from "./simulation";
+import { measureBalance, missedTargets, POLICIES, simulateGame, targetDistance } from "./simulation";
 
-test("simulated games preserve invariants and replay", () => {
+const REPORT = process.env.BALANCE_REPORT;
+
+test.runIf(!REPORT)("simulated games preserve invariants and replay", () => {
   for (let seed = 0; seed < 150; seed++) {
     const names = ["A", "B", "C", "D"].slice(0, 2 + seed % 3);
     const policies = names.map((_, i) => POLICIES[(seed + i) % POLICIES.length]);
@@ -19,8 +22,13 @@ test("simulated games preserve invariants and replay", () => {
   }
 }, 120_000);
 
-test("balance metrics are shares", () => {
+test.runIf(!REPORT)("balance metrics are shares", () => {
   const metrics = measureBalance(10);
   for (const key of ["dangerByJune", "borrowed", "crisisRecovery", "comeback"] as const) assert.ok(metrics[key] >= 0 && metrics[key] <= 1);
   assert.equal(metrics.games, 30);
 });
+
+test.runIf(!!REPORT)("report balance metrics", () => {
+  const metrics = measureBalance();
+  writeFileSync(REPORT!, JSON.stringify({ metrics, missed: missedTargets(metrics), distance: targetDistance(metrics) }));
+}, 600_000);
