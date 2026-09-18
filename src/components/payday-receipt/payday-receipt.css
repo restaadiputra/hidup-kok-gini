@@ -23,6 +23,13 @@
   opacity: 0.75;
   margin-top: 3px;
 }
+.payday-receipt-loss {
+  background: var(--negative-bg);
+  color: var(--negative-ink);
+}
+.payday-receipt-loss small {
+  opacity: 1;
+}
 .payday-receipt > b {
   font-size: 12px;
 }

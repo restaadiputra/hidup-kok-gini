@@ -29,10 +29,12 @@ function Rules({ onClose }: { onClose: () => void }) {
           Gaji Rp2,8–3,2 juta dipotong biaya hidup Rp1,6–2 juta dan tagihan dadakan
           Rp50–750 ribu. Ada peluang 8% kena musibah dengan tagihan Rp1,75–2,75 juta
           yang menggantikan tagihan dadakan biasa. Kalau tagihan melebihi gaji,
-          Dompet ikut nombok! Posisi awal nggak dapat gaji.
+          sisanya jadi Hutang! Posisi awal nggak dapat gaji.
         </li>
         <li>
-          <strong>Bokek bukan game over.</strong> Dompet minus berarti utang.
+          <strong>Bokek bukan game over.</strong> Kalau Dompet nggak cukup, sisanya
+          jadi Hutang (kena biaya 20%). Tiap gajian Hutang berbunga 10% dan dicicil
+          sampai Rp500 ribu, sisanya mengurangi skor akhir.
           Kewarasan, Relasi, dan Hoki tetap 0–100. Efek pilihan bisa naik atau
           turun hingga 40% dari nilai dasarnya. Hoki nambah skor, tapi nggak memengaruhi dadu.
         </li>

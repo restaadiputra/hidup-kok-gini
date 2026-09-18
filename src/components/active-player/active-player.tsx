@@ -34,12 +34,19 @@ export function ActivePlayer({
       </div>
       <div className="active-stats" aria-label={"Statistik " + player.name}>
         {SHOWN_STATS.map((stat) => (
-          <span key={stat} title={STAT_LABELS[stat] + ": " + player.stats[stat]}>
+          <span className="stat" key={stat} title={STAT_LABELS[stat] + ": " + player.stats[stat]}>
             <Icon name={STAT_ICONS[stat]} size={14} />
-            <span className="sr-only">{STAT_LABELS[stat]} </span>
+            <span className="stat-name">{STAT_LABELS[stat]} </span>
             <b>{stat === "dompet" ? shortMoney(player.stats[stat]) : player.stats[stat]}</b>
           </span>
         ))}
+        {player.stats.hutang > 0 ? (
+          <span className="stat stat-debt" title={STAT_LABELS.hutang + ": " + shortMoney(player.stats.hutang)}>
+            <Icon name={STAT_ICONS.hutang} size={14} />
+            <span className="stat-name">{STAT_LABELS.hutang} </span>
+            <b>{shortMoney(player.stats.hutang)}</b>
+          </span>
+        ) : null}
       </div>
     </>
   );

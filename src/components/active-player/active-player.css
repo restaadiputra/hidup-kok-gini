@@ -66,6 +66,21 @@
 .active-stats svg {
   color: var(--muted);
 }
+/* Stat names are read aloud everywhere and drawn only where there is room. */
+.stat-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+.stat-debt,
+.stat-debt svg {
+  color: var(--negative-ink);
+}
 .active-stats b {
   font-weight: 650;
 }
@@ -95,13 +110,13 @@
     letter-spacing: -0.5px;
   }
   .active-player > div > span {
-    font-size: 10px;
+    font-size: 11px;
     margin-bottom: 2px;
     letter-spacing: 0.8px;
   }
   .active-player .mini-link {
-    height: 30px;
-    width: 30px;
+    height: 36px;
+    width: 36px;
   }
   .active-stats {
     margin: 0 13px;
@@ -109,17 +124,63 @@
     font-size: 11px;
   }
   .active-stats > span {
-    font-size: 10px;
+    font-size: 12px;
   }
   .active-stats svg {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
   }
   .sheet-mode .active-player {
     padding: 10px 15px 8px;
   }
   .sheet-mode .active-stats {
     margin: 0 15px;
+  }
+}
+/* Before a roll on a short phone the board needs the height more than the
+   stat row does; the stats return with the card and are one tap away in Skuad. */
+@media (max-width: 760px) and (min-height: 501px) and (max-height: 700px) {
+  .sidebar:not(.sheet-mode) .active-stats {
+    display: none;
+  }
+}
+@media (max-width: 760px) and (min-height: 681px) {
+  .active-stats {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+  .active-stats > .stat {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      "icon value"
+      "icon name";
+    column-gap: 6px;
+    align-items: center;
+  }
+  .active-stats > .stat > svg {
+    grid-area: icon;
+  }
+  .active-stats > .stat > b {
+    grid-area: value;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  .active-stats .stat-name {
+    position: static;
+    grid-area: name;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    font-size: 11px;
+    line-height: 1.15;
+    color: var(--muted);
+  }
+  .active-stats .stat-debt .stat-name {
+    color: var(--negative-ink);
   }
 }
 @media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {
@@ -132,6 +193,13 @@
   }
 }
 @media (max-height: 500px) {
+  .active-player .mini-link {
+    width: 36px;
+    height: 36px;
+  }
+  .active-stats > span {
+    font-size: 12px;
+  }
   .active-player {
     padding: 9px 12px;
   }

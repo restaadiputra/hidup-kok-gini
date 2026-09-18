@@ -5,7 +5,7 @@ import "./payday-receipt.css";
 
 export function PaydayReceipt({ paycheck }: { paycheck: Paycheck }) {
   return (
-    <div className="payday-receipt">
+    <div className={"payday-receipt" + (paycheck.net < 0 ? " payday-receipt-loss" : "")}>
       <Icon name="wallet" size={19} />
       <span>
         <strong>{paycheck.net < 0 ? "Gajian lewat. Dompet nombok." : "Gajian udah masuk."}</strong>
