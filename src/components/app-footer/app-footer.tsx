@@ -25,6 +25,9 @@ export function AppFooter({
         <i className="status-dot" />
         {saveStatus(hasGame, saveError)}
       </span>
+      <span className="footer-edition">
+        BOARD GAME KEHIDUPAN <b>VOL. 01</b>
+      </span>
       <nav aria-label="Menu permainan">
         <button onClick={onOpenSquad}>
           <Icon name="users" size={16} />
@@ -35,7 +38,6 @@ export function AppFooter({
           Riwayat
         </button>
       </nav>
-      <span className="footer-joke">BUKAN FINANCIAL ADVICE. JELAS.</span>
     </footer>
   );
 }

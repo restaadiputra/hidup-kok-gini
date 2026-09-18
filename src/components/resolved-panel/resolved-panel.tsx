@@ -22,9 +22,7 @@ export function ResolvedPanel({
         <Icon name="check" size={30} />
       </span>
       <h3>
-        Ya udah.
-        <br />
-        <em>Jadi pengalaman.</em>
+        Ya udah. <em>Jadi pengalaman.</em>
       </h3>
       <p>{resolution}</p>
       <Effects effects={effects} />

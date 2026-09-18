@@ -18,15 +18,9 @@ export function SetupForm({ draft, onStart }: { draft: SetupDraft; onStart: () =
     >
       <div className="setup-heading">
         <h2>
-          Bestie,{" "}
-          <br />
-          siap <em>adu nasib?</em>
+          Bestie, siap <em>adu nasib?</em>
         </h2>
-        <p>
-          2–4 orang. Nggak perlu login.{" "}
-          <br />
-          Cukup nama & mental seadanya.
-        </p>
+        <p>2–4 orang. Nggak perlu login. Cukup nama & mental seadanya.</p>
       </div>
       <fieldset className="player-count">
         <legend>JUMLAH MANUSIA</legend>
@@ -69,8 +63,7 @@ export function SetupForm({ draft, onStart }: { draft: SetupDraft; onStart: () =
         Gas, jalani hidup <Icon name="arrow" size={20} />
       </button>
       <span className="small-note setup-meta">
-        12 bulan · ±15–25 menit · {EVENTS.length} plot twist
-        original
+        12 bulan · ±15–25 menit · {EVENTS.length} plot twist original
       </span>
     </form>
   );

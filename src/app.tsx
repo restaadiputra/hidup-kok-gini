@@ -5,7 +5,6 @@ import { Board } from "./components/board/board";
 import { ControlPanel } from "./components/control-panel/control-panel";
 import { ControlSheet } from "./components/control-sheet/control-sheet";
 import { EventPanel } from "./components/event-panel/event-panel";
-import { GameIntro } from "./components/game-intro/game-intro";
 import { LiveRegion } from "./components/live-region/live-region";
 import { LogDialog } from "./components/log-dialog/log-dialog";
 import { NoticeBanner } from "./components/notice-banner/notice-banner";
@@ -18,7 +17,6 @@ import { ResultsPanel } from "./components/results-panel/results-panel";
 import { RollPanel } from "./components/roll-panel/roll-panel";
 import { RulesDialog } from "./components/rules-dialog/rules-dialog";
 import { SetupForm } from "./components/setup-form/setup-form";
-import { SideSticker } from "./components/side-sticker/side-sticker";
 import { SiteHeader } from "./components/site-header/site-header";
 import { SquadDialog } from "./components/squad-dialog/squad-dialog";
 import { Timeline } from "./components/timeline/timeline";
@@ -121,7 +119,6 @@ export default function App() {
         canRestart={!!game}
       />
       <main className="game-main">
-        <GameIntro />
         <NoticeBanner notice={session.notice} saveError={session.saveError} onDismiss={session.dismissNotice} />
         <Timeline month={game?.month ?? 1} finished={finished} />
         <div className="play-layout">
@@ -146,7 +143,6 @@ export default function App() {
             >
               {panelContent()}
             </ControlPanel>
-            <SideSticker />
           </ControlSheet>
         </div>
       </main>

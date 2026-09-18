@@ -54,19 +54,6 @@
   color: var(--muted);
   margin-top: 5px;
 }
-.print-frame {
-  position: relative;
-  z-index: 1;
-  width: 84%;
-  max-height: 26cqw;
-  min-height: 0;
-  flex-shrink: 1;
-  padding: clamp(4px, 1.2cqw, 10px);
-  border: 2px solid var(--edge);
-  border-radius: 10px;
-  background: #fffcf5;
-  box-shadow: 0 4px 0 -1px var(--edge);
-}
 @media (max-width: 760px) and (min-height: 501px) {
   .board-center {
     gap: 4px;
@@ -86,10 +73,6 @@
     margin-top: 3px;
     letter-spacing: 0.3px;
   }
-  .print-frame {
-    max-height: 23cqw;
-    width: 74%;
-  }
   .sticker-pink {
     font-size: clamp(9px, 2cqw, 11px);
   }
@@ -97,9 +80,6 @@
 @media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {
   .board-center {
     gap: 3px;
-  }
-  .print-frame {
-    max-height: 18cqw;
   }
 }
 @media (max-height: 500px) {
@@ -119,12 +99,8 @@
     font-size: 1.7cqw;
     margin-top: 1px;
   }
-  .print-frame {
-    max-height: 18cqw;
-  }
 }
 @media (min-width: 1100px) and (min-height: 601px) {
   .board-center h1 { font-size: clamp(32px, 10cqh, 80px); }
   .board-center { gap: 6px; }
-  .board-center .print-frame { flex: 0 1 auto; width: 70%; height: 16cqh; min-height: 36px; padding: 4px; overflow: hidden; }
 }

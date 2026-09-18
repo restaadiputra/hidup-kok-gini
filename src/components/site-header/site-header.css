@@ -15,9 +15,37 @@
   font-weight: 900;
   letter-spacing: -1.1px;
   white-space: nowrap;
+  position: relative;
 }
-.brand > span:last-child > span {
+.brand-copy {
+  display: block;
+  color: var(--ink);
+  font: inherit;
+  letter-spacing: -1.25px;
+  white-space: nowrap;
+  transform: translateY(-5px);
+}
+.brand-lead {
+  display: inline-block;
+  font-weight: 950;
+  transform: rotate(-4deg) translateY(-1px);
+  transform-origin: 60% 70%;
+}
+.brand-question {
   color: var(--accent-text);
+}
+.brand-subtitle {
+  position: absolute;
+  left: 46px;
+  bottom: 0;
+  color: var(--muted);
+  font-family: "Roboto Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 .brand-mark {
   width: 36px;
@@ -30,17 +58,6 @@
   border-radius: 9px;
   transform: rotate(-8deg);
   box-shadow: 0 4px 0 -1px var(--edge);
-}
-.edition-tag {
-  font-size: 11px;
-  letter-spacing: 1.2px;
-  color: var(--muted);
-}
-.edition-tag b {
-  border: 1px solid var(--line);
-  padding: 5px 7px;
-  margin-left: 12px;
-  font-size: 10px;
 }
 .site-header nav {
   display: flex;
@@ -56,11 +73,6 @@
     height: 58px;
   }
 }
-@media (max-width: 1000px) {
-  .edition-tag {
-    display: none;
-  }
-}
 @media (max-width: 760px) and (min-height: 501px) {
   .site-header {
     height: 61px;
@@ -73,6 +85,9 @@
   .brand-mark {
     width: 32px;
     height: 32px;
+  }
+  .brand-subtitle {
+    left: 40px;
   }
   .site-header nav {
     gap: 6px;
@@ -94,6 +109,12 @@
   }
   .brand-mark svg {
     width: 20px;
+  }
+  .brand-subtitle {
+    left: 34px;
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .site-header nav {
     gap: 4px;

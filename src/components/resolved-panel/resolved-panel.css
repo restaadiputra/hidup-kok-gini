@@ -1,17 +1,23 @@
 .resolved-content {
   padding: 23px 21px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+  text-align: left;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 14px;
+  justify-items: stretch;
+  column-gap: 12px;
+  row-gap: 14px;
   animation: result-pop 0.3s ease-out;
+}
+.resolved-content > * {
+  grid-column: 1 / -1;
 }
 .resolved-check {
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
+  grid-column: 1;
+  width: 38px;
+  height: 38px;
   border: 2.5px solid var(--edge);
   border-radius: 50%;
   background: var(--fixed);
@@ -19,19 +25,30 @@
   transform: rotate(-8deg);
   box-shadow: 0 4px 0 -1px var(--edge);
 }
-.resolved-content h3 {
-  font-size: 32px;
-  line-height: 1.1;
-  letter-spacing: -1.3px;
+.resolved-check svg {
+  width: 22px;
+  height: 22px;
+}
+.resolved-content > h3 {
+  grid-column: 2;
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: -0.2px;
 }
 .resolved-content h3 em {
   color: var(--accent-text);
-  font-size: 25px;
+  font-size: inherit;
 }
 .resolved-content > p {
-  font-size: 13px;
-  line-height: 1.65;
-  color: var(--muted);
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -1px;
+  color: var(--ink);
+  text-wrap: balance;
+}
+.resolved-content > .effects {
+  justify-content: flex-start;
 }
 .next-player {
   font-size: 11px;
@@ -40,33 +57,20 @@
 }
 @media (max-height: 760px) and (min-width: 761px) {
   .resolved-content {
-    gap: 10px;
+    row-gap: 10px;
     padding: 18px;
   }
-  .resolved-content h3 {
-    font-size: 28px;
-  }
-  .resolved-content h3 em {
-    font-size: 22px;
+  .resolved-content > p {
+    font-size: 23px;
   }
 }
 @media (max-width: 760px) and (min-height: 501px) {
   .resolved-content {
     padding: 20px;
-    gap: 12px;
-  }
-  .resolved-check {
-    width: 45px;
-    height: 45px;
-  }
-  .resolved-content h3 {
-    font-size: 29px;
-  }
-  .resolved-content h3 em {
-    font-size: 23px;
+    row-gap: 12px;
   }
   .resolved-content > p {
-    font-size: 13px;
+    font-size: 24px;
   }
   .next-player {
     font-size: 11px;
@@ -75,9 +79,15 @@
 @media (max-height: 500px) {
   .resolved-content {
     padding: 15px;
-    gap: 10px;
+    row-gap: 10px;
   }
   .resolved-check {
     display: none;
+  }
+  .resolved-content > h3 {
+    grid-column: 1 / -1;
+  }
+  .resolved-content > p {
+    font-size: 21px;
   }
 }

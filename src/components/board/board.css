@@ -190,9 +190,9 @@
 }
 @media (min-width: 1100px) and (min-height: 601px) {
   .board-grid {
-    --board-gap: clamp(7px, 0.8vw, 12px);
-    width: min(94cqw, 160cqh);
-    height: min(58.75cqw, 94cqh);
+    --board-gap: 8px;
+    width: min(98cqw, 181.3cqh);
+    height: min(54.054cqw, 98cqh);
   }
 }
 @media (min-width: 1600px) and (min-height: 850px) {

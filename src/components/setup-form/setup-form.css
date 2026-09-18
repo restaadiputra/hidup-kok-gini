@@ -1,23 +1,26 @@
 .setup-content {
-  padding: 21px;
+  padding: 13px 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 13px;
 }
 .setup-heading h2 {
-  font-size: 35px;
-  line-height: 1.04;
+  font-size: 27px;
+  line-height: 1;
   font-weight: 900;
   letter-spacing: -1.5px;
-  margin: 10px 0;
+  margin: 0;
+  white-space: nowrap;
 }
 .setup-heading em {
   color: var(--accent-text);
 }
 .setup-heading p {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--muted);
-  line-height: 1.55;
+  line-height: 1.2;
+  margin-top: 5px;
+  white-space: nowrap;
 }
 .player-count {
   padding: 0;
@@ -30,7 +33,7 @@
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--muted);
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 .player-count > div {
   display: flex;
@@ -43,7 +46,7 @@
   justify-content: center;
   gap: 5px;
   flex: 1;
-  height: 38px;
+  height: 32px;
   border: 2px solid var(--edge);
   background: var(--raised);
   border-radius: 9px;
@@ -72,13 +75,13 @@
 }
 .name-fields {
   display: grid;
-  gap: 8px;
+  gap: 5px;
 }
 .name-input {
   display: flex;
   align-items: center;
   gap: 9px;
-  padding: 7px 9px;
+  padding: 4px 7px;
   border: 2px solid var(--edge);
   background: var(--input);
   border-radius: 9px;
@@ -87,8 +90,8 @@
 .name-avatar {
   display: grid;
   place-items: center;
-  width: 27px;
-  height: 27px;
+  width: 22px;
+  height: 22px;
   border: 2px solid var(--edge);
   border-radius: 8px;
   font-size: 11px;
@@ -116,82 +119,78 @@
   color: var(--muted);
 }
 .setup-meta {
-  text-align: center;
-  font-size: 10px;
+  display: none;
 }
 @media (min-width: 1300px) and (min-height: 850px) {
   .setup-content {
-    padding: 28px;
-    gap: 22px;
+    padding: 13px 16px;
+    gap: 13px;
   }
   .setup-heading h2 {
-    font-size: 41px;
+    font-size: 27px;
   }
 }
 @media (max-height: 760px) and (min-width: 761px) {
   .setup-content {
-    gap: 12px;
-    padding: 17px;
+    gap: 7px;
+    padding: 13px 16px;
   }
   .setup-heading h2 {
-    font-size: 30px;
-    margin: 7px 0;
+    font-size: 27px;
+    margin: 0;
   }
   .setup-heading p {
     font-size: 10px;
   }
   .name-input {
-    padding: 5px 8px;
+    padding: 4px 7px;
   }
 }
 @media (max-width: 1000px) {
   .setup-content {
-    padding: 19px;
+    padding: 13px 16px;
   }
 }
 @media (max-width: 760px) and (min-height: 501px) {
   .setup-content {
-    padding: 16px 19px 18px;
-    gap: 13px;
+    padding: 10px 13px;
+    gap: 7px;
   }
   .setup-heading h2 {
-    font-size: 31px;
-    margin: 8px 0;
+    font-size: 27px;
+    margin: 0;
     line-height: 1;
   }
   .setup-heading h2 > br {
     display: none;
   }
   .setup-heading p {
-    font-size: 11px;
+    font-size: 10px;
   }
   .setup-heading p > br {
     display: none;
   }
   .setup-content .player-count label {
-    height: 38px;
+    height: 32px;
   }
   .name-fields {
-    gap: 7px;
+    gap: 5px;
   }
   .name-input {
-    padding: 7px 9px;
+    padding: 4px 7px;
   }
   .name-input input {
     font-size: 16px;
   }
   .name-avatar {
-    width: 26px;
-    height: 26px;
-  }
-  .setup-meta {
-    font-size: 10px;
+    width: 22px;
+    height: 22px;
   }
 }
 @media (max-width: 390px) and (min-height: 501px) {
   .setup-content {
-    gap: 10px;
-    padding: 14px 16px;
+    gap: 7px;
+    padding: 10px 13px;
   }
   .setup-heading h2 {
     font-size: 27px;
@@ -200,53 +199,41 @@
     font-size: 10px;
   }
   .name-input {
-    padding: 5px 8px;
+    padding: 4px 7px;
   }
   .name-avatar {
-    height: 24px;
-    width: 24px;
-  }
-  .setup-meta {
-    font-size: 10px;
+    height: 22px;
+    width: 22px;
   }
 }
 @media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {
-  .setup-heading p {
-    display: none;
-  }
   .setup-heading h2 {
     font-size: 27px;
-    margin: 6px 0;
+    margin: 0;
   }
   .setup-content {
-    gap: 10px;
+    gap: 7px;
   }
   .name-input {
-    padding: 5px 8px;
+    padding: 4px 7px;
   }
   .name-avatar {
-    height: 23px;
-    width: 23px;
+    height: 22px;
+    width: 22px;
   }
   .setup-content .player-count label {
-    height: 34px;
-  }
-  .setup-meta {
-    display: none;
+    height: 32px;
   }
 }
 @media (max-height: 500px) {
   .setup-content {
-    padding: 12px;
-    gap: 10px;
+    padding: 10px 13px;
+    gap: 7px;
   }
   .setup-heading h2 {
-    font-size: 25px;
+    font-size: 27px;
   }
   .setup-heading h2 > br {
-    display: none;
-  }
-  .setup-heading p {
     display: none;
   }
 }

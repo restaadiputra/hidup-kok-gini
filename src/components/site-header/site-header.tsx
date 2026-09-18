@@ -22,13 +22,11 @@ export function SiteHeader({
         <span className="brand-mark">
           <Icon name="sun" size={23} />
         </span>
-        <span>
-          hidup kok gini<span>?</span>
+        <span className="brand-copy">
+          <span className="brand-lead">H</span>idup kok gini<span className="brand-question">?</span>
         </span>
+        <span className="brand-subtitle">Ekspektasi tinggi · saldo nanti dulu</span>
       </a>
-      <span className="edition-tag">
-        BOARD GAME KEHIDUPAN <b>VOL. 01</b>
-      </span>
       <nav aria-label="Navigasi permainan">
         <button
           className="icon-button theme-toggle"
