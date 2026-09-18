@@ -8,7 +8,9 @@ export interface TileMeta {
   icon: string;
   color: string;
 }
-export type Stat = "dompet" | "kewarasan" | "relasi" | "hoki";
+export type Stat = "dompet" | "kewarasan" | "relasi" | "hoki" | "hutang";
+export type BoundedStat = "kewarasan" | "relasi" | "hoki";
+export type MoneyStat = "dompet" | "hutang";
 export type Stats = Record<Stat, number>;
 export interface Choice {
   label: string;

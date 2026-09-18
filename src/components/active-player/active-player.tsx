@@ -1,7 +1,7 @@
 import type { CSSProperties, Ref } from "react";
 import { PLAYER_COLORS } from "../../data/players";
 import { shortMoney, STAT_ICONS, STAT_LABELS } from "../../game/format";
-import { STATS } from "../../game/stats";
+import { SHOWN_STATS } from "../../game/stats";
 import type { Player } from "../../game/types";
 import { Icon } from "../icon/icon";
 import { Pawn } from "../pawn/pawn";
@@ -33,7 +33,7 @@ export function ActivePlayer({
         </button>
       </div>
       <div className="active-stats" aria-label={"Statistik " + player.name}>
-        {STATS.map((stat) => (
+        {SHOWN_STATS.map((stat) => (
           <span key={stat} title={STAT_LABELS[stat] + ": " + player.stats[stat]}>
             <Icon name={STAT_ICONS[stat]} size={14} />
             <span className="sr-only">{STAT_LABELS[stat]} </span>

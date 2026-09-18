@@ -3,7 +3,8 @@
     "dompet": 2500000,
     "kewarasan": 60,
     "relasi": 40,
-    "hoki": 50
+    "hoki": 50,
+    "hutang": 0
   },
   "colors": [
     "#ffd75e",

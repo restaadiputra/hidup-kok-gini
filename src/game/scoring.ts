@@ -4,8 +4,8 @@ import type { Ending, EndingRule, Endings, Player, Stats } from "./types";
 const RUPIAH_PER_POINT = 100_000;
 
 export function score(player: Player): number {
-  const { dompet, kewarasan, relasi, hoki } = player.stats;
-  return Math.floor(dompet / RUPIAH_PER_POINT) + kewarasan + relasi + hoki;
+  const { dompet, hutang, kewarasan, relasi, hoki } = player.stats;
+  return Math.floor((dompet - hutang) / RUPIAH_PER_POINT) + kewarasan + relasi + hoki;
 }
 
 // Highest score first; equal scores keep seat order.

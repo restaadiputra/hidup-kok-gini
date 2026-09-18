@@ -6,17 +6,18 @@ import "./effects.css";
 export function Effects({ effects }: { effects: Partial<Stats> }) {
   return (
     <span className="effects">
-      {(Object.entries(effects) as [Stat, number][]).map(([stat, value]) => (
-        <span
+      {(Object.entries(effects) as [Stat, number][]).map(([stat, value]) => {
+        const good = stat === "hutang" ? value <= 0 : value >= 0;
+        return <span
           key={stat}
-          className={`effect ${value >= 0 ? "effect-positive" : "effect-negative"}`}
+          className={`effect ${good ? "effect-positive" : "effect-negative"}`}
           title={`${STAT_LABELS[stat]} ${effectLabel(stat, value)}`}
         >
           <Icon name={STAT_ICONS[stat]} size={13} />
           <span className="sr-only">{STAT_LABELS[stat]} </span>
           {effectLabel(stat, value)}
-        </span>
-      ))}
+        </span>;
+      })}
     </span>
   );
 }

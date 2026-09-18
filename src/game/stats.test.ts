@@ -3,7 +3,7 @@ import { test } from "vitest";
 import { EVENT_BY_ID, EVENTS } from "../data/events";
 import { createGame } from "./create-game";
 import { gameReducer } from "./reducer";
-import { applyEffects, randomizeEffects } from "./stats";
+import { applyEffects, appliedChanges, randomizeEffects } from "./stats";
 import type { GameState } from "./types";
 
 test("random effects preserve stat keys, signs, bounds and vary across seeds", () => {
@@ -27,17 +27,12 @@ test("random effects preserve stat keys, signs, bounds and vary across seeds", (
   assert.deepEqual(randomizeEffects({ hoki: 0 }, 42), { rng: 42, effects: { hoki: 0 } });
 });
 
-test("stat bounds preserve debt and report only actual applied changes", () => {
+test("applyEffects clamps points, floors hutang at zero and leaves money settling to debt.ts", () => {
   const stats = applyEffects(
-    { dompet: 0, kewarasan: 98, relasi: 2, hoki: 99 },
-    { dompet: -100_000, kewarasan: 20, relasi: -15, hoki: 5 },
+    { dompet: 0, kewarasan: 98, relasi: 2, hoki: 99, hutang: 50_000 },
+    { dompet: -100_000, kewarasan: 20, relasi: -15, hoki: 5, hutang: -80_000 },
   );
-  assert.deepEqual(stats, {
-    dompet: -100_000,
-    kewarasan: 100,
-    relasi: 0,
-    hoki: 100,
-  });
+  assert.deepEqual(stats, { dompet: -100_000, kewarasan: 100, relasi: 0, hoki: 100, hutang: 0 });
   const initial = createGame(["A", "B"], 1);
   const state: GameState = {
     ...initial,
@@ -52,4 +47,12 @@ test("stat bounds preserve debt and report only actual applied changes", () => {
   const resolved = gameReducer(state, { type: "CHOOSE", index: 0 });
   assert.equal(resolved.lastEffects.kewarasan, -2);
   assert.equal(resolved.players[0].stats.kewarasan, 0);
+});
+
+test("applied changes report borrowing even when the choice never named hutang", () => {
+  const before = { dompet: 100_000, kewarasan: 50, relasi: 50, hoki: 50, hutang: 0 };
+  assert.deepEqual(
+    appliedChanges(before, { ...before, dompet: 0, hutang: 120 }, { dompet: -100_100 }),
+    { dompet: -100_000, hutang: 120 },
+  );
 });

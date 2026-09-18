@@ -2,8 +2,8 @@
   "rules": [
     {
       "when": {
-        "stat": "dompet",
-        "below": 0
+        "stat": "hutang",
+        "atLeast": 1
       },
       "title": "CEO Cicilan & Optimisme",
       "text": "Saldo pakai tanda minus, semangat tetap pakai tanda seru. Tahun depan buka spreadsheet dulu, ya."

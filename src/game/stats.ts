@@ -1,7 +1,11 @@
 import { pickIndex, random } from "./random";
-import type { Stat, Stats } from "./types";
+import type { BoundedStat, MoneyStat, Stat, Stats } from "./types";
 
-export const STATS: Stat[] = ["dompet", "kewarasan", "relasi", "hoki"];
+export const STATS: Stat[] = ["dompet", "kewarasan", "relasi", "hoki", "hutang"];
+export const SHOWN_STATS: Stat[] = ["dompet", "kewarasan", "relasi", "hoki"];
+export const BOUNDED_STATS: BoundedStat[] = ["kewarasan", "relasi", "hoki"];
+const MONEY_STATS: readonly Stat[] = ["dompet", "hutang"] satisfies MoneyStat[];
+export const isMoney = (stat: Stat): stat is MoneyStat => MONEY_STATS.includes(stat);
 
 const BOUNDED_MIN = 0;
 const BOUNDED_MAX = 100;
@@ -11,13 +15,14 @@ const MAX_SWING = 1.4;
 
 const clamp = (value: number) => Math.max(BOUNDED_MIN, Math.min(BOUNDED_MAX, value));
 
-// Dompet may go negative (debt never eliminates a player); the others are bounded.
+// Dompet may dip below zero here; debt.ts turns any shortfall into hutang.
 export function applyEffects(stats: Stats, effects: Partial<Stats>): Stats {
   return {
     dompet: stats.dompet + (effects.dompet ?? 0),
     kewarasan: clamp(stats.kewarasan + (effects.kewarasan ?? 0)),
     relasi: clamp(stats.relasi + (effects.relasi ?? 0)),
     hoki: clamp(stats.hoki + (effects.hoki ?? 0)),
+    hutang: Math.max(0, stats.hutang + (effects.hutang ?? 0)),
   };
 }
 
@@ -25,6 +30,7 @@ export function applyEffects(stats: Stats, effects: Partial<Stats>): Stats {
 export function appliedChanges(before: Stats, after: Stats, effects: Partial<Stats>): Partial<Stats> {
   const changes: Partial<Stats> = {};
   for (const stat of Object.keys(effects) as Stat[]) changes[stat] = after[stat] - before[stat];
+  if (after.hutang !== before.hutang) changes.hutang = after.hutang - before.hutang;
   return changes;
 }
 
@@ -39,7 +45,7 @@ export function randomizeEffects(effects: Partial<Stats>, seed: number) {
       rolled[stat] = 0;
       continue;
     }
-    const step = stat === "dompet" ? MONEY_STEP : 1;
+    const step = isMoney(stat) ? MONEY_STEP : 1;
     const min = Math.ceil((Math.abs(value) * MIN_SWING) / step);
     const max = Math.floor((Math.abs(value) * MAX_SWING) / step);
     if (max < min) {

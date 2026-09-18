@@ -1,3 +1,4 @@
+import { isMoney } from "./stats";
 import type { Stat } from "./types";
 
 export const STAT_LABELS: Record<Stat, string> = {
@@ -5,12 +6,14 @@ export const STAT_LABELS: Record<Stat, string> = {
   kewarasan: "Kewarasan",
   relasi: "Relasi",
   hoki: "Hoki",
+  hutang: "Hutang",
 };
 export const STAT_ICONS: Record<Stat, string> = {
   dompet: "wallet",
   kewarasan: "brain",
   relasi: "heart",
   hoki: "sparkles",
+  hutang: "receipt",
 };
 const rupiahFormatter = new Intl.NumberFormat("id-ID", {
   style: "currency",
@@ -27,5 +30,5 @@ export function shortMoney(value: number): string {
   return `${value < 0 ? "−" : ""}Rp${number}`;
 }
 export function effectLabel(stat: Stat, value: number): string {
-  return `${value > 0 ? "+" : value < 0 ? "−" : ""}${stat === "dompet" ? shortMoney(Math.abs(value)) : Math.abs(value)}`;
+  return `${value > 0 ? "+" : value < 0 ? "−" : ""}${isMoney(stat) ? shortMoney(Math.abs(value)) : Math.abs(value)}`;
 }

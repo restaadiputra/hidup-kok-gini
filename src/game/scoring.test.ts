@@ -3,13 +3,13 @@ import { test } from "vitest";
 import { createGame } from "./create-game";
 import { ending, score } from "./scoring";
 
-test("score counts every stat and treats debt with floor rounding", () => {
+test("score counts every stat and subtracts hutang from Dompet with floor rounding", () => {
   const p = createGame(["A", "B"], 1).players[0];
   assert.equal(score(p), 175);
   assert.equal(
     score({
       ...p,
-      stats: { dompet: -150_000, kewarasan: 20, relasi: 30, hoki: 40 },
+      stats: { dompet: 50_000, kewarasan: 20, relasi: 30, hoki: 40, hutang: 200_000 },
     }),
     88,
   );
@@ -19,7 +19,7 @@ test("score counts every stat and treats debt with floor rounding", () => {
     "tied stats have tied scores regardless of player order",
   );
   assert.equal(
-    ending({ ...p, stats: { ...p.stats, dompet: -1 } }).title,
+    ending({ ...p, stats: { ...p.stats, hutang: 1 } }).title,
     "CEO Cicilan & Optimisme",
   );
 });

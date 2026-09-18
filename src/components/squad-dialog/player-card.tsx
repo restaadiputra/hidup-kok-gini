@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { PLAYER_COLORS } from "../../data/players";
 import { rupiah, shortMoney, STAT_ICONS, STAT_LABELS } from "../../game/format";
-import { STATS } from "../../game/stats";
+import { SHOWN_STATS } from "../../game/stats";
 import type { Player } from "../../game/types";
 import { Icon } from "../icon/icon";
 import { Pawn } from "../pawn/pawn";
@@ -30,7 +30,7 @@ export function PlayerCard({
         {active && <span className="turn-label">Giliranmu</span>}
       </div>
       <dl className="player-stats">
-        {STATS.map((stat) => (
+        {SHOWN_STATS.map((stat) => (
           <div key={stat} className={`stat stat-${stat}`}>
             <dt>
               <Icon name={STAT_ICONS[stat]} size={16} />
