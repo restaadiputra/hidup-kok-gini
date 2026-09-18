@@ -160,24 +160,34 @@
     font-size: 27px;
     margin: 0;
     line-height: 1;
+    letter-spacing: -1px;
   }
   .setup-heading h2 > br {
     display: none;
   }
   .setup-heading p {
-    font-size: 10px;
+    font-size: 12px;
+    line-height: 1.35;
+    white-space: normal;
   }
   .setup-heading p > br {
     display: none;
   }
+  .player-count legend {
+    font-size: 11px;
+  }
+  .player-count label {
+    font-size: 13px;
+  }
   .setup-content .player-count label {
-    height: 32px;
+    height: 44px;
   }
   .name-fields {
     gap: 5px;
   }
   .name-input {
     padding: 4px 7px;
+    min-height: 42px;
   }
   .name-input input {
     font-size: 16px;
@@ -196,7 +206,7 @@
     font-size: 27px;
   }
   .setup-heading p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .name-input {
     padding: 4px 7px;
@@ -222,7 +232,7 @@
     width: 22px;
   }
   .setup-content .player-count label {
-    height: 32px;
+    height: 44px;
   }
 }
 @media (max-height: 500px) {

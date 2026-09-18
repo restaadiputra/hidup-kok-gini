@@ -112,12 +112,22 @@
   }
   .brand-subtitle {
     left: 34px;
-    max-width: 190px;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   .site-header nav {
-    gap: 4px;
+    gap: 6px;
+  }
+}
+@media (max-width: 760px) {
+  .brand::after {
+    content: "";
+    position: absolute;
+    inset: -8px -4px;
+  }
+}
+@media (max-width: 480px) {
+  /* Only the first half of the tagline fits beside three 40px buttons. */
+  .brand-subtitle-tail {
+    display: none;
   }
 }
 @media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {

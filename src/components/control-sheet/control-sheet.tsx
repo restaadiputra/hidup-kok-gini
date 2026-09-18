@@ -30,7 +30,7 @@ export function ControlSheet({
 }) {
   return (
     <>
-      {expanded && open ? <button className="sheet-backdrop" aria-label="Lihat papan" onClick={onClose} /> : null}
+      {expanded && open ? <button className="sheet-backdrop" aria-hidden="true" tabIndex={-1} onClick={onClose} /> : null}
       <aside
         className={["sidebar", expanded ? "sheet-mode" : "", open ? "sheet-open" : "sheet-closed"].join(" ")}
         aria-label="Kontrol permainan"

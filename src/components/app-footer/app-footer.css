@@ -63,7 +63,7 @@
     gap: 7px;
   }
   .app-footer > span {
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0;
     gap: 4px;
     max-width: 130px;
@@ -73,9 +73,12 @@
     margin-left: auto;
   }
   .app-footer button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 6px 8px;
-    min-height: 40px;
+    min-height: 44px;
+  }
+  .app-footer button > b {
+    font-size: 11px;
   }
   .app-footer button svg {
     width: 15px;
@@ -86,24 +89,18 @@
 }
 @media (max-width: 390px) and (min-height: 501px) {
   .app-footer > span {
-    font-size: 10px;
+    font-size: 11px;
     max-width: 105px;
-  }
-}
-@media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {
-  .app-footer {
-    height: 43px;
-    min-height: 43px;
   }
 }
 @media (max-height: 500px) {
   .app-footer {
-    min-height: 35px;
-    height: 35px;
+    min-height: 44px;
+    height: 44px;
   }
   .app-footer button {
-    min-height: 30px;
-    font-size: 10px;
+    min-height: 44px;
+    font-size: 12px;
   }
   .app-footer > span {
     font-size: 10px;

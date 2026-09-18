@@ -25,7 +25,9 @@ export function SiteHeader({
         <span className="brand-copy">
           <span className="brand-lead">H</span>idup kok gini<span className="brand-question">?</span>
         </span>
-        <span className="brand-subtitle">Ekspektasi tinggi · saldo nanti dulu</span>
+        <span className="brand-subtitle">
+          Ekspektasi tinggi<span className="brand-subtitle-tail"> · saldo nanti dulu</span>
+        </span>
       </a>
       <nav aria-label="Navigasi permainan">
         <button

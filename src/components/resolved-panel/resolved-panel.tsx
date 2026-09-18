@@ -1,7 +1,12 @@
+import { useEffect, useState } from "react";
 import type { Stats } from "../../game/types";
 import { Effects } from "../effects/effects";
 import { Icon } from "../icon/icon";
 import "./resolved-panel.css";
+
+// The button lands where the tapped choice was, so a double-tap would skip the
+// verdict. Ignore taps until the result has had a moment on screen.
+const READ_DELAY_MS = 500;
 
 export function ResolvedPanel({
   resolution,
@@ -16,6 +21,11 @@ export function ResolvedPanel({
   nextPlayerName: string;
   onNext: () => void;
 }) {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setReady(true), READ_DELAY_MS);
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div className="resolved-content">
       <span className="resolved-check">
@@ -29,7 +39,7 @@ export function ResolvedPanel({
       <span className="small-note">
         Ini perubahan yang masuk. Kewarasan, Relasi, dan Hoki dibatasi 0–100.
       </span>
-      <button className="primary-button" onClick={onNext}>
+      <button className="primary-button" onClick={() => ready && onNext()}>
         {finalTurn ? "Lihat hasil akhir" : "Lanjut giliran"}
         <Icon name="arrow" size={19} />
       </button>
