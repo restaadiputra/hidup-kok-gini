@@ -139,6 +139,11 @@
 }
 /* Before a roll on a short phone the board needs the height more than the
    stat row does; the stats return with the card and are one tap away in Skuad. */
+@media (max-width: 760px) and (min-height: 501px) {
+  .sheet-mode .active-stats {
+    display: none;
+  }
+}
 @media (max-width: 760px) and (min-height: 501px) and (max-height: 700px) {
   .sidebar:not(.sheet-mode) .active-stats {
     display: none;
