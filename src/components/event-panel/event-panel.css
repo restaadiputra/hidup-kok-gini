@@ -21,12 +21,13 @@
 @media (max-width: 760px) and (min-height: 501px) {
   .landing-note {
     padding: 12px 15px 10px;
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 @media (max-height: 500px) {
   .landing-note {
-    padding: 10px 12px;
+    padding: 6px 12px;
+    font-size: 12px;
   }
 }
 @media (min-width: 761px) and (min-height: 501px) {
@@ -37,6 +38,6 @@
 @media (max-width: 760px) and (min-height: 501px) and (max-height: 680px) {
   .landing-note {
     padding: 8px 13px;
-    font-size: 11px;
+    font-size: 12px;
   }
 }

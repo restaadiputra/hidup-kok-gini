@@ -51,7 +51,6 @@
 }
 @media (max-width: 760px) and (min-height: 501px) {
   .control-panel {
-    box-shadow: 0 10px 22px -14px var(--shadow-strong);
     border-radius: 8px;
     overflow: auto;
     max-height: 100%;
@@ -68,14 +67,14 @@
   }
   .sheet-mode .sheet-close {
     display: grid;
-    height: 29px;
-    width: 29px;
+    height: 36px;
+    width: 36px;
     border: 0;
     background: transparent;
     border-radius: 6px;
   }
   .sheet-mode .panel-topline {
-    height: 36px;
+    height: 40px;
     padding: 0 14px;
     position: sticky;
     top: 0;
@@ -86,7 +85,6 @@
     border-radius: 16px 16px 11px 11px;
     max-height: 100%;
     overflow: auto;
-    box-shadow: 0 -12px 30px -18px var(--shadow-strong);
   }
 }
 @media (max-height: 500px) {
@@ -94,5 +92,15 @@
     height: 30px;
     font-size: 10px;
     padding: 0 12px;
+  }
+  .sheet-mode.sheet-closed .control-panel {
+    display: none;
+  }
+  .sheet-mode .control-panel {
+    max-height: 100%;
+  }
+  .sheet-mode .panel-topline,
+  .sheet-mode .active-stats {
+    display: none;
   }
 }

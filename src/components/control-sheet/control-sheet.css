@@ -36,6 +36,22 @@
     min-height: 45px;
   }
 }
+/* A phone on its side has no height to spare, so the panel becomes a
+   full-height drawer over the rail column and the choices stay in reach. */
+@media (max-height: 500px) {
+  .sheet-mode.sheet-open {
+    position: fixed;
+    top: 8px;
+    bottom: 8px;
+    right: 12px;
+    width: max(260px, calc((100vw - 24px) * 0.46 - 6px));
+    z-index: 9;
+    display: flex;
+  }
+  .sheet-mode.sheet-closed .reopen-sheet {
+    min-height: 44px;
+  }
+}
 @media (max-width: 760px) and (min-height: 501px) and (max-height: 680px) {
   .sheet-mode.sheet-open {
     position: fixed;

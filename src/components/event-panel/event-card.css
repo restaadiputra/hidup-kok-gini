@@ -146,12 +146,12 @@
     margin: 13px 0 8px;
   }
   .event-description {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.55;
     margin-bottom: 13px;
   }
   .event-category {
-    font-size: 11px;
+    font-size: 12px;
     padding: 6px 7px;
   }
   .event-category > span {
@@ -165,10 +165,10 @@
     min-height: 65px;
   }
   .choice-top strong {
-    font-size: 12px;
+    font-size: 13px;
   }
   .field-label {
-    font-size: 10px;
+    font-size: 11px;
     margin-bottom: 8px;
   }
 }
@@ -177,20 +177,38 @@
     font-size: 24px;
   }
   .choice-top strong {
-    font-size: 11px;
+    font-size: 12px;
   }
 }
 @media (max-height: 500px) {
+  .event-stack {
+    margin: 0 14px 10px;
+  }
+  .event-content > .small-note {
+    display: none;
+  }
   .event-content {
     padding: 0 12px 12px;
   }
   .event-content h3 {
-    font-size: 23px;
-    margin: 11px 0 7px;
+    font-size: 20px;
+    margin: 8px 0 5px;
   }
   .event-description {
-    font-size: 11px;
-    margin-bottom: 11px;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+  .field-label {
+    display: none;
+  }
+  .choices {
+    gap: 6px;
+  }
+  .choice {
+    padding: 7px 9px;
+  }
+  .choice-top strong {
+    font-size: 12px;
   }
 }
 @media (min-width: 761px) and (min-height: 501px) {
@@ -216,7 +234,7 @@
     margin: 9px 0 6px;
   }
   .event-description {
-    font-size: 11px;
+    font-size: 12px;
     line-height: 1.45;
     margin-bottom: 10px;
   }

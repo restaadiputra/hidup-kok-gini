@@ -1,5 +1,7 @@
+import type { CSSProperties } from "react";
 import { MONTHLY_NOTES } from "../../data/calendar";
 import { BOARD } from "../../data/categories";
+import { PLAYER_COLORS } from "../../data/players";
 import type { GameState, Player } from "../../game/types";
 import type { TurnMotion } from "../../hooks/use-turn-motion";
 import { Icon } from "../icon/icon";
@@ -24,13 +26,20 @@ export function Board({
   const activePosition =
     game && game.phase !== "finished" ? visiblePlayers[game.currentPlayer].position : null;
   const moving = motion?.stage === "moving";
+  const current = game && game.phase !== "finished" ? visiblePlayers[game.currentPlayer] : null;
   return (
     <section className="board-panel" aria-label="Papan permainan">
       <div className="board-toolbar">
         <span>
           <i className="status-dot" /> PAPAN NASIB <b>+62</b>
         </span>
-        <span>
+        {current && !motion ? (
+          <span className="board-where" style={{ "--player-color": PLAYER_COLORS[current.id] } as CSSProperties}>
+            <i aria-hidden="true" />
+            {current.name} di {BOARD[current.position].label}
+          </span>
+        ) : null}
+        <span className="board-direction">
           {motion ? `Jalan dulu, bestie. ${motion.step}/${motion.dice}` : "SEARAH JARUM JAM"}
           <Icon name="reset" size={13} />
         </span>

@@ -94,7 +94,7 @@
     gap: 7px;
   }
   .play-layout {
-    grid-template-columns: minmax(0, 1fr) minmax(240px, 40%);
+    grid-template-columns: minmax(0, 1fr) max(260px, 46%);
     gap: 12px;
   }
 }
