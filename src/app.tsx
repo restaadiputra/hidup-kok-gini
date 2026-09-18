@@ -5,6 +5,7 @@ import { Board } from "./components/board/board";
 import { ControlPanel } from "./components/control-panel/control-panel";
 import { ControlSheet } from "./components/control-sheet/control-sheet";
 import { EventPanel } from "./components/event-panel/event-panel";
+import { HandoffBeat } from "./components/handoff-beat/handoff-beat";
 import { LiveRegion } from "./components/live-region/live-region";
 import { LogDialog } from "./components/log-dialog/log-dialog";
 import { NoticeBanner } from "./components/notice-banner/notice-banner";
@@ -25,6 +26,7 @@ import { EVENT_BY_ID } from "./data/events";
 import { isFinalTurn } from "./game/reducer";
 import { rankPlayers } from "./game/scoring";
 import { useGame } from "./hooks/use-game";
+import { useHandoff } from "./hooks/use-handoff";
 import { useSetupDraft } from "./hooks/use-setup-draft";
 import { useTheme } from "./hooks/use-theme";
 import "./app.css";
@@ -35,6 +37,7 @@ export default function App() {
   const { theme, toggleTheme } = useTheme();
   const draft = useSetupDraft();
   const session = useGame();
+  const { handoff, dismiss: dismissHandoff } = useHandoff(session.game);
   const [modal, setModal] = useState<Modal>(null);
 
   const { game, player, finished, motion } = session;
@@ -162,6 +165,7 @@ export default function App() {
           onContinue={acknowledgePayday}
         />
       ) : null}
+      {handoff ? <HandoffBeat key={handoff.turn} player={handoff.player} onDone={dismissHandoff} /> : null}
       {dialogsAllowed && modal === "rules" ? <RulesDialog onClose={closeModal} /> : null}
       {dialogsAllowed && modal === "restart" ? <RestartDialog onCancel={closeModal} onConfirm={startOver} /> : null}
       {dialogsAllowed && modal === "squad" ? (

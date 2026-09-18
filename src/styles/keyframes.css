@@ -60,3 +60,18 @@
     opacity: 1;
   }
 }
+@keyframes handoff-in {
+  from { clip-path: circle(0% at 50% 88%); }
+  to { clip-path: circle(150% at 50% 88%); }
+}
+@keyframes handoff-out {
+  to { opacity: 0; }
+}
+@keyframes handoff-token {
+  from { transform: translateY(40px) rotate(-30deg) scale(0.6); opacity: 0; }
+  to { transform: translateY(0) rotate(-7deg) scale(1); opacity: 1; }
+}
+@keyframes handoff-name {
+  from { transform: translateY(14px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
