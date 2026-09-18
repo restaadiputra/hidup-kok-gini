@@ -159,6 +159,16 @@ typography:
     fontFamily: "Roboto, sans-serif"
     fontSize: "17px"
     fontWeight: 800
+  display-handoff:
+    fontFamily: "Roboto, sans-serif"
+    fontSize: "clamp(40px, 15vw, 72px)"
+    fontWeight: 950
+    lineHeight: 0.95
+    letterSpacing: "-0.05em"
+  numeral-handoff:
+    fontFamily: "Roboto, sans-serif"
+    fontSize: "44px"
+    fontWeight: 950
   body-lg:
     fontFamily: "Roboto, sans-serif"
     fontSize: "16px"
@@ -411,13 +421,13 @@ Seven token colours drive the board ring, the player seats, the stat meters, the
 - **Display** (950, `clamp(24px, 10cqw, 64px)`, line-height 0.86, tracking −0.075em, rotated −3°): the board-centre title only. Carries a 3px/4px hard offset text-shadow in `--title-glow`.
 - **Headline** (900, 24–41px responsive, line-height 1.07, tracking −1.1 to −1.5px): setup heading, drawn-card title, resolved verdict, results heading.
 - **Title** (800, 21px desktop / 18px phone / 25px in dialogs, tracking −0.7px): the active player's name, dialog headings, brand lockup (23px/900).
-- **Body** (400, 12px, line-height 1.6): card descriptions, dialog lead, rules list. 13px on the resolved screen; 14px only above 1300×850.
+- **Body** (400, 12px, line-height 1.6): card descriptions, dialog lead, rules list. 13px on phones for descriptions, choice labels, dialog lead and rules; 14px only above 1300×850.
 - **Body Small** (400–650, 11px, line-height 1.5): choice labels, stat names, notes, log entries.
 - **Label** (700–800, 10px, tracking 1–1.4px, usually uppercase, `--muted` or `--accent-text`): panel toplines, board toolbar, timeline label, field labels, footer meta.
 - **Mono** (700, 10px, tracking 0.4–0.7px): tile numbers, panel code, card serial ("KARTU KEHIDUPAN"). Counting only.
 
 ### Named Rules
-**The Shared-Phone Floor Rule.** No fixed pixel size is below 10px. The small end of the ramp was rebuilt around a 10px floor because the game is read by four people leaning over one phone. Set 10px or go up; never add a fixed 8px or 9px step. The only sizes that reach 8–9px are the container-query clamps on printed board furniture (`tile-label*`, `sticker*`, `board-subtitle*`), and only at the narrowest board widths; their maximums sit at 10–16px.
+**The Shared-Phone Floor Rule.** No fixed pixel size is below 10px, and on phones (≤760px) anything a player has to *read to decide* is 12px or larger: card descriptions, choice labels, effect chips, stat values, the roll copy, the landing note, footer buttons and rules text. 10–11px is reserved for labels (uppercase, tracked), tile numbers and counters. The floor exists because the game is read by four people leaning over one phone. Never add a fixed 8px or 9px step. Printed board furniture (`tile-label*`, `sticker*`, `board-subtitle*`) holds 10px on phones; on a short ring the tile labels and stickers are dropped instead of shrunk.
 
 **The One-Role-Many-Rungs Rule.** The ramp is larger than seven sizes because each heading role steps down across breakpoints and short screens instead of wrapping or scrolling: the setup heading runs 35 → 31 → 30 → 27 → 25px, the drawn-card title 33 → 28 → 26 → 25 → 23 → 22px, the verdict 32 → 29 → 28px, the board title across three container-query clamps. When a role needs a new rung, add it as a named token here rather than inventing a one-off value in CSS.
 
@@ -560,3 +570,16 @@ The saved payday phase keeps the same receipt open on refresh, with no double pa
 At widths of 1100px and above with at least 601px of height, the game can occupy up to 2200px of screen width. The board uses a wider 1.6:1 playing surface within its arena, retaining clearance for rotation. Desktop tile labels scale from 12–16px, corners are 12px, pawns are 28×33px, and the center title uses 32–80px based on board height. The neighborhood art is contained inside a height-bounded frame. These desktop sizes intentionally extend the earlier compact scale; phone layout stays compact.
 
 Each step is a 300ms tile-to-tile pawn arc with a brief landing outline. The board tilts at most 1.3 degrees in plane and 1.4 degrees in perspective toward the moving pawn, then settles. All motion is presentation only; the seeded game and GAJIAN pause remain authoritative. Reduced-motion users skip the movement sequence and board transforms while retaining the active-tile indicator. Browser verification covered wide desktop, 1440px desktop, and 390px mobile, including live transform inspection and overflow checks.
+
+## Mobile pass — September 2026
+
+Phones keep the same printed-cardboard world; this pass changed how it fits, not how it looks.
+
+- **The ring stretches to its arena.** On phones the board grid is `width: min(100cqw, 150cqh)` by `height: min(94.34cqw, 100cqh)`, so a short phone gets a wide ring with roomy tiles instead of a small square one (landscape allows 190cqh). When the ring is under 225px tall the tile names are dropped and icon plus colour carry the category; under 260px the centre keeps only the title and the pink sticker. The toolbar names the active player and their tile ("Kamu di Kendaraan") next to a seat-colour swatch, and pawns perch on a tile's top edge so they never cover its name.
+- **Short phones (≤700px tall)** give the board the height the controls do not need: the monthly joke under the board is dropped, the month strip becomes one row, and before a roll the sidebar drops its stat row and roll sentence. The stats come back with the card.
+- **Landscape (≤500px tall)** turns the control panel into a full-height drawer over the rail column (fixed, `top/bottom: 8px`, 46% wide) so both choices are visible; its topline and stat row are hidden and the card compresses.
+- **Stats are named.** From 681px tall, each stat shows its name under its value; below that, icons carry it and the name stays for screen readers. A player in debt gets a fifth "Hutang" stat in `--negative-ink`. A negative payday receipt uses the negative chip colours, never the green piece.
+- **Every tap target is 44px.** Icon buttons are 40px with a 2px invisible ring, the sheet close and squad buttons 36px with a 4px ring, footer buttons 44px, the roll button 44px, player-count buttons 44px. The sheet backdrop is a pointer shortcut only (`aria-hidden`, not focusable).
+- **The verdict cannot be skipped by a double-tap.** "Lanjut giliran" ignores taps for 500ms after the result appears.
+- **The handoff beat.** When the turn moves to the next player, a full-screen flood in that player's seat colour ("Hape pindah ke NAME", a tilted numbered token) clips open from the bottom for 1.8s. It ignores taps for the first 450ms, dismisses on tap, and is skipped entirely under `prefers-reduced-motion` (the roll panel already names who is up).
+- **Hard edge everywhere.** The phone-only blurred shadows on the board panel, control panel, sheet and roll button were removed; phones use the same hard bottom edges as every other breakpoint.
