@@ -76,7 +76,7 @@
   .dice-stage {
     width: 48px;
     height: 49px;
-    grid-row: 1 / span 2;
+    grid-row: 1;
   }
   .dice-shadow {
     width: 35px;
@@ -86,28 +86,17 @@
   .dice-orbit {
     display: none;
   }
+  /* On a phone the roll is just the die and the button; the headline adds a
+     row of height the board needs more. */
   .roll-copy {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .roll-copy h3 {
-    font-size: 14px;
-    margin: 0;
-    letter-spacing: -0.3px;
-    line-height: 1.25;
-  }
-  .roll-copy p {
-    font-size: 12px;
-    line-height: 1.4;
-    margin-top: 3px;
-    max-width: none;
+    display: none;
   }
   .position-note {
     display: none;
   }
   .roll-button {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 1;
     min-height: 44px;
     padding: 8px 11px;
     font-size: 12px;
@@ -118,9 +107,6 @@
   .roll-content {
     padding-top: 8px;
     padding-bottom: 9px;
-  }
-  .roll-copy p {
-    display: none;
   }
 }
 @media (max-height: 500px) {

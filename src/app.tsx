@@ -71,7 +71,6 @@ export default function App() {
         />
         {game.phase === "ready" || motion ? (
           <RollPanel
-            playerName={player.name}
             tileLabel={tileLabel}
             lastDice={game.dice}
             motion={motion}

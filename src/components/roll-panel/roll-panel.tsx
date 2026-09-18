@@ -11,13 +11,11 @@ function headline(motion: TurnMotion | null): string {
 }
 
 export function RollPanel({
-  playerName,
   tileLabel,
   lastDice,
   motion,
   onRoll,
 }: {
-  playerName: string;
   tileLabel: string;
   lastDice: number | null;
   motion: TurnMotion | null;
@@ -34,11 +32,7 @@ export function RollPanel({
       </div>
       <div className="roll-copy">
         <h3>{headline(motion)}</h3>
-        <p>
-          {motion
-            ? "Sebentar. Semesta lagi hitung langkah."
-            : "Kasih perangkat ke " + playerName + ". Semesta udah nunggu."}
-        </p>
+        {motion ? <p>Sebentar. Semesta lagi hitung langkah.</p> : null}
       </div>
       <button
         className="primary-button roll-button"
