@@ -1,173 +1,116 @@
 # Hidup Kok Gini?
 
-An original Indonesian comedy board game for **2–4 local hot-seat players**. Built with React, TypeScript, and Vite. No accounts, backend, paid services, or network requests during gameplay. Fonts and original SVG artwork are bundled locally.
+Game papan digital lokal tentang bertahan hidup selama satu tahun sebagai warga Indonesia: gajian datang, tagihan ikut datang, grup WhatsApp nggak pernah tidur, dan keputusan kecil bisa berubah jadi utang atau krisis hidup.
 
-## Run locally
+`Hidup Kok Gini?` adalah proyek hobi independen untuk 2–4 pemain yang bermain bergantian di satu perangkat. Tidak ada akun, backend, transaksi uang sungguhan, iklan, atau layanan berbayar. Semua uang dan utang di dalam game bersifat virtual.
 
-Use **Node.js 22.18+** (Node 24 recommended) and npm.
+## Inspirasi
+
+Proyek ini terinspirasi oleh **[WNI Simulator](https://wnisimulator.hecticholic.com/)** karya Hecticholic, terutama gagasan menjadikan pengalaman sehari-hari orang Indonesia sebagai game papan satir. Situs resminya menggambarkan WNI Simulator sebagai board game satir yang terinspirasi situasi dan pengalaman sehari-hari orang Indonesia.
+
+Ini bukan adaptasi resmi, edisi digital, port, atau produk yang berafiliasi dengan WNI Simulator maupun Hecticholic. Nama, logo, ilustrasi, antarmuka, kode, teks kartu, hasil pilihan, struktur papan, sistem statistik, dan implementasi aturan dalam repositori ini dibuat khusus untuk proyek ini. Jangan menambahkan hasil pindai, foto, logo, teks kartu, buku aturan, atau aset lain milik WNI Simulator ke repositori.
+
+Kalau kamu menyukai premisnya, dukung pembuat aslinya melalui situs resmi WNI Simulator.
+
+## Mainkan secara lokal
+
+Butuh Node.js 22.18 atau lebih baru dan npm.
 
 ```sh
 npm install
 npm run dev
 ```
 
-Open the URL printed by Vite (normally http://127.0.0.1:5173). Everyone plays on the same device. To test from a phone on your local network, run `npm run dev -- --host 0.0.0.0` and use the computer's LAN IP. Only expose the development server to a trusted network.
+Buka alamat yang ditampilkan Vite, biasanya <http://127.0.0.1:5173>. Semua pemain menggunakan perangkat yang sama.
+
+Perintah lain:
 
 ```sh
-npm run typecheck   # Strict TypeScript checking, including the tests
-npm test            # Vitest, run once in a Node environment
-npm run build       # Typecheck and create the production build in dist/
-npm run preview     # Serve the production build locally
+npm run typecheck   # pemeriksaan TypeScript strict
+npm test            # seluruh tes Vitest
+npm run build       # typecheck dan build produksi ke dist/
+npm run preview     # jalankan hasil build secara lokal
+npm run tune        # simulasi grid untuk eksperimen keseimbangan
 ```
 
-The runtime dependencies are only `react` and `react-dom`. Development dependencies are TypeScript, Vite, its React plugin, Vitest, and type definitions. `package-lock.json` pins the installed tree; use `npm ci` for reproducible installs.
+## Cara bermain
 
-## Appearance
-
-The interface is built as a board game spread out on a table: every tile, card, button, and pawn is a saturated printed piece with a near-black outline and a hard bottom edge, and loose dice, card fans, meeples, and coins are scattered in the empty table space around the board.
-
-Use the sun/moon button in the header to switch between light and dark mode. Light is the game on a sunny cream table; dark is the same game under one lamp. The category tokens keep the same hues in both themes — printed pieces do not change color when the lights go down. The first visit follows the device's color preference; choosing a mode saves an override under `hidup-kok-gini:theme`, independently of game progress. The preference survives refresh and new games. If storage is blocked, the toggle still works for the current session. The theme is applied before the app renders to prevent a flash of the wrong background. Both themes use locally bundled Roboto, with Roboto Mono reserved for counters and tile numbers.
-
-## How to play
-
-The interface fills the screen with no page scrolling or visible scrollbars. On phones, turn controls sit below the board and decisions open in a bottom panel. Close that panel with **Lihat papan** to inspect the board, then reopen it to continue. **Skuad** opens all four stats for every player; **Riwayat** opens the game log. Long panels and dialogs support internal touch/keyboard scrolling when needed on small screens.
-
-Large desktop screens use a wider board with larger tiles, labels, and pawns. Dice rolls, 300ms tile-to-tile pawn arcs, subtle board rotation toward the moving player, landing outlines, and card drops use lightweight CSS motion. Device reduced-motion preferences skip these animations. Refreshing during a move safely restores its pending event. See [design and wording research](docs/design-notes.md) for the original Gen Z copy and source notes.
-
-1. Pick 2, 3, or 4 players and edit their names (up to 20 characters). Empty names receive defaults.
-2. Everyone starts at **GAJIAN** with **Rp2,500,000**, **Kewarasan 60**, **Relasi 40**, and **Hoki 50**.
-3. Each player gets **one turn per month**. Roll a six-sided die, move clockwise, and draw an event matching the landing tile. GAJIAN and Plot twist draw from all categories.
-4. Pick one of 2–3 responses. Each choice amount is rolled once when its card appears, within 60–140% of its base magnitude (Rp5,000 steps for money, whole points otherwise). Affected stats and effect signs stay unchanged. The UI previews those fixed rolled effects; the result shows actual changes after clamping. Refreshing preserves the previews. Pass the device to the next player.
-5. Each time a pawn **passes or lands on GAJIAN after moving around the board**, it stops at GAJIAN and opens a congratulatory paycheck popover. Salary varies from **Rp2,800,000–Rp3,200,000**, and living costs from **Rp1,600,000–Rp2,000,000**, both in Rp50,000 steps. A random bill adds **Rp50,000–Rp750,000** in Rp25,000 steps. On **8% of paydays**, a rare mishap replaces that bill with **Rp1,750,000–Rp2,750,000** in Rp50,000 steps, making the net paycheck negative. The popover shows the full breakdown, a funny explanation, and the signed net change. Money is applied once; Continue (or closing the popover) resumes only the remaining steps before the destination card appears. Refresh keeps an unacknowledged paycheck open with identical amounts. The starting position pays nothing. Salary is tied to crossing this tile, not the month counter. A lap is not a month.
-6. When everyone has played, advance to the next month. After every player resolves their December turn, view the final rankings and individual humorous endings. A complete game has **24, 36, or 48 turns**, depending on player count.
-
-Kewarasan, Relasi, and Hoki stay between 0 and 100. Dompet can go below zero: negative money is debt, and nobody is eliminated. Hoki contributes to the final score; it does not bias the die.
+1. Pilih 2–4 pemain dan isi nama mereka.
+2. Semua pemain mulai di GAJIAN dengan Dompet, Kewarasan, Relasi, Hoki, dan Hutang awal yang sama.
+3. Setiap pemain mendapat satu giliran per bulan. Lempar dadu, gerakkan pion, lalu ambil kartu sesuai petak tujuan.
+4. Pilih satu respons. Nilai efek sudah diacak saat kartu muncul, sehingga angka yang terlihat adalah angka yang akan dipakai.
+5. Kalau Dompet tidak cukup untuk membayar pilihan atau tagihan, kekurangannya menjadi Hutang beserta biaya pinjaman. Dompet tidak berakhir di bawah Rp0.
+6. Saat melewati GAJIAN, pemain menerima gaji, membayar biaya hidup dan tagihan, menjalankan efek status, lalu membayar bunga dan cicilan Hutang.
+7. Kewarasan, Relasi, atau Hoki yang jatuh ke 0 memicu krisis. Status dan kondisi pemain dapat mengunci pilihan atau mengubah kartu yang ditarik.
+8. Setelah semua pemain menyelesaikan giliran Desember, skor akhir menentukan peringkat.
 
 ```text
-Score = floor(Dompet / 100,000) + Kewarasan + Relasi + Hoki
+Score = floor((Dompet - Hutang) / 100,000)
+        + Kewarasan + Relasi + Hoki
 ```
 
-The highest score wins. Equal scores share the same rank, including shared first place. Negative balances reduce the score. Endings consider debt, exhaustion, relationships, wealth, luck, and composure.
+Skor yang sama berbagi peringkat yang sama, termasuk juara bersama.
 
-## Project structure
+## Sistem utama
+
+- **140 kartu kategori** tentang kerja, keluarga, anak kos, kendaraan, nongkrong, belanja online, tagihan, tanggal tua, kondangan, grup WhatsApp, ojol, internet, mudik, dan drama kantor.
+- **Hutang:** kekurangan uang otomatis dipinjam dengan biaya; pendapatan biasa tidak melunasinya secara otomatis.
+- **Status:** pilihan dapat memberi atau menghapus status, status sementara kedaluwarsa saat bulan berganti, dan beberapa status memberi efek saat GAJIAN.
+- **Krisis:** burnout mengalihkan semua tarikan ke kartu krisis; apes mengubah kartu Plot twist; utang besar dapat memicu kunjungan debt collector.
+- **Pilihan bersyarat:** kondisi statistik dan status dapat membuka atau mengunci respons tertentu.
+- **Deterministik:** seed, urutan aksi, dan data konten yang sama menghasilkan permainan yang sama.
+- **Lokal dan privat:** permainan tidak mengirim data ke server. Progres hanya disimpan di `localStorage` browser.
+- **Aksesibel:** mendukung keyboard, teks pembaca layar, tema terang/gelap, dan preferensi reduced motion.
+
+## Penyimpanan dan replay
+
+Game menyimpan seed, nama pemain, dan jurnal aksi berversi di `localStorage`. State dibangun kembali dengan memainkan ulang jurnal tersebut. Save saat ini menggunakan versi 5; save lama yang tidak kompatibel tidak dimigrasikan diam-diam.
+
+Urutan pengambilan angka acak merupakan bagian dari format save. Perubahan pada urutan kartu, efek, atau aturan yang memengaruhi replay harus disertai kenaikan versi save dan pembaruan fingerprint konten.
+
+## Struktur proyek
 
 ```text
 src/
-  main.tsx                  Mounts the app and loads the global stylesheets in order
-  app.tsx                   Lays out the panels and decides which dialog is open
-  app.css                   Page frame and the board/sidebar grid
-  storage-keys.ts           localStorage keys for the save, theme, and upgrade notice
-  styles/
-    tokens.css              Light/dark semantic colour tokens
-    base.css                Fonts, element reset, and .sr-only
-    keyframes.css           Dice, pawn, card, and dialog animations
-    shared.css              Classes used by several components: buttons, notes, tile colours
+  components/              komponen React dan stylesheet per komponen
   data/
-    content/                All game content as JSON
-      cards/                140 original cards, one file per category (kerja.json, ojol.json, …)
-      categories.json       Category labels, icons, and tile colours, in deck order
-      board.json            The 16-tile route
-      calendar.json         Months and monthly flavour text
-      economy.json          Salary, living-cost, and bill ranges
-      payday-reasons.json   Everyday and rare payday bill jokes
-      players.json          Starting stats, seat colours, and default names
-      endings.json          Ending rules, first match wins
-    parse/                  Validates each JSON file into typed data; bad data fails with its path
-    categories.ts, events.ts, economy.ts, calendar.ts, players.ts, endings.ts
-                            Import the JSON once, validate it, and export typed constants
-    content.test.ts         Card coverage and the wording rules from docs/copy-guide.md
-    content-fingerprint.test.ts
-                            Golden hashes that guard saved-game compatibility
+    content/               kartu, status, papan, ekonomi, pemain, dan ending
+    parse/                 parser serta validasi data buatan tangan
   game/
-    types.ts                Shared domain types
-    random.ts               Seeded PRNG and range rolls
-    stats.ts                Stat limits, effect application, and rolled choice amounts
-    deck.ts                 Shared-deck event draws
-    payday.ts               Paycheck rolls
-    log-messages.ts         Game-log lines
-    create-game.ts          New-game setup
-    reducer.ts              The turn state machine and roll preview
-    scoring.ts              Score, rankings, shared ranks, and endings
-    replay.ts               Versioned action-journal replay
-    session.ts              Store actions and local-save loading
-    format.ts               Indonesian currency and stat formatting
-    *.test.ts               Stats, reducer, replay, scoring, and session tests
-  hooks/
-    use-game.ts             Game store, persistence, turn motion, bottom sheet, and focus
-    use-setup-draft.ts      Player count and names before a game starts
-    use-theme.ts            Persisted light/dark preference and system theme support
-    use-turn-motion.ts      Cancellable dice/pawn presentation sequence
-  components/<name>/        One folder per component: <name>.tsx beside its <name>.css
-    board/                  Board ring, tiles, centre, neighbourhood art, and table bits
-    event-panel/            The drawn card and its choices
-    squad-dialog/           Every player's stats, one player card each
-    …                       Header, timeline, dock, sheet, turn panels, dialogs, footer
-public/
-  fonts/                    Self-hosted fonts and their SIL Open Font Licenses
-  favicon.svg               Original game mark
+    availability.ts        pilihan tersedia, berutang, atau terkunci
+    debt.ts                pinjaman, bunga, dan cicilan
+    deck.ts                pool kartu berdasarkan petak dan status
+    reducer.ts             state machine giliran
+    simulation.ts          simulasi keseimbangan dengan seed tetap
+    statuses.ts            status, krisis otomatis, dan masa berlaku
+    replay.ts              validasi dan replay jurnal save
+  hooks/                   state UI, tema, setup, dan animasi giliran
+scripts/                   utilitas scaling dan tuning keseimbangan
+public/fonts/              Roboto dan Roboto Mono beserta lisensi OFL
+docs/                      desain, panduan penulisan, spesifikasi, dan rencana
 ```
 
-## Deterministic state and saves
+## Menambah konten
 
-The gameplay reducer has no time, storage, or random side effects. A new game gets one unsigned 32-bit seed from `crypto.getRandomValues`. The reducer owns a small seeded PRNG and consumes it for dice, card draws, choice amounts, and payday deductions. The same names, seed, and action sequence reproduce the same game.
+Kartu disimpan sebagai JSON di `src/data/content/cards/`. Baca [`docs/copy-guide.md`](docs/copy-guide.md) sebelum menulis. Gunakan ID unik dan stabil, 2–3 pilihan per kartu, serta bahasa Indonesia yang terasa natural.
 
-Transitions are explicit:
+Jangan menyalin materi dari game lain. Inspirasi boleh datang dari pengalaman hidup, genre, tema umum, atau mekanik abstrak, tetapi kalimat, lelucon, ilustrasi, nama kartu, susunan visual, dan aset harus dibuat sendiri.
 
-```text
-ready → ROLL → [payday → CONTINUE_PAYDAY] → event → CHOOSE → resolved → NEXT → ready
-                                                  └→ finished (end of December)
-```
+Setelah mengubah konten atau aturan:
 
-Actions in the wrong phase and invalid choices are ignored. Rendering and animation never determine game outcomes. A shared deck avoids redrawing a card from a category until that category's pool is exhausted; the two wildcard tiles use the same draw history.
+1. Jalankan `npm run typecheck`, `npm test`, dan `npm run build`.
+2. Naikkan versi save jika perubahan mengubah replay lama.
+3. Rekam ulang fingerprint hanya setelah memastikan perubahan memang disengaja.
+4. Gunakan commit kecil dan mengikuti aturan di [`AGENTS.md`](AGENTS.md).
 
-The browser saves a versioned **seed + names + action journal** under `hidup-kok-gini:v4` after each accepted action. Refresh replays and validates the journal, including mid-event and result states. Corrupt or incompatible saves show a notice and allow a new game. Version 1–3 journals cannot replay against the current deck, rules and payday phase; they are left untouched under their old keys, with a notice to start a new game. This upgrade notice appears once per save version, tracked independently under `hidup-kok-gini:seen-version`; Mengerti dismisses it, and refreshing or resetting does not bring it back. Save corruption and storage errors still show their own warnings. If storage is unavailable, gameplay continues with a visible warning. Reset requires an in-app confirmation and replaces the existing save.
+## Lisensi
 
-One active game per browser origin. Use one tab while playing: simultaneous tabs are not synchronized. Clearing browser data deletes the save. The app has no service worker; launch/refresh requires the local or production server to be running.
+Proyek hobi ini bersifat **open source** dan tersedia di bawah [MIT License](LICENSE). Kamu boleh menggunakan, menyalin, mengubah, dan mendistribusikan kode proyek sesuai ketentuan lisensi tersebut.
 
-If rules or card data change incompatibly, update the save version and key, or add a migration. Existing action journals must continue to refer to the same ordered card pools for identical replay.
+Roboto dan Roboto Mono tetap menggunakan SIL Open Font License 1.1; teks lisensinya tersedia di `public/fonts/`. Paket npm memiliki lisensi masing-masing.
 
-## Add an event card
+## Catatan proyek
 
-Each category's jokes live in their own JSON file under `src/data/content/cards/`. Add an entry to that file's `cards` list; no code or UI changes are required:
+Proyek ini dibuat untuk belajar, bercanda, dan bermain bareng teman. Proses pengembangannya menggunakan bantuan AI untuk perencanaan, penulisan kode dan konten, pengujian, serta dokumentasi. Arah kreatif, keputusan akhir, peninjauan hasil, dan tanggung jawab atas proyek tetap berada pada pemilik proyek.
 
-```json
-{
-  "id": "kerja-11",
-  "title": "Judul yang kayak caption meme",
-  "description": "Satu situasi yang relate, dengan satu detail yang spesifik.",
-  "choices": [
-    { "label": "Pilihan pertama", "effects": { "dompet": -50000, "relasi": 8 }, "result": "Akibatnya, punchline di akhir." },
-    { "label": "Pilihan kedua", "effects": { "kewarasan": 6, "hoki": -3 }, "result": "Akibat pilihan kedua." }
-  ]
-}
-```
-
-**Read [docs/copy-guide.md](docs/copy-guide.md) before writing.** It sets the voice (`kamu`, `nggak`, `udah`, `aja`), the phrases that make a line sound machine-translated, the card anatomy, and what not to joke about. `npm test` enforces the mechanical rules and names the exact card and rule that fails. A typo in the JSON itself (an unknown stat, a missing field, a duplicate id) stops the app at load with the file and path of the problem.
-
-Use a unique, stable ID and 2–3 choices. `dompet` amounts are actual rupiah; other stats are integer points. The order of `effects` keys matters, because each key consumes one random draw.
-
-The deck is part of the save format. Before shipping new cards:
-
-1. Bump the save version: `SAVE_KEY` in `src/storage-keys.ts` (moving the old key into `LEGACY_SAVE_KEYS`), `SAVE_VERSION` in `src/game/replay.ts`, and the `version` literal in `src/game/types.ts`.
-2. Update the per-category count in `src/data/content.test.ts`.
-3. Update the golden hashes in `src/data/content-fingerprint.test.ts`. They fail on purpose whenever content or rules change.
-
-To introduce a new category, add it to `src/data/content/categories.json`, create its card file in `src/data/content/cards/`, and add it to `DECKS` in `src/data/events.ts` in the same position.
-
-The 14 categories are kerja, keluarga, anak kos, kendaraan, nongkrong, e-commerce, tagihan, tanggal tua, kondangan, grup WhatsApp, ojol, internet, mudik, and drama kantor. Each currently has ten original cards. Payday has 16 regular and 8 rare original bill jokes.
-
-## Validation
-
-`npm test` runs 31 tests in 8 files, including **90 complete simulated games** (30 seeds each with 2, 3, and 4 players). Tests cover content parsing, card integrity and wording rules, golden fingerprints of the content and of seeded game outcomes, seeded dice, input and phase guards, salary on landing/passing START, debt and stat limits, deck exhaustion, immutable transitions, exactly 12 turns per player, scores, endings, replay, and corrupt-save rejection.
-
-Browser checks cover setup, dice → event → choice → next player, monthly rollover, stat and pawn updates, refresh recovery, rules/reset dialogs, final results, and responsive desktop/mobile layouts.
-
-## Originality and credits
-
-The game copy, 140 events, outcome text, rule implementation, icons, board design, and neighborhood artwork were created for this project. No WNI Simulator cards, rules, names, text, or artwork are used.
-
-Roboto and Roboto Mono are distributed under the **SIL Open Font License 1.1**. Each license notice is included beside its locally bundled variable font in `public/fonts/`. No other external artwork is used.
-
-## Future multiplayer
-
-The pure reducer and serializable action protocol can be moved behind an authoritative server later. That version should validate whose turn it is, generate randomness server-side, and broadcast accepted state changes. This implementation intentionally stays local and does not include networking or a backend.
+Kritik, eksperimen, dan ide baru boleh masuk selama tetap menghormati karya orang lain dan tidak mengubah proyek ini menjadi tiruan produk yang menginspirasinya.
