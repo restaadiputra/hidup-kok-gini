@@ -23,7 +23,7 @@ function rollTurn(state: GameState): GameState {
   const payday = distance >= BOARD.length;
   const tile = BOARD[position];
 
-  const { event, drawn, rng: afterDraw } = drawEvent(state.drawn, tile, dieRoll.rng);
+  const { event, drawn, rng: afterDraw } = drawEvent(state.drawn, tile, dieRoll.rng, player);
   let rng = afterDraw;
   const choiceEffects = event.choices.map((choice) => {
     const rolled = randomizeEffects(choice.effects, rng);
