@@ -4,7 +4,7 @@ import { INITIAL_STATS } from "../data/players";
 import { createGame } from "./create-game";
 import { gameReducer } from "./reducer";
 import { replaySession } from "./replay";
-import { applyEffects } from "./stats";
+import { applyWithDebt } from "./debt";
 import type { Session } from "./types";
 
 test("pending choices survive refresh and apply exactly the previewed effects", () => {
@@ -15,7 +15,7 @@ test("pending choices survive refresh and apply exactly the previewed effects", 
   assert.deepEqual(restored.game, rolled);
   for (let index = 0; index < rolled.choiceEffects.length; index++) {
     const resolved = gameReducer(restored.game, { type: "CHOOSE", index });
-    assert.deepEqual(resolved.players[0].stats, applyEffects(rolled.players[0].stats, rolled.choiceEffects[index]));
+    assert.deepEqual(resolved.players[0].stats, applyWithDebt(rolled.players[0].stats, rolled.choiceEffects[index]));
     for (const [key, value] of Object.entries(resolved.lastEffects)) {
       const stat = key as keyof typeof INITIAL_STATS;
       assert.equal(value, resolved.players[0].stats[stat] - rolled.players[0].stats[stat]);

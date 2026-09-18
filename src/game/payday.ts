@@ -1,9 +1,14 @@
 import { ECONOMY, PAYDAY_REASONS } from "../data/economy";
+import { STATUSES } from "../data/statuses";
+import { applyWithDebt, chargeDebt } from "./debt";
 import { pickIndex, random, rollInRange } from "./random";
-import type { Paycheck } from "./types";
+import { paydayEffects, syncAutomatic } from "./statuses";
+import type { DebtRules, Paycheck, Player, StatusCatalog } from "./types";
+
+export type PaycheckRoll = Omit<Paycheck, "statusEffects" | "interest" | "installment">;
 
 // Draw order is part of the save format: salary, living cost, rare roll, bill amount, reason.
-export function rollPaycheck(rng: number): { paycheck: Paycheck; rng: number } {
+export function rollPaycheck(rng: number): { paycheck: PaycheckRoll; rng: number } {
   const salaryRoll = random(rng);
   const livingRoll = random(salaryRoll.rng);
   const rareRoll = random(livingRoll.rng);
@@ -26,5 +31,18 @@ export function rollPaycheck(rng: number): { paycheck: Paycheck; rng: number } {
       net: salary - livingCost - deduction,
     },
     rng: reasonRoll.rng,
+  };
+}
+
+export function settlePayday(
+  player: Player, roll: PaycheckRoll, catalog: StatusCatalog = STATUSES, debt: DebtRules = ECONOMY.debt,
+): { player: Player; paycheck: Paycheck } {
+  let stats = applyWithDebt(player.stats, { dompet: roll.net }, debt);
+  const statusEffects = paydayEffects(player.statuses, catalog);
+  for (const { effects } of statusEffects) stats = applyWithDebt(stats, effects, debt);
+  const charged = chargeDebt(stats, debt);
+  return {
+    player: { ...player, stats: charged.stats, statuses: syncAutomatic(player.statuses, charged.stats, catalog) },
+    paycheck: { ...roll, statusEffects, interest: charged.interest, installment: charged.installment },
   };
 }

@@ -110,6 +110,9 @@ export interface Paycheck {
   reason: string;
   rare: boolean;
   net: number;
+  statusEffects: StatusEffect[];
+  interest: number;
+  installment: number;
 }
 export interface GameState {
   players: Player[];

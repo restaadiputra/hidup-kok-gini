@@ -5,11 +5,12 @@ import { ECONOMY, PAYDAY_REASONS } from "../data/economy";
 import { EVENT_BY_ID, EVENTS } from "../data/events";
 import { INITIAL_STATS } from "../data/players";
 import { createGame } from "./create-game";
+import { choiceAvailability } from "./availability";
+import { applyWithDebt, borrowCost } from "./debt";
 import { random } from "./random";
 import { gameReducer } from "./reducer";
 import { replaySession } from "./replay";
 import { ending, score } from "./scoring";
-import { applyEffects } from "./stats";
 import type { Action, Session } from "./types";
 
 test("payday deductions vary within range, match balances and reset next turn", () => {
@@ -38,7 +39,9 @@ test("payday deductions vary within range, match balances and reset next turn", 
       rareCount++;
       const broke = { ...initial, players: initial.players.map((p, i) => i === 0 ? { ...p, stats: { ...p.stats, dompet: 0 } } : p) };
       const unlucky = gameReducer(broke, { type: "ROLL" });
-      assert.equal(unlucky.players[0].stats.dompet, receipt.net, "rare bills can put Dompet into debt");
+      assert.equal(unlucky.players[0].stats.dompet, 0, "Dompet never goes below zero");
+      assert.equal(unlucky.players[0].stats.hutang, borrowCost(-receipt.net) + unlucky.paydayDetails!.interest);
+      assert.equal(unlucky.paydayDetails!.installment, 0);
       assert.equal(unlucky.phase, "payday", "debt does not skip the paycheck or eliminate a player");
     }
     assert.equal(rolled.players[0].stats.dompet - initial.players[0].stats.dompet, receipt.net);
@@ -206,15 +209,17 @@ for (const count of [2, 3, 4]) {
         assert.equal(state.phase, "event");
         const category =
           BOARD[state.players[state.currentPlayer].position].category;
-        if (category !== "kejutan" && category !== "gajian")
-          assert.equal(EVENT_BY_ID[state.eventId!].category, category);
+        const drawnFrom = EVENT_BY_ID[state.eventId!].category;
+        if (category !== "kejutan" && category !== "gajian" && drawnFrom !== "krisis" && drawnFrom !== "debt-collector")
+          assert.equal(drawnFrom, category);
         const event = EVENT_BY_ID[state.eventId!];
-        const index = (seed + turn) % event.choices.length;
+        const mover = state.players[state.currentPlayer];
+        const offset = (seed + turn) % event.choices.length;
+        const index = [...event.choices.keys()]
+          .map((k) => (k + offset) % event.choices.length)
+          .find((i) => choiceAvailability(mover, event.choices[i], state.choiceEffects[i]).kind !== "locked")!;
         const choiceAction: Action = { type: "CHOOSE", index };
-        const expectedStats = applyEffects(
-          state.players[state.currentPlayer].stats,
-          state.choiceEffects[index],
-        );
+        const expectedStats = applyWithDebt(mover.stats, state.choiceEffects[index]);
         state = gameReducer(state, choiceAction);
         session.actions.push(choiceAction);
         assert.equal(state.phase, "resolved");

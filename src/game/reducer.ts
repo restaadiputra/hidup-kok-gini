@@ -1,11 +1,14 @@
 import { TOTAL_MONTHS } from "../data/calendar";
 import { BOARD } from "../data/categories";
 import { EVENT_BY_ID } from "../data/events";
+import { choiceAvailability } from "./availability";
+import { applyWithDebt } from "./debt";
 import { drawEvent } from "./deck";
 import { addToLog, choiceMessage, rollMessage } from "./log-messages";
-import { rollPaycheck } from "./payday";
+import { rollPaycheck, settlePayday } from "./payday";
 import { random, rollDie } from "./random";
-import { applyEffects, appliedChanges, randomizeEffects } from "./stats";
+import { appliedChanges, randomizeEffects } from "./stats";
+import { clearStatuses, expireStatuses, gainStatuses, statusChanges, syncAutomatic } from "./statuses";
 import type { Action, GameState, Paycheck, Player } from "./types";
 
 const currentPlayer = (state: GameState) => state.players[state.currentPlayer];
@@ -23,20 +26,24 @@ function rollTurn(state: GameState): GameState {
   const payday = distance >= BOARD.length;
   const tile = BOARD[position];
 
-  const { event, drawn, rng: afterDraw } = drawEvent(state.drawn, tile, dieRoll.rng, player);
-  let rng = afterDraw;
-  const choiceEffects = event.choices.map((choice) => {
+  let rng = dieRoll.rng;
+  let mover = player;
+  let paydayDetails: Paycheck | null = null;
+  if (payday) {
+    const rolled = rollPaycheck(rng);
+    rng = rolled.rng;
+    const settled = settlePayday(player, rolled.paycheck);
+    mover = settled.player;
+    paydayDetails = settled.paycheck;
+  }
+
+  const draw = drawEvent(state.drawn, tile, rng, mover);
+  rng = draw.rng;
+  const choiceEffects = draw.event.choices.map((choice) => {
     const rolled = randomizeEffects(choice.effects, rng);
     rng = rolled.rng;
     return rolled.effects;
   });
-
-  let paydayDetails: Paycheck | null = null;
-  if (payday) {
-    const rolled = rollPaycheck(rng);
-    paydayDetails = rolled.paycheck;
-    rng = rolled.rng;
-  }
 
   return {
     ...state,
@@ -47,16 +54,12 @@ function rollTurn(state: GameState): GameState {
     // Passing GAJIAN parks the pawn there until the paycheck is acknowledged.
     phase: payday ? "payday" : "event",
     pendingPosition: payday ? position : null,
-    eventId: event.id,
-    drawn,
+    eventId: draw.event.id,
+    drawn: draw.drawn,
     payday,
     resolution: "",
     lastEffects: {},
-    players: updatePlayer(state, (p) => ({
-      ...p,
-      position: payday ? 0 : position,
-      stats: paydayDetails ? applyEffects(p.stats, { dompet: paydayDetails.net }) : p.stats,
-    })),
+    players: updatePlayer(state, () => ({ ...mover, position: payday ? 0 : position })),
     log: addToLog(state.log, rollMessage(player.name, dice, tile.label, paydayDetails)),
   };
 }
@@ -75,14 +78,21 @@ function choose(state: GameState, eventId: string, index: number): GameState {
   const effects = state.choiceEffects[index];
   if (!choice || !effects || !Number.isInteger(index)) return state;
   const player = currentPlayer(state);
-  const stats = applyEffects(player.stats, effects);
+  const availability = choiceAvailability(player, choice, effects);
+  if (availability.kind === "locked") return state;
+  const stats = applyWithDebt(player.stats, effects);
+  const statuses = syncAutomatic(
+    clearStatuses(gainStatuses(player.statuses, choice.gains, state.month), choice.clears),
+    stats,
+  );
+  const borrowed = availability.kind === "debt" ? availability.added : 0;
   return {
     ...state,
     phase: "resolved",
     resolution: choice.result,
     lastEffects: appliedChanges(player.stats, stats, effects),
-    players: updatePlayer(state, (p) => ({ ...p, stats })),
-    log: addToLog(state.log, choiceMessage(player.name, choice)),
+    players: updatePlayer(state, (p) => ({ ...p, stats, statuses })),
+    log: addToLog(state.log, choiceMessage(player.name, choice, borrowed, statusChanges(player.statuses, statuses))),
   };
 }
 
@@ -94,10 +104,17 @@ export const isFinalTurn = (state: GameState) => isEndOfRound(state) && state.mo
 function nextTurn(state: GameState): GameState {
   if (isFinalTurn(state)) return { ...state, phase: "finished" };
   const endOfRound = isEndOfRound(state);
+  const month = state.month + (endOfRound ? 1 : 0);
   return {
     ...state,
     currentPlayer: (state.currentPlayer + 1) % state.players.length,
-    month: state.month + (endOfRound ? 1 : 0),
+    month,
+    players: endOfRound
+      ? state.players.map((p) => {
+          const statuses = expireStatuses(p.statuses, month);
+          return statuses === p.statuses ? p : { ...p, statuses };
+        })
+      : state.players,
     phase: "ready",
     eventId: null,
     choiceEffects: [],
