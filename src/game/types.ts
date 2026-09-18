@@ -138,7 +138,7 @@ export type Action =
   | { type: "CHOOSE"; index: number }
   | { type: "NEXT" };
 export interface Session {
-  version: 4;
+  version: 5;
   names: string[];
   seed: number;
   actions: Action[];

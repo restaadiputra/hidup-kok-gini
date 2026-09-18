@@ -180,7 +180,7 @@ for (const count of [2, 3, 4]) {
     for (let seed = 0; seed < 30; seed++) {
       const names = Array.from({ length: count }, (_, i) => `Pemain ${i + 1}`);
       let state = createGame(names, seed);
-      const session: Session = { version: 4, names, seed, actions: [] };
+      const session: Session = { version: 5, names, seed, actions: [] };
       const turns = Array(count).fill(0) as number[];
       let salaryCount = 0;
       for (let turn = 0; turn < 12 * count; turn++) {
