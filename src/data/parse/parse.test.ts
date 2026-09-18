@@ -32,13 +32,22 @@ test("bad card data fails with the file and exact path", () => {
   assert.throws(() => parseDeck({ ...deck({ hoki: 3 }), category: "kerja" }, "ojol"), /expected "ojol"/);
 });
 
-test("money ranges must step evenly from min to max", () => {
+test("money ranges step evenly and debt rates are fractions", () => {
   const range = { min: 50_000, max: 750_000, step: 25_000 };
-  const economy = { salary: range, livingCost: range, deduction: range, rareChance: 0.08, rareBill: range };
+  const debt = { feeRate: 0.2, interestRate: 0.1, installmentMax: 500_000, collectorChance: 0.35 };
+  const economy = { salary: range, livingCost: range, deduction: range, rareChance: 0.08, rareBill: range, debt };
   assert.doesNotThrow(() => parseEconomy(economy));
   assert.throws(
     () => parseEconomy({ ...economy, rareBill: { min: 0, max: 100_000, step: 30_000 } }),
     /economy\.json › rareBill: needs min ≤ max/,
+  );
+  assert.throws(
+    () => parseEconomy({ ...economy, debt: { ...debt, feeRate: 1.5 } }),
+    /economy\.json › debt\.feeRate: expected a number between 0 and 1/,
+  );
+  assert.throws(
+    () => parseEconomy({ ...economy, debt: { ...debt, installmentMax: 0 } }),
+    /economy\.json › debt\.installmentMax: expected a positive amount/,
   );
 });
 

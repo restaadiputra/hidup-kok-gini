@@ -1,4 +1,4 @@
-import type { Economy, MoneyRange, PaydayReasons } from "../../game/types";
+import type { DebtRules, Economy, MoneyRange, PaydayReasons } from "../../game/types";
 import { DataError } from "./data-error";
 import { expectFraction, expectInteger, expectRecord, expectTextList } from "./primitives";
 
@@ -14,6 +14,18 @@ function parseMoneyRange(value: unknown, path: string): MoneyRange {
   return range;
 }
 
+function parseDebt(value: unknown, path: string): DebtRules {
+  const fields = expectRecord(value, path);
+  const installmentMax = expectInteger(fields.installmentMax, `${path}.installmentMax`);
+  if (installmentMax <= 0) throw new DataError(`${path}.installmentMax`, "expected a positive amount");
+  return {
+    feeRate: expectFraction(fields.feeRate, `${path}.feeRate`),
+    interestRate: expectFraction(fields.interestRate, `${path}.interestRate`),
+    installmentMax,
+    collectorChance: expectFraction(fields.collectorChance, `${path}.collectorChance`),
+  };
+}
+
 export function parseEconomy(json: unknown): Economy {
   const file = "economy.json";
   const fields = expectRecord(json, file);
@@ -23,6 +35,7 @@ export function parseEconomy(json: unknown): Economy {
     deduction: parseMoneyRange(fields.deduction, `${file} › deduction`),
     rareChance: expectFraction(fields.rareChance, `${file} › rareChance`),
     rareBill: parseMoneyRange(fields.rareBill, `${file} › rareBill`),
+    debt: parseDebt(fields.debt, `${file} › debt`),
   };
 }
 

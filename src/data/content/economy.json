@@ -19,5 +19,11 @@
     "min": 1750000,
     "max": 2750000,
     "step": 50000
+  },
+  "debt": {
+    "feeRate": 0.2,
+    "interestRate": 0.1,
+    "installmentMax": 500000,
+    "collectorChance": 0.35
   }
 }

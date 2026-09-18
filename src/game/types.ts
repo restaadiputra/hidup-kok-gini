@@ -32,12 +32,19 @@ export interface MoneyRange {
   max: number;
   step: number;
 }
+export interface DebtRules {
+  feeRate: number;
+  interestRate: number;
+  installmentMax: number;
+  collectorChance: number;
+}
 export interface Economy {
   salary: MoneyRange;
   livingCost: MoneyRange;
   deduction: MoneyRange;
   rareChance: number;
   rareBill: MoneyRange;
+  debt: DebtRules;
 }
 export interface PaydayReasons {
   common: string[];
