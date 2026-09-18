@@ -1,0 +1,45 @@
+{
+  "category": "krisis",
+  "cards": [
+    {
+      "id": "krisis-1",
+      "crisis": "burnout",
+      "title": "Baterai sosial nol persen",
+      "description": "Pagi ini kamu natap langit-langit kamar dua jam. Chat kantor numpuk, tapi jempolmu mogok kerja.",
+      "choices": [
+        { "label": "Izin sakit, tidur seharian", "effects": { "kewarasan": 25, "dompet": -150000 }, "result": "Bangun jam empat sore. Dunia masih ada, kamu juga." },
+        { "label": "Paksa kerja pakai kopi tiga gelas", "effects": { "dompet": 100000, "kewarasan": -10, "hoki": -5 }, "result": "Kerjaan kelar. Tanganmu gemetar kayak HP di mode getar." }
+      ]
+    },
+    {
+      "id": "krisis-2",
+      "crisis": "burnout",
+      "title": "Mode hemat daya",
+      "description": "Kamu buka aplikasi kerja, lalu langsung tutup lagi. Tiga kali. Badanmu minta libur, bukan motivasi.",
+      "choices": [
+        { "label": "Matikan HP satu hari penuh", "effects": { "kewarasan": 30, "relasi": -10 }, "result": "Ada 87 chat belum dibaca. Kewarasanmu pulang pelan-pelan." },
+        { "label": "Jalan kaki keliling kompleks", "effects": { "kewarasan": 15, "hoki": 5, "dompet": -20000 }, "result": "Ketemu kucing oren yang mau dielus. Hari ini dihitung menang." }
+      ]
+    },
+    {
+      "id": "krisis-3",
+      "crisis": "apes",
+      "title": "Kesandung terus dari pagi",
+      "description": "Sandal putus, galon habis, dan charger kamu dipinjam orang yang nggak ingat pernah minjam.",
+      "choices": [
+        { "label": "Terima nasib, beli sandal baru", "effects": { "dompet": -60000, "hoki": 15 }, "result": "Sandal baru, hari baru. Minimal kaki kamu aman." },
+        { "label": "Salahin posisi bintang", "effects": { "hoki": 10, "relasi": -5 }, "result": "Teman kosmu setuju. Kalian bikin grup khusus buat ngeluh." }
+      ]
+    },
+    {
+      "id": "krisis-4",
+      "crisis": "apes",
+      "title": "Antreanmu selalu paling lambat",
+      "description": "Di kasir, di ATM, di loket. Tiap kamu pindah antrean, antrean lama langsung lancar.",
+      "choices": [
+        { "label": "Diam di satu antrean, pasrah", "effects": { "hoki": 20, "kewarasan": -5 }, "result": "Akhirnya giliranmu. Kasirnya ganti shift pas kamu maju." },
+        { "label": "Pulang, belanja besok aja", "effects": { "kewarasan": 10, "dompet": -30000 }, "result": "Besoknya harga naik tiga ribu. Tapi hatimu tenang." }
+      ]
+    }
+  ]
+}

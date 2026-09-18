@@ -1,4 +1,8 @@
 {
+  "utang-ke-teman": {
+    "label": "Utang ke teman",
+    "icon": "users"
+  },
   "burnout": {
     "label": "Burnout",
     "icon": "brain",

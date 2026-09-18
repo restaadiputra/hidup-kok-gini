@@ -12,15 +12,13 @@ export function parseCategories(json: Record<TileKind, unknown>): Record<TileKin
   for (const special of SPECIAL_TILES)
     if (!(special in fields)) throw new DataError(file, `missing the special tile "${special}"`);
   const categories = {} as Record<TileKind, TileMeta>;
-  for (const kind of Object.keys(json) as TileKind[]) {
-    const meta = expectRecord(fields[kind], `${file} › ${kind}`);
-    categories[kind] = {
-      label: expectText(meta.label, `${file} › ${kind}.label`),
-      icon: expectText(meta.icon, `${file} › ${kind}.icon`),
-      color: expectText(meta.color, `${file} › ${kind}.color`),
-    };
-  }
+  for (const kind of Object.keys(json) as TileKind[]) categories[kind] = parseTileMeta(fields[kind], `${file} › ${kind}`);
   return categories;
+}
+
+export function parseTileMeta(value: unknown, path: string): TileMeta {
+  const meta = expectRecord(value, path);
+  return { label: expectText(meta.label, `${path}.label`), icon: expectText(meta.icon, `${path}.icon`), color: expectText(meta.color, `${path}.color`) };
 }
 
 export function parseRoute(json: unknown, kinds: readonly TileKind[]): TileKind[] {

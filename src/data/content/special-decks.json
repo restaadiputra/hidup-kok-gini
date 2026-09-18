@@ -1,0 +1,4 @@
+{
+  "krisis": { "label": "Krisis", "icon": "drama", "color": "pink" },
+  "debt-collector": { "label": "Debt collector", "icon": "receipt", "color": "peach" }
+}

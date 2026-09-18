@@ -15,7 +15,9 @@ import ojol from "./content/cards/ojol.json";
 import tagihan from "./content/cards/tagihan.json";
 import tanggalTua from "./content/cards/tanggal-tua.json";
 import { DataError } from "./parse/data-error";
-import { assertUniqueIds, parseDeck } from "./parse/parse-cards";
+import { assertStatusRefs, assertUniqueIds, parseDeck } from "./parse/parse-cards";
+import { COLLECTOR_CARDS, KRISIS_CARDS } from "./special-decks";
+import { STATUSES } from "./statuses";
 
 // This order is part of the save format: seeded draws index into it, so it
 // must match categories.json, and reordering or adding cards needs a new save version.
@@ -42,8 +44,10 @@ if (Object.keys(DECKS).join() !== CATEGORY_IDS.join())
 export const EVENTS: EventCard[] = CATEGORY_IDS.flatMap((category) =>
   parseDeck(DECKS[category], category),
 );
-assertUniqueIds(EVENTS);
+assertStatusRefs(EVENTS, STATUSES);
 
+export const ALL_CARDS: EventCard[] = [...EVENTS, ...KRISIS_CARDS, ...COLLECTOR_CARDS];
+assertUniqueIds(ALL_CARDS);
 export const EVENT_BY_ID = Object.fromEntries(
-  EVENTS.map((event) => [event.id, event]),
+  ALL_CARDS.map((event) => [event.id, event]),
 ) as Record<string, EventCard>;

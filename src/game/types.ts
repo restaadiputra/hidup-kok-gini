@@ -3,6 +3,9 @@
 export type TileKind = keyof typeof import("../data/content/categories.json");
 export type SpecialTile = "gajian" | "kejutan";
 export type Category = Exclude<TileKind, SpecialTile>;
+export type SpecialDeck = "krisis" | "debt-collector";
+export type DeckId = Category | SpecialDeck;
+export type Crisis = "burnout" | "apes";
 export interface TileMeta {
   label: string;
   icon: string;
@@ -12,6 +15,7 @@ export type Stat = "dompet" | "kewarasan" | "relasi" | "hoki" | "hutang";
 export type BoundedStat = "kewarasan" | "relasi" | "hoki";
 export type MoneyStat = "dompet" | "hutang";
 export type Stats = Record<Stat, number>;
+export type StatRequirement = Partial<Record<BoundedStat, number>>;
 export type StatusTrigger =
   | { stat: BoundedStat; atMost: number; clearAbove: number }
   | { stat: "hutang"; above: number };
@@ -36,13 +40,21 @@ export interface Choice {
   label: string;
   effects: Partial<Stats>;
   result: string;
+  requires: StatRequirement;
+  requiresStatus: string | null;
+  blockedByStatus: string | null;
+  gains: string[];
+  clears: string[];
+  tags: string[];
 }
 export interface EventCard {
   id: string;
-  category: Category;
+  category: DeckId;
   title: string;
   description: string;
   choices: Choice[];
+  requiresStatus: string | null;
+  crisis: Crisis | null;
 }
 export interface Tile extends TileMeta {
   category: TileKind;

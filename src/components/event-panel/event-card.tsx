@@ -1,4 +1,4 @@
-import { CATEGORIES } from "../../data/categories";
+import { DECK_META } from "../../data/special-decks";
 import type { EventCard as EventData, Stats } from "../../game/types";
 import { Effects } from "../effects/effects";
 import { Icon } from "../icon/icon";
@@ -13,7 +13,7 @@ export function EventCard({
   choiceEffects: Partial<Stats>[];
   onChoose: (index: number) => void;
 }) {
-  const category = CATEGORIES[event.category];
+  const category = DECK_META[event.category];
   return (
     <div className="event-stack" key={event.id}>
       <span className="stack-card stack-card-a" aria-hidden="true" />

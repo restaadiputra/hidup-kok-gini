@@ -5,6 +5,11 @@ import { CATEGORIES } from "./categories";
 import { PAYDAY_REASONS } from "./economy";
 import { EVENTS } from "./events";
 import { INITIAL_STATS } from "./players";
+import { HELP_TAG } from "../game/status-ids";
+import type { Choice } from "../game/types";
+import { COLLECTOR_CARDS, KRISIS_CARDS } from "./special-decks";
+
+const SPECIAL_CARDS = [...KRISIS_CARDS, ...COLLECTOR_CARDS];
 
 // Mechanical half of docs/copy-guide.md. The rest of the guide needs a human read.
 
@@ -39,7 +44,7 @@ function wordingProblems(text: string): string[] {
   return problems;
 }
 
-const cardLines = EVENTS.flatMap((event) => [
+const cardLines = [...EVENTS, ...SPECIAL_CARDS].flatMap((event) => [
   { where: `${event.id} title`, text: event.title },
   { where: `${event.id} description`, text: event.description },
   ...event.choices.flatMap((choice, i) => [
@@ -75,7 +80,7 @@ test("card parts stay inside their length limits", () => {
     if (text.length < min || text.length > max)
       failures.push(`${where} is ${text.length} characters (allowed ${min}–${max}): “${text}”`);
   };
-  for (const event of EVENTS) {
+  for (const event of [...EVENTS, ...SPECIAL_CARDS]) {
     check(`${event.id} title`, event.title, 4, 42);
     check(`${event.id} description`, event.description, 25, 150);
     event.choices.forEach((choice, i) => {
@@ -85,6 +90,22 @@ test("card parts stay inside their length limits", () => {
     });
   }
   assert.deepEqual(failures, [], "\n" + failures.join("\n"));
+});
+
+const alwaysOpen = (choice: Choice) =>
+  Object.keys(choice.requires).length === 0 && choice.requiresStatus === null &&
+  choice.blockedByStatus === null && !choice.tags.includes(HELP_TAG);
+
+test("every card has an always-open choice", () => {
+  assert.deepEqual([...EVENTS, ...SPECIAL_CARDS].filter((event) => !event.choices.some(alwaysOpen)).map((event) => event.id), []);
+});
+
+test("crisis choices can recover and special decks are stocked", () => {
+  const burnout = KRISIS_CARDS.filter((card) => card.crisis === "burnout");
+  const apes = KRISIS_CARDS.filter((card) => card.crisis === "apes");
+  assert.ok(burnout.length >= 2 && apes.length >= 2 && COLLECTOR_CARDS.length >= 3);
+  for (const card of burnout) assert.ok(card.choices.some((c) => alwaysOpen(c) && (c.effects.kewarasan ?? 0) > 0));
+  for (const card of apes) assert.ok(card.choices.some((c) => alwaysOpen(c) && (c.effects.hoki ?? 0) > 0));
 });
 
 test("every card has a real cost and effect sizes that survive randomization", () => {

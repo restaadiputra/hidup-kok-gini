@@ -1,0 +1,33 @@
+{
+  "category": "debt-collector",
+  "cards": [
+    {
+      "id": "debt-collector-1",
+      "title": "Tamu berjaket kulit di depan kos",
+      "description": "Ada bapak-bapak ramah yang nanya kabarmu, lalu nanya kabar utangmu. Senyumnya awet banget.",
+      "choices": [
+        { "label": "Bayar sebagian sekarang", "effects": { "dompet": -300000, "hutang": -300000, "kewarasan": 5 }, "result": "Bapaknya pamit sambil bilang sampai ketemu bulan depan. Manis, tapi bikin merinding." },
+        { "label": "Pura-pura jadi sepupu sendiri", "effects": { "kewarasan": -10, "hoki": -5 }, "result": "Bapaknya manggut-manggut, lalu nitip salam buat kamu. Ke kamu." },
+        { "label": "Minta teman nalangin dulu", "effects": { "hutang": -400000, "relasi": -15 }, "requires": { "relasi": 40 }, "tags": ["minta-tolong"], "gains": ["utang-ke-teman"], "result": "Utang pindah tangan. Sekarang tiap ketemu dia, kamu yang traktir." }
+      ]
+    },
+    {
+      "id": "debt-collector-2",
+      "title": "Telepon dari nomor nggak dikenal",
+      "description": "Nomor asing nelepon tiap jam makan siang. Nada deringmu sekarang bikin deg-degan.",
+      "choices": [
+        { "label": "Angkat dan nego cicilan", "effects": { "hutang": -150000, "dompet": -100000, "kewarasan": -5 }, "result": "Cicilan dapat keringanan dikit. Suaramu gemetar, tapi nego tetap nego." },
+        { "label": "Ganti nada dering jadi lagu tidur", "effects": { "kewarasan": 5, "hoki": -10 }, "result": "Tidurmu nyenyak. Utangmu juga ikut tidur, sambil tumbuh." }
+      ]
+    },
+    {
+      "id": "debt-collector-3",
+      "title": "Surat cinta dari penagih",
+      "description": "Ada amplop di bawah pintu. Isinya rincian bunga, ditulis rapi pakai stabilo pink.",
+      "choices": [
+        { "label": "Tempel di kulkas buat motivasi", "effects": { "kewarasan": -5, "hoki": 5 }, "result": "Tiap buka kulkas kamu ingat. Kulkasnya juga ikut sedih." },
+        { "label": "Jual barang nganggur buat nyicil", "effects": { "hutang": -250000, "kewarasan": 5 }, "result": "Speaker lama laku. Tetangga lega, utangmu berkurang dikit." }
+      ]
+    }
+  ]
+}
