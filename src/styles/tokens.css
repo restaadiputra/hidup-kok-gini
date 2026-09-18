@@ -1,0 +1,75 @@
+:root {
+  color-scheme: light;
+  /* Light = the game spread out on a sunny table. */
+  --page: #ffeccf;
+  --paper: #fffcf5;
+  --raised: #fff4e2;
+  --input: #fffdf8;
+  --ink: #2a1c3f;
+  --muted: #6f5f86;
+  --line: #e8d7bb;
+  --edge: #2a1c3f;
+  --shadow: #c2954f47;
+  --shadow-strong: #2a1c3f3d;
+  --accent: #ff5d2e;
+  --accent-ink: #331704;
+  --accent-text: #c4340a;
+  --focus: #4a2ddb;
+  --active-bg: #ffe0c7;
+  /* A veil off the table itself, so the board behind a sheet reads as dimmed
+     printed colour rather than greyed-out. */
+  --scrim: #ffeccfa3;
+  --card-back: #2a1c3f24;
+  --title: #2a1c3f;
+  --title-glow: #ffd23f;
+  --dots: #d9b98c73;
+  --fixed: #ffd23f;
+  --fixed-ink: #2a1c3f;
+  --tile-ink: #2a1c3f;
+  --tile-1: #c08cf7;
+  --tile-2: #ff7fae;
+  --tile-3: #ffd75e;
+  --tile-4: #62cdf5;
+  --tile-5: #ffa06a;
+  --tile-6: #6ddc8b;
+  --tile-7: #a8e05f;
+  --tile-wild: #ffe14d;
+  --positive-bg: #d8f6dd;
+  --positive-ink: #1c6b35;
+  --negative-bg: #ffdfd6;
+  --negative-ink: #b13312;
+  --dice-shadow: #2a1c3f2e;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  /* Dark = same game, one lamp on, everyone still awake. */
+  --page: #1a1030;
+  --paper: #241640;
+  --raised: #2f1e55;
+  --input: #2b1c4d;
+  --ink: #ffeede;
+  --muted: #b6a3d4;
+  --line: #46326f;
+  --edge: #100a1f;
+  --shadow: #00000059;
+  --shadow-strong: #0000008f;
+  --accent: #ff5d2e;
+  --accent-ink: #331704;
+  --accent-text: #ffa072;
+  --focus: #ffd23f;
+  --active-bg: #3d2870;
+  --scrim: #130b2685;
+  --card-back: #ffeede1f;
+  --title: #fff3e2;
+  --title-glow: #ffd23f;
+  --dots: #7b5fbf59;
+  --fixed: #ffd23f;
+  --fixed-ink: #2a1c3f;
+  /* Printed pieces keep their colour when the lights go down: --tile-* and
+     --tile-ink are deliberately not redefined here. */
+  --positive-bg: #1e4a2c;
+  --positive-ink: #a8f0bd;
+  --negative-bg: #57221a;
+  --negative-ink: #ffb9a3;
+  --dice-shadow: #00000066;
+}

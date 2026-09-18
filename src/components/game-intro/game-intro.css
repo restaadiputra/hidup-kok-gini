@@ -1,0 +1,82 @@
+.game-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.game-intro h2 {
+  font-size: 23px;
+  letter-spacing: -0.9px;
+  margin-top: 5px;
+  font-weight: 800;
+}
+.game-intro h2 > span {
+  font-weight: 400;
+  color: var(--muted);
+}
+.intro-sticker {
+  padding: 8px 14px;
+  border: 2px solid var(--edge);
+  border-radius: 7px;
+  background: var(--tile-2);
+  color: var(--tile-ink);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.8px;
+  transform: rotate(3deg);
+  box-shadow: 0 4px 0 -1px var(--edge);
+}
+@media (max-height: 760px) and (min-width: 761px) {
+  .game-intro h2 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 1000px) {
+  .game-intro h2 {
+    font-size: 20px;
+  }
+  .game-intro h2 > span {
+    display: block;
+    margin-top: 3px;
+  }
+  .intro-sticker {
+    font-size: 10px;
+  }
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .game-intro {
+    min-height: 35px;
+  }
+  .game-intro h2 {
+    font-size: 17px;
+    margin-top: 4px;
+    letter-spacing: -0.5px;
+  }
+  .game-intro h2 > span {
+    display: inline;
+    font-size: 15px;
+  }
+  .intro-sticker {
+    display: none;
+  }
+}
+@media (max-width: 390px) and (min-height: 501px) {
+  .game-intro h2 {
+    font-size: 15px;
+  }
+  .game-intro h2 > span {
+    font-size: 13px;
+  }
+}
+@media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {
+  .game-intro {
+    display: none;
+  }
+}
+@media (max-height: 500px) {
+  .game-intro {
+    display: none;
+  }
+}

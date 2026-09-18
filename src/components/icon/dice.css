@@ -1,0 +1,77 @@
+.dice {
+  display: inline-grid;
+  width: 72px;
+  height: 72px;
+  padding: 13px;
+  gap: 7px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  border: 3px solid var(--edge);
+  border-radius: 16px;
+  background: #fffcf5;
+  box-shadow: 0 6px 0 -1px var(--edge);
+  transform: rotate(-8deg);
+  z-index: 1;
+  flex-shrink: 0;
+}
+.dot {
+  border-radius: 50%;
+  background: var(--edge);
+  visibility: hidden;
+}
+.dot.visible {
+  visibility: visible;
+}
+.dice-small {
+  width: 25px;
+  height: 25px;
+  border-width: 2px;
+  border-radius: 6px;
+  padding: 4px;
+  gap: 3px;
+  transform: rotate(-6deg);
+  box-shadow: 0 2px 0 -0.5px var(--edge);
+}
+.rolling {
+  animation: dice-roll 0.24s linear infinite;
+}
+.roll-button .dice {
+  width: 22px;
+  height: 22px;
+  gap: 2px;
+  padding: 3px;
+  border-width: 2px;
+  border-radius: 6px;
+  box-shadow: none;
+}
+@media (min-width: 1300px) and (min-height: 850px) {
+  .dice-stage .dice {
+    height: 87px;
+    width: 87px;
+    padding: 16px;
+    gap: 9px;
+  }
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .dice-stage .dice {
+    width: 39px;
+    height: 39px;
+    padding: 7px;
+    gap: 4px;
+    border-radius: 10px;
+    border-width: 2.5px;
+    box-shadow: 0 4px 0 -1px var(--edge);
+  }
+  .roll-button .dice {
+    display: none;
+  }
+}
+@media (max-height: 500px) {
+  .dice-stage .dice {
+    width: 42px;
+    height: 42px;
+    padding: 8px;
+    gap: 4px;
+    border-radius: 9px;
+  }
+}

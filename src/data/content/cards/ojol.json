@@ -1,0 +1,239 @@
+{
+  "category": "ojol",
+  "cards": [
+    {
+      "id": "ojol-1",
+      "title": "Titik jemput beda dunia",
+      "description": "Aplikasi bilang driver udah sampai. Ternyata kalian dipisah pagar kompleks.",
+      "choices": [
+        {
+          "label": "Jalan ke gerbang sambil telepon",
+          "effects": {
+            "kewarasan": -5,
+            "relasi": 6
+          },
+          "result": "Kalian akhirnya ketemu, berkat patokan pohon miring."
+        },
+        {
+          "label": "Minta putar, kasih tip",
+          "effects": {
+            "dompet": -50000,
+            "kewarasan": 5,
+            "relasi": 4
+          },
+          "result": "Pagarnya menang, tapi semua tetap sampai."
+        }
+      ]
+    },
+    {
+      "id": "ojol-2",
+      "title": "Curhat di lampu merah",
+      "description": "Driver cerita lagi nabung buat buka usaha. Lampu merah jadi kayak episode podcast.",
+      "choices": [
+        {
+          "label": "Dengerin, kasih tip",
+          "effects": {
+            "dompet": -50000,
+            "relasi": 10,
+            "kewarasan": 4
+          },
+          "result": "Kamu sampai dengan cerita yang lebih hangat dari jaketnya."
+        },
+        {
+          "label": "Bantu cari nama usaha",
+          "effects": {
+            "relasi": 8,
+            "hoki": 5
+          },
+          "result": "Tiga lampu merah menghasilkan tujuh nama dan satu jingle."
+        }
+      ]
+    },
+    {
+      "id": "ojol-3",
+      "title": "Level santai versi dapur",
+      "description": "Pesan level santai, yang datang merah menyala. Baru buka tutupnya, hidungmu udah meler.",
+      "choices": [
+        {
+          "label": "Beli susu, hadapi",
+          "effects": {
+            "dompet": -25000,
+            "kewarasan": -4,
+            "hoki": 8
+          },
+          "result": "Kamu bertahan. Lidahmu lagi masa pendinginan."
+        },
+        {
+          "label": "Kasih ke teman pecinta pedas",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": 3
+          },
+          "result": "Katanya kurang pedas. Kamu mulai agak takut sama dia."
+        }
+      ]
+    },
+    {
+      "id": "ojol-4",
+      "title": "“Bintang limanya ya, Kak”",
+      "description": "Driver bilang “bintang limanya ya, Kak” sepanjang jalan. Udah tujuh kali. Kamu belum sampai.",
+      "choices": [
+        {
+          "label": "Kasih bintang lima plus tip",
+          "effects": {
+            "dompet": -25000,
+            "relasi": 8,
+            "kewarasan": 3
+          },
+          "result": "Driver senyum lebar. Katanya kamu penumpang terbaik minggu ini."
+        },
+        {
+          "label": "Pura-pura tidur di motor",
+          "effects": {
+            "kewarasan": 5,
+            "relasi": -5
+          },
+          "result": "Susah juga pura-pura tidur di motor. Tapi kamu berhasil."
+        }
+      ]
+    },
+    {
+      "id": "ojol-5",
+      "title": "Pagar hijau semua",
+      "description": "Driver telepon, “Kak, rumahnya yang pagar hijau?” Semua pagar di gangmu hijau.",
+      "choices": [
+        {
+          "label": "Jemput ke mulut gang",
+          "effects": {
+            "kewarasan": -4,
+            "relasi": 6
+          },
+          "result": "Kamu nunggu di gang pakai kaus kaki sebelah. Makanannya sampai masih hangat."
+        },
+        {
+          "label": "Kirim patokan sedetail mungkin",
+          "effects": {
+            "kewarasan": 4,
+            "hoki": 4
+          },
+          "result": "Sampai tepat di depan pintu. Kamu merasa jadi ahli peta."
+        }
+      ]
+    },
+    {
+      "id": "ojol-6",
+      "title": "Tarif harga hujan",
+      "description": "Hujan deras. Tarif naik dua kali lipat, dan yang mau ambil pesanan cuma satu orang se-kota.",
+      "choices": [
+        {
+          "label": "Pesan, bayar harga hujan",
+          "effects": {
+            "dompet": -60000,
+            "kewarasan": 6
+          },
+          "result": "Driver datang pakai jas hujan sobek. Kamu kasih tip, nggak tega."
+        },
+        {
+          "label": "Tunggu hujan reda",
+          "effects": {
+            "kewarasan": -6,
+            "hoki": 4
+          },
+          "result": "Hujan reda jam sepuluh malam. Tarif turun, kamu ketiduran di lobi."
+        }
+      ]
+    },
+    {
+      "id": "ojol-7",
+      "title": "Driver yang sama lagi",
+      "description": "Driver yang jemput ternyata sama kayak kemarin. Dan kemarin lusa. Obrolan kalian udah bersambung.",
+      "choices": [
+        {
+          "label": "Lanjut cerita kemarin",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -3
+          },
+          "result": "Kamu sekarang tahu nama kucing, anak, dan mantannya."
+        },
+        {
+          "label": "Pakai headset dari awal",
+          "effects": {
+            "kewarasan": 6,
+            "relasi": -4
+          },
+          "result": "Dia tetap cerita. Kamu tetap dengar, walau pura-pura nggak."
+        }
+      ]
+    },
+    {
+      "id": "ojol-8",
+      "title": "Nitip lewat kamu",
+      "description": "Temanmu minta dipesenin martabak lewat akunmu, dikirim ke alamatnya, pakai uangmu dulu.",
+      "choices": [
+        {
+          "label": "Pesenin, tagih belakangan",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 8
+          },
+          "result": "Martabaknya sampai. Uangnya belum. “Besok ya” dari hari Senin."
+        },
+        {
+          "label": "Kirim link aplikasinya aja",
+          "effects": {
+            "relasi": -4,
+            "kewarasan": 6
+          },
+          "result": "Dia bilang, “Ribet.” Kamu bilang, “Iya, aku tahu.”"
+        }
+      ]
+    },
+    {
+      "id": "ojol-9",
+      "title": "Helm penuh sejarah",
+      "description": "Driver nyodorin helm. Dari baunya, helm ini punya sejarah panjang.",
+      "choices": [
+        {
+          "label": "Pakai, tahan napas",
+          "effects": {
+            "kewarasan": -6,
+            "hoki": 5
+          },
+          "result": "Kamu sampai dengan rambut beraroma tiga penumpang sebelumnya."
+        },
+        {
+          "label": "Mulai bawa helm sendiri",
+          "effects": {
+            "dompet": -75000,
+            "kewarasan": 6
+          },
+          "result": "Helm baru dibeli. Sekarang ke mana-mana kamu nenteng helm, termasuk ke mal."
+        }
+      ]
+    },
+    {
+      "id": "ojol-10",
+      "title": "Alamat kos lama",
+      "description": "Kamu pesan makan siang. Alamatnya masih alamat kos lama. Driver udah di sana, anak kos baru udah makan.",
+      "choices": [
+        {
+          "label": "Pesan ulang, alamat benar",
+          "effects": {
+            "dompet": -50000,
+            "kewarasan": -4
+          },
+          "result": "Makan siangnya datang jam tiga. Namanya jadi makan sore."
+        },
+        {
+          "label": "Ikhlas, makan roti di laci",
+          "effects": {
+            "kewarasan": -5,
+            "relasi": 6
+          },
+          "result": "Anak kos baru kirim foto: “Makasih ya, enak.”"
+        }
+      ]
+    }
+  ]
+}

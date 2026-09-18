@@ -1,0 +1,252 @@
+.setup-content {
+  padding: 21px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.setup-heading h2 {
+  font-size: 35px;
+  line-height: 1.04;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  margin: 10px 0;
+}
+.setup-heading em {
+  color: var(--accent-text);
+}
+.setup-heading p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.player-count {
+  padding: 0;
+  border: 0;
+  margin: 0;
+  min-width: 0;
+}
+.player-count legend {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.player-count > div {
+  display: flex;
+  gap: 7px;
+}
+.player-count label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex: 1;
+  height: 38px;
+  border: 2px solid var(--edge);
+  background: var(--raised);
+  border-radius: 9px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.player-count label.selected {
+  background: var(--accent);
+  border: 2px solid var(--edge);
+  color: var(--accent-ink);
+  box-shadow: 0 3px 0 -1px var(--edge);
+  font-weight: 700;
+}
+.player-count input {
+  position: absolute;
+  opacity: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+.player-count label:focus-within {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+.name-fields {
+  display: grid;
+  gap: 8px;
+}
+.name-input {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 9px;
+  border: 2px solid var(--edge);
+  background: var(--input);
+  border-radius: 9px;
+  min-width: 0;
+}
+.name-avatar {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border: 2px solid var(--edge);
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #2a1c3f;
+  flex-shrink: 0;
+  transform: rotate(-5deg);
+  box-shadow: 0 2px 0 -0.5px var(--edge);
+}
+.name-input input {
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 12px;
+}
+.name-input:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+.input-pencil {
+  display: flex;
+  color: var(--muted);
+}
+.setup-meta {
+  text-align: center;
+  font-size: 10px;
+}
+@media (min-width: 1300px) and (min-height: 850px) {
+  .setup-content {
+    padding: 28px;
+    gap: 22px;
+  }
+  .setup-heading h2 {
+    font-size: 41px;
+  }
+}
+@media (max-height: 760px) and (min-width: 761px) {
+  .setup-content {
+    gap: 12px;
+    padding: 17px;
+  }
+  .setup-heading h2 {
+    font-size: 30px;
+    margin: 7px 0;
+  }
+  .setup-heading p {
+    font-size: 10px;
+  }
+  .name-input {
+    padding: 5px 8px;
+  }
+}
+@media (max-width: 1000px) {
+  .setup-content {
+    padding: 19px;
+  }
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .setup-content {
+    padding: 16px 19px 18px;
+    gap: 13px;
+  }
+  .setup-heading h2 {
+    font-size: 31px;
+    margin: 8px 0;
+    line-height: 1;
+  }
+  .setup-heading h2 > br {
+    display: none;
+  }
+  .setup-heading p {
+    font-size: 11px;
+  }
+  .setup-heading p > br {
+    display: none;
+  }
+  .setup-content .player-count label {
+    height: 38px;
+  }
+  .name-fields {
+    gap: 7px;
+  }
+  .name-input {
+    padding: 7px 9px;
+  }
+  .name-input input {
+    font-size: 16px;
+  }
+  .name-avatar {
+    width: 26px;
+    height: 26px;
+  }
+  .setup-meta {
+    font-size: 10px;
+  }
+}
+@media (max-width: 390px) and (min-height: 501px) {
+  .setup-content {
+    gap: 10px;
+    padding: 14px 16px;
+  }
+  .setup-heading h2 {
+    font-size: 27px;
+  }
+  .setup-heading p {
+    font-size: 10px;
+  }
+  .name-input {
+    padding: 5px 8px;
+  }
+  .name-avatar {
+    height: 24px;
+    width: 24px;
+  }
+  .setup-meta {
+    font-size: 10px;
+  }
+}
+@media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {
+  .setup-heading p {
+    display: none;
+  }
+  .setup-heading h2 {
+    font-size: 27px;
+    margin: 6px 0;
+  }
+  .setup-content {
+    gap: 10px;
+  }
+  .name-input {
+    padding: 5px 8px;
+  }
+  .name-avatar {
+    height: 23px;
+    width: 23px;
+  }
+  .setup-content .player-count label {
+    height: 34px;
+  }
+  .setup-meta {
+    display: none;
+  }
+}
+@media (max-height: 500px) {
+  .setup-content {
+    padding: 12px;
+    gap: 10px;
+  }
+  .setup-heading h2 {
+    font-size: 25px;
+  }
+  .setup-heading h2 > br {
+    display: none;
+  }
+  .setup-heading p {
+    display: none;
+  }
+}

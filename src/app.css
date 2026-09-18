@@ -1,0 +1,107 @@
+.game-app {
+  height: 100dvh;
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 28px;
+  overflow: hidden;
+}
+.game-main {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 0 12px;
+}
+.play-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 18px;
+  position: relative;
+}
+.board-column {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  gap: 10px;
+}
+@media (min-width: 1300px) and (min-height: 850px) {
+  .play-layout {
+    grid-template-columns: minmax(0, 1fr) 370px;
+    gap: 24px;
+  }
+}
+@media (max-height: 760px) and (min-width: 761px) {
+  .game-main {
+    padding-top: 12px;
+    gap: 10px;
+  }
+}
+@media (max-width: 1000px) {
+  .game-app {
+    padding: 0 18px;
+  }
+  .play-layout {
+    grid-template-columns: minmax(0, 1fr) 310px;
+    gap: 14px;
+  }
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .game-app {
+    padding: 0 14px;
+  }
+  .game-main {
+    padding: 12px 0 10px;
+    gap: 10px;
+  }
+  .play-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .board-column {
+    flex: 1;
+    min-height: 0;
+    gap: 7px;
+  }
+}
+@media (max-width: 390px) and (min-height: 501px) {
+  .game-app {
+    padding: 0 10px;
+  }
+  .game-main {
+    padding: 9px 0;
+    gap: 8px;
+  }
+}
+@media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {
+  .game-main {
+    gap: 8px;
+  }
+}
+@media (max-height: 500px) {
+  .game-app {
+    padding: 0 12px;
+  }
+  .game-main {
+    padding: 8px 0;
+    gap: 7px;
+  }
+  .play-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 40%);
+    gap: 12px;
+  }
+}
+@media (min-width: 1100px) and (min-height: 601px) {
+  /* Let the board use the wide table instead of shrinking to a near-square. */
+  .game-app { max-width: 2200px; }
+}
+@media (min-width: 1600px) and (min-height: 850px) {
+  .play-layout { grid-template-columns: minmax(0, 1fr) 380px; }
+}

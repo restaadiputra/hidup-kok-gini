@@ -1,0 +1,236 @@
+{
+  "category": "internet",
+  "cards": [
+    {
+      "id": "internet-1",
+      "title": "Wi-Fi semangat doang",
+      "description": "Paket internetnya bernama Turbo. Video rapat berhenti pas mukamu lagi paling nggak siap.",
+      "choices": [
+        {
+          "label": "Beli kuota cadangan",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": 8
+          },
+          "result": "Rapat lancar. Muka bekumu tadi udah jadi stiker."
+        },
+        {
+          "label": "Pindah dekat router",
+          "effects": {
+            "kewarasan": -4,
+            "hoki": 5
+          },
+          "result": "Sinyal naik satu bar. Kamu rapat sambil jongkok di lorong."
+        }
+      ]
+    },
+    {
+      "id": "internet-2",
+      "title": "Viral setengah hari",
+      "description": "Komentar recehmu dapat ribuan like. Sekarang semua nunggu kamu lucu lagi.",
+      "choices": [
+        {
+          "label": "Nikmati, terus log out",
+          "effects": {
+            "kewarasan": 10,
+            "hoki": 4
+          },
+          "result": "Viralnya lewat. Tidur siang tetap ada."
+        },
+        {
+          "label": "Buka jasa bikin caption",
+          "effects": {
+            "dompet": 200000,
+            "relasi": 5,
+            "kewarasan": -8
+          },
+          "result": "Klien pertama minta lucu, tapi jangan terlalu lucu."
+        }
+      ]
+    },
+    {
+      "id": "internet-3",
+      "title": "Update pas mau berangkat",
+      "description": "HP tiba-tiba update sistem pas kamu mau buka tiket. Progresnya 2 persen dari tadi.",
+      "choices": [
+        {
+          "label": "Pinjam HP teman buat login",
+          "effects": {
+            "relasi": 6,
+            "kewarasan": -4
+          },
+          "result": "Harus reset sandi dulu. Tiketnya kebuka, keringatmu juga."
+        },
+        {
+          "label": "Cetak tiket di kios",
+          "effects": {
+            "dompet": -50000,
+            "kewarasan": 6
+          },
+          "result": "Kertas nggak pernah minta update."
+        }
+      ]
+    },
+    {
+      "id": "internet-4",
+      "title": "Memori penuh kucing",
+      "description": "HP nolak foto baru. Isinya screenshot resep, bukti transfer, dan 300 foto kucing yang sama.",
+      "choices": [
+        {
+          "label": "Hapus semua screenshot",
+          "effects": {
+            "kewarasan": -5,
+            "hoki": 6
+          },
+          "result": "Resep hilang. Foto kucing selamat. Prioritas jelas."
+        },
+        {
+          "label": "Beli penyimpanan cloud",
+          "effects": {
+            "dompet": -50000,
+            "kewarasan": 8
+          },
+          "result": "Lega. Kucingnya siap sesi foto berikutnya."
+        }
+      ]
+    },
+    {
+      "id": "internet-5",
+      "title": "Filter umur 60",
+      "description": "Filter “kamu umur 60” bikin mukamu mirip Pak RT. Teman-teman langsung manggil kamu “Pak”.",
+      "choices": [
+        {
+          "label": "Ikut ketawa, posting",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -3
+          },
+          "result": "Postinganmu paling rame. Pak RT juga ngasih like."
+        },
+        {
+          "label": "Hapus sebelum ada yang lihat",
+          "effects": {
+            "kewarasan": 4,
+            "hoki": -4
+          },
+          "result": "Telat. Udah ada yang screenshot, termasuk ibumu."
+        }
+      ]
+    },
+    {
+      "id": "internet-6",
+      "title": "War tiket konser",
+      "description": "Tiket konser idolamu dijual jam sepuluh. Jam 09.59 kamu udah di antrean ke-48.213.",
+      "choices": [
+        {
+          "label": "Pakai jastip tiket",
+          "effects": {
+            "dompet": -300000,
+            "kewarasan": 8
+          },
+          "result": "Tiketnya dapat, harganya dua kali lipat. Kamu tetap nangis bahagia."
+        },
+        {
+          "label": "Tetap antre, refresh terus",
+          "effects": {
+            "kewarasan": -8,
+            "hoki": 6
+          },
+          "result": "Dapat satu tiket paling belakang. Idolamu sebesar semut, tapi nyata."
+        }
+      ]
+    },
+    {
+      "id": "internet-7",
+      "title": "Spoiler di FYP",
+      "description": "Kamu nabung episode terakhir buat akhir pekan. FYP-mu udah muter adegan terakhirnya sejak pagi.",
+      "choices": [
+        {
+          "label": "Puasa medsos sampai nonton",
+          "effects": {
+            "kewarasan": -5,
+            "hoki": 6
+          },
+          "result": "Selamat sampai Sabtu. Lalu grup keluarga kirim meme dari ending-nya."
+        },
+        {
+          "label": "Tonton sekarang juga",
+          "effects": {
+            "kewarasan": 6,
+            "hoki": -3
+          },
+          "result": "Kamu nonton di toilet kantor. Nggak ada yang tahu, kecuali satpam."
+        }
+      ]
+    },
+    {
+      "id": "internet-8",
+      "title": "Kolom komentar jadi curhat",
+      "description": "Kamu posting foto langit sore. Kolom komentarnya jadi tempat orang curhat soal mantan.",
+      "choices": [
+        {
+          "label": "Balas satu-satu",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -6
+          },
+          "result": "Kamu jadi psikolog gratisan sampai subuh."
+        },
+        {
+          "label": "Matikan komentar",
+          "effects": {
+            "kewarasan": 6,
+            "relasi": -3
+          },
+          "result": "Hening. Sekarang DM-mu yang penuh."
+        }
+      ]
+    },
+    {
+      "id": "internet-9",
+      "title": "Lupa sandi, lagi",
+      "description": "Sandimu salah. Pas reset, sandi baru nggak boleh sama dengan tiga sandi lama yang juga kamu lupa.",
+      "choices": [
+        {
+          "label": "Tulis sandi di kertas",
+          "effects": {
+            "kewarasan": 6,
+            "hoki": -4
+          },
+          "result": "Kertasnya kamu simpan di tempat aman. Saking amannya, hilang."
+        },
+        {
+          "label": "Pakai aplikasi pengelola sandi",
+          "effects": {
+            "dompet": -50000,
+            "kewarasan": 5
+          },
+          "result": "Semua sandi rapi. Sandi utamanya tetap kamu catat di kertas."
+        }
+      ]
+    },
+    {
+      "id": "internet-10",
+      "title": "HP-mu mendengarkan",
+      "description": "Kamu cuma ngobrolin kasur di dekat HP. Sejam kemudian, iklan kasur muncul di mana-mana.",
+      "choices": [
+        {
+          "label": "Beli kasurnya sekalian",
+          "effects": {
+            "dompet": -300000,
+            "kewarasan": 10
+          },
+          "result": "Tidurmu nyenyak. Sekarang iklannya ganti jadi bantal."
+        },
+        {
+          "label": "Bilang “aku kaya raya” ke HP",
+          "effects": {
+            "hoki": 6,
+            "kewarasan": -3
+          },
+          "result": "Iklan yang muncul: pinjaman online. HP-mu nggak percaya."
+        }
+      ]
+    }
+  ]
+}

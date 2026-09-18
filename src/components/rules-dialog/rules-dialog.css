@@ -1,0 +1,32 @@
+.rules-content ol {
+  padding-left: 20px;
+  margin: 0 0 18px;
+}
+.rules-content li {
+  padding-left: 4px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.rules-content li strong {
+  color: var(--ink);
+}
+.rules-content li::marker {
+  color: var(--accent-text);
+  font-weight: 900;
+}
+.rules-tip {
+  display: flex;
+  gap: 10px;
+  padding: 13px;
+  border: 2px solid var(--edge);
+  background: var(--active-bg);
+  border-radius: 11px;
+  margin-bottom: 20px;
+}
+.rules-tip p {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--muted);
+}

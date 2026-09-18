@@ -1,0 +1,47 @@
+.effects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.choice .effects {
+  margin-top: 8px;
+}
+.effect {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11px;
+  padding: 4px 6px;
+  border: 1.5px solid currentColor;
+  border-radius: 20px;
+  font-weight: 700;
+}
+.effect-positive {
+  background: var(--positive-bg);
+  color: var(--positive-ink);
+}
+.effect-negative {
+  background: var(--negative-bg);
+  color: var(--negative-ink);
+}
+.resolved-content > .effects {
+  justify-content: center;
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .choice .effects {
+    margin-top: 7px;
+  }
+  .effect {
+    font-size: 11px;
+  }
+}
+@media (max-width: 390px) and (min-height: 501px) {
+  .effect {
+    font-size: 10px;
+  }
+}
+@media (max-width: 760px) and (min-height: 501px) and (max-height: 680px) {
+  .choice .effects {
+    margin-top: 5px;
+  }
+}

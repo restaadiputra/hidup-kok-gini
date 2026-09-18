@@ -1,0 +1,138 @@
+.result-sun {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 2.5px solid var(--edge);
+  border-radius: 50%;
+  background: var(--fixed);
+  color: var(--fixed-ink);
+  transform: rotate(-8deg);
+  box-shadow: 0 4px 0 -1px var(--edge);
+}
+.results-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.result-sun {
+  margin: 0 auto 4px;
+  width: 44px;
+  height: 44px;
+}
+.results-content > h2 {
+  text-align: center;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  outline: 0;
+}
+.results-content > h2 em {
+  color: var(--accent-text);
+}
+.result-tabs {
+  display: grid;
+  gap: 5px;
+}
+.result-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+  padding: 9px;
+  border: 2px solid var(--edge);
+  border-radius: 9px;
+  background: var(--raised);
+  font-size: 11px;
+  min-height: 36px;
+}
+.result-tabs button[aria-pressed="true"] {
+  background: var(--fixed);
+  color: var(--fixed-ink);
+}
+.result-tabs button > b {
+  margin-left: auto;
+  font-size: 17px;
+}
+.result-tabs button > span:first-child {
+  font-size: 11px;
+  color: var(--muted);
+}
+.ending-card {
+  position: relative;
+  padding: 14px;
+  border: 2.5px solid var(--edge);
+  background: var(--raised);
+  border-radius: 12px;
+  box-shadow: 0 4px 0 -1px var(--edge);
+  animation: result-pop 0.25s ease-out;
+}
+.ending-card h3 {
+  font-size: 20px;
+  line-height: 1.1;
+  margin: 9px 0;
+}
+.ending-card p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.score-formula {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .results-content {
+    padding: 17px;
+    gap: 10px;
+  }
+  .results-content > h2 {
+    font-size: 27px;
+  }
+  .result-sun {
+    display: none;
+  }
+  .result-tabs {
+    gap: 5px;
+  }
+  .result-tabs button {
+    padding: 8px;
+    min-height: 34px;
+  }
+  .ending-card {
+    padding: 12px;
+  }
+  .ending-card h3 {
+    font-size: 21px;
+  }
+  .ending-card p {
+    font-size: 12px;
+  }
+  .score-formula {
+    font-size: 10px;
+  }
+}
+@media (max-height: 500px) {
+  .results-content {
+    padding: 14px;
+  }
+  .result-sun {
+    display: none;
+  }
+}
+.ending-badge {
+  position: absolute;
+  top: -11px;
+  right: 12px;
+  background: var(--fixed);
+  color: var(--fixed-ink);
+  border: 2px solid var(--edge);
+  border-radius: 20px;
+  padding: 3px 9px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  transform: rotate(2deg);
+}

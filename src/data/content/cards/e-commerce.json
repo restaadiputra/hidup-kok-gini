@@ -1,0 +1,240 @@
+{
+  "category": "e-commerce",
+  "cards": [
+    {
+      "id": "ecommerce-1",
+      "title": "Gratis ongkir, beli rak",
+      "description": "Kurang satu barang lagi biar gratis ongkir. Barang tambahannya ternyata butuh rak baru.",
+      "choices": [
+        {
+          "label": "Tutup aplikasi dengan gagah",
+          "effects": {
+            "kewarasan": 8,
+            "hoki": 3
+          },
+          "result": "Keranjangmu tetap penuh. Rumahmu nggak ikut penuh."
+        },
+        {
+          "label": "Checkout, anggap investasi",
+          "effects": {
+            "dompet": -250000,
+            "kewarasan": 5,
+            "hoki": -4
+          },
+          "result": "Investasinya: nyari tempat buat naruh rak."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-2",
+      "title": "Nama akun jam dua pagi",
+      "description": "Kurir nganter paket buat “Sultan Hemat”. Itu nama akunmu yang kamu bikin tengah malam.",
+      "choices": [
+        {
+          "label": "Terima dengan wibawa",
+          "effects": {
+            "kewarasan": -4,
+            "hoki": 8
+          },
+          "result": "Tetangga sekarang manggil kamu Sultan. Mereka nunggu sumbangan tujuh belasan."
+        },
+        {
+          "label": "Ganti nama akun",
+          "effects": {
+            "kewarasan": 5,
+            "hoki": -3
+          },
+          "result": "Namanya jadi “Pembeli”. Kurirnya kecewa, kamu lega."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-3",
+      "title": "Ukuran L versi boneka",
+      "description": "Baju datang. Labelnya L, tapi cuma muat buat boneka.",
+      "choices": [
+        {
+          "label": "Urus retur",
+          "effects": {
+            "dompet": 150000,
+            "kewarasan": -8
+          },
+          "result": "Uang balik setelah kamu foto bajunya dari tujuh sudut."
+        },
+        {
+          "label": "Kasih ke keponakan",
+          "effects": {
+            "relasi": 12,
+            "kewarasan": 4
+          },
+          "result": "Pas banget di keponakan. Katanya bajunya bagus."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-4",
+      "title": "Voucher penuh syarat",
+      "description": "Diskon besar cuma berlaku jam tertentu, bank tertentu, minimal belanja tertentu. Kamu cuma mau beli kaus kaki.",
+      "choices": [
+        {
+          "label": "Beli seperlunya aja",
+          "effects": {
+            "dompet": -35000,
+            "kewarasan": 7
+          },
+          "result": "Kalah promo. Menang melawan godaan beli blender."
+        },
+        {
+          "label": "Patungan belanja sama teman",
+          "effects": {
+            "dompet": -60000,
+            "relasi": 8,
+            "kewarasan": -4
+          },
+          "result": "Voucher kepakai. Bagi ongkirnya butuh rapat kecil."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-5",
+      "title": "Minta bintang lima duluan",
+      "description": "Paket belum dibuka, penjual udah minta bintang lima. “Semoga cocok, Kak.” Kamu juga berharap begitu.",
+      "choices": [
+        {
+          "label": "Cek dulu, ulas jujur",
+          "effects": {
+            "kewarasan": 6,
+            "hoki": 4
+          },
+          "result": "Barangnya bagus. Bintang lima tanpa tekanan batin."
+        },
+        {
+          "label": "Terima tawaran jadi pengulas",
+          "effects": {
+            "dompet": 100000,
+            "kewarasan": -6,
+            "relasi": 4
+          },
+          "result": "Kontrak pertamamu: ulas saringan got. Kamu serius banget."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-6",
+      "title": "Racun FYP",
+      "description": "Satu video bilang alat pemotong sayur ini “wajib punya”. Kamu belum pernah motong sayur.",
+      "choices": [
+        {
+          "label": "Checkout sekarang juga",
+          "effects": {
+            "dompet": -120000,
+            "hoki": 4,
+            "kewarasan": -3
+          },
+          "result": "Dipakai dua kali, terus pensiun di laci."
+        },
+        {
+          "label": "Simpan dulu di keranjang",
+          "effects": {
+            "kewarasan": 6,
+            "hoki": -3
+          },
+          "result": "Tiga hari kemudian kamu lupa pernah mau."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-7",
+      "title": "Live jualan jam sebelas malam",
+      "description": "Host live teriak, “Yang di keranjang kuning, sisa tiga!” Kamu nggak butuh panci, tapi takut kehabisan.",
+      "choices": [
+        {
+          "label": "Checkout sebelum habis",
+          "effects": {
+            "dompet": -150000,
+            "hoki": 5
+          },
+          "result": "Pancinya datang. Besoknya panci yang sama masih “sisa tiga”."
+        },
+        {
+          "label": "Nonton aja, jangan beli",
+          "effects": {
+            "kewarasan": -4,
+            "relasi": 5
+          },
+          "result": "Kamu nonton sampai jam dua. Hostnya mulai nyapa namamu."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-8",
+      "title": "Paket di pintu orang",
+      "description": "Kurir kirim foto bukti paket diterima. Di foto itu paketmu ada di depan pintu rumah orang lain.",
+      "choices": [
+        {
+          "label": "Keliling gang cari pintunya",
+          "effects": {
+            "kewarasan": -6,
+            "relasi": 6
+          },
+          "result": "Ketemu di rumah ketiga. Kamu pulang bawa paket dan dua kenalan."
+        },
+        {
+          "label": "Komplain lewat aplikasi",
+          "effects": {
+            "kewarasan": -3,
+            "hoki": 6
+          },
+          "result": "Tiket komplain dibuat. Sejam kemudian tetangga nganter paketnya sendiri."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-9",
+      "title": "COD yang nggak diingat",
+      "description": "Paket COD datang. Kamu nggak ingat pesan. Kurir nunggu, tagihannya 189 ribu.",
+      "choices": [
+        {
+          "label": "Tolak dengan sopan",
+          "effects": {
+            "relasi": -4,
+            "kewarasan": 5
+          },
+          "result": "Kurir pergi. Malamnya kamu ingat: itu pesananmu jam tiga pagi."
+        },
+        {
+          "label": "Bayar dulu, buka belakangan",
+          "effects": {
+            "dompet": -190000,
+            "hoki": 6
+          },
+          "result": "Isinya lampu tidur bentuk bulan. Bagus juga. Kamu maafin dirimu yang jam tiga pagi."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-10",
+      "title": "Paylater yang ramah",
+      "description": "Aplikasi nawarin paylater: “Beli sekarang, bayar nanti, santai aja.” Kata “santai” itu yang mencurigakan.",
+      "choices": [
+        {
+          "label": "Pakai sekali, buat sepatu",
+          "effects": {
+            "dompet": -150000,
+            "kewarasan": -5,
+            "hoki": 5
+          },
+          "result": "Sepatunya enak. Pengingat tagihannya jauh lebih rajin dari kamu."
+        },
+        {
+          "label": "Matikan fiturnya",
+          "effects": {
+            "kewarasan": 6,
+            "hoki": -3
+          },
+          "result": "Aplikasinya nanya “yakin?” tiga kali. Kamu yakin empat kali."
+        }
+      ]
+    }
+  ]
+}

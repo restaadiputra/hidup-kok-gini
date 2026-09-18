@@ -1,0 +1,21 @@
+.dialog-actions {
+  display: flex;
+  gap: 10px;
+}
+.dialog-actions > button {
+  flex: 1;
+}
+.secondary-button {
+  background: var(--raised);
+  border: 2.5px solid var(--edge);
+  border-radius: 11px;
+  box-shadow: 0 4px 0 -1px var(--edge);
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 650;
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .dialog-actions {
+    flex-direction: column;
+  }
+}

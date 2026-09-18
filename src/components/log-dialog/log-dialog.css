@@ -1,0 +1,19 @@
+.game-log {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.game-log li {
+  display: flex;
+  gap: 11px;
+  padding: 14px 0;
+  border-top: 1px dashed var(--line);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.game-log li > span {
+  font-size: 11px;
+  color: var(--accent-text);
+  font-weight: 750;
+}

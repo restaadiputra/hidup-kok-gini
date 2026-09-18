@@ -1,0 +1,247 @@
+{
+  "category": "kerja",
+  "cards": [
+    {
+      "id": "kerja-1",
+      "title": "Satu slide lagi, katanya",
+      "description": "Presentasi udah selesai. Atasan buka slide cadangan judulnya “sedikit tambahan”. Isinya 43 slide.",
+      "choices": [
+        {
+          "label": "Jadi operator slide dadakan",
+          "effects": {
+            "dompet": 200000,
+            "kewarasan": -12,
+            "relasi": 5
+          },
+          "result": "Uang lembur cair. Jari telunjukmu minta cuti."
+        },
+        {
+          "label": "Pamit, nasi di rice cooker nunggu",
+          "effects": {
+            "kewarasan": 8,
+            "relasi": -5
+          },
+          "result": "Rapat boleh molor. Nasi di rumah jangan sampai basi."
+        }
+      ]
+    },
+    {
+      "id": "kerja-2",
+      "title": "Printer punya prinsip",
+      "description": "Proposal harus dicetak sekarang. Printer bilang “paper jam”, padahal kertasnya belum masuk.",
+      "choices": [
+        {
+          "label": "Cetak di fotokopian depan",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 8
+          },
+          "result": "Proposal selamat. Abangnya sekalian nawarin jilid spiral."
+        },
+        {
+          "label": "Panggil anak IT",
+          "effects": {
+            "relasi": 5,
+            "kewarasan": 3,
+            "dompet": -50000
+          },
+          "result": "Dicabut, dicolok lagi, beres. Kamu traktir kopi buat jasanya."
+        },
+        {
+          "label": "Tepuk pelan printernya",
+          "effects": {
+            "kewarasan": 6,
+            "hoki": -5
+          },
+          "result": "Printernya jalan. Sekarang semua halaman keluar warna pink."
+        }
+      ]
+    },
+    {
+      "id": "kerja-3",
+      "title": "Serba bisa, gaji serba segitu",
+      "description": "Gara-gara pernah ganti wallpaper laptop kantor, kamu disuruh desain ulang logo perusahaan.",
+      "choices": [
+        {
+          "label": "Kerjain, tapi minta honor",
+          "effects": {
+            "dompet": 400000,
+            "kewarasan": -10
+          },
+          "result": "Honor cair. Revisinya juga cair, deras."
+        },
+        {
+          "label": "Rekomendasiin teman desainer",
+          "effects": {
+            "relasi": 10,
+            "hoki": 3
+          },
+          "result": "Temanmu dapat proyek. Kamu dapat jatah tidur lagi."
+        }
+      ]
+    },
+    {
+      "id": "kerja-4",
+      "title": "Rapat buat jadwalin rapat",
+      "description": "Undangan rapat masuk. Agendanya cuma satu: nentuin kapan rapat berikutnya.",
+      "choices": [
+        {
+          "label": "Usul voting di grup aja",
+          "effects": {
+            "kewarasan": 8,
+            "relasi": -3
+          },
+          "result": "Rapat batal. Hasil votingnya dibahas di rapat besok."
+        },
+        {
+          "label": "Jadi notulis sekalian",
+          "effects": {
+            "relasi": 9,
+            "kewarasan": -6
+          },
+          "result": "Notulennya dua halaman. Kesimpulannya: jadwal belum ketemu."
+        }
+      ]
+    },
+    {
+      "id": "kerja-5",
+      "title": "Nama file udah pasrah",
+      "description": "Di folder ada final, final_revisi, dan final_beneran_fix. Bos minta versi yang kemarin sore.",
+      "choices": [
+        {
+          "label": "Rapikan semua, catat lembur",
+          "effects": {
+            "dompet": 250000,
+            "kewarasan": -9
+          },
+          "result": "Ketemu juga. Namanya ternyata coba_ini_2."
+        },
+        {
+          "label": "Kirim semua, biar bos pilih",
+          "effects": {
+            "relasi": 5,
+            "kewarasan": -3
+          },
+          "result": "Bos pilih yang paling pertama. Tiga malam revisimu jadi kenangan."
+        }
+      ]
+    },
+    {
+      "id": "kerja-6",
+      "title": "Fresh graduate, pengalaman lima tahun",
+      "description": "HR minta kamu cek lowongan baru. Buat lulusan baru, syaratnya pengalaman lima tahun, bisa desain, bisa ngonten.",
+      "choices": [
+        {
+          "label": "Protes syaratnya ke HR",
+          "effects": {
+            "relasi": -5,
+            "hoki": 6
+          },
+          "result": "Syaratnya diturunin jadi tiga tahun. HR merasa udah murah hati."
+        },
+        {
+          "label": "Sebar lowongannya ke grup alumni",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -4
+          },
+          "result": "Grup alumni langsung ramai. Isinya stiker ketawa semua."
+        }
+      ]
+    },
+    {
+      "id": "kerja-7",
+      "title": "“Boleh minta tolong bentar?”",
+      "description": "Rekan meja sebelah bilang “boleh minta tolong bentar?” Ini yang keenam hari ini, dan belum jam sepuluh.",
+      "choices": [
+        {
+          "label": "Bantu, sekalian belajar",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -8
+          },
+          "result": "Kamu jadi jago tiga aplikasi baru. Kerjaanmu sendiri masih di halaman satu."
+        },
+        {
+          "label": "Pakai headphone, pura-pura rapat",
+          "effects": {
+            "kewarasan": 8,
+            "relasi": -5
+          },
+          "result": "Aman sampai makan siang. Dia nunggu kamu di dekat dispenser."
+        }
+      ]
+    },
+    {
+      "id": "kerja-8",
+      "title": "Sesuai job desc aja",
+      "description": "Kamu mau kerja sesuai job desc. Ternyata job desc-mu ditutup kalimat “dan tugas lain dari atasan”.",
+      "choices": [
+        {
+          "label": "Tetap kerja secukupnya",
+          "effects": {
+            "kewarasan": 10,
+            "hoki": -4
+          },
+          "result": "Jam lima teng laptop ditutup. Besoknya namamu masuk grup proyek baru."
+        },
+        {
+          "label": "Minta job desc diperjelas",
+          "effects": {
+            "dompet": 150000,
+            "relasi": -4,
+            "kewarasan": -3
+          },
+          "result": "Diperjelas, tunjangan naik dikit. Kalimat terakhirnya tetap ada."
+        }
+      ]
+    },
+    {
+      "id": "kerja-9",
+      "title": "Kerja dari mana aja",
+      "description": "Kantor ngizinin kerja dari mana aja. Kamu bawa laptop ke pantai. Sinyalnya cuma ada di atas satu batu.",
+      "choices": [
+        {
+          "label": "Kerja sambil jongkok di batu",
+          "effects": {
+            "hoki": 6,
+            "kewarasan": -6
+          },
+          "result": "Laporan terkirim. Kakimu kesemutan, kulitmu gosong sebelah."
+        },
+        {
+          "label": "Balik ke penginapan, bayar Wi-Fi",
+          "effects": {
+            "dompet": -75000,
+            "kewarasan": 6
+          },
+          "result": "Rapat lancar. Pantainya kamu lihat dari story teman."
+        }
+      ]
+    },
+    {
+      "id": "kerja-10",
+      "title": "Survei kebahagiaan karyawan",
+      "description": "HR bikin survei kepuasan kerja. Pilihannya cuma empat emoji, dan emoji sedih nggak bisa diklik.",
+      "choices": [
+        {
+          "label": "Tulis jujur di kolom saran",
+          "effects": {
+            "kewarasan": 6,
+            "relasi": -4
+          },
+          "result": "Saranmu dibacakan. Anonim, katanya. Semua langsung melirik mejamu."
+        },
+        {
+          "label": "Klik senyum, lanjut kerja",
+          "effects": {
+            "relasi": 5,
+            "hoki": 4,
+            "kewarasan": -4
+          },
+          "result": "Divisimu dapat nilai bahagia 98 persen. Ada tumpeng."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+.neighborhood {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+}
+@media (min-width: 1100px) and (min-height: 601px) {
+  .board-center .neighborhood { height: 100%; }
+}

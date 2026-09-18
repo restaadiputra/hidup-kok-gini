@@ -1,0 +1,47 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  min-width: 0;
+}
+.sheet-backdrop {
+  display: none;
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .sidebar {
+    flex-shrink: 0;
+    gap: 0;
+    max-height: 100%;
+  }
+  .sheet-backdrop {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: var(--scrim);
+    border-radius: 12px;
+    z-index: 8;
+  }
+  .sheet-mode.sheet-open {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    max-height: calc(100% - 12px);
+    display: flex;
+  }
+  .sheet-mode.sheet-closed .reopen-sheet {
+    display: flex;
+    min-height: 45px;
+  }
+}
+@media (max-width: 760px) and (min-height: 501px) and (max-height: 680px) {
+  .sheet-mode.sheet-open {
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    bottom: 52px;
+    max-height: calc(100dvh - 112px);
+  }
+}

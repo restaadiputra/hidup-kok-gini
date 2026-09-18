@@ -1,0 +1,238 @@
+{
+  "category": "kondangan",
+  "cards": [
+    {
+      "id": "kondangan-1",
+      "title": "Tiga undangan, satu akhir pekan",
+      "description": "Tiga undangan jatuh di akhir pekan yang sama. Kalender bahagia, dompet masuk angin.",
+      "choices": [
+        {
+          "label": "Datang semua, amplop tipis",
+          "effects": {
+            "dompet": -300000,
+            "relasi": 15,
+            "kewarasan": -5
+          },
+          "result": "Kamu salaman lintas kecamatan dalam satu hari."
+        },
+        {
+          "label": "Datang satu, doakan yang lain",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 4,
+            "kewarasan": 5
+          },
+          "result": "Satu piring prasmanan, jadwal masih manusiawi."
+        }
+      ]
+    },
+    {
+      "id": "kondangan-2",
+      "title": "Foto bareng angkatan",
+      "description": "Fotografer minta semua merapat. Orang di sebelahmu nanya nama, padahal barusan kalian pelukan.",
+      "choices": [
+        {
+          "label": "Kenalan ulang tanpa gengsi",
+          "effects": {
+            "relasi": 12,
+            "kewarasan": -3
+          },
+          "result": "Sekarang saling ingat nama. Masih sama-sama lupa dulu sekelas di mana."
+        },
+        {
+          "label": "Jadi tukang foto aja",
+          "effects": {
+            "relasi": 5,
+            "hoki": 6
+          },
+          "result": "Kamu nggak ada di foto, tapi disebut di semua ucapan makasih."
+        }
+      ]
+    },
+    {
+      "id": "kondangan-3",
+      "title": "Dress code warna senja",
+      "description": "Undangan minta warna “senja setelah hujan”. Lemarimu cuma kenal hitam dan agak hitam.",
+      "choices": [
+        {
+          "label": "Sewa baju yang paling mirip",
+          "effects": {
+            "dompet": -150000,
+            "relasi": 8
+          },
+          "result": "Kata panitia, warnamu lebih mirip senja pas mati lampu."
+        },
+        {
+          "label": "Pinjam bros teman",
+          "effects": {
+            "relasi": 5,
+            "hoki": 5
+          },
+          "result": "Hitam plus bros oranye. Interpretasi bebas diterima."
+        }
+      ]
+    },
+    {
+      "id": "kondangan-4",
+      "title": "Amplop pakai scan",
+      "description": "Di pintu masuk nggak ada kotak amplop. Adanya kode QR dan layar yang nampilin nominal masuk.",
+      "choices": [
+        {
+          "label": "Scan, isi nominal wajar",
+          "effects": {
+            "dompet": -150000,
+            "relasi": 8
+          },
+          "result": "Nominalmu nongol di layar, tepat di bawah Om yang kirim lima juta."
+        },
+        {
+          "label": "Tetap kasih amplop kertas",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 4,
+            "kewarasan": -3
+          },
+          "result": "Mempelai bingung naruh amplopmu. Akhirnya masuk saku jas."
+        }
+      ]
+    },
+    {
+      "id": "kondangan-5",
+      "title": "Strategi prasmanan",
+      "description": "Antrean prasmanan sepanjang lorong. Stand kambing guling lebih sepi, tapi dijaga rombongan tante.",
+      "choices": [
+        {
+          "label": "Antre prasmanan dengan sabar",
+          "effects": {
+            "kewarasan": -5,
+            "relasi": 6
+          },
+          "result": "Pas giliranmu, rendangnya tinggal kuah. Kamu ambil kuahnya."
+        },
+        {
+          "label": "Serbu stand kambing",
+          "effects": {
+            "hoki": 7,
+            "relasi": -4
+          },
+          "result": "Dapat dua potong. Tante di sebelah ngeliatin kamu sampai pulang."
+        }
+      ]
+    },
+    {
+      "id": "kondangan-6",
+      "title": "Undangan dari mantan",
+      "description": "Undangan dari mantan. Desainnya bagus, font-nya kamu banget, dan kamu udah nggak apa-apa. Katanya.",
+      "choices": [
+        {
+          "label": "Datang, senyum paling tulus",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -8
+          },
+          "result": "Kamu salaman, foto, makan dua piring. Di motor baru kerasa."
+        },
+        {
+          "label": "Kirim kado dari jauh",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": 6
+          },
+          "result": "Kado terkirim. Ucapannya tulus, meski diketik ulang lima kali."
+        }
+      ]
+    },
+    {
+      "id": "kondangan-7",
+      "title": "Antrean salaman",
+      "description": "Antrean salaman ke pelaminan panjang banget. Di depanmu rombongan satu RT, semuanya mau foto.",
+      "choices": [
+        {
+          "label": "Ikut antre sampai habis",
+          "effects": {
+            "kewarasan": -6,
+            "relasi": 8
+          },
+          "result": "Pas giliranmu, senyum mempelai udah setengah sadar."
+        },
+        {
+          "label": "Makan dulu, salaman belakangan",
+          "effects": {
+            "kewarasan": 6,
+            "relasi": -4
+          },
+          "result": "Pas balik, pelaminannya udah kosong. Kamu salaman sama fotonya."
+        }
+      ]
+    },
+    {
+      "id": "kondangan-8",
+      "title": "Panitia dadakan",
+      "description": "Baru datang, sepupumu langsung nempelin tanda panitia di bajumu. “Tolong jaga buku tamu, ya.”",
+      "choices": [
+        {
+          "label": "Jaga buku tamu dengan bangga",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -6
+          },
+          "result": "Kamu hafal nama 300 tamu. Nggak kenal satu pun."
+        },
+        {
+          "label": "Kabur ke meja es buah",
+          "effects": {
+            "kewarasan": 6,
+            "relasi": -5
+          },
+          "result": "Tanda panitianya masih nempel, jadi kamu disuruh ngisi ulang es buah."
+        }
+      ]
+    },
+    {
+      "id": "kondangan-9",
+      "title": "Tiga rice cooker",
+      "description": "Mempelai buka kado di grup. Ada tiga rice cooker. Salah satunya darimu.",
+      "choices": [
+        {
+          "label": "Ngaku dan ketawa aja",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -3
+          },
+          "result": "Jadi bahan bercanda seharian. Setidaknya punyamu yang paling mahal."
+        },
+        {
+          "label": "Diam, pura-pura ngasih blender",
+          "effects": {
+            "hoki": 5,
+            "relasi": -4
+          },
+          "result": "Aman, sampai mempelai nanya, “Blendernya mana, ya?”"
+        }
+      ]
+    },
+    {
+      "id": "kondangan-10",
+      "title": "Lokasi ke tengah sawah",
+      "description": "Link lokasi di undangan digital ngarahin ke sawah. Acaranya di gedung seberang sawah.",
+      "choices": [
+        {
+          "label": "Nyeberang lewat pematang",
+          "effects": {
+            "hoki": 5,
+            "kewarasan": -6
+          },
+          "result": "Sampai dengan sepatu penuh lumpur. Kamu ditaruh di foto paling pinggir."
+        },
+        {
+          "label": "Putar lewat jalan besar",
+          "effects": {
+            "dompet": -25000,
+            "kewarasan": 4
+          },
+          "result": "Telat setengah jam, tapi pas banget sama jam makan."
+        }
+      ]
+    }
+  ]
+}

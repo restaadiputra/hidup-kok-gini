@@ -1,0 +1,100 @@
+// The tile vocabulary is defined by the content itself: every key in
+// categories.json is a tile kind, and all but the two special tiles are card decks.
+export type TileKind = keyof typeof import("../data/content/categories.json");
+export type SpecialTile = "gajian" | "kejutan";
+export type Category = Exclude<TileKind, SpecialTile>;
+export interface TileMeta {
+  label: string;
+  icon: string;
+  color: string;
+}
+export type Stat = "dompet" | "kewarasan" | "relasi" | "hoki";
+export type Stats = Record<Stat, number>;
+export interface Choice {
+  label: string;
+  effects: Partial<Stats>;
+  result: string;
+}
+export interface EventCard {
+  id: string;
+  category: Category;
+  title: string;
+  description: string;
+  choices: Choice[];
+}
+export interface Tile extends TileMeta {
+  category: TileKind;
+}
+export interface MoneyRange {
+  min: number;
+  max: number;
+  step: number;
+}
+export interface Economy {
+  salary: MoneyRange;
+  livingCost: MoneyRange;
+  deduction: MoneyRange;
+  rareChance: number;
+  rareBill: MoneyRange;
+}
+export interface PaydayReasons {
+  common: string[];
+  rare: string[];
+}
+export interface Ending {
+  title: string;
+  text: string;
+}
+export interface EndingRule extends Ending {
+  stat: Stat;
+  test: "below" | "atMost" | "atLeast";
+  threshold: number;
+}
+export interface Endings {
+  rules: EndingRule[];
+  fallback: Ending;
+}
+export interface Player {
+  id: number;
+  name: string;
+  position: number;
+  stats: Stats;
+}
+export type Phase = "ready" | "payday" | "event" | "resolved" | "finished";
+export interface Paycheck {
+  salary: number;
+  livingCost: number;
+  deduction: number;
+  reason: string;
+  rare: boolean;
+  net: number;
+}
+export interface GameState {
+  players: Player[];
+  currentPlayer: number;
+  month: number;
+  phase: Phase;
+  rng: number;
+  dice: number | null;
+  eventId: string | null;
+  choiceEffects: Partial<Stats>[];
+  drawn: string[];
+  resolution: string;
+  lastEffects: Partial<Stats>;
+  payday: boolean;
+  paydayDetails: Paycheck | null;
+  pendingPosition: number | null;
+  log: string[];
+  turn: number;
+}
+export type Action =
+  | { type: "ROLL" }
+  | { type: "CONTINUE_PAYDAY" }
+  | { type: "CHOOSE"; index: number }
+  | { type: "NEXT" };
+export interface Session {
+  version: 4;
+  names: string[];
+  seed: number;
+  actions: Action[];
+}

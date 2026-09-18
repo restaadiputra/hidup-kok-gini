@@ -1,0 +1,236 @@
+{
+  "category": "kendaraan",
+  "cards": [
+    {
+      "id": "kendaraan-1",
+      "title": "Dasbor pesta lampu",
+      "description": "Lampu di dasbor motor nyala warna-warni. Kayaknya ada yang mahal.",
+      "choices": [
+        {
+          "label": "Servis sampai beres",
+          "effects": {
+            "dompet": -350000,
+            "kewarasan": 10
+          },
+          "result": "Motor halus lagi. Sekarang saldomu yang batuk-batuk."
+        },
+        {
+          "label": "Minta tolong teman yang ngerti mesin",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 6,
+            "kewarasan": -4
+          },
+          "result": "Diagnosanya: harus ke bengkel. Seenggaknya ada yang nemenin."
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-2",
+      "title": "“Aman, Bos”",
+      "description": "Hujan turun pas kamu habis cuci motor. Tukang parkir tetap bilang, “Aman, Bos.”",
+      "choices": [
+        {
+          "label": "Berteduh sambil beli teh",
+          "effects": {
+            "dompet": -25000,
+            "kewarasan": 7
+          },
+          "result": "Tehnya anget. Motornya kehujanan sendirian."
+        },
+        {
+          "label": "Terobos pakai jas hujan",
+          "effects": {
+            "kewarasan": -5,
+            "hoki": 6
+          },
+          "result": "Badan kering. Sepatu jadi kolam ikan."
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-3",
+      "title": "Bensin tinggal niat",
+      "description": "Jarum bensin udah mepet huruf E. Kamu anggap E itu singkatan dari “entar aja”.",
+      "choices": [
+        {
+          "label": "Isi full biar tenang",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": 8
+          },
+          "result": "Tangki penuh. Sekarang dompet yang masuk cadangan."
+        },
+        {
+          "label": "Isi dikit, doa banyak",
+          "effects": {
+            "dompet": -25000,
+            "hoki": -5
+          },
+          "result": "Motor mogok 200 meter sebelum rumah. Tetangga nanya, “Olahraga, ya?”"
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-4",
+      "title": "Helm kembar",
+      "description": "Ada dua helm sama persis di parkiran. Punyamu nggak pernah wangi stroberi. Yang ini wangi.",
+      "choices": [
+        {
+          "label": "Tunggu pemiliknya datang",
+          "effects": {
+            "relasi": 6,
+            "kewarasan": -4
+          },
+          "result": "Kalian saling minta maaf, lalu helmnya ketuker lagi."
+        },
+        {
+          "label": "Titip tukang parkir, beli stiker",
+          "effects": {
+            "dompet": -25000,
+            "kewarasan": 6
+          },
+          "result": "Helm balik. Sekarang ada stikernya: BUKAN YANG STROBERI."
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-5",
+      "title": "Jalan tikus pilihan peta",
+      "description": "Aplikasi peta bilang hemat tiga menit. Gangnya makin sempit, ayamnya makin banyak.",
+      "choices": [
+        {
+          "label": "Putar balik ke jalan besar",
+          "effects": {
+            "dompet": -25000,
+            "kewarasan": 5
+          },
+          "result": "Bensin nambah. Seenggaknya nggak lewat ruang tamu orang."
+        },
+        {
+          "label": "Turun, tanya warga",
+          "effects": {
+            "relasi": 7,
+            "kewarasan": -4
+          },
+          "result": "Kamu ditunjukin jalan keluar, plus ditanya anaknya siapa."
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-6",
+      "title": "Tukang parkir muncul tiba-tiba",
+      "description": "Parkir di depan minimarket cuma dua menit. Pas mau pergi, tukang parkir muncul dari balik pot.",
+      "choices": [
+        {
+          "label": "Bayar, bilang makasih",
+          "effects": {
+            "dompet": -25000,
+            "relasi": 5
+          },
+          "result": "“Mundur, terus, terus.” Padahal motormu udah di jalan raya."
+        },
+        {
+          "label": "Pergi pelan-pelan",
+          "effects": {
+            "kewarasan": 4,
+            "hoki": -6
+          },
+          "result": "Dia ingat mukamu. Minggu depan kamu dapat tempat paling pojok."
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-7",
+      "title": "Ban bocor, tambal ban jauh",
+      "description": "Ban kempis di tengah jalan. Tambal ban terdekat 800 meter, dan motornya harus didorong.",
+      "choices": [
+        {
+          "label": "Dorong sambil anggap olahraga",
+          "effects": {
+            "kewarasan": -6,
+            "hoki": 5
+          },
+          "result": "Sampai juga. Abangnya bilang, “Pakunya tiga, Kak.”"
+        },
+        {
+          "label": "Panggil tambal ban keliling",
+          "effects": {
+            "dompet": -75000,
+            "kewarasan": 6
+          },
+          "result": "Datangnya cepat. Tarifnya juga cepat naik."
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-8",
+      "title": "Tilang elektronik",
+      "description": "Ada notifikasi tilang elektronik. Fotonya jelas banget, lebih jelas dari foto KTP-mu.",
+      "choices": [
+        {
+          "label": "Bayar, simpan fotonya",
+          "effects": {
+            "dompet": -250000,
+            "kewarasan": 4
+          },
+          "result": "Lunas. Fotonya kamu jadiin foto profil, soalnya cakep."
+        },
+        {
+          "label": "Ajukan keberatan",
+          "effects": {
+            "kewarasan": -8,
+            "hoki": 6
+          },
+          "result": "Ternyata itu motor lain dengan helm yang sama. Bebas, tapi capek."
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-9",
+      "title": "Kereta jam pulang kantor",
+      "description": "Kereta jam pulang kantor. Kaki kananmu masuk gerbong. Kaki kiri nyusul di stasiun berikutnya.",
+      "choices": [
+        {
+          "label": "Desak masuk, pasrah",
+          "effects": {
+            "kewarasan": -8,
+            "hoki": 5
+          },
+          "result": "Kamu nggak perlu pegangan. Badan orang lain yang megangin kamu."
+        },
+        {
+          "label": "Ngopi dulu di stasiun",
+          "effects": {
+            "dompet": -35000,
+            "kewarasan": 6
+          },
+          "result": "Kamu nunggu sepi. Sampai rumah jam sembilan, tapi utuh."
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-10",
+      "title": "“Bentar ke depan”",
+      "description": "Teman pinjam motor “bentar ke depan”. Motor balik tiga jam kemudian, bensinnya tinggal bau.",
+      "choices": [
+        {
+          "label": "Minta ganti uang bensin",
+          "effects": {
+            "dompet": 50000,
+            "relasi": -6
+          },
+          "result": "Dia ganti pakai uang receh semua. Kamu hitung sambil menahan diri."
+        },
+        {
+          "label": "Ikhlasin aja",
+          "effects": {
+            "relasi": 8,
+            "dompet": -35000
+          },
+          "result": "Minggu depan dia pinjam lagi. Katanya motormu enak."
+        }
+      ]
+    }
+  ]
+}

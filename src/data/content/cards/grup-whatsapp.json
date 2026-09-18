@@ -1,0 +1,238 @@
+{
+  "category": "grup-whatsapp",
+  "cards": [
+    {
+      "id": "wa-1",
+      "title": "Selamat pagi 48 MB",
+      "description": "Grup keluarga kirim video bunga kelap-kelip. Memori HP-mu langsung penuh.",
+      "choices": [
+        {
+          "label": "Hapus media, balas salam",
+          "effects": {
+            "kewarasan": 5,
+            "relasi": 6
+          },
+          "result": "Galeri lega. Besok bunganya tumbuh lagi."
+        },
+        {
+          "label": "Bikin panduan hemat memori",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -5
+          },
+          "result": "Panduanmu dibalas stiker ukuran besar."
+        }
+      ]
+    },
+    {
+      "id": "wa-2",
+      "title": "Admin seumur hidup",
+      "description": "Kamu bikin grup arisan. Sekarang semua nanya sandi Wi-Fi dan jadwal tukang sayur ke kamu.",
+      "choices": [
+        {
+          "label": "Angkat admin lain",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": 7,
+            "hoki": -3
+          },
+          "result": "Grup akhirnya punya wakil admin. Kamu bisa tidur."
+        },
+        {
+          "label": "Layani semua, buka jasa",
+          "effects": {
+            "dompet": 150000,
+            "kewarasan": -10
+          },
+          "result": "Rezeki nambah. Notifikasi juga."
+        }
+      ]
+    },
+    {
+      "id": "wa-3",
+      "title": "Voice note delapan menit",
+      "description": "Teman kirim VN delapan menit. Menit pertama isinya cuma suara nyari kunci.",
+      "choices": [
+        {
+          "label": "Dengerin sambil beres-beres",
+          "effects": {
+            "relasi": 9,
+            "kewarasan": -3
+          },
+          "result": "Kamar rapi. Isi pesannya: jadi makan di mana?"
+        },
+        {
+          "label": "Balas “intinya aja, bestie”",
+          "effects": {
+            "kewarasan": 7,
+            "relasi": -3
+          },
+          "result": "Dia jawab pakai VN lima menit."
+        }
+      ]
+    },
+    {
+      "id": "wa-4",
+      "title": "Pesan berantai tanpa sumber",
+      "description": "Om kirim pesan: minum air es bikin lemak membeku. Diteruskan berkali-kali, sumbernya nggak ada.",
+      "choices": [
+        {
+          "label": "Kirim link cek fakta",
+          "effects": {
+            "relasi": -6,
+            "kewarasan": 5
+          },
+          "result": "Om balas, “Iya, tapi hati-hati tetap perlu.” Diskusi selesai."
+        },
+        {
+          "label": "Balas jempol aja",
+          "effects": {
+            "relasi": 5,
+            "kewarasan": -4
+          },
+          "result": "Besoknya datang pesan baru: jangan mandi di atas jam delapan malam."
+        }
+      ]
+    },
+    {
+      "id": "wa-5",
+      "title": "Grup alumni bangkit",
+      "description": "Grup alumni SMA yang sepi tiga tahun tiba-tiba ramai. Ternyata ada yang mau jualan asuransi.",
+      "choices": [
+        {
+          "label": "Keluar diam-diam",
+          "effects": {
+            "kewarasan": 6,
+            "relasi": -5
+          },
+          "result": "Tulisan “kamu keluar” kelihatan semua. Nggak ada yang diam-diam di grup."
+        },
+        {
+          "label": "Tanya kabar, ikut reuni",
+          "effects": {
+            "relasi": 10,
+            "dompet": -100000
+          },
+          "result": "Reuninya jadi. Kamu pulang bawa tiga brosur dan satu nomor lama."
+        }
+      ]
+    },
+    {
+      "id": "wa-6",
+      "title": "Salah kirim ke grup kantor",
+      "description": "Kamu ngetik “capek banget sama dia” buat sahabatmu. Kekirimnya ke grup kantor. Orangnya ada di grup itu.",
+      "choices": [
+        {
+          "label": "Hapus untuk semua, secepatnya",
+          "effects": {
+            "kewarasan": -8,
+            "hoki": 6
+          },
+          "result": "Terhapus dalam empat detik. Semua lagi rapat, nggak ada yang lihat."
+        },
+        {
+          "label": "Lanjutkan: “...sama printer ini.”",
+          "effects": {
+            "relasi": 6,
+            "kewarasan": -5
+          },
+          "result": "Semua setuju. Printer resmi jadi musuh bersama satu kantor."
+        }
+      ]
+    },
+    {
+      "id": "wa-7",
+      "title": "Stiker mukamu sendiri",
+      "description": "Temanmu bikin stiker dari foto aibmu. Sekarang dipakai di semua grup, bahkan grup RT.",
+      "choices": [
+        {
+          "label": "Terima, jadi ikon",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -5
+          },
+          "result": "Kamu terkenal satu kelurahan. Ibu-ibu senyum tiap papasan."
+        },
+        {
+          "label": "Balas pakai stiker aibnya",
+          "effects": {
+            "relasi": -3,
+            "kewarasan": 7,
+            "hoki": 3
+          },
+          "result": "Perang stiker berlangsung dua hari. Grup RT minta damai."
+        }
+      ]
+    },
+    {
+      "id": "wa-8",
+      "title": "Dibaca 23 orang",
+      "description": "Kamu nagih patungan di grup. Dibaca 23 orang. Yang balas: nol.",
+      "choices": [
+        {
+          "label": "Tag satu per satu",
+          "effects": {
+            "relasi": -4,
+            "dompet": 100000
+          },
+          "result": "Uangnya terkumpul. Kamu dikenal sebagai penagih utang yang ramah."
+        },
+        {
+          "label": "Tutupin sendiri dulu",
+          "effects": {
+            "dompet": -150000,
+            "relasi": 6
+          },
+          "result": "Semua bilang makasih pakai stiker. Stiker nggak bisa ditransfer."
+        }
+      ]
+    },
+    {
+      "id": "wa-9",
+      "title": "Polling menu tujuh belasan",
+      "description": "Grup RT bikin polling menu tujuh belasan. Opsinya 12, dan salah satunya “terserah”.",
+      "choices": [
+        {
+          "label": "Pilih “terserah” biar cepat",
+          "effects": {
+            "kewarasan": 5,
+            "relasi": -3
+          },
+          "result": "“Terserah” menang. Rapatnya jadi tiga jam."
+        },
+        {
+          "label": "Usulin menu, siap bantu masak",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -6,
+            "dompet": -50000
+          },
+          "result": "Usulmu menang. Kamu juga yang disuruh belanja."
+        }
+      ]
+    },
+    {
+      "id": "wa-10",
+      "title": "Salah sebut sepupu",
+      "description": "Grup keluarga lagi ramai ucapan ulang tahun. Kamu ketik ucapan panjang, tapi pakai nama sepupu yang lain.",
+      "choices": [
+        {
+          "label": "Ralat pakai emot malu",
+          "effects": {
+            "relasi": 5,
+            "kewarasan": -4
+          },
+          "result": "Semua ketawa. Sepupu yang salah disebut ikut minta kado."
+        },
+        {
+          "label": "Anggap aja buat dua orang",
+          "effects": {
+            "hoki": 5,
+            "relasi": -4
+          },
+          "result": "Satu ucapan buat dua orang. Hemat, tapi dicatat."
+        }
+      ]
+    }
+  ]
+}

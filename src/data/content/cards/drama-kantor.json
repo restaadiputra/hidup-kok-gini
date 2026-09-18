@@ -1,0 +1,249 @@
+{
+  "category": "drama-kantor",
+  "cards": [
+    {
+      "id": "drama-1",
+      "title": "Salah pencet balas semua",
+      "description": "Email rahasia panitia makan siang kekirim ke satu kantor. Kamu disebut “tim bawa sendok”.",
+      "choices": [
+        {
+          "label": "Jalani tugas dengan serius",
+          "effects": {
+            "dompet": -50000,
+            "relasi": 12
+          },
+          "result": "Sendok lengkap. Namamu disebut di sambutan."
+        },
+        {
+          "label": "Balas pribadi, luruskan",
+          "effects": {
+            "kewarasan": 7,
+            "hoki": 3,
+            "relasi": -3
+          },
+          "result": "Krisis selesai sebelum makan siang."
+        }
+      ]
+    },
+    {
+      "id": "drama-2",
+      "title": "Tanaman meja masuk buletin",
+      "description": "Tanaman di mejamu masuk buletin kantor sebagai simbol produktivitas. Namamu salah ketik.",
+      "choices": [
+        {
+          "label": "Rayakan prestasi tanamannya",
+          "effects": {
+            "kewarasan": 8,
+            "relasi": 6
+          },
+          "result": "Kamu kasih pupuk. Dia tetap nggak bantu ngerjain laporan."
+        },
+        {
+          "label": "Minta ralat, sekalian usul",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -4,
+            "hoki": 4
+          },
+          "result": "Namamu dibenerin. Sekarang kamu juga editor buletin, sukarela."
+        }
+      ]
+    },
+    {
+      "id": "drama-3",
+      "title": "Rebutan kursi dekat AC",
+      "description": "Kursi dekat AC kosong. Dalam lima menit, peta kantor berubah kayak sengketa wilayah.",
+      "choices": [
+        {
+          "label": "Usul giliran mingguan",
+          "effects": {
+            "relasi": 12,
+            "kewarasan": -3
+          },
+          "result": "File pembagian kursinya punya tujuh tab."
+        },
+        {
+          "label": "Beli kipas meja sendiri",
+          "effects": {
+            "dompet": -150000,
+            "kewarasan": 10
+          },
+          "result": "Kamu bebas dari urusan AC selamanya."
+        },
+        {
+          "label": "Tukar kursi pakai camilan",
+          "effects": {
+            "dompet": -50000,
+            "relasi": 4,
+            "kewarasan": 5
+          },
+          "result": "Perjanjian angin sejuk dibayar pakai biskuit."
+        }
+      ]
+    },
+    {
+      "id": "drama-4",
+      "title": "Kue ulang tahun bos",
+      "description": "Kamu makan kue di pantry. Baru sadar ada tulisan kecil: buat ulang tahun bos. Potonganmu bagian namanya.",
+      "choices": [
+        {
+          "label": "Beli kue pengganti",
+          "effects": {
+            "dompet": -150000,
+            "relasi": 8,
+            "kewarasan": -4
+          },
+          "result": "Bos dapat dua kue. Kamu dapat pelajaran baca tulisan kecil."
+        },
+        {
+          "label": "Ngaku, bantu siapin kejutan",
+          "effects": {
+            "relasi": 6,
+            "kewarasan": -7
+          },
+          "result": "Kejutan pertama: kuenya kurang. Kejutan kedua: kamu jadi MC."
+        }
+      ]
+    },
+    {
+      "id": "drama-5",
+      "title": "Cuti tapi di-tag",
+      "description": "Status udah cuti. Rekan nge-chat, “Maaf ganggu, bentar aja.” Lampirannya tujuh.",
+      "choices": [
+        {
+          "label": "Arahkan ke rekan pengganti",
+          "effects": {
+            "kewarasan": 10,
+            "relasi": -4
+          },
+          "result": "Cuti lanjut. Kamu cuti beneran."
+        },
+        {
+          "label": "Bantu bentar, catat lembur",
+          "effects": {
+            "dompet": 200000,
+            "kewarasan": -10,
+            "relasi": 6
+          },
+          "result": "“Bentar” versi kantor ternyata satu baterai laptop."
+        }
+      ]
+    },
+    {
+      "id": "drama-6",
+      "title": "Gosip pantry mendadak cuaca",
+      "description": "Di pantry lagi ada gosip panas. Pas kamu masuk, semua langsung ngomongin cuaca.",
+      "choices": [
+        {
+          "label": "Ikut ngomongin cuaca",
+          "effects": {
+            "kewarasan": 4,
+            "relasi": -3
+          },
+          "result": "Kamu keluar tanpa gosip, tapi jadi tahu besok katanya hujan."
+        },
+        {
+          "label": "Bawa gorengan, duduk manis",
+          "effects": {
+            "dompet": -25000,
+            "relasi": 10
+          },
+          "result": "Gosipnya lanjut. Ternyata soal kamu, versi yang lebih keren."
+        }
+      ]
+    },
+    {
+      "id": "drama-7",
+      "title": "Idemu dipresentasikan orang",
+      "description": "Idemu di rapat minggu lalu dipresentasikan rekan di depan direksi. Pakai template bikinanmu juga.",
+      "choices": [
+        {
+          "label": "Luruskan di rapat berikutnya",
+          "effects": {
+            "relasi": -6,
+            "hoki": 6,
+            "kewarasan": -3
+          },
+          "result": "Kamu tunjukin riwayat file-nya. Direksi manggut-manggut."
+        },
+        {
+          "label": "Biarin, simpan buktinya",
+          "effects": {
+            "kewarasan": -6,
+            "relasi": 4
+          },
+          "result": "Rekanmu dipuji. Kamu diam-diam simpan screenshot."
+        }
+      ]
+    },
+    {
+      "id": "drama-8",
+      "title": "Tukar kado akhir tahun",
+      "description": "Tukar kado akhir tahun, batas harga 50 ribu. Kamu dapat kado dari bos: sabun hotel.",
+      "choices": [
+        {
+          "label": "Pamerin dengan bangga",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -4
+          },
+          "result": "Semua ketawa. Bos bilang itu sabun hotel bintang lima."
+        },
+        {
+          "label": "Tukar diam-diam",
+          "effects": {
+            "hoki": 6,
+            "relasi": -5
+          },
+          "result": "Kamu dapat tumbler. Yang dapat sabun ternyata bos sendiri."
+        }
+      ]
+    },
+    {
+      "id": "drama-9",
+      "title": "“Besok pagi ya” jam sepuluh malam",
+      "description": "Jam sepuluh malam, bos kirim “besok pagi ya” di grup. Nggak ada penjelasan apa yang besok pagi.",
+      "choices": [
+        {
+          "label": "Tanya maksudnya apa",
+          "effects": {
+            "relasi": 4,
+            "kewarasan": -6
+          },
+          "result": "Jawabannya, “Nanti besok pagi saya jelaskan.” Tidurmu gelisah."
+        },
+        {
+          "label": "Bisukan grup, tidur",
+          "effects": {
+            "kewarasan": 8,
+            "relasi": -5
+          },
+          "result": "Ternyata cuma sarapan bareng. Kamu datang paling telat."
+        }
+      ]
+    },
+    {
+      "id": "drama-10",
+      "title": "Lomba tujuh belasan kantor",
+      "description": "Kantor bikin lomba tujuh belasan. Kamu didaftarin lomba makan kerupuk tanpa ditanya.",
+      "choices": [
+        {
+          "label": "Main total",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -4
+          },
+          "result": "Kamu juara satu. Hadiahnya kerupuk satu kaleng."
+        },
+        {
+          "label": "Kalah dengan elegan",
+          "effects": {
+            "kewarasan": 6,
+            "relasi": -3
+          },
+          "result": "Kalah di detik pertama. Foto ekspresimu dipajang di lobi."
+        }
+      ]
+    }
+  ]
+}

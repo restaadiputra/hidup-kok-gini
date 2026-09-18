@@ -1,0 +1,82 @@
+{
+  "kerja": {
+    "label": "Kerja",
+    "icon": "briefcase",
+    "color": "lavender"
+  },
+  "keluarga": {
+    "label": "Keluarga",
+    "icon": "heart",
+    "color": "pink"
+  },
+  "anak-kos": {
+    "label": "Anak kos",
+    "icon": "home",
+    "color": "yellow"
+  },
+  "kendaraan": {
+    "label": "Kendaraan",
+    "icon": "scooter",
+    "color": "blue"
+  },
+  "nongkrong": {
+    "label": "Nongkrong",
+    "icon": "coffee",
+    "color": "peach"
+  },
+  "e-commerce": {
+    "label": "E-commerce",
+    "icon": "bag",
+    "color": "pink"
+  },
+  "tagihan": {
+    "label": "Tagihan",
+    "icon": "receipt",
+    "color": "peach"
+  },
+  "tanggal-tua": {
+    "label": "Tanggal tua",
+    "icon": "wallet",
+    "color": "yellow"
+  },
+  "kondangan": {
+    "label": "Kondangan",
+    "icon": "gift",
+    "color": "pink"
+  },
+  "grup-whatsapp": {
+    "label": "Grup WA",
+    "icon": "chat",
+    "color": "green"
+  },
+  "ojol": {
+    "label": "Ojol",
+    "icon": "helmet",
+    "color": "green"
+  },
+  "internet": {
+    "label": "Internet",
+    "icon": "wifi",
+    "color": "blue"
+  },
+  "mudik": {
+    "label": "Mudik",
+    "icon": "bus",
+    "color": "yellow"
+  },
+  "drama-kantor": {
+    "label": "Drama kantor",
+    "icon": "drama",
+    "color": "lavender"
+  },
+  "gajian": {
+    "label": "GAJIAN!",
+    "icon": "wallet",
+    "color": "lime"
+  },
+  "kejutan": {
+    "label": "Plot twist",
+    "icon": "sparkles",
+    "color": "lime"
+  }
+}

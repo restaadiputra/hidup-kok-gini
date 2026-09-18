@@ -1,0 +1,58 @@
+.paycheck {
+  display: grid;
+  gap: 16px;
+}
+.paycheck-celebration {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border: 2.5px solid var(--edge);
+  border-radius: 14px;
+  background: var(--tile-6);
+  color: var(--tile-ink);
+  box-shadow: 0 4px 0 -1px var(--edge);
+  font-weight: 700;
+}
+.paycheck-celebration svg {
+  transform: rotate(-8deg);
+}
+.paycheck-celebration svg { flex-shrink: 0; }
+.paycheck-celebration p { margin: 0; }
+.paycheck-lines { margin: 0; }
+.paycheck-lines > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--edge);
+}
+.paycheck-lines dt { font-weight: 700; }
+.paycheck-lines dt small {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.paycheck-lines dd {
+  margin: 0;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.paycheck-lines .paycheck-total {
+  padding: 16px 12px;
+  margin-top: 12px;
+  border: 2.5px solid var(--edge);
+  border-radius: 14px;
+  box-shadow: 0 4px 0 -1px var(--edge);
+}
+.paycheck-gain { background: var(--positive-bg); color: var(--positive-ink); }
+.paycheck-loss { background: var(--negative-bg); color: var(--negative-ink); }
+.paycheck-punchline { margin: 0; font-weight: 700; line-height: 1.5; }
+@media (max-width: 420px) {
+  .paycheck-lines > div { grid-template-columns: 1fr; gap: 6px; }
+  .paycheck-lines dd { text-align: right; }
+}

@@ -1,0 +1,236 @@
+{
+  "category": "anak-kos",
+  "cards": [
+    {
+      "id": "kos-1",
+      "title": "Wadah tanpa nama",
+      "description": "Ada yang tumbuh di wadah makanan di kulkas bersama. Semua kompak bilang, “Bukan punyaku.”",
+      "choices": [
+        {
+          "label": "Beresin kulkas sendirian",
+          "effects": {
+            "kewarasan": -7,
+            "relasi": 12
+          },
+          "result": "Kulkas bersih. Kamu butuh waktu buat percaya lagi sama puding."
+        },
+        {
+          "label": "Ajak patungan wadah berlabel",
+          "effects": {
+            "dompet": -75000,
+            "kewarasan": 8
+          },
+          "result": "Sekarang semua wadah ada namanya. Isinya tetap misterius."
+        }
+      ]
+    },
+    {
+      "id": "kos-2",
+      "title": "Konser kamar sebelah",
+      "description": "Tetangga kos lagi belajar gitar. Udah tiga minggu, lagunya masih di intro.",
+      "choices": [
+        {
+          "label": "Beliin pick, atur jam latihan",
+          "effects": {
+            "dompet": -50000,
+            "relasi": 8,
+            "kewarasan": 5
+          },
+          "result": "Perjanjian damai ditulis di bungkus gorengan."
+        },
+        {
+          "label": "Ikut nyanyi dengan pede",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -6
+          },
+          "result": "Kalian kompak. Kamar lain mulai cari kos baru."
+        }
+      ]
+    },
+    {
+      "id": "kos-3",
+      "title": "Galon lantai tiga",
+      "description": "Galon kosong. Galon penuh ada di lantai satu. Kamarmu di lantai tiga.",
+      "choices": [
+        {
+          "label": "Angkat sendiri, anggap olahraga",
+          "effects": {
+            "kewarasan": -6,
+            "hoki": 7
+          },
+          "result": "Rekor pribadi pecah. Sandalmu hampir ikut pecah."
+        },
+        {
+          "label": "Traktir teman buat bantu",
+          "effects": {
+            "dompet": -50000,
+            "relasi": 8
+          },
+          "result": "Dua orang, satu galon, empat kali istirahat."
+        }
+      ]
+    },
+    {
+      "id": "kos-4",
+      "title": "Jemuran pindah alamat",
+      "description": "Angin kencang. Kausmu nyangkut di balkon tetangga, pas di depan jendelanya.",
+      "choices": [
+        {
+          "label": "Ketuk pintu, sekalian kenalan",
+          "effects": {
+            "relasi": 9,
+            "kewarasan": -3
+          },
+          "result": "Kaus balik, kenalan nambah. Cara kenalanmu susah ditiru."
+        },
+        {
+          "label": "Titip ibu kos, kasih gorengan",
+          "effects": {
+            "dompet": -35000,
+            "kewarasan": 6
+          },
+          "result": "Kaus balik. Ceritanya udah keliling tiga lantai."
+        }
+      ]
+    },
+    {
+      "id": "kos-5",
+      "title": "Rice cooker tinggal kerak",
+      "description": "Kamu masak nasi, terus mandi sebentar. Balik lagi, rice cooker tinggal kerak.",
+      "choices": [
+        {
+          "label": "Masak lagi, ajak patungan beras",
+          "effects": {
+            "dompet": -40000,
+            "relasi": 10
+          },
+          "result": "Beras sekarang patungan. Kerak tetap bagianmu."
+        },
+        {
+          "label": "Tempel namamu di rice cooker",
+          "effects": {
+            "kewarasan": 7,
+            "relasi": -4
+          },
+          "result": "Rice cooker-nya punya nama. Pengambil nasinya masih anonim."
+        }
+      ]
+    },
+    {
+      "id": "kos-6",
+      "title": "Sound horeg kampung sebelah",
+      "description": "Kampung sebelah lagi hajatan. Speakernya segede lemari, kaca jendela kosmu ikut joget.",
+      "choices": [
+        {
+          "label": "Datang, sekalian cari makan",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -5
+          },
+          "result": "Kamu makan gratis, pulang dengan telinga berdenging sampai Selasa."
+        },
+        {
+          "label": "Tidur pakai penutup telinga",
+          "effects": {
+            "kewarasan": 5,
+            "hoki": -4
+          },
+          "result": "Nggak mempan. Bantalmu getar kayak HP di mode getar."
+        }
+      ]
+    },
+    {
+      "id": "kos-7",
+      "title": "Ibu kos tahu segalanya",
+      "description": "Ibu kos tahu kamu pulang jam 12 malam, beli martabak, dan belum bayar listrik. Semua dicatat.",
+      "choices": [
+        {
+          "label": "Bayar listrik, sekalian bawa martabak",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 10
+          },
+          "result": "Ibu kos senyum. Kamu naik pangkat jadi anak kos kesayangan."
+        },
+        {
+          "label": "Masuk lewat pintu belakang",
+          "effects": {
+            "kewarasan": -6,
+            "hoki": 5
+          },
+          "result": "Lolos. Besoknya ada kertas di pintumu: “Pintu belakang juga kelihatan.”"
+        }
+      ]
+    },
+    {
+      "id": "kos-8",
+      "title": "Antre kamar mandi jam enam",
+      "description": "Jam enam pagi, antrean kamar mandi udah empat orang. Yang di dalam lagi konser.",
+      "choices": [
+        {
+          "label": "Numpang kamar mandi ibu kos",
+          "effects": {
+            "kewarasan": 7,
+            "relasi": -5
+          },
+          "result": "Airnya hangat. Tatapan ibu kos jauh lebih panas."
+        },
+        {
+          "label": "Antre sambil ikut nyanyi",
+          "effects": {
+            "relasi": 6,
+            "kewarasan": -5
+          },
+          "result": "Terjadi duet lintas pintu. Kamu baru mandi jam tujuh lewat."
+        }
+      ]
+    },
+    {
+      "id": "kos-9",
+      "title": "Paket kamar tujuh",
+      "description": "Kurir naruh paket kamar tujuh di depan pintumu. Dari luar kecium bau rendang.",
+      "choices": [
+        {
+          "label": "Antar ke kamar tujuh",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": 3
+          },
+          "result": "Dia kasih dua potong. Rendang buatan ibunya, kamu hampir nangis."
+        },
+        {
+          "label": "Diamkan, tunggu dia sadar",
+          "effects": {
+            "kewarasan": -5,
+            "hoki": 4
+          },
+          "result": "Tiga hari kemudian dia nanya. Baunya udah kamu hafal."
+        }
+      ]
+    },
+    {
+      "id": "kos-10",
+      "title": "Sandi Wi-Fi diganti",
+      "description": "Sandi Wi-Fi kos diganti. Yang tahu cuma anak kamar ujung, dan dia lagi pulang kampung.",
+      "choices": [
+        {
+          "label": "Telepon dia, tanya sandinya",
+          "effects": {
+            "relasi": 5,
+            "dompet": -25000
+          },
+          "result": "Dia minta dikirimin pulsa dulu. Sandinya: kamarujungganteng."
+        },
+        {
+          "label": "Pakai kuota sendiri seminggu",
+          "effects": {
+            "dompet": -60000,
+            "kewarasan": 5
+          },
+          "result": "Aman, tapi semua video kamu tonton di kualitas kentang."
+        }
+      ]
+    }
+  ]
+}

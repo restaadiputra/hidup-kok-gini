@@ -1,0 +1,43 @@
+.payday-receipt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--tile-6);
+  color: var(--tile-ink);
+  border: 2px solid var(--edge);
+  border-radius: 9px;
+  box-shadow: 0 3px 0 -1px var(--edge);
+  padding: 8px;
+  margin: 12px 20px 0;
+}
+.payday-receipt > span {
+  flex: 1;
+}
+.payday-receipt strong {
+  display: block;
+  font-size: 10px;
+}
+.payday-receipt small {
+  display: block;
+  font-size: 10px;
+  opacity: 0.75;
+  margin-top: 3px;
+}
+.payday-receipt > b {
+  font-size: 12px;
+}
+.payday-receipt > svg {
+  color: inherit;
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .payday-receipt {
+    margin: 10px 15px 0;
+    padding: 7px;
+  }
+  .payday-receipt strong {
+    font-size: 10px;
+  }
+  .payday-receipt small {
+    font-size: 10px;
+  }
+}

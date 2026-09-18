@@ -1,0 +1,20 @@
+{
+  "initialStats": {
+    "dompet": 2500000,
+    "kewarasan": 60,
+    "relasi": 40,
+    "hoki": 50
+  },
+  "colors": [
+    "#ffd75e",
+    "#62cdf5",
+    "#ff7fae",
+    "#6ddc8b"
+  ],
+  "defaultNames": [
+    "Kamu",
+    "Si Paling Chill",
+    "Aura +999",
+    "Admin Kehidupan"
+  ]
+}

@@ -1,0 +1,201 @@
+.timeline {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border: 2px solid var(--edge);
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow: 0 4px 0 -1px var(--edge);
+  padding: 10px 17px;
+}
+.timeline-label {
+  min-width: 136px;
+}
+.timeline-label > span {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: var(--muted);
+  font-weight: 650;
+  display: block;
+  margin-bottom: 4px;
+}
+.timeline-label strong {
+  font-size: 15px;
+  letter-spacing: -0.4px;
+}
+.timeline-label small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+  margin-left: 7px;
+}
+.timeline > svg {
+  color: var(--muted);
+}
+.month-list {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.month-list:before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 12px;
+  height: 1px;
+  background: var(--line);
+}
+.month-list li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted);
+}
+.month-list li > span {
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid var(--line);
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  font-size: 10px;
+  font-weight: 600;
+}
+.month-list small {
+  font-size: 10px;
+}
+.month-list .month-current > span {
+  background: var(--fixed);
+  color: var(--fixed-ink);
+  border: 2px solid var(--edge);
+  transform: rotate(-7deg) scale(1.1);
+  box-shadow: 0 3px 0 -1px var(--edge);
+}
+.month-list .month-current small {
+  color: var(--ink);
+  font-weight: 800;
+}
+.month-list .month-done > span {
+  background: var(--raised);
+  color: var(--accent-text);
+}
+@media (max-height: 760px) and (min-width: 761px) {
+  .timeline {
+    padding: 8px 14px;
+  }
+}
+@media (max-width: 1000px) {
+  .timeline {
+    gap: 18px;
+  }
+  .timeline-label {
+    min-width: 117px;
+  }
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .timeline {
+    padding: 9px 11px;
+    gap: 14px;
+    border-radius: 10px;
+  }
+  .timeline-label {
+    min-width: 87px;
+  }
+  .timeline-label > span {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  .timeline-label strong {
+    font-size: 13px;
+  }
+  .timeline-label small {
+    font-size: 10px;
+    display: block;
+    margin: 2px 0 0;
+  }
+  .timeline > svg {
+    display: none;
+  }
+  .month-list {
+    gap: 3px;
+  }
+  .month-list:before {
+    top: 9px;
+  }
+  .month-list li {
+    flex: 1;
+    min-width: 0;
+    gap: 4px;
+  }
+  .month-list li > span {
+    width: 100%;
+    max-width: 22px;
+    height: 20px;
+    font-size: 10px;
+    border-radius: 4px;
+  }
+  .month-list small {
+    display: none;
+  }
+}
+@media (max-width: 390px) and (min-height: 501px) {
+  .timeline {
+    gap: 9px;
+    padding: 8px;
+  }
+  .timeline-label {
+    min-width: 76px;
+  }
+  .timeline-label strong {
+    font-size: 12px;
+  }
+  .month-list {
+    gap: 2px;
+  }
+  .month-list li > span {
+    height: 18px;
+    font-size: 10px;
+  }
+  .month-list:before {
+    top: 8px;
+  }
+}
+@media (max-height: 500px) {
+  .timeline {
+    padding: 5px 10px;
+    gap: 14px;
+  }
+  .timeline-label {
+    min-width: 100px;
+  }
+  .timeline-label > span {
+    display: none;
+  }
+  .timeline-label strong {
+    font-size: 12px;
+  }
+  .month-list small {
+    display: none;
+  }
+  .month-list li > span {
+    height: 19px;
+    width: 19px;
+    font-size: 10px;
+  }
+  .month-list:before {
+    top: 9px;
+  }
+  .timeline > svg {
+    display: none;
+  }
+}

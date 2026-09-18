@@ -1,0 +1,133 @@
+.player-card {
+  min-width: 0;
+  border: 2.5px solid var(--edge);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--raised);
+  position: relative;
+  box-shadow: 0 4px 0 -1px var(--edge);
+}
+.player-active {
+  background: var(--active-bg);
+}
+/* The player's colour is the nameplate, the way a player board is banded. */
+.player-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 13px;
+  background: var(--player-color);
+  color: #2a1c3f;
+  border-bottom: 2.5px solid var(--edge);
+  flex-wrap: wrap;
+}
+.player-heading > div {
+  min-width: 0;
+  flex: 1;
+}
+.player-heading small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+.player-heading h3 {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 3px;
+}
+.turn-label {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 2px solid var(--edge);
+  padding: 3px 6px;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 20px;
+  transform: rotate(3deg);
+}
+.player-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 14px 15px 15px;
+}
+.stat dt {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--muted);
+}
+.stat dt svg {
+  width: 14px;
+}
+.stat dd {
+  margin: 5px 0 0;
+  font-size: 18px;
+  font-weight: 800;
+}
+.stat dd small {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 2px;
+}
+.stat-meter {
+  height: 8px;
+  background: var(--input);
+  border: 1.5px solid var(--edge);
+  margin-top: 6px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.stat-meter i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  background: var(--tile-3);
+  transition: transform 0.3s;
+}
+.stat-kewarasan .stat-meter i {
+  background: var(--tile-4);
+}
+.stat-relasi .stat-meter i {
+  background: var(--tile-2);
+}
+.stat-hoki .stat-meter i {
+  background: var(--tile-6);
+}
+.in-debt {
+  color: var(--negative-ink);
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .player-card {
+    padding: 12px;
+  }
+  .player-heading {
+    gap: 6px;
+    margin-bottom: 13px;
+  }
+  .player-heading h3 {
+    font-size: 12px;
+  }
+  .player-stats {
+    gap: 12px 9px;
+  }
+  .stat dt {
+    font-size: 10px;
+  }
+  .stat dd {
+    font-size: 16px;
+  }
+  .stat dt svg {
+    width: 12px;
+  }
+  .turn-label {
+    font-size: 10px;
+    padding: 3px 4px;
+  }
+}

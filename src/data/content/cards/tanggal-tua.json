@@ -1,0 +1,239 @@
+{
+  "category": "tanggal-tua",
+  "cards": [
+    {
+      "id": "tanggaltua-1",
+      "title": "Mi instan bintang lima",
+      "description": "Dua bungkus mi, satu telur, dan kepercayaan diri. Malam ini kamu buka restoran untuk satu orang.",
+      "choices": [
+        {
+          "label": "Masak kreatif, tambah sayur",
+          "effects": {
+            "dompet": -25000,
+            "kewarasan": 8
+          },
+          "result": "Chef-nya kasih masakannya sendiri bintang lima."
+        },
+        {
+          "label": "Masak bareng teman",
+          "effects": {
+            "dompet": -50000,
+            "relasi": 10,
+            "kewarasan": 4
+          },
+          "result": "Telurnya jadi dua. Ngobrolnya sampai tengah malam."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-2",
+      "title": "Audit saku celana",
+      "description": "Mau nyuci, kamu nemu uang terlipat di saku. Rasanya kayak menang undian.",
+      "choices": [
+        {
+          "label": "Masukin tabungan darurat",
+          "effects": {
+            "dompet": 100000,
+            "kewarasan": 5
+          },
+          "result": "Makasih buat dirimu yang pelupa minggu lalu."
+        },
+        {
+          "label": "Rayakan pakai gorengan",
+          "effects": {
+            "dompet": 50000,
+            "relasi": 8,
+            "kewarasan": -3
+          },
+          "result": "Sebagian jadi bakwan. Sisanya jadi penyesalan kecil jam sembilan malam."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-3",
+      "title": "Suatu saat itu hari ini",
+      "description": "Lemari penuh barang “suatu saat berguna”. Suatu saat itu ternyata hari ini, di marketplace.",
+      "choices": [
+        {
+          "label": "Jual jaket yang jarang dipakai",
+          "effects": {
+            "dompet": 300000,
+            "kewarasan": -3
+          },
+          "result": "Pembeli nawar setengah harga, plus minta gratis ongkir."
+        },
+        {
+          "label": "Tukeran barang sama teman",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": 6,
+            "hoki": -3
+          },
+          "result": "Lemari tetap penuh, tapi isinya ganti pemain."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-4",
+      "title": "Poin belanja penyelamat",
+      "description": "Poin belanjamu ternyata cukup buat nasi ayam. Kebiasaan jajan akhirnya ada gunanya.",
+      "choices": [
+        {
+          "label": "Tukar jadi nasi ayam",
+          "effects": {
+            "kewarasan": 10,
+            "hoki": 4
+          },
+          "result": "Makan siang gratis. Rasanya dua kali lebih enak."
+        },
+        {
+          "label": "Simpan poin buat nanti",
+          "effects": {
+            "dompet": 50000,
+            "hoki": -5
+          },
+          "result": "Poinnya hangus. Karena kesal, kamu masak sendiri seminggu dan malah hemat."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-5",
+      "title": "Isi dompet: struk semua",
+      "description": "Kamu buka dompet. Isinya struk belanja, kartu member yang nggak pernah dipakai, dan satu koin lima ratus.",
+      "choices": [
+        {
+          "label": "Beresin dompet, cek pengeluaran",
+          "effects": {
+            "kewarasan": -5,
+            "hoki": 6
+          },
+          "result": "Ketemu kartu diskon yang masih aktif. Ketemu juga kenyataan."
+        },
+        {
+          "label": "Tutup lagi pelan-pelan",
+          "effects": {
+            "kewarasan": 4,
+            "hoki": -4
+          },
+          "result": "Yang nggak dilihat nggak bikin pusing. Sampai tanggal 25."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-6",
+      "title": "Ajakan makan tanggal 27",
+      "description": "Teman ngajak makan di tempat baru. Tanggal 27. Kamu cek saldo, lalu pura-pura sinyal jelek.",
+      "choices": [
+        {
+          "label": "Datang, pesan paling murah",
+          "effects": {
+            "dompet": -50000,
+            "relasi": 8
+          },
+          "result": "Kamu pesan air putih dan kerupuk. Ditanya diet, kamu bilang iya."
+        },
+        {
+          "label": "Bilang lagi nggak enak badan",
+          "effects": {
+            "relasi": -5,
+            "kewarasan": 4
+          },
+          "result": "Mereka kirim foto makanannya satu-satu. Kamu makan mi sambil ngelihatin."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-7",
+      "title": "Enam hari lagi gajian",
+      "description": "Saldomu cukup buat enam hari, asal makan sekali sehari. Gajian masih enam hari lagi.",
+      "choices": [
+        {
+          "label": "Bikin menu hemat seminggu",
+          "effects": {
+            "kewarasan": -6,
+            "dompet": 75000
+          },
+          "result": "Menunya tempe semua. Hari ketiga, tempenya udah kamu kasih nama."
+        },
+        {
+          "label": "Minta bantuan orang tua",
+          "effects": {
+            "dompet": 200000,
+            "kewarasan": -6
+          },
+          "result": "Ditransfer, plus ceramah 20 menit soal menabung."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-8",
+      "title": "Buku utang warung",
+      "description": "Ibu warung bilang boleh ngutang dulu. Buku utangnya tebal, isinya nama-nama yang kamu kenal.",
+      "choices": [
+        {
+          "label": "Ngutang, catat jujur",
+          "effects": {
+            "dompet": 75000,
+            "relasi": 5,
+            "kewarasan": -4
+          },
+          "result": "Namamu ditulis tepat di bawah nama bos kantormu."
+        },
+        {
+          "label": "Tolak, makan roti sisa",
+          "effects": {
+            "kewarasan": -5,
+            "dompet": 25000
+          },
+          "result": "Rotinya keras. Kamu kunyah pelan sambil ngitung hari."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-9",
+      "title": "Promo khusus tanggal tua",
+      "description": "Aplikasi makanan kasih promo “khusus tanggal tua”. Mereka tahu. Semua orang tahu.",
+      "choices": [
+        {
+          "label": "Pakai promonya",
+          "effects": {
+            "dompet": -35000,
+            "kewarasan": 7
+          },
+          "result": "Makan enak setengah harga. Kurirnya juga kelihatan lagi tanggal tua."
+        },
+        {
+          "label": "Masak sendiri aja",
+          "effects": {
+            "hoki": 4,
+            "kewarasan": -4
+          },
+          "result": "Nasi goreng bumbu seadanya. Seadanya banget."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-10",
+      "title": "Celengan zaman SMA",
+      "description": "Celengan ayam dari zaman SMA akhirnya kamu buka. Isinya receh, kancing, dan kertas bertuliskan “jangan dibuka”.",
+      "choices": [
+        {
+          "label": "Hitung dan tukar ke uang",
+          "effects": {
+            "dompet": 150000,
+            "kewarasan": -5
+          },
+          "result": "Dapat 150 ribu dan pegal jari. Kasir minimarket melirik tajam."
+        },
+        {
+          "label": "Tutup lagi, hormati masa lalu",
+          "effects": {
+            "kewarasan": 5,
+            "hoki": 3
+          },
+          "result": "Kamu tempel lagi kertasnya. Dirimu yang SMA menang."
+        }
+      ]
+    }
+  ]
+}

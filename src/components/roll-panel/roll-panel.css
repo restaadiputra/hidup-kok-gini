@@ -1,0 +1,141 @@
+.roll-content {
+  padding: 12px 21px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 17px;
+}
+.dice-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: 110px;
+  width: 170px;
+  flex-shrink: 0;
+}
+.dice-shadow {
+  width: 66px;
+  height: 9px;
+  position: absolute;
+  bottom: 4px;
+  background: var(--dice-shadow);
+  border-radius: 50%;
+  filter: blur(3px);
+}
+.dice-orbit {
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  display: flex;
+  color: var(--tile-1);
+  transform: rotate(-14deg);
+}
+.roll-copy h3 {
+  font-size: 26px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin: 9px 0;
+}
+.roll-copy p {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 240px;
+}
+.position-note {
+  font-size: 10px;
+}
+@media (min-width: 1300px) and (min-height: 850px) {
+  .roll-content {
+    padding-top: 30px;
+    gap: 24px;
+  }
+  .dice-stage {
+    height: 145px;
+  }
+}
+@media (max-height: 760px) and (min-width: 761px) {
+  .roll-content {
+    gap: 12px;
+    padding-top: 8px;
+  }
+  .dice-stage {
+    height: 94px;
+  }
+}
+@media (max-width: 760px) and (min-height: 501px) {
+  .roll-content {
+    padding: 10px 13px 11px;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 6px 12px;
+    text-align: left;
+    align-items: center;
+  }
+  .dice-stage {
+    width: 48px;
+    height: 49px;
+    grid-row: 1 / span 2;
+  }
+  .dice-shadow {
+    width: 35px;
+    bottom: 0;
+    height: 5px;
+  }
+  .dice-orbit {
+    display: none;
+  }
+  .roll-copy {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .roll-copy h3 {
+    font-size: 11px;
+    margin: 0;
+    letter-spacing: -0.15px;
+    line-height: 1.3;
+  }
+  .roll-copy p,
+  .position-note {
+    display: none;
+  }
+  .roll-button {
+    grid-column: 2;
+    grid-row: 2;
+    min-height: 38px;
+    padding: 8px 11px;
+    font-size: 12px;
+    border-radius: 7px;
+    box-shadow: 0 8px 18px -8px var(--shadow-strong);
+  }
+}
+@media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {
+  .roll-content {
+    padding-top: 8px;
+    padding-bottom: 9px;
+  }
+}
+@media (max-height: 500px) {
+  .roll-content {
+    gap: 10px;
+    padding: 10px 12px;
+  }
+  .dice-stage {
+    height: 65px;
+    width: 120px;
+  }
+  .dice-orbit {
+    font-size: 18px;
+  }
+  .roll-copy h3 {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  .roll-copy p {
+    display: none;
+  }
+  .position-note {
+    display: none;
+  }
+}

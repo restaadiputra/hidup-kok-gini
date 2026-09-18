@@ -1,0 +1,62 @@
+@keyframes pawn-hop {
+  0% {
+    transform: translate(var(--hop-x, 0px), var(--hop-y, 0px)) scale(1.06, 0.9);
+  }
+  45% {
+    transform: translate(calc(var(--hop-x, 0px) * 0.45), calc(var(--hop-y, 0px) * 0.45 - 28px)) rotate(-12deg) scale(1.08);
+  }
+  82% {
+    transform: translateY(0) scale(1.12, 0.88);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes tile-touchdown {
+  from { opacity: 0.8; transform: scale(0.94); }
+  to { opacity: 0; transform: scale(1.12); }
+}
+@keyframes dice-roll {
+  0% {
+    transform: rotate(-12deg) translateY(0);
+  }
+  50% {
+    transform: rotate(168deg) translateY(-6px);
+  }
+  100% {
+    transform: rotate(348deg) translateY(0);
+  }
+}
+@keyframes card-drop {
+  0% {
+    transform: translateY(-25px) rotate(-7deg) scale(0.92);
+    opacity: 0;
+  }
+  65% {
+    transform: translateY(5px) rotate(2deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+@keyframes result-pop {
+  from {
+    transform: translateY(10px) scale(0.97);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes dialog-in {
+  from {
+    transform: translateY(18px);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

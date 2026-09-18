@@ -1,0 +1,56 @@
+{
+  "rules": [
+    {
+      "when": {
+        "stat": "dompet",
+        "below": 0
+      },
+      "title": "CEO Cicilan & Optimisme",
+      "text": "Saldo pakai tanda minus, semangat tetap pakai tanda seru. Tahun depan buka spreadsheet dulu, ya."
+    },
+    {
+      "when": {
+        "stat": "kewarasan",
+        "atMost": 25
+      },
+      "title": "Pejuang Mode Pesawat",
+      "text": "Setahun lewat. Matikan notifikasi, rebahan dulu. Email bisa nunggu, kamu nggak."
+    },
+    {
+      "when": {
+        "stat": "relasi",
+        "atLeast": 75
+      },
+      "title": "Menteri Segala Grup",
+      "text": "Kenalanmu di mana-mana. Tukang paket aja minta kamu jadi panitia reuni."
+    },
+    {
+      "when": {
+        "stat": "dompet",
+        "atLeast": 4000000
+      },
+      "title": "Sultan Diskon Terencana",
+      "text": "Dompet masih ada isinya. Kamu boleh bilang “ada anggarannya” dengan muka tenang."
+    },
+    {
+      "when": {
+        "stat": "hoki",
+        "atLeast": 75
+      },
+      "title": "Anak Kesayangan Semesta",
+      "text": "Antrean sebelah selalu lebih cepat, dan kamu selalu pindah pas banget."
+    },
+    {
+      "when": {
+        "stat": "kewarasan",
+        "atLeast": 75
+      },
+      "title": "Guru Besar Santai",
+      "text": "Dunia ribut, kamu menyeduh teh. Gelar akademikmu: S.T., Sarjana Terserah."
+    }
+  ],
+  "fallback": {
+    "title": "Warga Biasa, Daya Tahan Luar Biasa",
+    "text": "Nggak semua rencana jalan, tapi kamu sampai Desember. Itu layak dirayain pakai gorengan hangat."
+  }
+}

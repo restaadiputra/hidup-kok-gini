@@ -1,0 +1,241 @@
+{
+  "category": "nongkrong",
+  "cards": [
+    {
+      "id": "nongkrong-1",
+      "title": "Kopi rasa cicilan",
+      "description": "Kafe baru jual kopi dengan cerita asal-usul sepanjang skripsi. Harganya juga sepanjang itu.",
+      "choices": [
+        {
+          "label": "Pesan menu andalan, foto sekali",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 7,
+            "kewarasan": 4
+          },
+          "result": "Kopinya enak. Caption-nya butuh tiga draf."
+        },
+        {
+          "label": "Ajak pindah ke warkop",
+          "effects": {
+            "dompet": -25000,
+            "relasi": 4,
+            "kewarasan": 8
+          },
+          "result": "Nggak ada latte art. Ada kucing warung yang menilai kamu."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-2",
+      "title": "Bagi rata, katanya",
+      "description": "Kamu cuma pesan es teh. Ada yang usul bayar rata, habis dia pesan steak.",
+      "choices": [
+        {
+          "label": "Bayar sesuai pesanan",
+          "effects": {
+            "kewarasan": 6,
+            "relasi": -4
+          },
+          "result": "Kamu buka kalkulator. Suasana langsung kayak ujian."
+        },
+        {
+          "label": "Ikut bayar rata",
+          "effects": {
+            "dompet": -200000,
+            "relasi": 8,
+            "kewarasan": -6
+          },
+          "result": "Itu es teh termahal yang pernah kamu minum."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-3",
+      "title": "OTW dari kamar mandi",
+      "description": "Janjian jam tujuh. Jam delapan semua bilang “otw”. Dari suaranya, ada yang masih di kamar mandi.",
+      "choices": [
+        {
+          "label": "Baca buku sambil nunggu",
+          "effects": {
+            "kewarasan": 9,
+            "hoki": 3,
+            "relasi": -3
+          },
+          "result": "Satu bab kelar. Temanmu baru kelar keramas."
+        },
+        {
+          "label": "Pesenin camilan buat semua",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 12
+          },
+          "result": "Mereka datang barengan sama kentang goreng. Mencurigakan."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-4",
+      "title": "Makanan nunggu kamera",
+      "description": "Makanan udah datang. Temanmu bilang jangan dimakan dulu, cahayanya belum pas.",
+      "choices": [
+        {
+          "label": "Bantu fotoin biar cepat",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -5
+          },
+          "result": "Foto beres. Sekarang dia minta video pas sausnya dituang."
+        },
+        {
+          "label": "Selamatkan kentang duluan",
+          "effects": {
+            "kewarasan": 8,
+            "relasi": -3
+          },
+          "result": "Satu kentang hilang dari komposisi. Kamu nggak menyesal."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-5",
+      "title": "Karaoke lagu galau",
+      "description": "Sewa satu jam. Teman yang baru putus udah masukin 23 lagu, semuanya buat mantan.",
+      "choices": [
+        {
+          "label": "Patungan tambah sejam",
+          "effects": {
+            "dompet": -75000,
+            "relasi": 10,
+            "kewarasan": -4
+          },
+          "result": "Suara habis. Perasaannya belum."
+        },
+        {
+          "label": "Selipin lagu dangdut",
+          "effects": {
+            "relasi": 6,
+            "kewarasan": 6
+          },
+          "result": "Dia protes. Semenit kemudian dia yang pegang mic."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-6",
+      "title": "Rombongan jarang beli",
+      "description": "Diajak ke mal buat “cuci mata”. Empat jam keliling, belanjanya satu es krim dibagi tiga.",
+      "choices": [
+        {
+          "label": "Beli sesuatu biar nggak malu",
+          "effects": {
+            "dompet": -150000,
+            "kewarasan": 5
+          },
+          "result": "Kamu beli kaus kaki mahal. Satpam akhirnya berhenti ngeliatin."
+        },
+        {
+          "label": "Tetap jadi rojali sejati",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -4
+          },
+          "result": "Kaki pegal, dompet utuh. Foto di spot hiasnya ada 60."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-7",
+      "title": "Kafe penuh orang rapat",
+      "description": "Kafe penuh orang kerja pakai laptop. Kamu cuma mau ngobrol, tapi meja sebelah lagi rapat online.",
+      "choices": [
+        {
+          "label": "Ngobrol bisik-bisik",
+          "effects": {
+            "kewarasan": -5,
+            "relasi": 4
+          },
+          "result": "Obrolan kalian jadi kayak rencana rahasia. Seru, sih."
+        },
+        {
+          "label": "Pindah ke angkringan",
+          "effects": {
+            "dompet": -25000,
+            "relasi": 8,
+            "kewarasan": 4
+          },
+          "result": "Ngobrol bebas sampai jam satu. Nasi kucingnya habis delapan."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-8",
+      "title": "Dompet ketinggalan lagi",
+      "description": "Teman lagi-lagi lupa bawa dompet. Ini keempat kalinya bulan ini, dan kalian baru ketemu empat kali.",
+      "choices": [
+        {
+          "label": "Bayarin, catat di notes HP",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 6
+          },
+          "result": "Catatan utangnya udah lebih panjang dari chat kalian."
+        },
+        {
+          "label": "Tawarin cuci piring bareng",
+          "effects": {
+            "relasi": -4,
+            "kewarasan": 6
+          },
+          "result": "Dia langsung nemu dompetnya di tas. Ajaib."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-9",
+      "title": "Debat aturan main kartu",
+      "description": "Kalian main kartu. Setengah jam pertama habis buat debat aturan yang bener.",
+      "choices": [
+        {
+          "label": "Bikin aturan sendiri",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -4
+          },
+          "result": "Aturannya jadi 14 poin. Yang menang malah orang yang baru datang."
+        },
+        {
+          "label": "Cari aturan resmi di internet",
+          "effects": {
+            "kewarasan": 5,
+            "relasi": -4
+          },
+          "result": "Kamu benar. Nggak ada yang senang kamu benar."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-10",
+      "title": "Healing ke puncak",
+      "description": "Diajak healing ke puncak. Berangkat subuh biar nggak macet. Ternyata satu kota punya ide yang sama.",
+      "choices": [
+        {
+          "label": "Tetap berangkat, bawa bekal",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -6
+          },
+          "result": "Kalian makan bekal di mobil, di tanjakan yang sama, dua jam."
+        },
+        {
+          "label": "Healing di kos aja",
+          "effects": {
+            "kewarasan": 8,
+            "relasi": -4
+          },
+          "result": "Kamu tidur siang empat jam. Paling healing se-grup."
+        }
+      ]
+    }
+  ]
+}

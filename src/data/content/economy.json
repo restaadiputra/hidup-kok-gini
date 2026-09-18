@@ -1,0 +1,23 @@
+{
+  "salary": {
+    "min": 2800000,
+    "max": 3200000,
+    "step": 50000
+  },
+  "livingCost": {
+    "min": 1600000,
+    "max": 2000000,
+    "step": 50000
+  },
+  "deduction": {
+    "min": 50000,
+    "max": 750000,
+    "step": 25000
+  },
+  "rareChance": 0.08,
+  "rareBill": {
+    "min": 1750000,
+    "max": 2750000,
+    "step": 50000
+  }
+}

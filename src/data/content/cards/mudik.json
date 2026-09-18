@@ -1,0 +1,239 @@
+{
+  "category": "mudik",
+  "cards": [
+    {
+      "id": "mudik-1",
+      "title": "Koper satu kelurahan",
+      "description": "Pulang cuma tiga hari. Titipannya bikin bagasi kayak mau buka toko grosir.",
+      "choices": [
+        {
+          "label": "Tambah bagasi",
+          "effects": {
+            "dompet": -300000,
+            "relasi": 12,
+            "kewarasan": 3
+          },
+          "result": "Semua titipan sampai. Punggungmu bilang makasih pakai pegal."
+        },
+        {
+          "label": "Pilih titipan, jelasin baik-baik",
+          "effects": {
+            "relasi": -3,
+            "kewarasan": 10
+          },
+          "result": "Koper bisa ditutup tanpa diduduki tiga orang."
+        }
+      ]
+    },
+    {
+      "id": "mudik-2",
+      "title": "Rest area jadi reuni",
+      "description": "Niatnya berhenti sebentar. Ternyata semua orang di jalan tol punya niat yang sama.",
+      "choices": [
+        {
+          "label": "Piknik pakai bekal",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": 5
+          },
+          "result": "Nasi bungkus jadi acara utama perjalanan."
+        },
+        {
+          "label": "Antre kopi buat rombongan",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 12,
+            "kewarasan": -5
+          },
+          "result": "Pas kopinya datang, semua udah pengin ke toilet lagi."
+        }
+      ]
+    },
+    {
+      "id": "mudik-3",
+      "title": "Pulang bawa kebun",
+      "description": "Orang tua ngebekelin pisang, singkong, dan satu pot tanaman. Kamu naik bus, bukan truk sayur.",
+      "choices": [
+        {
+          "label": "Bawa semua, tambah tas",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 12
+          },
+          "result": "Sampai kos sebagai distributor hasil bumi."
+        },
+        {
+          "label": "Bagi bekal ke penumpang lain",
+          "effects": {
+            "relasi": 8,
+            "hoki": 7
+          },
+          "result": "Satu bus kenyang. Tanamannya dapat kursi dekat jendela."
+        }
+      ]
+    },
+    {
+      "id": "mudik-4",
+      "title": "Oleh-oleh dimakan di jalan",
+      "description": "Macet parah. Kue buat keluarga tinggal separuh. Pelakunya duduk di kursimu, pakai bajumu.",
+      "choices": [
+        {
+          "label": "Beli pengganti di rest area",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": 5
+          },
+          "result": "Oleh-oleh utuh lagi. Remah di bajumu jadi barang bukti."
+        },
+        {
+          "label": "Jujur, bagi yang tersisa",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -3
+          },
+          "result": "Dimaafkan. Tahun depan kamu kebagian bawa kerupuk mentah."
+        }
+      ]
+    },
+    {
+      "id": "mudik-5",
+      "title": "Alamat pakai silsilah",
+      "description": "Tanya jalan ke rumah saudara. Jawabannya, “Lewat rumah mantan menantu Pak RT yang dulu jualan bakso.”",
+      "choices": [
+        {
+          "label": "Minta saudara kirim lokasi",
+          "effects": {
+            "kewarasan": 7,
+            "hoki": 3,
+            "relasi": -3
+          },
+          "result": "Titiknya ketemu. Nggak perlu lulus ujian sejarah keluarga."
+        },
+        {
+          "label": "Minta diantar, belikan minum",
+          "effects": {
+            "dompet": -25000,
+            "relasi": 10
+          },
+          "result": "Sampai rumah, plus tahu kenapa warung baksonya tutup."
+        }
+      ]
+    },
+    {
+      "id": "mudik-6",
+      "title": "THR datang, THR pergi",
+      "description": "THR masuk jam sembilan. Jam sepuluh udah kebagi ke tiket, oleh-oleh, dan amplop keponakan.",
+      "choices": [
+        {
+          "label": "Bagi amplop ke semua keponakan",
+          "effects": {
+            "dompet": -250000,
+            "relasi": 14
+          },
+          "result": "Keponakan antre kayak di bank. Ada yang antre dua kali, ganti baju."
+        },
+        {
+          "label": "Kasih yang udah salim aja",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 4,
+            "kewarasan": -3
+          },
+          "result": "Yang belum salim tiba-tiba jadi paling sopan se-kampung."
+        }
+      ]
+    },
+    {
+      "id": "mudik-7",
+      "title": "Macet 20 jam",
+      "description": "Perjalanan yang biasanya delapan jam udah jalan 20 jam. Kamu hafal plat mobil di depanmu.",
+      "choices": [
+        {
+          "label": "Ajak ngobrol mobil sebelah",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -3
+          },
+          "result": "Kalian tukeran camilan lewat jendela. Kenalan baru, arah sama."
+        },
+        {
+          "label": "Tidur, gantian nyetir",
+          "effects": {
+            "kewarasan": 7,
+            "hoki": -4
+          },
+          "result": "Bangun-bangun masih di kilometer yang sama. Tapi kamu segar."
+        }
+      ]
+    },
+    {
+      "id": "mudik-8",
+      "title": "Pertanyaan gaji di ruang tamu",
+      "description": "Pakde nanya, “Gajimu berapa sekarang?” di depan 30 saudara yang tiba-tiba diam.",
+      "choices": [
+        {
+          "label": "Jawab dengan angka samar",
+          "effects": {
+            "kewarasan": -5,
+            "relasi": 5
+          },
+          "result": "“Cukup, Pakde.” Semua mengangguk seolah itu angka."
+        },
+        {
+          "label": "Balik tanya soal panen",
+          "effects": {
+            "relasi": -3,
+            "kewarasan": 7
+          },
+          "result": "Pakde cerita soal padi satu jam. Kamu selamat."
+        }
+      ]
+    },
+    {
+      "id": "mudik-9",
+      "title": "Balik bawa rendang",
+      "description": "Balik ke kota bawa satu toples rendang. Di kos, semua tetangga tiba-tiba kangen kamu.",
+      "choices": [
+        {
+          "label": "Bagi rendang ke anak kos",
+          "effects": {
+            "relasi": 12,
+            "kewarasan": -3
+          },
+          "result": "Toples kosong dalam dua jam. Namamu disebut dengan penuh hormat."
+        },
+        {
+          "label": "Simpan buat seminggu",
+          "effects": {
+            "dompet": 50000,
+            "relasi": -4
+          },
+          "result": "Kamu makan enak seminggu. Tetangga mulai curiga sama bau dari kamarmu."
+        }
+      ]
+    },
+    {
+      "id": "mudik-10",
+      "title": "Tiket dibuka jam tiga pagi",
+      "description": "Tiket kereta mudik dibuka jam tiga pagi. Kamu pasang alarm lima kali, bangun jam tujuh.",
+      "choices": [
+        {
+          "label": "Beli tiket bus seadanya",
+          "effects": {
+            "dompet": -150000,
+            "kewarasan": -4
+          },
+          "result": "Dapat kursi paling belakang, dekat mesin. Kamu mudik sambil dipanggang."
+        },
+        {
+          "label": "Nebeng mobil saudara",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -6
+          },
+          "result": "Muat, asal duduk di antara dua bocah dan satu kardus mi."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "category": "tagihan",
+  "cards": [
+    {
+      "id": "tagihan-1",
+      "title": "Langganan yang lupa",
+      "description": "Satu aplikasi narik biaya tahunan. Kamu bahkan lupa pernah punya hobi itu.",
+      "choices": [
+        {
+          "label": "Bayar, matikan perpanjangan",
+          "effects": {
+            "dompet": -200000,
+            "kewarasan": 4
+          },
+          "result": "Pelajaran mahal: uji coba gratis ada tanggal habisnya."
+        },
+        {
+          "label": "Minta refund dengan sabar",
+          "effects": {
+            "kewarasan": -8,
+            "hoki": 6
+          },
+          "result": "Nomor tiket keluar. Uangnya masih antre."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-2",
+      "title": "Token bunyi tengah malam",
+      "description": "Meteran listrik bunyi tit-tit pas malam lagi sepi-sepinya. Tetangga udah hafal nadanya.",
+      "choices": [
+        {
+          "label": "Isi token sekalian banyak",
+          "effects": {
+            "dompet": -200000,
+            "kewarasan": 10
+          },
+          "result": "Sunyi lagi. Kamu bisa tidur tanpa mimpi bunyi tit-tit."
+        },
+        {
+          "label": "Isi dikit, hemat-hemat",
+          "effects": {
+            "dompet": -50000,
+            "kewarasan": -3,
+            "hoki": 4
+          },
+          "result": "Kamu jadi pengelola energi buat satu kipas angin."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-3",
+      "title": "Iuran RT pakai lampiran",
+      "description": "Tagihan iuran RT datang lengkap sama notulen rapat dan rencana beli sound system baru.",
+      "choices": [
+        {
+          "label": "Bayar, ikut rapat anggaran",
+          "effects": {
+            "dompet": -150000,
+            "relasi": 10
+          },
+          "result": "Usulmu diterima. Sound system tetap jadi prioritas."
+        },
+        {
+          "label": "Bantu acara, bayar separuh",
+          "effects": {
+            "dompet": -50000,
+            "kewarasan": -7,
+            "relasi": 8
+          },
+          "result": "Kamu resmi jadi seksi angkat kursi."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-4",
+      "title": "Uji coba gratis tamat",
+      "description": "Aplikasi meditasi ngingetin: besok mulai bayar. Notifikasinya bikin kamu butuh meditasi.",
+      "choices": [
+        {
+          "label": "Bayar, pakai sebulan",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": 6
+          },
+          "result": "Tarik napas. Buang napas. Cek saldo. Tarik napas lagi."
+        },
+        {
+          "label": "Cari tombol batal",
+          "effects": {
+            "kewarasan": -6,
+            "hoki": 5
+          },
+          "result": "Tombolnya ketemu di halaman kesembilan, warnanya abu-abu."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-5",
+      "title": "Transfer kecil, admin gede",
+      "description": "Mau bayar patungan gorengan. Biaya adminnya hampir seharga gorengan.",
+      "choices": [
+        {
+          "label": "Transfer aja biar beres",
+          "effects": {
+            "dompet": -30000,
+            "kewarasan": 5
+          },
+          "result": "Lunas. Satu gorengan melayang ke bank."
+        },
+        {
+          "label": "Antar tunai sekalian main",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -3
+          },
+          "result": "Hemat admin. Pulangnya bawa titipan tiga orang."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-6",
+      "title": "Tanggal sepuluh yang padat",
+      "description": "Cicilan, BPJS, dan pajak motor jatuh tempo di hari yang sama. Kayak janjian.",
+      "choices": [
+        {
+          "label": "Bayar semua sekaligus",
+          "effects": {
+            "dompet": -350000,
+            "kewarasan": 8
+          },
+          "result": "Semua lunas. Dompetmu masuk mode hemat daya."
+        },
+        {
+          "label": "Bayar yang paling galak dulu",
+          "effects": {
+            "dompet": -150000,
+            "kewarasan": -6,
+            "hoki": 3
+          },
+          "result": "Sisanya nunggu gajian. Pengingatnya nggak mau nunggu."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-7",
+      "title": "Tagihan air naik dua kali",
+      "description": "Tagihan air bulan ini dua kali lipat. Kamu tinggal sendiri dan jarang mandi lama.",
+      "choices": [
+        {
+          "label": "Cek pipa satu-satu",
+          "effects": {
+            "kewarasan": -6,
+            "hoki": 5
+          },
+          "result": "Ketemu: keran taman bocor sejak Lebaran."
+        },
+        {
+          "label": "Bayar, curigai diri sendiri",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": 3
+          },
+          "result": "Lunas. Kamu mulai mandi pakai timer."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-8",
+      "title": "Kartu yang nggak kamu ingat",
+      "description": "Bank kirim info biaya kartu tahunan. Kamu baru sadar punya kartu itu.",
+      "choices": [
+        {
+          "label": "Tutup kartunya",
+          "effects": {
+            "kewarasan": -7,
+            "hoki": 5
+          },
+          "result": "Harus datang ke kantor cabang. Nomor antreanmu 142."
+        },
+        {
+          "label": "Biarin, anggap iuran kenangan",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": 4
+          },
+          "result": "Kartunya tetap di laci. Kalian nggak pernah ngobrol."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-9",
+      "title": "Layar retak, asuransi lupa",
+      "description": "Layar HP retak. Ternyata tiap bulan kamu bayar asuransi HP, tapi nggak pernah baca syaratnya.",
+      "choices": [
+        {
+          "label": "Klaim asuransi",
+          "effects": {
+            "kewarasan": -8,
+            "hoki": 6
+          },
+          "result": "Klaim diterima setelah 11 formulir. Layar baru, minus mata nambah."
+        },
+        {
+          "label": "Servis di konter pinggir jalan",
+          "effects": {
+            "dompet": -150000,
+            "kewarasan": 5
+          },
+          "result": "Beres sejam. Layarnya agak kekuningan, tapi kesannya hangat."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-10",
+      "title": "Kepotong dua kali",
+      "description": "Tagihan internet kepotong dua kali. CS bilang “mohon ditunggu 3x24 jam”. Nggak ada yang tahu sekarang jam keberapa.",
+      "choices": [
+        {
+          "label": "Telepon CS tiap hari",
+          "effects": {
+            "kewarasan": -7,
+            "dompet": 100000
+          },
+          "result": "Uang balik di hari keempat. Kamu hafal lagu tunggunya."
+        },
+        {
+          "label": "Ikhlas, lanjut hidup",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": 6
+          },
+          "result": "Uangnya hilang. Waktumu selamat."
+        }
+      ]
+    }
+  ]
+}

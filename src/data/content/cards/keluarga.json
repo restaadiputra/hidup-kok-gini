@@ -1,0 +1,238 @@
+{
+  "category": "keluarga",
+  "cards": [
+    {
+      "id": "keluarga-1",
+      "title": "Sidang meja makan",
+      "description": "Baru nyendok sayur, keluarga udah buka rapat soal rencana lima tahunmu.",
+      "choices": [
+        {
+          "label": "Alihkan ke soal resep sambal",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": 4
+          },
+          "result": "Semua debat soal terasi. Kamu makan dengan tenang."
+        },
+        {
+          "label": "Jelasin rencana hidup pakai grafik",
+          "effects": {
+            "kewarasan": -8,
+            "hoki": 6
+          },
+          "result": "Grafiknya naik. Harapan keluarga naik lebih cepat."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-2",
+      "title": "Keponakan pinjam HP",
+      "description": "HP-mu dipinjam sebentar. Sekarang galerinya isi 87 foto plafon dan satu video lubang hidung.",
+      "choices": [
+        {
+          "label": "Ajak bikin video bareng",
+          "effects": {
+            "relasi": 12,
+            "kewarasan": -5
+          },
+          "result": "Judul film pertamanya: Semut Jalan di Keramik. Durasi 40 menit."
+        },
+        {
+          "label": "Tebus HP pakai jajan",
+          "effects": {
+            "dompet": -50000,
+            "kewarasan": 6
+          },
+          "result": "Negosiasi sukses. Foto plafonnya kamu simpan buat kenang-kenangan."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-3",
+      "title": "Titipan pakai tabel",
+      "description": "Keluarga kirim daftar titipan. Ada kolom merek, ukuran, sama “kalau bisa gratis”.",
+      "choices": [
+        {
+          "label": "Beliin sebisanya",
+          "effects": {
+            "dompet": -250000,
+            "relasi": 14
+          },
+          "result": "Kamu disambut hangat. Lebih tepatnya, kopermu."
+        },
+        {
+          "label": "Bawa satu kue buat semua",
+          "effects": {
+            "dompet": -75000,
+            "relasi": 5,
+            "kewarasan": 4
+          },
+          "result": "Kuenya dipotong jadi 30. Adil, tipis, penuh drama."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-4",
+      "title": "Teknisi keluarga",
+      "description": "Pulang mau istirahat, disambut tiga HP lemot dan satu remote TV. “Kamu kan anak komputer.”",
+      "choices": [
+        {
+          "label": "Beresin satu-satu",
+          "effects": {
+            "relasi": 12,
+            "kewarasan": -8
+          },
+          "result": "Remote-nya cuma butuh baterai. Kamu butuh cuti tambahan."
+        },
+        {
+          "label": "Ajarin sambil ngemil",
+          "effects": {
+            "relasi": 7,
+            "kewarasan": -3
+          },
+          "result": "Tutorialnya ditulis di buku. Besok tetap telepon kamu."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-5",
+      "title": "Wadah es krim di freezer",
+      "description": "Di freezer ada wadah es krim. Kamu buka dengan semangat. Isinya ikan tongkol.",
+      "choices": [
+        {
+          "label": "Beliin es krim buat serumah",
+          "effects": {
+            "dompet": -100000,
+            "relasi": 10,
+            "kewarasan": 5
+          },
+          "result": "Semua senang. Ibu langsung ngetag wadah kosongnya."
+        },
+        {
+          "label": "Masak ikannya bareng Ibu",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -3,
+            "hoki": 3
+          },
+          "result": "Gagal makan cokelat, berhasil bikin sambal."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-6",
+      "title": "Kaleng biskuit di meja tamu",
+      "description": "Kaleng biskuit legendaris masih tersegel. Isinya bisa biskuit, bisa rengginang, bisa benang jahit.",
+      "choices": [
+        {
+          "label": "Buka dengan penuh keyakinan",
+          "effects": {
+            "hoki": 8,
+            "kewarasan": -4
+          },
+          "result": "Isinya rengginang. Masih renyah, jadi kamu anggap menang."
+        },
+        {
+          "label": "Tunggu Ibu yang buka",
+          "effects": {
+            "relasi": 6,
+            "hoki": -4
+          },
+          "result": "Isinya benang dan kancing dari 2009. Kamu disuruh jahit celana."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-7",
+      "title": "Arisan keluarga, sesi tanya jawab",
+      "description": "Arisan baru mulai. Tante belum duduk, pertanyaan pertama udah keluar: “Kapan nyusul?”",
+      "choices": [
+        {
+          "label": "Jawab “doain aja, Tante”",
+          "effects": {
+            "relasi": 6,
+            "kewarasan": -5
+          },
+          "result": "Tante mendoakan panjang. Lalu ngasih nomor anak temannya."
+        },
+        {
+          "label": "Balik tanya soal liburan Tante",
+          "effects": {
+            "kewarasan": 8,
+            "relasi": -6
+          },
+          "result": "Tante cerita liburan ke Bali, lengkap 200 foto. Pertanyaan tadi lupa."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-8",
+      "title": "Kelebihan satu nol",
+      "description": "Mau transfer uang belanja ke Ibu, ternyata kelebihan satu nol. Ibu langsung balas: “Makasih ya, Nak.”",
+      "choices": [
+        {
+          "label": "Ikhlasin aja",
+          "effects": {
+            "dompet": -300000,
+            "relasi": 14
+          },
+          "result": "Ibu beli kulkas baru. Kamu dapat foto kulkasnya dari tujuh sudut."
+        },
+        {
+          "label": "Jelasin pelan-pelan",
+          "effects": {
+            "relasi": -6,
+            "kewarasan": 4
+          },
+          "result": "Ibu paham. Tapi seminggu penuh dia kirim stiker sedih."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-9",
+      "title": "PR matematika kelas enam",
+      "description": "Adik minta dibantu PR matematika kelas enam. Kamu baca soalnya, lalu diam cukup lama.",
+      "choices": [
+        {
+          "label": "Pura-pura ngetes dia dulu",
+          "effects": {
+            "kewarasan": 5,
+            "relasi": -4
+          },
+          "result": "Akhirnya dia yang ngajarin kamu. Kamu bilang itu metode."
+        },
+        {
+          "label": "Belajar bareng dari video",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -6
+          },
+          "result": "PR selesai jam sebelas malam. Kalian sama-sama paham KPK sekarang."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-10",
+      "title": "Foto keluarga, sekali lagi",
+      "description": "Foto keluarga pas Lebaran. Tiap selesai, ada yang bilang “sekali lagi, tadi aku merem”. Udah 17 kali.",
+      "choices": [
+        {
+          "label": "Jadi tukang foto aja",
+          "effects": {
+            "relasi": 8,
+            "hoki": -4
+          },
+          "result": "Fotonya bagus semua. Kamu nggak ada di satu pun."
+        },
+        {
+          "label": "Pasang timer, lari ke barisan",
+          "effects": {
+            "hoki": 6,
+            "kewarasan": -5
+          },
+          "result": "Kamu masuk frame dalam posisi setengah lari. Itu yang dicetak besar."
+        }
+      ]
+    }
+  ]
+}

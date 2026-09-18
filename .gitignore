@@ -1,0 +1,21 @@
+node_modules/
+dist/
+*.local
+*.log
+.DS_Store
+artifacts/
+
+# Local editors and AI-assisted development tools. These directories contain
+# machine-specific configuration, caches, prompts, and generated working data.
+.idea/
+.agents/
+.ai/
+.aider*
+.claude/
+.codex/
+.continue/
+.cursor/
+.gemini/
+.impeccable/
+.roo/
+.windsurf/
