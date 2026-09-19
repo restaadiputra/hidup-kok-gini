@@ -26,8 +26,8 @@
   position: sticky;
   top: 0;
   z-index: 3;
-  margin: calc(var(--dialog-pad) * -1) calc(var(--dialog-pad) * -1) 14px;
-  padding: var(--dialog-pad) var(--dialog-pad) 0;
+  margin: calc(var(--dialog-pad) * -1) calc(var(--dialog-pad) * -1) 8px;
+  padding: var(--dialog-pad) var(--dialog-pad) 7px;
   background: var(--paper);
   transition: box-shadow 180ms ease;
 }
