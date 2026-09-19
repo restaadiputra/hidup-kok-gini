@@ -36,9 +36,6 @@ export function ResolvedPanel({
       </h3>
       <p>{resolution}</p>
       <Effects effects={effects} />
-      <span className="small-note">
-        Ini perubahan yang masuk. Kewarasan, Relasi, dan Hoki dibatasi 0–100.
-      </span>
       <button className="primary-button" onClick={() => ready && onNext()}>
         {finalTurn ? "Lihat hasil akhir" : "Lanjut giliran"}
         <Icon name="arrow" size={19} />
