@@ -30,7 +30,7 @@
 }
 .brand-subtitle {
   position: absolute;
-  left: 52px;
+  left: 49px;
   bottom: 0;
   color: var(--muted);
   font-family: "Roboto Mono", monospace;
@@ -45,10 +45,9 @@
   height: 36px;
   display: block;
   flex: none;
-  margin-right: -4px;
+  margin-right: -7px;
   image-rendering: pixelated;
-  transform: translateY(-5px) rotate(-8deg);
-  filter: drop-shadow(0 3px 0 var(--edge));
+  transform: translateY(-5px);
 }
 .site-header nav {
   display: flex;
@@ -78,7 +77,7 @@
     height: 32px;
   }
   .brand-subtitle {
-    left: 46px;
+    left: 43px;
     top: 40px;
     bottom: auto;
     font-family: Roboto, sans-serif;
@@ -104,7 +103,7 @@
     height: 28px;
   }
   .brand-subtitle {
-    left: 40px;
+    left: 37px;
   }
   .site-header nav {
     gap: 6px;
@@ -146,7 +145,7 @@
     padding-bottom: 15px;
   }
   .brand-subtitle {
-    left: 36px;
+    left: 33px;
     top: 37px;
     bottom: auto;
   }

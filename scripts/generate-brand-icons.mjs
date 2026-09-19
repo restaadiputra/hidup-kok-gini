@@ -13,10 +13,10 @@ const PALETTE = {
 
 const pixels = Array.from({ length: SIZE }, () => Array(SIZE).fill("."));
 
-function rect(x, y, width, height, colour) {
+function rect(x, y, width, height, colour, canvas = pixels) {
   for (let row = y; row < y + height; row += 1) {
     for (let column = x; column < x + width; column += 1) {
-      pixels[row][column] = colour;
+      canvas[row][column] = colour;
     }
   }
 }
@@ -29,6 +29,14 @@ rect(3, 4, 2, 9, "H");
 rect(9, 4, 2, 9, "H");
 rect(5, 8, 4, 2, "H");
 
+// In the wordmark, the sun sits above H instead of competing with the i.
+const headerPixels = pixels.map((row) => [...row]);
+rect(6, 0, 3, 3, "Y", headerPixels);
+rect(7, 1, 1, 1, "S", headerPixels);
+for (const [x, y] of [[5, 1], [9, 1], [7, 3]]) {
+  rect(x, y, 1, 1, "Y", headerPixels);
+}
+
 // A compact, square-rayed sun remains legible at favicon size.
 rect(12, 2, 3, 3, "Y");
 rect(13, 3, 1, 1, "S");
@@ -36,14 +44,14 @@ for (const [x, y] of [[13, 0], [10, 3], [15, 3], [13, 6]]) {
   rect(x, y, 1, 1, "Y");
 }
 
-function svg({ ink = PALETTE.H, transparent = false } = {}) {
+function svg({ ink = PALETTE.H, transparent = false, canvas = pixels } = {}) {
   const shapes = Object.keys(PALETTE)
     .filter((colour) => colour !== ".")
     .map((colour) => {
       const commands = [];
       for (let y = 0; y < SIZE; y += 1) {
         for (let x = 0; x < SIZE; x += 1) {
-          if (pixels[y][x] === colour) commands.push(`M${x} ${y}h1v1h-1z`);
+          if (canvas[y][x] === colour) commands.push(`M${x} ${y}h1v1h-1z`);
         }
       }
       return `<path fill="${colour === "H" ? ink : PALETTE[colour]}" d="${commands.join("")}"/>`;
@@ -100,8 +108,8 @@ function png(size) {
 }
 
 writeFileSync("public/favicon.svg", svg());
-writeFileSync("public/logo.svg", svg({ transparent: true }));
-writeFileSync("public/logo-dark.svg", svg({ ink: "#ffeede", transparent: true }));
+writeFileSync("public/logo.svg", svg({ transparent: true, canvas: headerPixels }));
+writeFileSync("public/logo-dark.svg", svg({ ink: "#ffeede", transparent: true, canvas: headerPixels }));
 for (const [filename, size] of [
   ["public/icon-192.png", 192],
   ["public/icon-512.png", 512],
