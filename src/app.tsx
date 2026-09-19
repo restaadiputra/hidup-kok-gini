@@ -174,7 +174,7 @@ export default function App() {
       ) : null}
       {handoff ? <HandoffBeat key={handoff.turn} player={handoff.player} onDone={dismissHandoff} /> : null}
       {dialogsAllowed && modal === "rules" ? <RulesDialog onClose={closeModal} /> : null}
-      {dialogsAllowed && modal === "restart" ? <RestartDialog onCancel={closeModal} onConfirm={startOver} /> : null}
+      {modal === "restart" ? <RestartDialog onCancel={closeModal} onConfirm={startOver} /> : null}
       {dialogsAllowed && modal === "squad" ? (
         <SquadDialog players={players} activeId={activeId} onClose={closeModal} />
       ) : null}
