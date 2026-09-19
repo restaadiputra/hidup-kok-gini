@@ -68,15 +68,130 @@
   box-shadow: 0 4px 0 -1px var(--edge);
   animation: result-pop 0.25s ease-out;
 }
+/* Whose report this is and where they finished. */
+.ending-who {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  /* Clear the badge pinned to the card's top edge. */
+  margin-top: 6px;
+  padding-right: 4px;
+}
+.ending-rank {
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.ending-who strong {
+  font-size: 15px;
+  font-weight: 850;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ending-points {
+  margin-left: auto;
+  font-size: 15px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ending-standing {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.ending-label {
+  display: block;
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+}
 .ending-card h3 {
   font-size: 20px;
   line-height: 1.1;
-  margin: 9px 0;
+  margin: 5px 0 7px;
 }
-.ending-card p {
+.ending-text {
   font-size: 11px;
   color: var(--muted);
   line-height: 1.65;
+}
+/* The rule that picked this title, spelled out. */
+.ending-why {
+  display: flex;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 8px 9px;
+  border: 1.5px dashed var(--edge);
+  border-radius: 8px;
+  background: var(--paper);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.ending-why svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.ending-why b {
+  font-weight: 800;
+}
+/* The score, part by part, so the ranking can be checked by eye. */
+.score-breakdown {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  margin: 0;
+  border: 2px solid var(--edge);
+  border-radius: 10px;
+  background: var(--raised);
+  box-shadow: 0 3px 0 -1px var(--edge);
+  overflow: hidden;
+}
+.score-breakdown > div {
+  display: grid;
+  align-content: space-between;
+  gap: 3px;
+  padding: 7px 8px;
+  border-right: 1px dashed var(--line);
+  min-width: 0;
+}
+.score-breakdown dt {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.score-breakdown dt svg {
+  flex-shrink: 0;
+}
+.score-breakdown dd {
+  margin: 0;
+  display: grid;
+  font-size: 16px;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.score-breakdown dd small {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.score-breakdown > .score-total {
+  border-right: 0;
+  background: var(--fixed);
+  color: var(--fixed-ink);
+}
+.score-breakdown > .score-total dt {
+  color: var(--fixed-ink);
 }
 .score-formula {
   font-size: 11px;
@@ -107,8 +222,25 @@
   .ending-card h3 {
     font-size: 21px;
   }
-  .ending-card p {
+  .ending-text,
+  .ending-standing,
+  .ending-why {
     font-size: 12px;
+  }
+  .score-breakdown {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .score-breakdown > div {
+    border-bottom: 1px dashed var(--line);
+  }
+  .score-breakdown > div:nth-child(2n) {
+    border-right: 0;
+  }
+  .score-breakdown > .score-total {
+    grid-column: 1 / -1;
+    border-bottom: 0;
+    grid-template-columns: 1fr auto;
+    align-items: center;
   }
   .score-formula {
     font-size: 10px;
