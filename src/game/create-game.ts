@@ -33,6 +33,8 @@ export function createGame(names: string[], seed: number): GameState {
     eventId: null,
     choiceEffects: [],
     drawn: [],
+    recentThemes: [],
+    suddenEventSeen: false,
     resolution: "",
     lastEffects: {},
     payday: false,

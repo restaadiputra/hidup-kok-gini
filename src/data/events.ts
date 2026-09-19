@@ -18,6 +18,8 @@ import { DataError } from "./parse/data-error";
 import { assertStatusRefs, assertUniqueIds, parseDeck } from "./parse/parse-cards";
 import { COLLECTOR_CARDS, KRISIS_CARDS } from "./special-decks";
 import { STATUSES } from "./statuses";
+import { SUDDEN_EVENTS } from "./sudden-events";
+import { BONUS_EVENTS } from "./bonus-events";
 
 // This order is part of the save format: seeded draws index into it, so it
 // must match categories.json, and reordering or adding cards needs a new save version.
@@ -43,10 +45,10 @@ if (Object.keys(DECKS).join() !== CATEGORY_IDS.join())
 
 export const EVENTS: EventCard[] = CATEGORY_IDS.flatMap((category) =>
   parseDeck(DECKS[category], category),
-);
+).concat(BONUS_EVENTS);
 assertStatusRefs(EVENTS, STATUSES);
 
-export const ALL_CARDS: EventCard[] = [...EVENTS, ...KRISIS_CARDS, ...COLLECTOR_CARDS];
+export const ALL_CARDS: EventCard[] = [...EVENTS, ...KRISIS_CARDS, ...COLLECTOR_CARDS, ...SUDDEN_EVENTS];
 assertUniqueIds(ALL_CARDS);
 export const EVENT_BY_ID = Object.fromEntries(
   ALL_CARDS.map((event) => [event.id, event]),

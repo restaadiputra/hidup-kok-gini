@@ -23,6 +23,11 @@ export const BALANCE_TARGETS = {
 export interface PlayerTrace { policy: Policy; dangerByJune: boolean; borrowed: boolean; crises: number; recovered: number }
 export interface GameTrace { final: GameState; actions: Action[]; players: PlayerTrace[]; comeback: boolean }
 export interface BalanceMetrics { games: number; players: number; crises: number; dangerByJune: number; borrowed: number; crisisRecovery: number; comeback: number }
+export interface DynamicsMetrics extends BalanceMetrics {
+  suddenCoverage: number;
+  averageScoreSpread: number;
+  averageRecentThemeCount: number;
+}
 
 export function openChoices(state: GameState): number[] {
   const player = state.players[state.currentPlayer];
@@ -124,4 +129,33 @@ export function missedTargets(metrics: BalanceMetrics): string[] {
     const [low, high] = BALANCE_TARGETS[key]; const value = metrics[key];
     return value < low || value > high ? [`${key} ${value.toFixed(3)} not in ${low}–${high}`] : [];
   });
+}
+
+/** A compact, reproducible health report for balance playtests. */
+export function measureDynamics(gamesPerSize = 100): DynamicsMetrics {
+  const games: GameTrace[] = [];
+  for (const count of [2, 3, 4]) for (let g = 0; g < gamesPerSize; g++) {
+    const policies = Array.from({ length: count }, (_, i) => POLICIES[(g + i) % POLICIES.length]);
+    games.push(simulateGame(NAMES.slice(0, count), (g * 7919 + count * 104_729) >>> 0, policies));
+  }
+  const base = measureFromGames(games);
+  const spreads = games.map(({ final }) => {
+    const scores = final.players.map(score);
+    return Math.max(...scores) - Math.min(...scores);
+  });
+  return {
+    ...base,
+    suddenCoverage: games.filter(({ final }) => final.suddenEventSeen === true).length / games.length,
+    averageScoreSpread: spreads.reduce((sum, value) => sum + value, 0) / spreads.length,
+    averageRecentThemeCount: games.reduce((sum, { final }) => sum + (final.recentThemes?.length ?? 0), 0) / games.length,
+  };
+}
+
+function measureFromGames(games: GameTrace[]): BalanceMetrics {
+  const players = games.flatMap((game) => game.players);
+  const crises = players.reduce((sum, p) => sum + p.crises, 0);
+  const recovered = players.reduce((sum, p) => sum + p.recovered, 0);
+  return { games: games.length, players: players.length, crises,
+    dangerByJune: share(players, (p) => p.dangerByJune), borrowed: share(players, (p) => p.borrowed),
+    crisisRecovery: crises ? recovered / crises : 1, comeback: share(games, (game) => game.comeback) };
 }

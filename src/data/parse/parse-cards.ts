@@ -1,5 +1,5 @@
 import { BOUNDED_STATS } from "../../game/stats";
-import type { Choice, Crisis, DeckId, EventCard, StatRequirement, StatusCatalog } from "../../game/types";
+import type { Choice, Crisis, DeckId, EffectTarget, EventCard, StatRequirement, StatusCatalog } from "../../game/types";
 import { DataError } from "./data-error";
 import { parseEffects } from "./parse-effects";
 import { expectArray, expectInteger, expectOneOf, expectRecord, expectText, expectTextList } from "./primitives";
@@ -7,6 +7,7 @@ import { expectArray, expectInteger, expectOneOf, expectRecord, expectText, expe
 const CRISES: readonly Crisis[] = ["burnout", "apes"];
 const optionalText = (value: unknown, path: string) => value === undefined ? null : expectText(value, path);
 const optionalList = (value: unknown, path: string) => value === undefined ? [] : expectTextList(value, path);
+const TARGETS: readonly EffectTarget[] = ["self", "all", "others"];
 
 function parseRequirement(value: unknown, path: string): StatRequirement {
   if (value === undefined) return {};
@@ -32,6 +33,7 @@ function parseChoice(value: unknown, path: string): Choice {
     gains: optionalList(fields.gains, `${path}.gains`),
     clears: optionalList(fields.clears, `${path}.clears`),
     tags: optionalList(fields.tags, `${path}.tags`),
+    target: fields.target === undefined ? "self" : expectOneOf(fields.target, TARGETS, `${path}.target`),
   };
 }
 
@@ -47,6 +49,7 @@ function parseCard(value: unknown, deck: DeckId, path: string): EventCard {
     title: expectText(fields.title, `${path}.title`), description: expectText(fields.description, `${path}.description`),
     choices: choices.map((choice, i) => parseChoice(choice, `${path}.choices[${i}]`)),
     requiresStatus: optionalText(fields.requiresStatus, `${path}.requiresStatus`), crisis,
+    theme: optionalText(fields.theme, `${path}.theme`) ?? deck,
   };
 }
 

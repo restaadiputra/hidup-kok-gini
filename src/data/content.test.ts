@@ -8,6 +8,7 @@ import { INITIAL_STATS } from "./players";
 import { HELP_TAG } from "../game/status-ids";
 import type { Choice } from "../game/types";
 import { COLLECTOR_CARDS, KRISIS_CARDS } from "./special-decks";
+import { SUDDEN_EVENTS } from "./sudden-events";
 
 const SPECIAL_CARDS = [...KRISIS_CARDS, ...COLLECTOR_CARDS];
 
@@ -66,10 +67,10 @@ test("every joke follows the spelling and anti-slop rules in docs/copy-guide.md"
   assert.deepEqual(failures, [], "\n" + failures.join("\n"));
 });
 
-test("each category file holds ten cards with unique ids and titles", () => {
+test("each category file holds at least eighteen cards with unique ids and titles", () => {
   const playable = Object.keys(CATEGORIES).filter((key) => key !== "gajian" && key !== "kejutan");
   for (const category of playable)
-    assert.equal(EVENTS.filter((event) => event.category === category).length, 10, category);
+    assert.ok(EVENTS.filter((event) => event.category === category).length >= 18, category);
   assert.equal(new Set(EVENTS.map((event) => event.id)).size, EVENTS.length, "duplicate id");
   assert.equal(new Set(EVENTS.map((event) => event.title.toLowerCase())).size, EVENTS.length, "duplicate title");
 });
@@ -140,18 +141,14 @@ test("no full sentence is reused anywhere in the deck", () => {
   assert.deepEqual(repeats, [], "\n" + repeats.join("\n"));
 });
 
-test("140 original cards cover every requested category, with valid choices and unique IDs", () => {
-  assert.equal(EVENTS.length, 140);
+test("expanded card pool covers every requested category, with valid choices and unique IDs", () => {
+  assert.equal(EVENTS.length, 252);
   assert.equal(new Set(EVENTS.map((event) => event.id)).size, EVENTS.length);
   assert.equal(new Set(EVENTS.map((event) => event.title)).size, EVENTS.length);
   for (const category of Object.keys(CATEGORIES).filter(
     (key) => !["gajian", "kejutan"].includes(key),
   )) {
-    assert.equal(
-      EVENTS.filter((event) => event.category === category).length,
-      10,
-      category,
-    );
+    assert.ok(EVENTS.filter((event) => event.category === category).length >= 18, category);
   }
   for (const event of EVENTS) {
     assert.ok(event.description.length > 20);
@@ -165,4 +162,10 @@ test("140 original cards cover every requested category, with valid choices and 
       }
     }
   }
+});
+
+test("expanded pool carries audience themes and table-wide hooks", () => {
+  assert.ok(EVENTS.filter((event) => event.theme === "gen-z").length >= 14);
+  assert.ok(EVENTS.filter((event) => event.theme === "gen-alpha").length >= 14);
+  assert.ok([...EVENTS, ...SUDDEN_EVENTS].some((event) => event.choices.some((choice) => choice.target === "all")));
 });

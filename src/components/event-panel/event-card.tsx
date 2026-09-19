@@ -38,6 +38,11 @@ export function EventCard({
                 <strong>{choice.label}</strong>
                 <Icon name="arrow" size={17} />
               </span>
+              {choice.target !== "self" ? (
+                <span className="choice-target">
+                  {choice.target === "all" ? "EFEK KE SEMUA PEMAIN" : "EFEK KE PEMAIN LAIN"}
+                </span>
+              ) : null}
               <Effects effects={choiceEffects[index]} />
             </button>
           ))}

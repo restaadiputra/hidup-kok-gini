@@ -16,6 +16,7 @@ export type BoundedStat = "kewarasan" | "relasi" | "hoki";
 export type MoneyStat = "dompet" | "hutang";
 export type Stats = Record<Stat, number>;
 export type StatRequirement = Partial<Record<BoundedStat, number>>;
+export type EffectTarget = "self" | "all" | "others";
 export type StatusTrigger =
   | { stat: BoundedStat; atMost: number; clearAbove: number }
   | { stat: "hutang"; above: number };
@@ -46,6 +47,7 @@ export interface Choice {
   gains: string[];
   clears: string[];
   tags: string[];
+  target?: EffectTarget;
 }
 export interface EventCard {
   id: string;
@@ -55,6 +57,8 @@ export interface EventCard {
   choices: Choice[];
   requiresStatus: string | null;
   crisis: Crisis | null;
+  /** Broad content theme used to avoid consecutive joke beats. */
+  theme: string;
 }
 export interface Tile extends TileMeta {
   category: TileKind;
@@ -124,6 +128,8 @@ export interface GameState {
   eventId: string | null;
   choiceEffects: Partial<Stats>[];
   drawn: string[];
+  recentThemes?: string[];
+  suddenEventSeen?: boolean;
   resolution: string;
   lastEffects: Partial<Stats>;
   payday: boolean;
@@ -138,7 +144,7 @@ export type Action =
   | { type: "CHOOSE"; index: number }
   | { type: "NEXT" };
 export interface Session {
-  version: 5;
+  version: 6;
   names: string[];
   seed: number;
   actions: Action[];

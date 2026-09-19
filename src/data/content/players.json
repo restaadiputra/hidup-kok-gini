@@ -1,9 +1,9 @@
 {
   "initialStats": {
     "dompet": 2500000,
-    "kewarasan": 60,
-    "relasi": 40,
-    "hoki": 50,
+    "kewarasan": 45,
+    "relasi": 25,
+    "hoki": 35,
     "hutang": 0
   },
   "colors": [

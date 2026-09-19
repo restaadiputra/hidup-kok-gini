@@ -35,7 +35,7 @@ export function PaydayDialog({ name, paycheck, steps, onContinue }: {
   const loss = paycheck.net < 0;
   const hasDebtLines = paycheck.interest > 0 || paycheck.installment > 0 || paycheck.statusEffects.length > 0;
   return (
-    <Dialog title={`Selamat, ${name}! Gajian!`} onClose={proceed} dismissible={false}>
+    <Dialog title={`Selamat, ${name}! Gajian akhir bulan!`} onClose={proceed} dismissible={false}>
       <div className="paycheck">
         <dl className="paycheck-lines">
           <Line label="Gaji masuk" amount={`+${rupiah(paycheck.salary)}`} why="Akhirnya ada notifikasi yang ditunggu." />
@@ -75,7 +75,7 @@ export function PaydayDialog({ name, paycheck, steps, onContinue }: {
         {loss ? <p className="paycheck-hint">Kalau Dompet nggak cukup, sisanya jadi Hutang.</p> : null}
         <div className="paycheck-foot">
           <button className="primary-button" onClick={proceed}>
-            {steps > 0 ? `Lanjut ${steps} langkah` : "Lanjut ambil kartu"}
+            {steps > 0 ? `Lanjut ${steps} langkah` : "Lanjut ke bulan berikutnya"}
             <Icon name="arrow" size={18} />
           </button>
         </div>

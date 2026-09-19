@@ -6,21 +6,21 @@
   "burnout": {
     "label": "Burnout",
     "icon": "brain",
-    "trigger": { "stat": "kewarasan", "atMost": 0, "clearAbove": 20 }
+    "trigger": { "stat": "kewarasan", "atMost": 10, "clearAbove": 25 }
   },
   "ghosted": {
     "label": "Di-ghosting semua orang",
     "icon": "chat",
-    "trigger": { "stat": "relasi", "atMost": 0, "clearAbove": 20 }
+    "trigger": { "stat": "relasi", "atMost": 10, "clearAbove": 25 }
   },
   "apes": {
     "label": "Lagi apes",
     "icon": "dice",
-    "trigger": { "stat": "hoki", "atMost": 0, "clearAbove": 20 }
+    "trigger": { "stat": "hoki", "atMost": 10, "clearAbove": 25 }
   },
   "dicari-debt-collector": {
     "label": "Dicari debt collector",
     "icon": "receipt",
-    "trigger": { "stat": "hutang", "above": 1000000 }
+    "trigger": { "stat": "hutang", "above": 800000 }
   }
 }

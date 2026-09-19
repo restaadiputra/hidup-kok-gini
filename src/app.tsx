@@ -160,7 +160,7 @@ export default function App() {
         <PaydayDialog
           name={player.name}
           paycheck={game.paydayDetails}
-          steps={game.pendingPosition!}
+          steps={game.pendingPosition ?? 0}
           onContinue={acknowledgePayday}
         />
       ) : null}

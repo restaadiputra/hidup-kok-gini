@@ -58,3 +58,23 @@ export function randomizeEffects(effects: Partial<Stats>, seed: number) {
   }
   return { rng, effects: rolled };
 }
+
+// Negative outcomes are intentionally sharper than positive outcomes. This
+// keeps a “safe” choice from preserving every bar near 100 for twelve months,
+// while the written card values remain easy for content authors to reason about.
+export function applyPressure(effects: Partial<Stats>): Partial<Stats> {
+  const pressured: Partial<Stats> = {};
+  for (const [key, value] of Object.entries(effects)) {
+    if (value === undefined) {
+      pressured[key as Stat] = value;
+      continue;
+    }
+    const stat = key as Stat;
+    const factor = value < 0
+      ? (isMoney(stat) ? 1.6 : 3)
+      : (isMoney(stat) ? 0.8 : 0.5);
+    const step = isMoney(stat) ? MONEY_STEP : 1;
+    pressured[stat] = Math.sign(value) * Math.ceil((Math.abs(value) * factor) / step) * step;
+  }
+  return pressured;
+}

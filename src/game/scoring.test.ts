@@ -5,7 +5,7 @@ import { ending, score } from "./scoring";
 
 test("score counts every stat and subtracts hutang from Dompet with floor rounding", () => {
   const p = createGame(["A", "B"], 1).players[0];
-  assert.equal(score(p), 175);
+  assert.equal(score(p), 130);
   assert.equal(
     score({
       ...p,

@@ -49,6 +49,11 @@ export function useGame() {
 
   function continuePayday() {
     if (!game || !player || game.phase !== "payday" || running.current) return;
+    if (game.pendingPosition === null) {
+      dispatch({ type: "PLAY", action: { type: "CONTINUE_PAYDAY" } });
+      setSheetOpen(true);
+      return;
+    }
     const steps = game.pendingPosition!;
     const dice = game.dice!;
     dispatch({ type: "PLAY", action: { type: "CONTINUE_PAYDAY" } });

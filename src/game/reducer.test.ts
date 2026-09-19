@@ -8,23 +8,22 @@ import { createGame } from "./create-game";
 import { choiceAvailability } from "./availability";
 import { applyWithDebt, borrowCost } from "./debt";
 import { random } from "./random";
+import { rollPaycheck, settlePayday } from "./payday";
 import { gameReducer } from "./reducer";
 import { replaySession } from "./replay";
 import { ending, score } from "./scoring";
 import type { Action, Session } from "./types";
 
-test("payday deductions vary within range, match balances and reset next turn", () => {
+test("monthly paycheck rolls vary within range and settle exactly", () => {
   const amounts = new Set<number>();
   const reasons = new Set<string>();
   const salaries = new Set<number>();
   const livingCosts = new Set<number>();
   let rareCount = 0;
   for (let seed = 0; seed < 1000; seed++) {
-    const initial = createGame(["A", "B"], seed * 7919);
-    initial.players[0].position = BOARD.length - 1;
-    const rolled = gameReducer(initial, { type: "ROLL" });
-    const receipt = rolled.paydayDetails!;
-    assert.ok(receipt);
+    const initial = createGame(["A", "B"], seed * 7919).players[0];
+    const rolled = rollPaycheck(seed * 7919);
+    const receipt = rolled.paycheck;
     const range = receipt.rare ? ECONOMY.rareBill : ECONOMY.deduction;
     assert.ok(receipt.deduction >= range.min && receipt.deduction <= range.max);
     assert.equal(receipt.deduction % range.step, 0);
@@ -37,33 +36,15 @@ test("payday deductions vary within range, match balances and reset next turn", 
     assert.equal(receipt.net < 0, receipt.rare);
     if (receipt.rare) {
       rareCount++;
-      const broke = { ...initial, players: initial.players.map((p, i) => i === 0 ? { ...p, stats: { ...p.stats, dompet: 0 } } : p) };
-      const unlucky = gameReducer(broke, { type: "ROLL" });
-      assert.equal(unlucky.players[0].stats.dompet, 0, "Dompet never goes below zero");
-      assert.equal(unlucky.players[0].stats.hutang, borrowCost(-receipt.net) + unlucky.paydayDetails!.interest);
-      assert.equal(unlucky.paydayDetails!.installment, 0);
-      assert.equal(unlucky.phase, "payday", "debt does not skip the paycheck or eliminate a player");
+      const broke = { ...initial, stats: { ...initial.stats, dompet: 0 } };
+      const unlucky = settlePayday(broke, receipt).player;
+      assert.equal(unlucky.stats.dompet, 0, "Dompet never goes below zero");
+      assert.equal(unlucky.stats.hutang, borrowCost(-receipt.net) + settlePayday(broke, receipt).paycheck.interest);
     }
-    assert.equal(rolled.players[0].stats.dompet - initial.players[0].stats.dompet, receipt.net);
-    assert.ok(rolled.log[0].includes(receipt.reason));
     amounts.add(receipt.deduction);
     reasons.add(receipt.reason);
     salaries.add(receipt.salary);
     livingCosts.add(receipt.livingCost);
-    assert.equal(rolled.phase, "payday");
-    assert.equal(rolled.players[0].position, 0);
-    for (const action of [{ type: "CHOOSE", index: 0 }, { type: "NEXT" }, { type: "ROLL" }] as Action[])
-      assert.equal(gameReducer(rolled, action), rolled);
-    const continued = gameReducer(rolled, { type: "CONTINUE_PAYDAY" });
-    assert.equal(continued.players[0].position, rolled.pendingPosition);
-    assert.equal(continued.players[0].stats.dompet, rolled.players[0].stats.dompet);
-    assert.equal(continued.rng, rolled.rng);
-    assert.equal(gameReducer(continued, { type: "CONTINUE_PAYDAY" }), continued);
-    const resolved = gameReducer(continued, { type: "CHOOSE", index: 0 });
-    assert.deepEqual(resolved.paydayDetails, receipt);
-    const next = gameReducer(resolved, { type: "NEXT" });
-    assert.equal(next.paydayDetails, null);
-    assert.deepEqual(next.choiceEffects, []);
   }
   assert.ok(amounts.size > 20);
   assert.equal(reasons.size, PAYDAY_REASONS.common.length + PAYDAY_REASONS.rare.length);
@@ -115,14 +96,14 @@ test("phase guards prevent duplicate rolls, choices, invalid choices and prematu
   assert.equal(gameReducer(resolved, { type: "ROLL" }), resolved);
 });
 
-test("landing or passing GAJIAN pays exactly once, with no salary on initial START", () => {
+test("movement crosses GAJIAN without triggering an extra paycheck", () => {
   const initial = createGame(["A", "B"], 1);
   assert.equal(initial.players[0].stats.dompet, INITIAL_STATS.dompet);
   const rollValue = Math.floor(random(initial.rng).value * 6) + 1;
-  for (const [position, expectedPayday] of [
-    [0, false],
-    [BOARD.length - rollValue, true],
-    [BOARD.length - 1, true],
+  for (const position of [
+    0,
+    BOARD.length - rollValue,
+    BOARD.length - 1,
   ] as const) {
     const state = {
       ...initial,
@@ -131,24 +112,10 @@ test("landing or passing GAJIAN pays exactly once, with no salary on initial STA
       ),
     };
     const next = gameReducer(state, { type: "ROLL" });
-    assert.equal(next.payday, expectedPayday);
-    assert.equal(
-      next.players[0].position,
-      expectedPayday ? 0 : (position + rollValue) % BOARD.length,
-    );
-    assert.equal(
-      next.players[0].stats.dompet,
-      INITIAL_STATS.dompet + (next.paydayDetails?.net ?? 0),
-    );
-    if (expectedPayday) {
-      assert.ok(next.paydayDetails);
-      assert.equal(next.pendingPosition, (position + rollValue) % BOARD.length);
-      assert.equal(next.paydayDetails.net, next.paydayDetails.salary - next.paydayDetails.livingCost - next.paydayDetails.deduction);
-      const continued = gameReducer(next, { type: "CONTINUE_PAYDAY" });
-      assert.equal(continued.phase, "event");
-      assert.equal(continued.players[0].position, (position + rollValue) % BOARD.length);
-      assert.equal(continued.players[0].stats.dompet, next.players[0].stats.dompet);
-    } else assert.equal(next.paydayDetails, null);
+    assert.equal(next.payday, false);
+    assert.equal(next.players[0].position, (position + rollValue) % BOARD.length);
+    assert.equal(next.players[0].stats.dompet, INITIAL_STATS.dompet);
+    assert.equal(next.paydayDetails, null);
     assert.ok(next.eventId);
     assert.equal(next.players[1], state.players[1]);
     assert.equal(gameReducer(next, { type: "ROLL" }), next);
@@ -180,7 +147,7 @@ for (const count of [2, 3, 4]) {
     for (let seed = 0; seed < 30; seed++) {
       const names = Array.from({ length: count }, (_, i) => `Pemain ${i + 1}`);
       let state = createGame(names, seed);
-      const session: Session = { version: 5, names, seed, actions: [] };
+      const session: Session = { version: 6, names, seed, actions: [] };
       const turns = Array(count).fill(0) as number[];
       let salaryCount = 0;
       for (let turn = 0; turn < 12 * count; turn++) {
@@ -198,14 +165,6 @@ for (const count of [2, 3, 4]) {
           "reducer must not mutate input",
         );
         assert.deepEqual(gameReducer(before, rollAction), state);
-        if (state.payday) {
-          salaryCount++;
-          assert.equal(state.phase, "payday");
-          assert.deepEqual(replaySession(session)?.game, state, "refresh keeps the pending paycheck");
-          const continueAction: Action = { type: "CONTINUE_PAYDAY" };
-          state = gameReducer(state, continueAction);
-          session.actions.push(continueAction);
-        }
         assert.equal(state.phase, "event");
         const category =
           BOARD[state.players[state.currentPlayer].position].category;
@@ -230,6 +189,14 @@ for (const count of [2, 3, 4]) {
         turns[state.currentPlayer]++;
         state = gameReducer(state, { type: "NEXT" });
         session.actions.push({ type: "NEXT" });
+        if (turn % count === count - 1) {
+          salaryCount++;
+          assert.equal(state.phase, "payday");
+          assert.deepEqual(replaySession(session)?.game, state, "refresh keeps the pending monthly paycheck");
+          const continueAction: Action = { type: "CONTINUE_PAYDAY" };
+          state = gameReducer(state, continueAction);
+          session.actions.push(continueAction);
+        }
         for (const p of state.players) {
           assert.ok(p.position >= 0 && p.position < BOARD.length);
           for (const stat of ["kewarasan", "relasi", "hoki"] as const)
@@ -238,7 +205,7 @@ for (const count of [2, 3, 4]) {
       }
       assert.equal(state.phase, "finished");
       assert.equal(state.month, 12);
-      assert.ok(salaryCount > 0);
+      assert.equal(salaryCount, 12);
       assert.deepEqual(turns, Array(count).fill(12));
       const restored = replaySession(JSON.parse(JSON.stringify(session)));
       assert.deepEqual(restored?.game, state);

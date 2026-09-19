@@ -7,7 +7,7 @@ import { drawEvent } from "./deck";
 import { addToLog, choiceMessage, rollMessage } from "./log-messages";
 import { rollPaycheck, settlePayday } from "./payday";
 import { random, rollDie } from "./random";
-import { appliedChanges, randomizeEffects } from "./stats";
+import { appliedChanges, applyPressure, randomizeEffects } from "./stats";
 import { clearStatuses, expireStatuses, gainStatuses, statusChanges, syncAutomatic } from "./statuses";
 import type { Action, GameState, Paycheck, Player } from "./types";
 
@@ -17,32 +17,41 @@ function updatePlayer(state: GameState, change: (player: Player) => Player): Pla
   return state.players.map((p) => (p.id === state.currentPlayer ? change(p) : p));
 }
 
+function applyChoiceToPlayer(player: Player, effects: Partial<import("./types").Stats>, state: GameState, choice: import("./types").Choice): Player {
+  const stats = applyWithDebt(player.stats, effects);
+  const isActive = player.id === state.currentPlayer;
+  const statuses = isActive
+    ? syncAutomatic(clearStatuses(gainStatuses(player.statuses, choice.gains, state.month), choice.clears), stats)
+    : syncAutomatic(player.statuses, stats);
+  return { ...player, stats, statuses };
+}
+
 function rollTurn(state: GameState): GameState {
   const player = currentPlayer(state);
   const dieRoll = random(state.rng);
   const dice = rollDie(dieRoll.value);
   const distance = player.position + dice;
   const position = distance % BOARD.length;
-  const payday = distance >= BOARD.length;
+  // Salary is settled once per calendar month, not when a pawn happens to
+  // cross a board lap. The gajian tile is now just another encounter tile.
+  const payday = false;
   const tile = BOARD[position];
+  // A game must contain at least one genuine table shock. If nobody reaches
+  // Plot twist naturally by the second round, force the next encounter to use
+  // that pool; the seed still determines which shock and which choice values.
+  const forcedSudden = !state.suddenEventSeen && state.turn >= state.players.length * 2;
+  const encounterTile = forcedSudden ? BOARD.find((candidate) => candidate.category === "kejutan")! : tile;
 
   let rng = dieRoll.rng;
   let mover = player;
   let paydayDetails: Paycheck | null = null;
-  if (payday) {
-    const rolled = rollPaycheck(rng);
-    rng = rolled.rng;
-    const settled = settlePayday(player, rolled.paycheck);
-    mover = settled.player;
-    paydayDetails = settled.paycheck;
-  }
 
-  const draw = drawEvent(state.drawn, tile, rng, mover);
+  const draw = drawEvent(state.drawn, encounterTile, rng, mover, undefined, undefined, state.recentThemes ?? [], forcedSudden);
   rng = draw.rng;
   const choiceEffects = draw.event.choices.map((choice) => {
     const rolled = randomizeEffects(choice.effects, rng);
     rng = rolled.rng;
-    return rolled.effects;
+    return applyPressure(rolled.effects);
   });
 
   return {
@@ -51,20 +60,43 @@ function rollTurn(state: GameState): GameState {
     rng,
     choiceEffects,
     paydayDetails,
-    // Passing GAJIAN parks the pawn there until the paycheck is acknowledged.
-    phase: payday ? "payday" : "event",
-    pendingPosition: payday ? position : null,
+    phase: "event",
+    pendingPosition: null,
     eventId: draw.event.id,
     drawn: draw.drawn,
+    recentThemes: draw.recentThemes,
+    suddenEventSeen: state.suddenEventSeen || draw.event.id.startsWith("sudden-"),
     payday,
     resolution: "",
     lastEffects: {},
-    players: updatePlayer(state, () => ({ ...mover, position: payday ? 0 : position })),
-    log: addToLog(state.log, rollMessage(player.name, dice, tile.label, paydayDetails)),
+    players: updatePlayer(state, () => ({ ...mover, position })),
+    log: addToLog(state.log, rollMessage(player.name, dice, encounterTile.label, paydayDetails)),
   };
 }
 
-function continuePayday(state: GameState, destination: number): GameState {
+function continuePayday(state: GameState, destination: number | null): GameState {
+  if (destination === null) {
+    if (state.month === TOTAL_MONTHS) return { ...state, phase: "finished", payday: false, paydayDetails: null };
+    const month = state.month + 1;
+    return {
+      ...state,
+      currentPlayer: 0,
+      month,
+      phase: "ready",
+      payday: false,
+      paydayDetails: null,
+      eventId: null,
+      choiceEffects: [],
+      resolution: "",
+      lastEffects: {},
+      pendingPosition: null,
+      players: state.players.map((p) => {
+        const statuses = expireStatuses(p.statuses, month);
+        return statuses === p.statuses ? p : { ...p, statuses };
+      }),
+      turn: state.turn + 1,
+    };
+  }
   return {
     ...state,
     phase: "event",
@@ -86,25 +118,56 @@ function choose(state: GameState, eventId: string, index: number): GameState {
     stats,
   );
   const borrowed = availability.kind === "debt" ? availability.added : 0;
+  const target = choice.target ?? "self";
+  const players = state.players.map((p) => {
+    const applies = target === "all" || (target === "others" ? p.id !== state.currentPlayer : p.id === state.currentPlayer);
+    return applies ? applyChoiceToPlayer(p, effects, state, choice) : p;
+  });
   return {
     ...state,
     phase: "resolved",
     resolution: choice.result,
     lastEffects: appliedChanges(player.stats, stats, effects),
-    players: updatePlayer(state, (p) => ({ ...p, stats, statuses })),
-    log: addToLog(state.log, choiceMessage(player.name, choice, borrowed, statusChanges(player.statuses, statuses))),
+    players,
+    log: addToLog(
+      state.log,
+      choiceMessage(player.name, choice, borrowed, statusChanges(player.statuses, statuses)) +
+        (target === "all" ? " Efeknya kena satu meja." : target === "others" ? " Yang lain ikut kena." : ""),
+    ),
   };
 }
 
 const isEndOfRound = (state: GameState) => state.currentPlayer === state.players.length - 1;
 
+function settleMonth(state: GameState): GameState {
+  let rng = state.rng;
+  let paydayDetails: Paycheck | null = null;
+  const players = state.players.map((player, index) => {
+    const rolled = rollPaycheck(rng);
+    rng = rolled.rng;
+    const settled = settlePayday(player, rolled.paycheck);
+    if (index === state.currentPlayer) paydayDetails = settled.paycheck;
+    return settled.player;
+  });
+  return {
+    ...state,
+    rng,
+    players,
+    phase: "payday",
+    payday: true,
+    paydayDetails,
+    pendingPosition: null,
+    log: addToLog(state.log, `Akhir bulan ${state.month}: semua pemain menerima gajian dan membayar biaya hidup.`),
+  };
+}
+
 // The last player's December turn ends the game.
 export const isFinalTurn = (state: GameState) => isEndOfRound(state) && state.month === TOTAL_MONTHS;
 
 function nextTurn(state: GameState): GameState {
-  if (isFinalTurn(state)) return { ...state, phase: "finished" };
   const endOfRound = isEndOfRound(state);
-  const month = state.month + (endOfRound ? 1 : 0);
+  if (endOfRound) return settleMonth(state);
+  const month = state.month;
   return {
     ...state,
     currentPlayer: (state.currentPlayer + 1) % state.players.length,
@@ -134,7 +197,7 @@ export function gameReducer(state: GameState, action: Action): GameState {
     case "ROLL":
       return state.phase === "ready" ? rollTurn(state) : state;
     case "CONTINUE_PAYDAY":
-      return state.phase === "payday" && state.pendingPosition !== null
+      return state.phase === "payday"
         ? continuePayday(state, state.pendingPosition)
         : state;
     case "CHOOSE":

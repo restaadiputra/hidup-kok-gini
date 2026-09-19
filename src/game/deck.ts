@@ -4,16 +4,18 @@ import { COLLECTOR_CARDS, KRISIS_CARDS } from "../data/special-decks";
 import { pickIndex, random } from "./random";
 import { APES, BURNOUT, DEBT_COLLECTOR } from "./status-ids";
 import { hasStatus } from "./statuses";
+import { SUDDEN_EVENTS } from "../data/sudden-events";
 import type { EventCard, Player, Tile } from "./types";
 
-export interface Decks { events: EventCard[]; krisis: EventCard[]; collector: EventCard[] }
-const DEFAULT_DECKS: Decks = { events: EVENTS, krisis: KRISIS_CARDS, collector: COLLECTOR_CARDS };
+export interface Decks { events: EventCard[]; krisis: EventCard[]; collector: EventCard[]; sudden?: EventCard[] }
+const DEFAULT_DECKS: Decks = { events: EVENTS, krisis: KRISIS_CARDS, collector: COLLECTOR_CARDS, sudden: SUDDEN_EVENTS };
 const isWildcard = (tile: Tile) => tile.category === "gajian" || tile.category === "kejutan";
 
 function choosePool(player: Player, tile: Tile, rng: number, decks: Decks, collectorChance: number) {
   if (hasStatus(player, BURNOUT)) return { pool: decks.krisis.filter((card) => card.crisis === "burnout"), rng };
   if (tile.category === "kejutan" && hasStatus(player, APES))
     return { pool: decks.krisis.filter((card) => card.crisis === "apes"), rng };
+  if (tile.category === "kejutan" && decks.sudden?.length) return { pool: decks.sudden, rng };
   let next = rng;
   if (hasStatus(player, DEBT_COLLECTOR)) {
     const roll = random(rng);
@@ -27,8 +29,11 @@ function choosePool(player: Player, tile: Tile, rng: number, decks: Decks, colle
 export function drawEvent(
   drawn: string[], tile: Tile, rng: number, player: Player,
   decks: Decks = DEFAULT_DECKS, collectorChance: number = ECONOMY.debt.collectorChance,
+  recentThemes: string[] = [],
+  forceSudden = false,
 ) {
-  const { pool, rng: poolRng } = choosePool(player, tile, rng, decks, collectorChance);
+  const selected = forceSudden && decks.sudden?.length ? { pool: decks.sudden, rng } : choosePool(player, tile, rng, decks, collectorChance);
+  const { pool, rng: poolRng } = selected;
   let history = drawn;
   let available = pool.filter((event) => !history.includes(event.id));
   if (available.length === 0) {
@@ -37,7 +42,16 @@ export function drawEvent(
     available = pool;
   }
   if (available.length === 0) throw new Error(`No eligible cards for ${tile.category}`);
+  // Prefer a theme that has not appeared in the last two cards. The fallback
+  // remains deterministic and guarantees progress when a small pool is left.
+  const fresh = available.filter((event) => !recentThemes.includes(event.theme));
+  const candidates = fresh.length ? fresh : available;
   const draw = random(poolRng);
-  const event = available[pickIndex(draw.value, available.length)];
-  return { event, drawn: [...history, event.id], rng: draw.rng };
+  const event = candidates[pickIndex(draw.value, candidates.length)];
+  return {
+    event,
+    drawn: [...history, event.id],
+    recentThemes: [...recentThemes, event.theme].slice(-2),
+    rng: draw.rng,
+  };
 }

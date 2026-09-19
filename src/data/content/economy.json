@@ -17,13 +17,13 @@
   "rareChance": 0.08,
   "rareBill": {
     "min": 1750000,
-    "max": 2750000,
+    "max": 3000000,
     "step": 50000
   },
   "debt": {
     "feeRate": 0.2,
     "interestRate": 0.1,
     "installmentMax": 500000,
-    "collectorChance": 0.35
+    "collectorChance": 0.4
   }
 }
