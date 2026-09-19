@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hidup-kok-gini.pages.dev/sitemap.xml
