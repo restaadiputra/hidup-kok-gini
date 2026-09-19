@@ -51,6 +51,15 @@ function Rules({ onClose }: { onClose: () => void }) {
           bermain. Refresh aman, hapus data browser = mulai dari nol.
         </p>
       </div>
+      <a
+        className="rules-source"
+        href="https://github.com/restaadiputra/hidup-kok-gini"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Kode terbuka di GitHub
+        <Icon name="arrow" size={16} />
+      </a>
       <button className="primary-button" onClick={onClose}>
         Paham. Gas aja dulu <Icon name="arrow" size={18} />
       </button>
