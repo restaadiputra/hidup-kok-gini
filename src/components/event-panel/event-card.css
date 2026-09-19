@@ -91,8 +91,10 @@
     box-shadow 0.15s;
 }
 .choice-all {
-  background: var(--fixed);
-  color: var(--fixed-ink);
+  /* Keep the shared-player signal, but let the card surface stay readable. */
+  background: var(--paper);
+  background: color-mix(in srgb, var(--fixed) 24%, var(--paper));
+  color: var(--ink);
   border-color: var(--edge);
   box-shadow:
     0 4px 0 -1px var(--edge),
@@ -104,7 +106,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.24;
+  opacity: 0.08;
   background: repeating-linear-gradient(
     -45deg,
     transparent 0 12px,
@@ -116,10 +118,11 @@
   z-index: 1;
 }
 .choice-all:hover {
-  background: var(--fixed);
+  background: var(--paper);
+  background: color-mix(in srgb, var(--fixed) 30%, var(--paper));
 }
 .choice-all .choice-top > svg {
-  color: var(--fixed-ink);
+  color: var(--ink);
 }
 .choice-target {
   display: flex;
@@ -132,7 +135,7 @@
   line-height: 1.35;
 }
 .choice-target-all {
-  color: var(--fixed-ink);
+  color: var(--ink);
   font-weight: 850;
 }
 .choice:hover {
