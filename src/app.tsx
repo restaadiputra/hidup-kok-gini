@@ -21,6 +21,7 @@ import { SetupForm } from "./components/setup-form/setup-form";
 import { SiteHeader } from "./components/site-header/site-header";
 import { SquadDialog } from "./components/squad-dialog/squad-dialog";
 import { Timeline } from "./components/timeline/timeline";
+import { UpdateBanner } from "./components/update-banner/update-banner";
 import { BOARD } from "./data/categories";
 import { EVENT_BY_ID } from "./data/events";
 import { isFinalTurn } from "./game/reducer";
@@ -121,6 +122,7 @@ export default function App() {
         canRestart={!!game}
       />
       <main className="game-main">
+        <UpdateBanner />
         <NoticeBanner notice={session.notice} saveError={session.saveError} onDismiss={session.dismissNotice} />
         <Timeline month={game?.month ?? 1} finished={finished} />
         <div className="play-layout">
