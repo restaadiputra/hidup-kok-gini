@@ -54,10 +54,14 @@ function Rules({ onClose }: { onClose: () => void }) {
         </p>
       </div>
       <div className="rules-footer">
-        <p className="rules-credit">
-          Terinspirasi <a href="https://wnisimulator.hecticholic.com/" target="_blank" rel="noopener noreferrer">WNI Simulator</a> karya Hecticholic.
-          Bukan produk resmi dan tidak berafiliasi.
-        </p>
+        <section className="rules-disclaimer" aria-labelledby="rules-disclaimer-title">
+          <h3 id="rules-disclaimer-title">Disclaimer</h3>
+          <p>
+            Terinspirasi dari <a href="https://wnisimulator.hecticholic.com/" target="_blank" rel="noopener noreferrer">WNI Simulator</a> karya Hecticholic.
+            Game ini bukan produk resmi dan tidak berafiliasi dengan pembuatnya.
+          </p>
+          <p>Lelucon dalam game ini dibuat dengan bantuan AI dan hanya untuk lucu-lucuan.</p>
+        </section>
         <a
           className="rules-source"
           href="https://github.com/restaadiputra/hidup-kok-gini"
