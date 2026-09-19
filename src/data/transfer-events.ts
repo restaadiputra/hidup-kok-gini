@@ -26,7 +26,7 @@ export const TRANSFER_EVENTS: EventCard[] = [
     title: "Patungan receh jadi serius",
     description: "Teman satu meja menemukan promo paket keluarga. Semua bisa hemat kalau transfernya tidak lupa.",
     choices: [
-      { label: "Ikut patungan", effects: { dompet: 50_000, relasi: 4 }, result: "Promo berhasil. Transfer terakhir datang besok.", requires: {}, requiresStatus: null, blockedByStatus: null, gains: [], clears: [], tags: [], target: "all" },
+      { label: "Patungan paket keluarga", effects: { dompet: 50_000, relasi: 4 }, result: "Promo berhasil. Transfer terakhir datang besok.", requires: {}, requiresStatus: null, blockedByStatus: null, gains: [], clears: [], tags: [], target: "all" },
       { label: "Lewat dulu", effects: { relasi: -4, hoki: 2 }, result: "Kamu aman dari admin patungan, tapi kehilangan promo.", requires: {}, requiresStatus: null, blockedByStatus: null, gains: [], clears: [], tags: [], target: "self" },
     ],
   },

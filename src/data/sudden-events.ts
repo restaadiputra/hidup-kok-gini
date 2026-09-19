@@ -10,7 +10,7 @@ export const SUDDEN_EVENTS: EventCard[] = [
     requiresStatus: null,
     choices: [
       { label: "Aku traktir", effects: { dompet: -180_000, relasi: 8 }, result: "Kamu jadi sponsor resmi malam ini.", requires: {}, requiresStatus: null, blockedByStatus: null, gains: [], clears: [], tags: [], target: "self" },
-      { label: "Patungan satu meja", effects: { dompet: -75_000, relasi: -3 }, result: "Semua transfer. Satu orang mengirim bukti transfer berupa stiker.", requires: {}, requiresStatus: null, blockedByStatus: null, gains: [], clears: [], tags: [], target: "all" },
+      { label: "Patungan camilan bareng", effects: { dompet: -75_000, relasi: -3 }, result: "Camilan patungan. Satu orang mengirim bukti transfer berupa stiker.", requires: {}, requiresStatus: null, blockedByStatus: null, gains: [], clears: [], tags: [], target: "all" },
       { label: "Batal ikut", effects: { relasi: -8 }, result: "Kursimu dipakai tas. Tas itu tidak membalas chat.", requires: {}, requiresStatus: null, blockedByStatus: null, gains: [], clears: [], tags: [], target: "self" },
     ],
   },
