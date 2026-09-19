@@ -97,12 +97,6 @@ export function simulateGame(names: string[], seed: number, policies: Policy[], 
       policyRng = draw.rng;
       act({ type: "PAYDAY_CHOOSE", index: pickIndex(draw.value, state.paydayChoiceEffects?.length ?? 1) });
     }
-    else if (state.phase === "payday-event") {
-      const open = openChoices(state);
-      const picked = pick(policies[state.currentPlayer], state, open, policyRng);
-      policyRng = picked.rng;
-      act({ type: "CHOOSE", index: picked.index });
-    }
     else if (state.phase === "event") {
       const picked = pick(policies[state.currentPlayer], state, openChoices(state), policyRng);
       policyRng = picked.rng;

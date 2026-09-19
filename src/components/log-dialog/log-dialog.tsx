@@ -24,7 +24,7 @@ const KIND_COPY: Record<HistoryKind, { label: string; icon: string }> = {
 };
 
 function splitEffects(text: string): { detail: string; effects: string[] } {
-  const match = text.match(/ Dampak: (.+?)\.(?= (?:Ngutang|Status baru|Lepas dari|Efeknya|Yang lain|Event gajian bersama muncul)|$)/);
+  const match = text.match(/ Dampak: (.+?)\.(?= (?:Ngutang|Status baru|Lepas dari|Efeknya|Yang lain)|$)/);
   if (!match) return { detail: text, effects: [] };
   return {
     detail: text.replace(match[0], "").trim(),
@@ -52,12 +52,11 @@ function parseEntry(entry: string): HistoryItem {
   const payday = entry.match(/^(.+?) memilih (.+?) saat payday\.(.*)$/);
   if (payday) {
     const choice = splitEffects(payday[3].trim());
-    const shared = choice.detail.includes("Event gajian bersama muncul");
     return {
-      kind: shared ? "shared" : "payday",
-      label: shared ? KIND_COPY.shared.label : KIND_COPY.payday.label,
+      kind: "payday",
+      label: KIND_COPY.payday.label,
       title: `${payday[1]} memilih ${payday[2]}`,
-      detail: shared ? "Pilihan payday selesai. Event bersama muncul untuk semua pemain." : "Pilihan payday diterapkan ke dompet dan status pemain.",
+      detail: "Pilihan payday diterapkan ke dompet dan status pemain.",
       effects: choice.effects,
     };
   }

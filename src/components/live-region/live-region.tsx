@@ -4,7 +4,6 @@ import type { TurnMotion } from "../../hooks/use-turn-motion";
 
 function phaseAnnouncement(game: GameState): string {
   if (game.phase === "payday") return `Rekap bulan ${game.month}. Semua pemain menerima gaji dan biaya hidup dipotong.`;
-  if (game.phase === "payday-event") return "Event gajian bersama. Meja ikut menentukan nasibnya.";
   if (game.phase === "event") return EVENT_BY_ID[game.eventId!].title;
   if (game.phase === "resolved") return game.resolution;
   return "Siap lempar dadu.";

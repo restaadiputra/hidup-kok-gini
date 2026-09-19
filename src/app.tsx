@@ -47,9 +47,8 @@ export default function App() {
   const { game, player, finished, motion } = session;
   const players = game?.players ?? draft.previews;
   const activeId = game && !finished ? game.currentPlayer : null;
-  // The paycheck popover owns the screen until it is acknowledged.
-  // The native payday dialog already owns the screen. Other phases, including
-  // the shared payday event, should keep footer navigation usable.
+  // The payday dialog owns the screen until every player has chosen; every
+  // other phase keeps footer navigation usable.
   const dialogsAllowed = game?.phase !== "payday";
   const closeModal = () => setModal(null);
 
@@ -91,22 +90,12 @@ export default function App() {
             onChoose={session.choose}
           />
         ) : null}
-        {!motion && game.phase === "payday-event" ? (
-          <EventPanel
-            key={game.turn + "-payday-" + game.eventId}
-            dice={1}
-            tileLabel="Event gajian bersama"
-            event={EVENT_BY_ID[game.eventId!]}
-            choiceEffects={game.choiceEffects}
-            onChoose={session.choose}
-          />
-        ) : null}
         {!motion && game.phase === "resolved" ? (
           <ResolvedPanel
             key={game.turn}
             resolution={game.resolution}
             effects={game.lastEffects}
-            finalTurn={isFinalTurn(game) || (game.paydayEventId !== null && game.month === 12)}
+            finalTurn={isFinalTurn(game)}
             nextPlayerName={nextPlayer.name}
             onNext={session.next}
           />

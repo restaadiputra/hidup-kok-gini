@@ -106,7 +106,7 @@ export interface Player {
   stats: Stats;
   statuses: ActiveStatus[];
 }
-export type Phase = "ready" | "payday" | "payday-event" | "event" | "resolved" | "finished";
+export type Phase = "ready" | "payday" | "event" | "resolved" | "finished";
 export interface Paycheck {
   salary: number;
   livingCost: number;
@@ -137,7 +137,6 @@ export interface GameState {
   monthPaychecks?: Array<{ playerId: number; paycheck: Paycheck }>;
   paydayPlayer?: number;
   paydayChoiceEffects?: Partial<Stats>[];
-  paydayEventId?: string | null;
   pendingPosition: number | null;
   log: string[];
   turn: number;
@@ -149,7 +148,7 @@ export type Action =
   | { type: "CHOOSE"; index: number }
   | { type: "NEXT" };
 export interface Session {
-  version: 8;
+  version: 9;
   names: string[];
   seed: number;
   actions: Action[];

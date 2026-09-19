@@ -42,7 +42,6 @@ export function createGame(names: string[], seed: number): GameState {
     monthPaychecks: [],
     paydayPlayer: 0,
     paydayChoiceEffects: [],
-    paydayEventId: null,
     pendingPosition: null,
     log: [START_LOG],
     turn: 1,

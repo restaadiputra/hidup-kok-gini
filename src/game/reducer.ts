@@ -76,30 +76,39 @@ function rollTurn(state: GameState): GameState {
   };
 }
 
+// Payday closes the month: player 1 opens the next one with a roll, or
+// December's payday ends the game.
+function openNextMonth(state: GameState): GameState {
+  const closed = {
+    payday: false,
+    paydayDetails: null,
+    monthPaychecks: [],
+    paydayPlayer: 0,
+    paydayChoiceEffects: [],
+  };
+  if (state.month === TOTAL_MONTHS) return { ...state, ...closed, phase: "finished" };
+  const month = state.month + 1;
+  return {
+    ...state,
+    ...closed,
+    currentPlayer: 0,
+    month,
+    phase: "ready",
+    eventId: null,
+    choiceEffects: [],
+    resolution: "",
+    lastEffects: {},
+    pendingPosition: null,
+    players: state.players.map((p) => {
+      const statuses = expireStatuses(p.statuses, month);
+      return statuses === p.statuses ? p : { ...p, statuses };
+    }),
+    turn: state.turn + 1,
+  };
+}
+
 function continuePayday(state: GameState, destination: number | null): GameState {
-  if (destination === null) {
-    if (state.month === TOTAL_MONTHS) return { ...state, phase: "finished", payday: false, paydayDetails: null };
-    const month = state.month + 1;
-    return {
-      ...state,
-      currentPlayer: 0,
-      month,
-      phase: "ready",
-      payday: false,
-      paydayDetails: null,
-      monthPaychecks: [],
-      eventId: null,
-      choiceEffects: [],
-      resolution: "",
-      lastEffects: {},
-      pendingPosition: null,
-      players: state.players.map((p) => {
-        const statuses = expireStatuses(p.statuses, month);
-        return statuses === p.statuses ? p : { ...p, statuses };
-      }),
-      turn: state.turn + 1,
-    };
-  }
+  if (destination === null) return openNextMonth(state);
   return {
     ...state,
     phase: "event",
@@ -141,30 +150,13 @@ function choosePayday(state: GameState, index: number): GameState {
       log: addToLog(state.log, `${player.name} memilih ${option.label} saat payday.${effectsMessage(effects)}`),
     };
   }
-  const bonusTile = BOARD.find((candidate) => candidate.category === "gajian")!;
-  const draw = drawEvent(state.drawn, bonusTile, state.rng, players[0], undefined, undefined, state.recentThemes ?? []);
-  let rng = draw.rng;
-  const choiceEffects = draw.event.choices.map((choice) => {
-    const rolled = randomizeEffects(choice.effects, rng);
-    rng = rolled.rng;
-    return applyPressure(rolled.effects);
-  });
-  return {
+  // The last payday choice closes the month. No extra card is drawn here: it
+  // used to land on player 1 as a bonus turn right before their real one.
+  return openNextMonth({
     ...state,
     players,
-    currentPlayer: 0,
-    paydayPlayer: nextPlayer - 1,
-    paydayChoiceEffects: [],
-    paydayEventId: draw.event.id,
-    phase: "payday-event",
-    eventId: draw.event.id,
-    choiceEffects,
-    drawn: draw.drawn,
-    recentThemes: draw.recentThemes,
-    rng,
-    resolution: "",
-    log: addToLog(state.log, `${player.name} memilih ${option.label} saat payday.${effectsMessage(effects)} Event gajian bersama muncul.`),
-  };
+    log: addToLog(state.log, `${player.name} memilih ${option.label} saat payday.${effectsMessage(effects)}`),
+  });
 }
 
 function choose(state: GameState, eventId: string, index: number): GameState {
@@ -234,7 +226,6 @@ function settleMonth(state: GameState): GameState {
     monthPaychecks,
     paydayPlayer: 0,
     paydayChoiceEffects: options.effects,
-    paydayEventId: null,
     pendingPosition: null,
     log: addToLog(state.log, `Akhir bulan ${state.month}: semua pemain menerima gajian dan membayar biaya hidup. Ringkasan: ${paydaySummary}.`),
   };
@@ -244,32 +235,6 @@ function settleMonth(state: GameState): GameState {
 export const isFinalTurn = (state: GameState) => isEndOfRound(state) && state.month === TOTAL_MONTHS;
 
 function nextTurn(state: GameState): GameState {
-  if (state.payday && state.paydayEventId) {
-    if (state.month === TOTAL_MONTHS) return { ...state, phase: "finished", payday: false, paydayDetails: null, monthPaychecks: [] };
-    const month = state.month + 1;
-    return {
-      ...state,
-      currentPlayer: 0,
-      month,
-      phase: "ready",
-      payday: false,
-      paydayDetails: null,
-      monthPaychecks: [],
-      paydayPlayer: 0,
-      paydayChoiceEffects: [],
-      paydayEventId: null,
-      eventId: null,
-      choiceEffects: [],
-      resolution: "",
-      lastEffects: {},
-      pendingPosition: null,
-      players: state.players.map((p) => {
-        const statuses = expireStatuses(p.statuses, month);
-        return statuses === p.statuses ? p : { ...p, statuses };
-      }),
-      turn: state.turn + 1,
-    };
-  }
   const endOfRound = isEndOfRound(state);
   if (endOfRound) return settleMonth(state);
   const month = state.month;
@@ -291,7 +256,6 @@ function nextTurn(state: GameState): GameState {
     payday: false,
     paydayDetails: null,
     paydayChoiceEffects: [],
-    paydayEventId: null,
     pendingPosition: null,
     turn: state.turn + 1,
   };
@@ -310,7 +274,7 @@ export function gameReducer(state: GameState, action: Action): GameState {
     case "PAYDAY_CHOOSE":
       return state.phase === "payday" ? choosePayday(state, action.index) : state;
     case "CHOOSE":
-      return (state.phase === "event" || state.phase === "payday-event") && state.eventId ? choose(state, state.eventId, action.index) : state;
+      return state.phase === "event" && state.eventId ? choose(state, state.eventId, action.index) : state;
     case "NEXT":
       return state.phase === "resolved" ? nextTurn(state) : state;
   }
