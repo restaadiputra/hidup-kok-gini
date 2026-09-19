@@ -4,6 +4,17 @@ Game papan digital lokal tentang bertahan hidup selama satu tahun sebagai warga 
 
 `Hidup Kok Gini?` adalah proyek hobi independen untuk 2–4 pemain yang bermain bergantian di satu perangkat. Tidak ada akun, backend, transaksi uang sungguhan, iklan, atau layanan berbayar. Semua uang dan utang di dalam game bersifat virtual.
 
+## Tampilan
+
+<p align="center">
+  <img src="docs/screenshots/desktop-setup.png" alt="Layar awal di desktop: papan nasib dan pilihan jumlah pemain" width="49%">
+  <img src="docs/screenshots/desktop-card.png" alt="Kartu kehidupan Ukuran L versi boneka dengan dua pilihan di desktop" width="49%">
+</p>
+<p align="center">
+  <img src="docs/screenshots/mobile-setup.png" alt="Layar awal di HP" width="30%">
+  <img src="docs/screenshots/mobile-card.png" alt="Kartu kehidupan Tilang elektronik dengan dua pilihan di HP" width="30%">
+</p>
+
 ## Inspirasi
 
 Proyek ini terinspirasi oleh **[WNI Simulator](https://wnisimulator.hecticholic.com/)** karya Hecticholic, terutama gagasan menjadikan pengalaman sehari-hari orang Indonesia sebagai game papan satir. Situs resminya menggambarkan WNI Simulator sebagai board game satir yang terinspirasi situasi dan pengalaman sehari-hari orang Indonesia.
