@@ -5,7 +5,7 @@
   border: 2px solid var(--accent);
   border-radius: inherit;
   pointer-events: none;
-  animation: tile-touchdown 300ms ease-out both;
+  animation: tile-touchdown 450ms ease-out both;
 }
 .board-tile {
   position: relative;

@@ -37,7 +37,8 @@
   border-width: 1px;
 }
 .is-hopping {
-  animation: pawn-hop 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  /* Matches HOP_MS in use-turn-motion.ts. */
+  animation: pawn-hop 450ms cubic-bezier(0.16, 1, 0.3, 1) both;
   will-change: transform;
 }
 @media (max-width: 760px) and (min-height: 501px) {

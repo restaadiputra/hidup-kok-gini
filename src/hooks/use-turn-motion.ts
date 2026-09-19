@@ -20,8 +20,8 @@ export interface TurnMotion {
 
 export const ROLL_MS = 480;
 export const FOCUS_MS = 450;
-export const HOP_MS = 300;
-export const LANDING_MS = 650;
+export const HOP_MS = 450;
+export const LANDING_MS = 850;
 export const SETTLE_MS = 550;
 
 /** Stages where the pawn is hopping from tile to tile. */

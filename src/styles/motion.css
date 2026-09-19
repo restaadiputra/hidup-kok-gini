@@ -493,7 +493,7 @@
 /* ---- The board ------------------------------------------------------------ */
 /* Each tile the pawn touches dips under its weight. */
 .tile-landing {
-  animation: tile-dip 0.3s var(--spring);
+  animation: tile-dip 0.45s var(--spring);
 }
 .brand-mark {
   transition: transform 0.35s var(--spring);
@@ -530,7 +530,7 @@
 }
 .board-camera-landing .board-grid {
   transition-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
-  animation: camera-thud 650ms linear;
+  animation: camera-thud 850ms linear;
 }
 .board-camera-settling .board-grid {
   transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
@@ -541,12 +541,12 @@
 .is-landing {
   position: relative;
   z-index: 5;
-  animation: pawn-land 650ms both;
+  animation: pawn-land 850ms both;
   will-change: transform;
 }
 .tile-slam {
   z-index: 2;
-  animation: tile-slam 650ms both;
+  animation: tile-slam 850ms both;
 }
 @keyframes pawn-land {
   0% {
