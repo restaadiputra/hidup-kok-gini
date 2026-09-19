@@ -114,6 +114,18 @@
     opacity: 1;
   }
 }
+@keyframes choice-shared-pulse {
+  0%, 100% {
+    box-shadow:
+      0 4px 0 -1px var(--edge),
+      0 0 0 3px var(--accent);
+  }
+  50% {
+    box-shadow:
+      0 4px 0 -1px var(--edge),
+      0 0 0 6px transparent;
+  }
+}
 @keyframes card-drop {
   0% {
     transform: translateY(-25px) rotate(-7deg) scale(0.92);

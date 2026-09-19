@@ -4,6 +4,16 @@ import { Effects } from "../effects/effects";
 import { Icon } from "../icon/icon";
 import "./event-card.css";
 
+function targetCopy(target: EventData["choices"][number]["target"], label: string) {
+  if (target === "all") {
+    const lower = label.toLowerCase();
+    if (lower.includes("patungan")) return "Satu meja, satu tagihan. Yang belum transfer pura-pura sinyal hilang.";
+    if (lower.includes("ikut")) return "Satu meja ikut nimbrung. Admin grup siap mengingatkan.";
+    return "Satu meja ikut kena. Silakan saling tag di grup.";
+  }
+  return "Yang lain ikut kena. Tidak ada yang bisa pura-pura AFK.";
+}
+
 export function EventCard({
   event,
   choiceEffects,
@@ -30,7 +40,7 @@ export function EventCard({
         <div className="choices">
           {event.choices.map((choice, index) => (
             <button
-              className="choice"
+              className={`choice ${choice.target === "all" ? "choice-all" : ""}`}
               key={choice.label}
               onClick={() => onChoose(index)}
             >
@@ -39,8 +49,9 @@ export function EventCard({
                 <Icon name="arrow" size={17} />
               </span>
               {choice.target !== "self" ? (
-                <span className="choice-target">
-                  {choice.target === "all" ? "EFEK KE SEMUA PEMAIN" : "EFEK KE PEMAIN LAIN"}
+                <span className={`choice-target ${choice.target === "all" ? "choice-target-all" : ""}`}>
+                  {choice.target === "all" ? <Icon name="users" size={13} /> : null}
+                  {targetCopy(choice.target, choice.label)}
                 </span>
               ) : null}
               <Effects effects={choiceEffects[index]} />

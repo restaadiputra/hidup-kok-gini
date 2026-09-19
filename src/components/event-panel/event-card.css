@@ -76,6 +76,8 @@
   gap: 9px;
 }
 .choice {
+  position: relative;
+  overflow: hidden;
   width: 100%;
   text-align: left;
   padding: 11px;
@@ -87,6 +89,51 @@
     transform 0.15s,
     background 0.15s,
     box-shadow 0.15s;
+}
+.choice-all {
+  background: var(--fixed);
+  color: var(--fixed-ink);
+  border-color: var(--edge);
+  box-shadow:
+    0 4px 0 -1px var(--edge),
+    0 0 0 3px var(--accent);
+  animation: choice-shared-pulse 2.4s ease-in-out infinite;
+}
+.choice-all::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.24;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0 12px,
+    var(--fixed-ink) 12px 14px
+  );
+}
+.choice-all > * {
+  position: relative;
+  z-index: 1;
+}
+.choice-all:hover {
+  background: var(--fixed);
+}
+.choice-all .choice-top > svg {
+  color: var(--fixed-ink);
+}
+.choice-target {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+.choice-target-all {
+  color: var(--fixed-ink);
+  font-weight: 850;
 }
 .choice:hover {
   background: var(--active-bg);
