@@ -36,7 +36,7 @@ for (const [x, y] of [[13, 0], [10, 3], [15, 3], [13, 6]]) {
   rect(x, y, 1, 1, "Y");
 }
 
-function svg() {
+function svg({ ink = PALETTE.H, transparent = false } = {}) {
   const shapes = Object.keys(PALETTE)
     .filter((colour) => colour !== ".")
     .map((colour) => {
@@ -46,9 +46,10 @@ function svg() {
           if (pixels[y][x] === colour) commands.push(`M${x} ${y}h1v1h-1z`);
         }
       }
-      return `<path fill="${PALETTE[colour]}" d="${commands.join("")}"/>`;
+      return `<path fill="${colour === "H" ? ink : PALETTE[colour]}" d="${commands.join("")}"/>`;
     });
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges"><path fill="${PALETTE["."]}" d="M0 0h16v16H0z"/>${shapes.join("")}</svg>\n`;
+  const background = transparent ? "" : `<path fill="${PALETTE["."]}" d="M0 0h16v16H0z"/>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="crispEdges">${background}${shapes.join("")}</svg>\n`;
 }
 
 const crcTable = Uint32Array.from({ length: 256 }, (_, index) => {
@@ -99,6 +100,8 @@ function png(size) {
 }
 
 writeFileSync("public/favicon.svg", svg());
+writeFileSync("public/logo.svg", svg({ transparent: true }));
+writeFileSync("public/logo-dark.svg", svg({ ink: "#ffeede", transparent: true }));
 for (const [filename, size] of [
   ["public/icon-192.png", 192],
   ["public/icon-512.png", 512],

@@ -19,7 +19,7 @@ export function SiteHeader({
   return (
     <header className="site-header">
       <a href="./" className="brand" aria-label="Hidup Kok Gini? Beranda">
-        <img className="brand-mark" src="/favicon.svg" alt="" width="36" height="36" />
+        <img className="brand-mark" src={dark ? "/logo-dark.svg" : "/logo.svg"} alt="" width="36" height="36" />
         <span className="brand-copy">
           idup kok gini<span className="brand-question">?</span>
         </span>
