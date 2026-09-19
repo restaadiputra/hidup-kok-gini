@@ -4,7 +4,7 @@
     {
       "id": "drama-1",
       "title": "Salah pencet balas semua",
-      "description": "Email rahasia panitia makan siang kekirim ke satu kantor. Kamu disebut “tim bawa sendok”.",
+      "description": "Panitia makan siang salah klik “balas semua”. Satu kantor jadi tahu kamu cuma ditugasin bawa sendok.",
       "choices": [
         {
           "label": "Jalani tugas dengan serius",
@@ -12,7 +12,7 @@
             "dompet": -50000,
             "relasi": 12
           },
-          "result": "Sendok lengkap. Namamu disebut di sambutan."
+          "result": "Sendok lengkap 40 biji. Namamu disebut di sambutan, sebelum doa."
         },
         {
           "label": "Balas pribadi, luruskan",
@@ -21,14 +21,14 @@
             "hoki": 3,
             "relasi": -3
           },
-          "result": "Krisis selesai sebelum makan siang."
+          "result": "Kamu minta tugas lain. Sekarang kamu bawa sendok dan garpu."
         }
       ]
     },
     {
       "id": "drama-2",
       "title": "Tanaman meja masuk buletin",
-      "description": "Tanaman di mejamu masuk buletin kantor sebagai simbol produktivitas. Namamu salah ketik.",
+      "description": "Tanaman di mejamu masuk buletin kantor, katanya simbol produktivitas. Namamu salah ketik.",
       "choices": [
         {
           "label": "Rayakan prestasi tanamannya",
@@ -93,7 +93,7 @@
             "relasi": 8,
             "kewarasan": -4
           },
-          "result": "Bos dapat dua kue. Kamu dapat pelajaran baca tulisan kecil."
+          "result": "Bos dapat dua kue. Sekarang kamu baca tulisan kecil di semua makanan kantor."
         },
         {
           "label": "Ngaku, bantu siapin kejutan",
@@ -116,7 +116,7 @@
             "kewarasan": 10,
             "relasi": -4
           },
-          "result": "Cuti lanjut. Kamu cuti beneran."
+          "result": "Kamu balas satu kalimat, lalu mode pesawat. Pantainya terasa lebih biru."
         },
         {
           "label": "Bantu bentar, catat lembur",
@@ -131,7 +131,7 @@
     },
     {
       "id": "drama-6",
-      "title": "Gosip pantry mendadak cuaca",
+      "title": "Gosip berhenti pas kamu masuk",
       "description": "Di pantry lagi ada gosip panas. Pas kamu masuk, semua langsung ngomongin cuaca.",
       "choices": [
         {
@@ -195,7 +195,7 @@
             "hoki": 6,
             "relasi": -5
           },
-          "result": "Kamu dapat tumbler. Yang dapat sabun ternyata bos sendiri."
+          "result": "Kamu dapat tumbler. Sabunnya muter, akhirnya balik ke bos sendiri."
         }
       ]
     },

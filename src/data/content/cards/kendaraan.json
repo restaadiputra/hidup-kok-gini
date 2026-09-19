@@ -223,7 +223,7 @@
           "result": "Dia ganti pakai uang receh semua. Kamu hitung sambil menahan diri."
         },
         {
-          "label": "Ikhlasin aja",
+          "label": "Ikhlasin, anggap sumbangan bensin",
           "effects": {
             "relasi": 8,
             "dompet": -35000

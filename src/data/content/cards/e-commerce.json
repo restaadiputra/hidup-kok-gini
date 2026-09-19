@@ -3,8 +3,8 @@
   "cards": [
     {
       "id": "ecommerce-1",
-      "title": "Gratis ongkir, beli rak",
-      "description": "Kurang satu barang lagi biar gratis ongkir. Barang tambahannya ternyata butuh rak baru.",
+      "title": "Hemat ongkir, boros belanja",
+      "description": "Kurang 12 ribu lagi biar gratis ongkir. Barang tambahan termurah harganya 80 ribu.",
       "choices": [
         {
           "label": "Tutup aplikasi dengan gagah",
@@ -12,7 +12,7 @@
             "kewarasan": 8,
             "hoki": 3
           },
-          "result": "Keranjangmu tetap penuh. Rumahmu nggak ikut penuh."
+          "result": "Ongkir kamu bayar. Anehnya, dompetmu malah lebih tebal."
         },
         {
           "label": "Checkout, anggap investasi",
@@ -21,7 +21,7 @@
             "kewarasan": 5,
             "hoki": -4
           },
-          "result": "Investasinya: nyari tempat buat naruh rak."
+          "result": "Ongkir hemat 10 ribu, belanja nambah 80 ribu. Matematika marketplace."
         }
       ]
     },

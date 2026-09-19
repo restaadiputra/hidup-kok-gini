@@ -12,7 +12,7 @@
             "dompet": -200000,
             "kewarasan": 4
           },
-          "result": "Pelajaran mahal: uji coba gratis ada tanggal habisnya."
+          "result": "Lunas setahun. Kamu buka aplikasinya sekali, buat nyari tombol berhenti."
         },
         {
           "label": "Minta refund dengan sabar",
@@ -44,7 +44,7 @@
             "kewarasan": -3,
             "hoki": 4
           },
-          "result": "Kamu jadi pengelola energi buat satu kipas angin."
+          "result": "Tiap malam kamu harus milih: kipas angin atau charger."
         }
       ]
     },
@@ -184,7 +184,7 @@
             "dompet": -100000,
             "kewarasan": 4
           },
-          "result": "Kartunya tetap di laci. Kalian nggak pernah ngobrol."
+          "result": "Biayanya jalan terus tiap tahun. Kartunya tetap nganggur di laci."
         }
       ]
     },
