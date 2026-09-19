@@ -231,6 +231,54 @@
           "result": "Iklan yang muncul: pinjaman online. HP-mu nggak percaya."
         }
       ]
+    },
+    {
+      "id": "internet-11",
+      "title": "Akunmu jualan jam tangan",
+      "description": "Akun medsosmu dibajak buat jualan jam tangan murah. Tante udah transfer, katanya “buat bantu kamu”.",
+      "choices": [
+        {
+          "label": "Urus pemulihan akun",
+          "effects": {
+            "kewarasan": -10,
+            "hoki": 5
+          },
+          "result": "Akunmu balik setelah verifikasi wajah 11 kali. Uang Tante nggak ikut balik."
+        },
+        {
+          "label": "Ganti uang Tante dulu",
+          "effects": {
+            "dompet": -150000,
+            "relasi": 8,
+            "kewarasan": -3
+          },
+          "result": "Tante lega. Dia nanya jam tangannya kapan dikirim, soalnya udah terlanjur suka."
+        }
+      ]
+    },
+    {
+      "id": "internet-12",
+      "title": "Jempol yang kelihatan marah",
+      "description": "Kamu kirim emoji jempol ke rekan Gen Z. Katanya itu kesannya marah. Kamu cuma mau bilang “oke”.",
+      "choices": [
+        {
+          "label": "Ganti pakai emoji senyum",
+          "effects": {
+            "kewarasan": -5,
+            "relasi": 5
+          },
+          "result": "Katanya emoji senyum lebih seram. Kamu tulis “oke.” pakai titik. Makin seram."
+        },
+        {
+          "label": "Kirim VN aja biar jelas",
+          "effects": {
+            "relasi": -4,
+            "hoki": -3,
+            "kewarasan": 3
+          },
+          "result": "Dia nggak buka VN, katanya itu kebiasaan orang tua. Kamu langsung pengin rebahan."
+        }
+      ]
     }
   ]
 }

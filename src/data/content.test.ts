@@ -179,7 +179,7 @@ test("no full sentence is reused anywhere in the deck", () => {
 });
 
 test("expanded card pool covers every requested category, with valid choices and unique IDs", () => {
-  assert.equal(EVENTS.length, 252);
+  assert.equal(EVENTS.length, 280);
   assert.equal(new Set(EVENTS.map((event) => event.id)).size, EVENTS.length);
   assert.equal(new Set(EVENTS.map((event) => event.title)).size, EVENTS.length);
   for (const category of Object.keys(CATEGORIES).filter(

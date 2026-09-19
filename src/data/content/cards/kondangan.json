@@ -233,6 +233,54 @@
           "result": "Telat setengah jam, tapi pas banget sama jam makan."
         }
       ]
+    },
+    {
+      "id": "kondangan-11",
+      "title": "Amplop 100 ribu tanpa nama",
+      "description": "Amplop udah masuk kotak, dan kamu baru sadar lupa nulis nama. Isinya 100 ribu, anonim.",
+      "choices": [
+        {
+          "label": "Bisikin ke penerima tamu",
+          "effects": {
+            "relasi": 6,
+            "kewarasan": -5
+          },
+          "result": "Besoknya di grup keluarga: “Makasih ya, yang ngasih seratus ribu tapi lupa nulis nama.”"
+        },
+        {
+          "label": "Biarin, anggap amal rahasia",
+          "effects": {
+            "hoki": 6,
+            "relasi": -4
+          },
+          "result": "Tuan rumah nggak tahu kamu datang. Seminggu kemudian: “Kok kemarin nggak kelihatan?”"
+        }
+      ]
+    },
+    {
+      "id": "kondangan-12",
+      "title": "Nikahan konsep intimate",
+      "description": "Undangannya bilang konsep intimate, cuma 50 tamu. Kamu datang, tamunya 800.",
+      "choices": [
+        {
+          "label": "Antre sabar, nikmati aja",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": -6,
+            "relasi": 6
+          },
+          "result": "Kamu salaman di jam kedua. Mempelai bilang, “Makasih udah datang ke acara kecil kami.”"
+        },
+        {
+          "label": "Titip amplop, pulang lewat samping",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": 6,
+            "relasi": -6
+          },
+          "result": "Kamu keluar lewat dapur katering. Dapat nasi kotak, lebih cepat dari prasmanan."
+        }
+      ]
     }
   ]
 }

@@ -81,7 +81,7 @@ Skor yang sama berbagi peringkat yang sama, termasuk juara bersama.
 
 ## Sistem utama
 
-- **140 kartu kategori** tentang kerja, keluarga, anak kos, kendaraan, nongkrong, belanja online, tagihan, tanggal tua, kondangan, grup WhatsApp, ojol, internet, mudik, dan drama kantor.
+- **168 kartu kategori** tentang kerja, keluarga, anak kos, kendaraan, nongkrong, belanja online, tagihan, tanggal tua, kondangan, grup WhatsApp, ojol, internet, mudik, dan drama kantor.
 - **Hutang:** kekurangan uang otomatis dipinjam dengan biaya; pendapatan biasa tidak melunasinya secara otomatis.
 - **Status:** pilihan dapat memberi atau menghapus status, status sementara kedaluwarsa saat bulan berganti, dan beberapa status memberi efek saat GAJIAN.
 - **Krisis:** burnout mengalihkan semua tarikan ke kartu krisis; apes mengubah kartu Plot twist; utang besar dapat memicu kunjungan debt collector.

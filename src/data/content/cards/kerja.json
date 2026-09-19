@@ -242,6 +242,55 @@
           "result": "Divisimu dapat nilai bahagia 98 persen. Ada tumpeng."
         }
       ]
+    },
+    {
+      "id": "kerja-11",
+      "title": "Promosi tanpa kenaikan gaji",
+      "description": "Kamu dipromosikan jadi “Senior Lead”. Gajinya sama, kerjaannya dua kali lipat, dan kartu namanya cetak sendiri.",
+      "choices": [
+        {
+          "label": "Terima, pamer di medsos",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -10,
+            "dompet": -50000
+          },
+          "result": "Ucapan selamat 200 like. Gajinya tetap segitu, tapi sekarang pakai huruf kapital."
+        },
+        {
+          "label": "Minta kenaikan gaji sekalian",
+          "effects": {
+            "dompet": 150000,
+            "relasi": -6,
+            "hoki": -3
+          },
+          "result": "Naik 150 ribu setelah tiga kali rapat. Kata HR, itu “angka yang kompetitif”."
+        }
+      ]
+    },
+    {
+      "id": "kerja-12",
+      "title": "“Kita di sini keluarga”",
+      "description": "Bos buka rapat dengan “Kita di sini keluarga.” Lima menit kemudian dia umumin lembur Sabtu tanpa uang makan.",
+      "choices": [
+        {
+          "label": "Datang Sabtu, bawa bekal",
+          "effects": {
+            "kewarasan": -10,
+            "relasi": 6
+          },
+          "result": "Keluarga asli nggak pernah nyuruh kamu revisi jam sembilan malam. Keluarga yang ini nyuruh."
+        },
+        {
+          "label": "Izin ada acara keluarga asli",
+          "effects": {
+            "kewarasan": 8,
+            "relasi": -6,
+            "hoki": -3
+          },
+          "result": "Diizinin, tapi muka bos kayak ditinggal nikah. Senin kamu dapat tugas paling nggak enak."
+        }
+      ]
     }
   ]
 }

@@ -4,7 +4,7 @@ import { MAX_PLAYERS } from "./limits";
 import { gameReducer } from "./reducer";
 import type { Action, GameState, Session } from "./types";
 
-export const SAVE_VERSION = 7;
+export const SAVE_VERSION = 8;
 const ACTIONS_PER_TURN = 6;
 const MAX_JOURNAL_LENGTH = MAX_PLAYERS * TOTAL_MONTHS * ACTIONS_PER_TURN;
 

@@ -235,6 +235,55 @@
           "result": "Aplikasinya nanya “yakin?” tiga kali. Kamu yakin empat kali."
         }
       ]
+    },
+    {
+      "id": "ecommerce-11",
+      "title": "Harga coret yang kreatif",
+      "description": "Harganya dicoret dari 499 ribu jadi 199 ribu. Kemarin kamu lihat, harga aslinya memang 199 ribu.",
+      "choices": [
+        {
+          "label": "Tetap beli, toh butuh",
+          "effects": {
+            "dompet": -200000,
+            "kewarasan": -3,
+            "hoki": 3
+          },
+          "result": "Barangnya oke. Kamu cuma nggak suka dibohongin sama satu garis."
+        },
+        {
+          "label": "Screenshot, spill di medsos",
+          "effects": {
+            "relasi": 5,
+            "hoki": -5,
+            "kewarasan": -4
+          },
+          "result": "Postinganmu rame. Besoknya harga coretnya naik jadi 599 ribu."
+        }
+      ]
+    },
+    {
+      "id": "ecommerce-12",
+      "title": "Pesan kabel, datang tutup panci",
+      "description": "Kamu pesan kabel data. Yang datang tutup panci. Penjual bilang, “Mohon maaf, Kak, fungsinya mirip.”",
+      "choices": [
+        {
+          "label": "Minta retur, tunggu dua minggu",
+          "effects": {
+            "kewarasan": -8,
+            "dompet": 50000
+          },
+          "result": "Uang balik di hari ke-14. Tutup pancinya nggak diminta balik."
+        },
+        {
+          "label": "Beli kabel di konter, simpan tutupnya",
+          "effects": {
+            "dompet": -30000,
+            "hoki": 4,
+            "relasi": -4
+          },
+          "result": "Kabel beres. Tutup pancinya ternyata pas buat panci di kos. Penjualnya benar juga."
+        }
+      ]
     }
   ]
 }

@@ -233,6 +233,54 @@
           "result": "Uangnya hilang. Waktumu selamat."
         }
       ]
+    },
+    {
+      "id": "tagihan-11",
+      "title": "Biaya ini, biaya itu",
+      "description": "Harga makanan 25 ribu. Pas bayar muncul biaya layanan, biaya aplikasi, dan biaya kemasan. Totalnya 41 ribu.",
+      "choices": [
+        {
+          "label": "Bayar, jangan dihitung",
+          "effects": {
+            "dompet": -40000,
+            "kewarasan": -4
+          },
+          "result": "Kenyang. Tapi yang paling kerasa justru 16 ribu buat biaya-biaya."
+        },
+        {
+          "label": "Ambil sendiri ke warungnya",
+          "effects": {
+            "dompet": -25000,
+            "kewarasan": 4,
+            "hoki": -3
+          },
+          "result": "Jalan kaki 15 menit. Ibu warungnya kasih bonus kerupuk. Biaya layanannya: senyum."
+        }
+      ]
+    },
+    {
+      "id": "tagihan-12",
+      "title": "Tombol bayar minimum",
+      "description": "Tagihan kartu kredit datang. Tombol “Bayar minimum” paling besar dan warnanya paling ceria.",
+      "choices": [
+        {
+          "label": "Bayar penuh, makan tempe seminggu",
+          "effects": {
+            "dompet": -300000,
+            "kewarasan": -6,
+            "hoki": 5
+          },
+          "result": "Lunas. Seminggu makan tempe, tapi bulan depan nggak ada kejutan bunga."
+        },
+        {
+          "label": "Klik bayar minimum",
+          "effects": {
+            "dompet": -60000,
+            "hoki": -8
+          },
+          "result": "Tombolnya memang ceria. Bunganya bulan depan lebih ceria lagi."
+        }
+      ]
     }
   ]
 }

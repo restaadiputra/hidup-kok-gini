@@ -244,6 +244,54 @@
           "result": "Kalah di detik pertama. Foto ekspresimu dipajang di lobi."
         }
       ]
+    },
+    {
+      "id": "drama-11",
+      "title": "CC ke semua atasan",
+      "description": "Rekanmu nge-CC atasan, atasannya atasan, dan HR cuma buat nanya kamu udah kirim file atau belum.",
+      "choices": [
+        {
+          "label": "Balas semua, lampirkan bukti",
+          "effects": {
+            "relasi": -5,
+            "kewarasan": 6
+          },
+          "result": "Filenya kamu kirim jam 08.02. Dia nanya jam 08.30. Satu email, satu kantor paham."
+        },
+        {
+          "label": "Balas pribadi, santai",
+          "effects": {
+            "relasi": 5,
+            "kewarasan": -6
+          },
+          "result": "Dia bilang makasih. Besoknya dia CC orang yang lebih banyak lagi."
+        }
+      ]
+    },
+    {
+      "id": "drama-12",
+      "title": "Outing wajib, bayar sendiri",
+      "description": "Kantor ngadain outing “wajib, demi kebersamaan”. Transport dan penginapan ditanggung karyawan.",
+      "choices": [
+        {
+          "label": "Ikut, bawa semangat kebersamaan",
+          "effects": {
+            "dompet": -250000,
+            "relasi": 10,
+            "kewarasan": -5
+          },
+          "result": "Ada lomba tarik tambang. Timmu kalah dari tim direksi, katanya kebetulan."
+        },
+        {
+          "label": "Bilang lagi sakit gigi",
+          "effects": {
+            "relasi": -8,
+            "kewarasan": 8,
+            "hoki": -3
+          },
+          "result": "Senin, foto grup outing dipajang di lobi. Mukamu ditempel pakai foto KTP."
+        }
+      ]
     }
   ]
 }

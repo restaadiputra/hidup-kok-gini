@@ -233,6 +233,54 @@
           "result": "Kamu masuk frame dalam posisi setengah lari. Itu yang dicetak besar."
         }
       ]
+    },
+    {
+      "id": "keluarga-11",
+      "title": "Investasi pasti untung dari Om",
+      "description": "Om share “investasi pasti untung 30 persen sebulan” di grup keluarga. Tiga tante udah transfer.",
+      "choices": [
+        {
+          "label": "Kirim artikel soal investasi bodong",
+          "effects": {
+            "relasi": -5,
+            "hoki": 6,
+            "kewarasan": -3
+          },
+          "result": "Om bilang kamu iri. Dua bulan kemudian grupnya mendadak sopan dan nggak ada yang bahas lagi."
+        },
+        {
+          "label": "Ikut transfer dikit biar nggak dijauhi",
+          "effects": {
+            "dompet": -200000,
+            "relasi": 5,
+            "hoki": -8
+          },
+          "result": "Bulan pertama untung. Bulan kedua, admin investasinya ganti nomor."
+        }
+      ]
+    },
+    {
+      "id": "keluarga-12",
+      "title": "Pesan “P” dari Ibu",
+      "description": "Dulu Ibu ngajarin kamu naik sepeda. Sekarang kamu ngajarin Ibu kenapa pesan “P” doang bikin orang panik.",
+      "choices": [
+        {
+          "label": "Jelasin pelan-pelan pakai contoh",
+          "effects": {
+            "kewarasan": -5,
+            "relasi": 10
+          },
+          "result": "Ibu paham. Besoknya Ibu kirim “P”, lalu “PING”, lalu telepon tiga kali."
+        },
+        {
+          "label": "Biarin, balas cepat aja",
+          "effects": {
+            "kewarasan": -8,
+            "relasi": 4
+          },
+          "result": "Tiap HP bunyi, jantungmu ikut bunyi. Isinya selalu sama: “Udah makan?”"
+        }
+      ]
     }
   ]
 }

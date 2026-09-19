@@ -149,7 +149,7 @@ export type Action =
   | { type: "CHOOSE"; index: number }
   | { type: "NEXT" };
 export interface Session {
-  version: 7;
+  version: 8;
   names: string[];
   seed: number;
   actions: Action[];

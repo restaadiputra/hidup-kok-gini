@@ -234,6 +234,54 @@
           "result": "Kamu tempel lagi kertasnya. Dirimu yang SMA menang."
         }
       ]
+    },
+    {
+      "id": "tanggaltua-11",
+      "title": "Nonton tips hemat sambil jajan",
+      "description": "Kamu nonton video “cara hidup hemat” sambil pesan kopi susu 28 ribu. Videonya 40 menit.",
+      "choices": [
+        {
+          "label": "Catat tipsnya, mulai besok",
+          "effects": {
+            "dompet": -30000,
+            "kewarasan": 4,
+            "hoki": -3
+          },
+          "result": "Tips pertama: kurangi kopi. Kamu tutup videonya, lalu habisin kopi pelan-pelan."
+        },
+        {
+          "label": "Praktikkan sekarang, batalin pesanan",
+          "effects": {
+            "kewarasan": -5,
+            "hoki": 5
+          },
+          "result": "Pesanan batal, tapi kopinya udah dibikin. Baristanya ngelihatin kamu kayak mantan."
+        }
+      ]
+    },
+    {
+      "id": "tanggaltua-12",
+      "title": "Lima ribu zaman SD",
+      "description": "Zaman SD, lima ribu bisa buat mi, es, dan mainan. Sekarang lima ribu cuma cukup buat parkir sama permen.",
+      "choices": [
+        {
+          "label": "Jajan ala SD di depan sekolah",
+          "effects": {
+            "dompet": -20000,
+            "kewarasan": 8,
+            "hoki": -3
+          },
+          "result": "Cilok, es warna-warni, mainan karet. Total 20 ribu. Nostalgianya menang, inflasinya juga."
+        },
+        {
+          "label": "Hitung inflasinya pakai kalkulator",
+          "effects": {
+            "kewarasan": -8,
+            "hoki": 3
+          },
+          "result": "Kamu nemu angkanya, lalu nyesel nemu angkanya."
+        }
+      ]
     }
   ]
 }

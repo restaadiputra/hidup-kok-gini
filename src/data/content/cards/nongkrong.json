@@ -236,6 +236,54 @@
           "result": "Kamu tidur siang empat jam. Paling healing se-grup."
         }
       ]
+    },
+    {
+      "id": "nongkrong-11",
+      "title": "Mau resign sejak 2019",
+      "description": "Temanmu bilang mau resign sejak 2019. Tiap ketemu, dia cerita rencananya dengan semangat yang sama.",
+      "choices": [
+        {
+          "label": "Dengerin, bayarin kopinya",
+          "effects": {
+            "dompet": -40000,
+            "relasi": 8
+          },
+          "result": "Rencana tahun ini buka kedai kopi. Tahun lalu kebun alpukat. Kantornya masih yang sama."
+        },
+        {
+          "label": "Tanya, “Jadi kapan?”",
+          "effects": {
+            "relasi": -6,
+            "kewarasan": 4
+          },
+          "result": "Dia diam lama, lalu pesan dessert. Topiknya pindah ke kamu, yang juga belum resign."
+        }
+      ]
+    },
+    {
+      "id": "nongkrong-12",
+      "title": "Kafe estetik, kursi siksaan",
+      "description": "Kafe baru bagus banget di foto. Kursinya kotak kayu tanpa sandaran, dan kalian mau ngobrol tiga jam.",
+      "choices": [
+        {
+          "label": "Tahan demi foto",
+          "effects": {
+            "kewarasan": -8,
+            "relasi": 6,
+            "dompet": -60000
+          },
+          "result": "Fotonya estetik. Punggungmu minta dipijat, dan tukang pijatnya pasang tarif estetik juga."
+        },
+        {
+          "label": "Pindah ke kafe yang ada sofanya",
+          "effects": {
+            "dompet": -80000,
+            "relasi": -4,
+            "kewarasan": 6
+          },
+          "result": "Sofanya empuk, fotonya biasa. Temanmu upload foto kafe pertama, tanpa kamu."
+        }
+      ]
     }
   ]
 }

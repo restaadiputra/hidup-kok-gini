@@ -233,6 +233,54 @@
           "result": "Satu ucapan buat dua orang. Hemat, tapi dicatat."
         }
       ]
+    },
+    {
+      "id": "wa-11",
+      "title": "Grup bernama “Info Penting”",
+      "description": "Kamu dimasukin ke grup bernama “Info Penting”. Isinya 90 persen stiker, sisanya link diskon.",
+      "choices": [
+        {
+          "label": "Arsipkan, jangan keluar",
+          "effects": {
+            "kewarasan": 6,
+            "hoki": -3
+          },
+          "result": "Grupnya sunyi di arsip. Satu-satunya info penting yang pernah muncul, kamu lewatkan."
+        },
+        {
+          "label": "Tanya, “Infonya mana?”",
+          "effects": {
+            "relasi": -6,
+            "kewarasan": -3,
+            "hoki": 4
+          },
+          "result": "Admin balas stiker jempol. Tiga orang ikut nanya, grupnya malah hidup lagi."
+        }
+      ]
+    },
+    {
+      "id": "wa-12",
+      "title": "Mengetik lima menit, balasnya “wkwk”",
+      "description": "Gebetan lagi mengetik sejak lima menit lalu. Muncul, hilang, muncul lagi. Balasannya akhirnya: “wkwk”.",
+      "choices": [
+        {
+          "label": "Balas “wkwk” juga",
+          "effects": {
+            "kewarasan": -5,
+            "relasi": 4
+          },
+          "result": "Obrolan kalian isinya ketawa doang. Seru, tapi nggak ke mana-mana."
+        },
+        {
+          "label": "Telepon langsung",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -8,
+            "hoki": -3
+          },
+          "result": "Dia angkat, kalian ngobrol sejam. Pas ditutup, dia kirim “wkwk” lagi."
+        }
+      ]
     }
   ]
 }

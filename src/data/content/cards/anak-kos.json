@@ -231,6 +231,54 @@
           "result": "Aman, tapi semua video kamu tonton di kualitas kentang."
         }
       ]
+    },
+    {
+      "id": "kos-11",
+      "title": "Harga naik karena Wi-Fi",
+      "description": "Ibu kos naikin harga karena “sekarang ada Wi-Fi”. Sinyalnya cuma nyampe kamar ibu kos.",
+      "choices": [
+        {
+          "label": "Bayar, nongkrong dekat kamar ibu kos",
+          "effects": {
+            "dompet": -100000,
+            "kewarasan": -6,
+            "relasi": 4
+          },
+          "result": "Sinyal lancar. Kamu juga jadi hafal jadwal sinetron ibu kos."
+        },
+        {
+          "label": "Nego sambil tunjukin tes kecepatan",
+          "effects": {
+            "dompet": 50000,
+            "relasi": -6,
+            "hoki": 3
+          },
+          "result": "Kenaikan batal. Ibu kos sekarang nyapa kamu dengan nada lebih datar."
+        }
+      ]
+    },
+    {
+      "id": "kos-12",
+      "title": "Anak kos paling senior",
+      "description": "Kamu udah sembilan tahun ngekos di sini. Anak baru manggil kamu “Om” atau “Tante”, lalu minta saran soal skripsi.",
+      "choices": [
+        {
+          "label": "Kasih saran panjang lebar",
+          "effects": {
+            "relasi": 10,
+            "kewarasan": -4
+          },
+          "result": "Saranmu dicatat rapi. Ternyata semuanya udah ada aplikasinya sekarang."
+        },
+        {
+          "label": "Bilang kamu juga masih muda",
+          "effects": {
+            "hoki": -5,
+            "kewarasan": 5
+          },
+          "result": "Mereka ngangguk sopan, lalu nanya angkatan berapa. Kamu jawab, suasana langsung hening."
+        }
+      ]
     }
   ]
 }

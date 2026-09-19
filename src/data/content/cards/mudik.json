@@ -234,6 +234,55 @@
           "result": "Muat, asal duduk di antara dua bocah dan satu kardus mi."
         }
       ]
+    },
+    {
+      "id": "mudik-11",
+      "title": "Pasangan diwawancara satu kampung",
+      "description": "Pertama kali bawa pasangan mudik. Dalam sepuluh menit, satu kampung udah tahu gaji, asal, dan zodiaknya.",
+      "choices": [
+        {
+          "label": "Biarin dia jawab sendiri",
+          "effects": {
+            "relasi": 8,
+            "kewarasan": -6
+          },
+          "result": "Pasanganmu lolos wawancara. Kata Nenek dia cocok, soalnya makannya nambah."
+        },
+        {
+          "label": "Ajak kabur ke pasar",
+          "effects": {
+            "dompet": -60000,
+            "relasi": -5,
+            "kewarasan": 5
+          },
+          "result": "Kalian jajan di pasar. Pas balik, para tante udah nyusun pertanyaan ronde dua."
+        }
+      ]
+    },
+    {
+      "id": "mudik-12",
+      "title": "Oleh-oleh kota, beli di kampung",
+      "description": "Kamu lupa beli oleh-oleh. Ternyata minimarket di kampung jual kue khas kotamu, harganya sama.",
+      "choices": [
+        {
+          "label": "Beli, jangan bilang siapa-siapa",
+          "effects": {
+            "dompet": -80000,
+            "hoki": 4,
+            "kewarasan": -3
+          },
+          "result": "Semua memuji. Di bungkusnya masih nempel stiker minimarket depan gang."
+        },
+        {
+          "label": "Ngaku, kasih uang aja",
+          "effects": {
+            "dompet": -100000,
+            "relasi": -5,
+            "kewarasan": 3
+          },
+          "result": "Diterima dengan senyum. Tahun depan daftar titipannya datang sebulan lebih awal."
+        }
+      ]
     }
   ]
 }

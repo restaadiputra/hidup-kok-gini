@@ -234,6 +234,55 @@
           "result": "Anak kos baru kirim foto: “Makasih ya, enak.”"
         }
       ]
+    },
+    {
+      "id": "ojol-11",
+      "title": "Ojek buat 400 meter",
+      "description": "Kamu pesan ojek buat jarak 400 meter karena mager. Drivernya sampai dalam 40 detik, jalan kaki.",
+      "choices": [
+        {
+          "label": "Tetap naik, kasih tip malu",
+          "effects": {
+            "dompet": -20000,
+            "kewarasan": -3,
+            "relasi": 4
+          },
+          "result": "Perjalanan 90 detik. Kamu turun sebelum sempat ngunci helm."
+        },
+        {
+          "label": "Batalin, jalan kaki bareng",
+          "effects": {
+            "dompet": -20000,
+            "kewarasan": 5,
+            "hoki": -4
+          },
+          "result": "Kena biaya batal. Kalian jalan bareng, ternyata dia tetanggamu."
+        }
+      ]
+    },
+    {
+      "id": "ojol-12",
+      "title": "Rating penumpang 4,6",
+      "description": "Rating penumpangmu turun jadi 4,6. Nggak jelas salahmu apa, tapi driver sekarang lama nerima pesanan.",
+      "choices": [
+        {
+          "label": "Kasih tip semua driver seminggu",
+          "effects": {
+            "dompet": -70000,
+            "hoki": 6
+          },
+          "result": "Rating naik ke 4,8. Ternyata harga diri bisa dicicil pakai tip."
+        },
+        {
+          "label": "Pasrah, jalan ke pangkalan",
+          "effects": {
+            "kewarasan": -5,
+            "hoki": -3,
+            "relasi": 3
+          },
+          "result": "Abang pangkalan nggak kenal rating. Tarifnya cuma satu: “terserah Kakak”."
+        }
+      ]
     }
   ]
 }

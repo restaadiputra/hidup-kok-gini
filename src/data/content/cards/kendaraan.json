@@ -231,6 +231,54 @@
           "result": "Minggu depan dia pinjam lagi. Katanya motormu enak."
         }
       ]
+    },
+    {
+      "id": "kendaraan-11",
+      "title": "Tarik tunai buat bayar parkir",
+      "description": "Kamu ke ATM cuma buat ambil uang parkir. Tukang parkirnya berdiri di depan ATM itu, nunggu.",
+      "choices": [
+        {
+          "label": "Tarik tunai, bayar dua ribu",
+          "effects": {
+            "dompet": -20000,
+            "kewarasan": -4
+          },
+          "result": "Admin ATM beda bank 6.500, parkirnya dua ribu. Ongkos buat bayar parkir: 8.500."
+        },
+        {
+          "label": "Pura-pura nggak lihat, langsung jalan",
+          "effects": {
+            "hoki": -6,
+            "relasi": -4,
+            "kewarasan": 3
+          },
+          "result": "Peluitnya bunyi panjang banget. Satu minimarket noleh ke kamu."
+        }
+      ]
+    },
+    {
+      "id": "kendaraan-12",
+      "title": "Tes zig-zag setelah 12 tahun",
+      "description": "SIM-mu telat diperpanjang, jadi harus tes ulang. Tes zig-zag, padahal kamu udah naik motor 12 tahun.",
+      "choices": [
+        {
+          "label": "Latihan dulu di lapangan kosong",
+          "effects": {
+            "dompet": -50000,
+            "kewarasan": -5,
+            "hoki": 6
+          },
+          "result": "Lulus di percobaan kedua. Pengujinya bilang, “Kok kayak baru belajar?”"
+        },
+        {
+          "label": "Langsung tes, pede aja",
+          "effects": {
+            "hoki": -8,
+            "kewarasan": -6
+          },
+          "result": "Kaki turun di cone ketiga. Pengalaman 12 tahun kalah sama tiga cone oranye."
+        }
+      ]
     }
   ]
 }

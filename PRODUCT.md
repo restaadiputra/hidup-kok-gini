@@ -41,7 +41,7 @@ Make an original, playable Indonesian comedy board game about navigating everyda
 
 These describe the existing implementation, not additional product decisions approved during initialization:
 
-- 140 event cards, ten per category, live in one JSON file per category under `src/data/content/cards/`. Their wording follows `docs/copy-guide.md`, enforced by `src/data/content.test.ts`.
+- 168 event cards, twelve per category, live in one JSON file per category under `src/data/content/cards/`. Their wording follows `docs/copy-guide.md`, enforced by `src/data/content.test.ts`.
 - Each player receives one turn per month; a game has 24, 36, or 48 turns. A board lap is separate from a month.
 - Crossing or landing on GAJIAN after a lap pauses the pawn for a congratulatory paycheck popover. Salary is Rp2.8–3.2 million, living costs Rp1.6–2 million, and the extra bill Rp50,000–750,000. An 8% rare mishap replaces the extra bill with Rp1.75–2.75 million, creating a negative net paycheck. Continue resumes remaining steps. Amounts are seeded, saved, and applied exactly once. The initial starting position does not pay.
 - Kewarasan, Relasi, and Hoki are bounded from 0 to 100. Dompet may be negative; debt does not eliminate a player.
@@ -74,8 +74,8 @@ These are existing user constraints, not a new visual direction chosen by initia
 ## Evidence on Hand
 
 - `README.md`: running instructions, current rules, architecture, save behavior, and validation details.
-- `src/data/content/cards/`: 140 original events and their choice/outcome text, one JSON file per category.
-- `docs/copy-guide.md`: the wording rules for all game jokes (voice, spelling, anti-AI-slop patterns, card anatomy, off-limits topics).
+- `src/data/content/cards/`: 168 original events and their choice/outcome text, one JSON file per category.
+- `docs/copy-guide.md`: the wording rules for all game jokes (voice, spelling, anti-AI-slop patterns, card anatomy, off-limits topics, and the sense/slop/humour checks every card must pass).
 - `src/data/content/`: board route, categories, months and monthly flavor text, salary and bill ranges, payday jokes, starting stats, and ending rules, all as JSON.
 - `src/game/` and its `*.test.ts` files: deterministic game rules (dice, deck, payday, reducer, scoring, replay) and automated coverage.
 - `src/components/board/neighborhood.tsx`, `src/components/icon/icon.tsx`, and `public/favicon.svg`: existing original code-based artwork.
