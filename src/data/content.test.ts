@@ -41,12 +41,29 @@ function wordingProblems(text: string): string[] {
     if (new RegExp(`\\b${phrase}\\b`, "i").test(text))
       problems.push(`avoid the filler phrase “${phrase}”`);
   }
+  // Written-register words that make narration read like a translated essay.
+  // Quoted speech is exempt: a WhatsApp notice or a stiff HR line may use them.
+  const narration = text.replace(/“[^”]*”/g, "");
+  for (const word of FORMAL) {
+    if (new RegExp(`\\b${word}\\b`, "i").test(narration))
+      problems.push(`“${word}” is written register; say it the way you would out loud`);
+  }
+  if (/\b(pelajaran|hikmah)\b/i.test(narration)) problems.push("no moral of the story; end on the joke");
   if (text.includes("—")) problems.push("no em dash; use a full stop or comma");
   if (text.includes("!!")) problems.push("no “!!”");
+  if (text.includes(";")) problems.push("no semicolon; it is the mark of a template sentence");
   return problems;
 }
 
-const cardLines = [...EVENTS, ...SPECIAL_CARDS].flatMap((event) => [
+const FORMAL = [
+  "menjadi", "terhadap", "bagaikan", "layaknya", "seakan", "tersebut", "yakni",
+  "yaitu", "mampu", "menghadirkan", "sesungguhnya", "telah", "bahwa", "akan",
+  "oleh karena itu", "selain itu", "mencoba", "sebagai",
+];
+
+const PLAYED_CARDS = [...EVENTS, ...SPECIAL_CARDS, ...SUDDEN_EVENTS, ...TRANSFER_EVENTS];
+
+const cardLines = PLAYED_CARDS.flatMap((event) => [
   { where: `${event.id} title`, text: event.title },
   { where: `${event.id} description`, text: event.description },
   ...event.choices.flatMap((choice, i) => [
@@ -65,6 +82,25 @@ test("every joke follows the spelling and anti-slop rules in docs/copy-guide.md"
   const failures = [...cardLines, ...otherLines].flatMap(({ where, text }) =>
     wordingProblems(text).map((problem) => `${where}: ${problem}\n    “${text}”`),
   );
+  assert.deepEqual(failures, [], "\n" + failures.join("\n"));
+});
+
+// A generator that stamps one topic into a fixed sentence gives itself away
+// twice: the same labels on many cards, and the title echoed in the result.
+test("every card is written by hand, not filled into a template", () => {
+  const failures: string[] = [];
+  const labels = new Map<string, string>();
+  for (const event of PLAYED_CARDS) {
+    const title = event.title.toLowerCase().replace(/[“”"]/g, "");
+    event.choices.forEach((choice, i) => {
+      const label = choice.label.toLowerCase();
+      const first = labels.get(label);
+      if (first) failures.push(`${event.id} choice ${i + 1} reuses the label “${choice.label}” from ${first}`);
+      else labels.set(label, event.id);
+      if (title.length >= 12 && choice.result.toLowerCase().includes(title))
+        failures.push(`${event.id} choice ${i + 1} result repeats the card title`);
+    });
+  }
   assert.deepEqual(failures, [], "\n" + failures.join("\n"));
 });
 
