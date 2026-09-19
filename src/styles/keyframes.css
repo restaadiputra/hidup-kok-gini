@@ -3,7 +3,7 @@
     transform: translate(var(--hop-x, 0px), var(--hop-y, 0px)) scale(1.06, 0.9);
   }
   45% {
-    transform: translate(calc(var(--hop-x, 0px) * 0.45), calc(var(--hop-y, 0px) * 0.45 - 28px)) rotate(-12deg) scale(1.08);
+    transform: translate(calc(var(--hop-x, 0px) * 0.45), calc(var(--hop-y, 0px) * 0.45 - var(--hop-lift, 28px))) rotate(-12deg) scale(1.08);
   }
   82% {
     transform: translateY(0) scale(1.12, 0.88);

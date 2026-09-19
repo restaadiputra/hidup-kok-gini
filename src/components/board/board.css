@@ -84,8 +84,14 @@
   container-type: size;
   position: relative;
   z-index: 1;
-  transform: perspective(1400px) rotateX(var(--board-lean, 0deg)) rotateZ(var(--board-turn, 0deg));
-  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* The camera (zoom + pan onto the travelling pawn) wraps the tilt. */
+  transform:
+    perspective(1400px)
+    translate(var(--cam-x, 0%), var(--cam-y, 0%))
+    scale(var(--cam-zoom, 1))
+    rotateX(var(--board-lean, 0deg))
+    rotateZ(var(--board-turn, 0deg));
+  transition: transform var(--cam-ms, 380ms) cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: center;
 }
 .board-in-motion .board-grid { will-change: transform; }

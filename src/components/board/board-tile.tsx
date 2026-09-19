@@ -1,6 +1,6 @@
 import { EVENTS } from "../../data/events";
 import type { Player, Tile } from "../../game/types";
-import type { TurnMotion } from "../../hooks/use-turn-motion";
+import { isTravelling, type TurnMotion } from "../../hooks/use-turn-motion";
 import { Icon } from "../icon/icon";
 import { Pawn } from "../pawn/pawn";
 import { directionOf, RING_POSITIONS } from "./ring-layout";
@@ -19,12 +19,13 @@ export function BoardTile({
   active: boolean;
   motion: TurnMotion | null;
 }) {
-  const moving = motion?.stage === "moving";
+  const moving = isTravelling(motion);
+  const landing = motion?.stage === "landing";
   const names = occupants.length ? `: ${occupants.map((p) => p.name).join(", ")}` : "";
   const deck = EVENTS.filter((e) => e.category === tile.category);
   const sample = deck.length ? deck[index % deck.length].title : "";
   const count = deck.length ? String(deck.length) : "";
-  const tileClass = `tile-${tile.color} ${active ? "tile-active" : ""} ${active && moving ? "tile-landing" : ""} ${index === 0 ? "tile-start" : ""}`;
+  const tileClass = `tile-${tile.color} ${active ? "tile-active" : ""} ${active && moving ? (landing ? "tile-slam" : "tile-landing") : ""} ${index === 0 ? "tile-start" : ""}`;
   const tileStyle = {
     gridRow: RING_POSITIONS[index][0],
     gridColumn: RING_POSITIONS[index][1],
@@ -39,6 +40,7 @@ export function BoardTile({
             player={p}
             small
             hopping={moving && motion?.playerId === p.id}
+            heavy={landing && motion?.playerId === p.id}
           />
         ))}
       </span>

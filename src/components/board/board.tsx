@@ -1,9 +1,10 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { MONTHLY_NOTES } from "../../data/calendar";
 import { BOARD } from "../../data/categories";
 import { PLAYER_COLORS } from "../../data/players";
 import type { GameState, Player } from "../../game/types";
-import type { TurnMotion } from "../../hooks/use-turn-motion";
+import { isTravelling, LANDING_MS, type TurnMotion } from "../../hooks/use-turn-motion";
+import { burst, centerOf, ring, shake } from "../../motion/fx";
 import { Icon } from "../icon/icon";
 import { BoardCenter } from "./board-center";
 import { BoardTile } from "./board-tile";
@@ -74,10 +75,26 @@ export function Board({
   );
   const activePosition =
     game && game.phase !== "finished" ? visiblePlayers[game.currentPlayer].position : null;
-  const moving = motion?.stage === "moving";
+  const moving = isTravelling(motion);
   const current = game && game.phase !== "finished" ? visiblePlayers[game.currentPlayer] : null;
+  const panelRef = useRef<HTMLElement>(null);
+  const landing = motion?.stage === "landing";
+  // The last hop comes down hard: dust, a shockwave from the tile, and the
+  // table jolts. Timed to the touchdown inside the pawn-land keyframes.
+  useEffect(() => {
+    if (!landing) return;
+    const timer = setTimeout(() => {
+      const tile = panelRef.current?.querySelector(".tile-slam") ?? null;
+      const { x, y } = centerOf(tile);
+      ring(x, y, "var(--edge)", 120);
+      ring(x, y, "var(--fixed)", 80);
+      burst(x, y, { colors: ["var(--paper)", "var(--line)", "var(--fixed)"], count: 14, distance: 90, size: 8 });
+      shake(panelRef.current, 6);
+    }, LANDING_MS * 0.62);
+    return () => clearTimeout(timer);
+  }, [landing, motion?.position]);
   return (
-    <section className="board-panel" aria-label="Papan permainan">
+    <section className="board-panel" aria-label="Papan permainan" ref={panelRef}>
       <div className="board-toolbar">
         <span>
           <i className="status-dot" /> PAPAN NASIB <b>+62</b>
@@ -93,7 +110,7 @@ export function Board({
           <Icon name="reset" size={13} />
         </span>
       </div>
-      <div className={`board-arena ${moving ? "board-in-motion" : ""}`}>
+      <div className={`board-arena ${moving ? "board-in-motion" : ""} ${motion && motion.stage !== "rolling" ? `board-camera board-camera-${motion.stage}` : ""}`}>
         <TableBits />
         <div className="board-grid" style={boardMotionStyle(motion)}>
           {BOARD.map((tile, index) => (

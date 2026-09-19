@@ -507,3 +507,85 @@
   70% { scale: 1.05 0.97; translate: 0 -2px; }
   100% { scale: 1; translate: 0 0; }
 }
+
+/* ---- The camera follows the pawn ---------------------------------------- */
+/* While a pawn travels the ring is zoomed in on it (see boardMotionStyle).
+   The arena clips the zoomed board so it never spills over the panel. */
+.board-camera {
+  overflow: hidden;
+}
+/* Belt and braces: if a slow device is still pulling the camera back when
+   the arena's clip lifts, the panel still keeps the board inside its frame. */
+.board-panel {
+  overflow: clip;
+}
+/* Hop heights follow the board's size (cqh of .board-grid, the pawn's
+   container), so a big wide-screen board gets proportionally bigger jumps. */
+.board-grid {
+  --hop-lift: clamp(30px, 12cqh, 90px);
+  --land-lift: clamp(52px, 20cqh, 150px);
+}
+.board-camera-focus .board-grid {
+  transition-timing-function: cubic-bezier(0.45, 0, 0.2, 1);
+}
+.board-camera-landing .board-grid {
+  transition-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
+  animation: camera-thud 650ms linear;
+}
+.board-camera-settling .board-grid {
+  transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* The last hop: a crouch, a higher and slower arc, then a thud that squashes
+   the pawn flat before it wobbles upright. Touchdown is at 62%. */
+.is-landing {
+  position: relative;
+  z-index: 5;
+  animation: pawn-land 650ms both;
+  will-change: transform;
+}
+.tile-slam {
+  z-index: 2;
+  animation: tile-slam 650ms both;
+}
+@keyframes pawn-land {
+  0% {
+    transform: translate(var(--hop-x, 0px), var(--hop-y, 0px)) scale(1);
+    animation-timing-function: ease-out;
+  }
+  18% {
+    transform: translate(var(--hop-x, 0px), var(--hop-y, 0px)) scale(1.22, 0.72);
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.4, 1);
+  }
+  46% {
+    transform: translate(calc(var(--hop-x, 0px) * 0.45), calc(var(--hop-y, 0px) * 0.45 - var(--land-lift, 48px))) rotate(-16deg) scale(0.92, 1.14);
+    animation-timing-function: cubic-bezier(0.6, 0, 0.9, 0.4);
+  }
+  62% {
+    transform: translate(0, 0) rotate(0deg) scale(1.5, 0.55);
+    animation-timing-function: cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+  76% {
+    transform: translateY(-7px) scale(0.88, 1.14);
+    animation-timing-function: ease-in-out;
+  }
+  88% {
+    transform: translateY(0) scale(1.08, 0.94);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes tile-slam {
+  0%, 58% { scale: 1; translate: 0 0; }
+  64% { scale: 1.1 0.86; translate: 0 5px; }
+  78% { scale: 0.96 1.04; translate: 0 -3px; }
+  100% { scale: 1; translate: 0 0; }
+}
+@keyframes camera-thud {
+  0% { scale: 1; }
+  46% { scale: 1.07; }
+  62% { scale: 0.96; }
+  76% { scale: 1.02; }
+  100% { scale: 1; }
+}

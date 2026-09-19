@@ -9,7 +9,8 @@ const RESTING_FACE = 5;
 
 function headline(motion: TurnMotion | null): string {
   if (!motion) return "Dadu dulu. Overthinking nanti.";
-  return motion.stage === "rolling" ? "Nasib lagi dikocok…" : "Pionnya jalan. Kamu sabar.";
+  if (motion.stage === "rolling") return "Nasib lagi dikocok…";
+  return motion.stage === "landing" || motion.stage === "settling" ? "Mendarat. Deg-degan dikit." : "Pionnya jalan. Kamu sabar.";
 }
 
 export function RollPanel({
@@ -28,7 +29,7 @@ export function RollPanel({
   const previous = useRef(stage);
   // The moment the die lands: shockwave, a jolt to the board, a pinch of confetti.
   useEffect(() => {
-    if (previous.current === "rolling" && stage === "moving") {
+    if (previous.current === "rolling" && stage && stage !== "rolling") {
       const { x, y } = centerOf(stageRef.current?.querySelector(".dice") ?? null);
       ring(x, y, "var(--accent)", 90);
       ring(x, y, "var(--fixed)", 60);
