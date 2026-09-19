@@ -29,7 +29,10 @@ import { useGame } from "./hooks/use-game";
 import { useHandoff } from "./hooks/use-handoff";
 import { useSetupDraft } from "./hooks/use-setup-draft";
 import { useTheme } from "./hooks/use-theme";
+import { useClickBurst } from "./motion/use-click-burst";
 import "./app.css";
+// Last, so entrances and feedback layer over the component styles.
+import "./styles/motion.css";
 
 type Modal = "rules" | "restart" | "squad" | "log" | null;
 
@@ -39,6 +42,7 @@ export default function App() {
   const session = useGame();
   const { handoff, dismiss: dismissHandoff } = useHandoff(session.game);
   const [modal, setModal] = useState<Modal>(null);
+  useClickBurst();
 
   const { game, player, finished, motion } = session;
   const players = game?.players ?? draft.previews;

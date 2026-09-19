@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./dice.css";
 const PIPS: Record<number, number[]> = {
   1: [4],
@@ -17,6 +18,14 @@ export function Dice({
   rolling?: boolean;
   small?: boolean;
 }) {
+  // While the die is in the air its face flickers; the real value shows on landing.
+  const [tumble, setTumble] = useState(0);
+  useEffect(() => {
+    if (!rolling) return;
+    const timer = setInterval(() => setTumble((t) => t + 1), 70);
+    return () => clearInterval(timer);
+  }, [rolling]);
+  const face = rolling ? ((value + tumble * 5) % 6) + 1 : value;
   return (
     <span
       role="img"
@@ -24,7 +33,7 @@ export function Dice({
       className={`dice ${rolling ? "rolling" : ""} ${small ? "dice-small" : ""}`}
     >
       {Array.from({ length: 9 }, (_, i) => (
-        <i key={i} className={PIPS[value].includes(i) ? "dot visible" : "dot"} />
+        <i key={i} className={PIPS[face].includes(i) ? "dot visible" : "dot"} />
       ))}
     </span>
   );

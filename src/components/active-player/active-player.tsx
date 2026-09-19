@@ -5,6 +5,7 @@ import { SHOWN_STATS } from "../../game/stats";
 import type { Player } from "../../game/types";
 import { Icon } from "../icon/icon";
 import { Pawn } from "../pawn/pawn";
+import { StatValue } from "./stat-value";
 import "./active-player.css";
 
 export function ActivePlayer({
@@ -20,7 +21,7 @@ export function ActivePlayer({
 }) {
   return (
     <>
-      <div className="active-player" style={{ "--player-color": PLAYER_COLORS[player.id] } as CSSProperties}>
+      <div className="active-player" key={player.id} style={{ "--player-color": PLAYER_COLORS[player.id] } as CSSProperties}>
         <Pawn player={player} />
         <div>
           <span>{moving ? "LAGI JALAN, BESTIE" : "GILIRAN KAMU"}</span>
@@ -37,14 +38,14 @@ export function ActivePlayer({
           <span className="stat" key={stat} title={STAT_LABELS[stat] + ": " + player.stats[stat]}>
             <Icon name={STAT_ICONS[stat]} size={14} />
             <span className="stat-name">{STAT_LABELS[stat]} </span>
-            <b>{stat === "dompet" ? shortMoney(player.stats[stat]) : player.stats[stat]}</b>
+            <StatValue stat={stat} value={player.stats[stat]} owner={player.id} />
           </span>
         ))}
         {player.stats.hutang > 0 ? (
           <span className="stat stat-debt" title={STAT_LABELS.hutang + ": " + shortMoney(player.stats.hutang)}>
             <Icon name={STAT_ICONS.hutang} size={14} />
             <span className="stat-name">{STAT_LABELS.hutang} </span>
-            <b>{shortMoney(player.stats.hutang)}</b>
+            <StatValue stat="hutang" value={player.stats.hutang} owner={player.id} />
           </span>
         ) : null}
       </div>

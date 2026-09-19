@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
+import { reducedMotion } from "../motion/fx";
 import { THEME_KEY } from "../storage-keys";
 
 export type Theme = "light" | "dark";
@@ -42,11 +44,32 @@ export function useTheme() {
     };
   }, []);
 
-  function toggleTheme() {
-    const next = theme === "light" ? "dark" : "light";
+  // A sweep can still be waiting to paint when the toggle is tapped again, so
+  // count from the theme that is on its way, not the one on screen.
+  const pending = useRef<Theme | null>(null);
+
+  // The new lighting sweeps out from the toggle when the browser can draw it.
+  function toggleTheme(origin?: { x: number; y: number }) {
+    const current = pending.current ?? theme;
+    const next = current === "light" ? "dark" : "light";
     followsSystem.current = false;
-    document.documentElement.dataset.themePreference = next;
-    setTheme(next);
+    const root = document.documentElement;
+    root.dataset.themePreference = next;
+    const apply = () => {
+      root.dataset.theme = next;
+      root.style.colorScheme = next;
+      flushSync(() => setTheme(next));
+    };
+    if (origin && "startViewTransition" in document && !reducedMotion()) {
+      root.style.setProperty("--sweep-x", origin.x + "px");
+      root.style.setProperty("--sweep-y", origin.y + "px");
+      pending.current = next;
+      document.startViewTransition(apply).finished.finally(() => {
+        if (pending.current === next) pending.current = null;
+      });
+    } else {
+      setTheme(next);
+    }
     try {
       localStorage.setItem(THEME_KEY, next);
     } catch {

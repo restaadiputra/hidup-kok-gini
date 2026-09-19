@@ -594,3 +594,15 @@ The GAJIAN popover is a slip, not a banner. It supersedes the green celebration 
 - **The button is always reachable.** `.paycheck-foot` is sticky at the bottom of the dialog, bleeding to its edges through `--dialog-pad` (24px, 20px on phones, 18px in landscape).
 - **It must be answered.** `Dialog` takes `dismissible={false}`: no close button, backdrop taps ignored. Escape and the button continue, and both ignore input for the first 500ms.
 - **Dialogs use the width they declare.** `.dialog` sets `max-width: none` so the browser's modal max-width no longer shrinks phone dialogs by 14px.
+
+## Motion pass — September 2026
+
+Every interaction now answers back, and the motion is made of the table's own materials: flat cardboard bits with an `--edge` outline, hard-edged stamps and coins, never a blur or a glow. Keyframes and overrides live in `src/styles/motion.css` (loaded after the component styles); flying pieces are drawn by `src/motion/fx.ts` into a fixed `.fx-layer`, or inside the open `<dialog>` so they show above the top layer.
+
+- **The focal moment: the card turns over.** A drawn card is dealt face down in its category colour (the crossed-stripe card back), flips on the Y axis over 700ms, and the face appears at 40%. As the face lands, a burst of category-coloured bits fires from the category bar, the title punches in, and the choices are dealt in from the right, 90ms apart, with their effect chips popping after them.
+- **Choosing is a stamp, not a click.** The tapped choice squashes and a tangerine **DIPILIH** stamp slams onto it while the other choices slide off the table; the game receives the choice 460ms later. Taps during the stamp are ignored. The payday slip uses the same stamp.
+- **The die lands with weight.** In the air it tumbles and its face flickers; on landing it slams and squashes, two outlined rings (tangerine, then yellow) shock out, and the board panel jolts for 380ms.
+- **Stats count.** A changed stat rolls to its new value over 650ms, bumps in `--positive-ink` or flinches in `--negative-ink`, and floats a +/− chip in the verdict colours. A timer settles the true value even when the tab is not painting.
+- **Rewards rain.** A positive payday drops flat yellow coins over the dialog; a negative one shakes the slip instead. The net total slams onto the slip before its MASUK/NOMBOK stamp drops. The end of the year rains confetti twice.
+- **Feedback everywhere.** Primary buttons squash on press and their arrow slides on hover; the roll button taps the table every few seconds while it is waiting; icon buttons tilt; every action button throws a pinch of confetti from the pointer. Dialogs pop in with a slight overshoot and a fading backdrop. The active player's seat swaps in from the left and the dock seat hops. The theme toggle sweeps the new lighting out from the button as a circle (View Transitions, where supported).
+- **Reduced motion** still turns every CSS animation off, every `fx.ts` effect is a no-op, and choices commit immediately without the stamp. Colour changes that confirm a stat change remain.

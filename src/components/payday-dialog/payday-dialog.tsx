@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties, type MouseEvent } from "react";
 import { effectLabel, rupiah, STAT_LABELS } from "../../game/format";
 import { statusLabel } from "../../game/statuses";
 import { PAYDAY_OPTIONS } from "../../game/payday";
@@ -6,6 +6,8 @@ import type { Paycheck, Stat, Stats } from "../../game/types";
 import { Effects } from "../effects/effects";
 import { Dialog } from "../dialog/dialog";
 import { Icon } from "../icon/icon";
+import { rain, shake } from "../../motion/fx";
+import { usePick } from "../../motion/use-pick";
 import "./payday-dialog.css";
 
 // The button sits where the roll button was, so a double-tap would skip the slip.
@@ -35,13 +37,23 @@ export function PaydayDialog({ month, playerName, playerNumber, playerCount, pay
   onChoose: (index: number) => void;
 }) {
   const [ready, setReady] = useState(false);
+  const { picked, pick, reset } = usePick(onChoose, ["var(--fixed)", "var(--tile-6)", "var(--accent)"]);
   useEffect(() => {
     setReady(false);
+    reset();
     const timer = setTimeout(() => setReady(true), READ_DELAY_MS);
     return () => clearTimeout(timer);
   }, [playerNumber]);
-  const choose = (index: number) => ready && onChoose(index);
+  const choose = (index: number, event: MouseEvent<HTMLElement>) => ready && pick(index, event);
   const loss = paycheck.net < 0;
+  // The net total slams onto the slip, then the money arrives or the dialog flinches.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (loss) shake(document.querySelector("dialog[open]"), 7);
+      else rain({ kind: "coin", count: 34 });
+    }, 420);
+    return () => clearTimeout(timer);
+  }, [month, playerNumber, loss]);
   const hasDebtLines = paycheck.interest > 0 || paycheck.installment > 0 || paycheck.statusEffects.length > 0;
 
   return (
@@ -84,12 +96,18 @@ export function PaydayDialog({ month, playerName, playerNumber, playerCount, pay
           </dl>
         ) : null}
         <span className="field-label choice-label">SETELAH GAJIAN, KAMU...</span>
-        <div className="choices payday-choices">
+        <div className={`choices payday-choices ${picked !== null ? "has-pick" : ""}`}>
           {PAYDAY_OPTIONS.map((option, index) => (
             (() => {
               const choiceMoney = choiceEffects[index]?.dompet ?? 0;
               const netMoney = paycheck.net + choiceMoney;
-              return <button className="choice" key={option.label} onClick={() => choose(index)}>
+              return <button
+              className={`choice ${picked === index ? "is-picked" : ""}`}
+              key={option.label}
+              style={{ "--i": index } as CSSProperties}
+              disabled={picked !== null && picked !== index}
+              onClick={(event) => choose(index, event)}
+            >
               <span className="choice-top"><strong>{option.label}</strong><Icon name="arrow" size={17} /></span>
               <Effects effects={choiceEffects[index]} />
               <span
@@ -103,6 +121,7 @@ export function PaydayDialog({ month, playerName, playerNumber, playerCount, pay
                 </span>
               </span>
               <small>{option.result}</small>
+              <span className="choice-stamp" aria-hidden="true">DIPILIH</span>
               </button>;
             })()
           ))}

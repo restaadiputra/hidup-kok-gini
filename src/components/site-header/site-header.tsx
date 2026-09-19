@@ -10,7 +10,7 @@ export function SiteHeader({
   canRestart,
 }: {
   theme: Theme;
-  onToggleTheme: () => void;
+  onToggleTheme: (origin?: { x: number; y: number }) => void;
   onOpenRules: () => void;
   onOpenRestart: () => void;
   canRestart: boolean;
@@ -33,9 +33,12 @@ export function SiteHeader({
           aria-label="Mode gelap"
           aria-pressed={dark}
           title={dark ? "Mode terang" : "Mode gelap"}
-          onClick={onToggleTheme}
+          onClick={(event) => {
+            const rect = event.currentTarget.getBoundingClientRect();
+            onToggleTheme({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+          }}
         >
-          <Icon name={dark ? "moon" : "sun"} size={19} />
+          <Icon key={dark ? "moon" : "sun"} name={dark ? "moon" : "sun"} size={19} />
         </button>
         <button className="icon-button" aria-label="Cara main" title="Cara main" onClick={onOpenRules}>
           <Icon name="help" size={19} />

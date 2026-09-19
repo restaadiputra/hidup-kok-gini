@@ -1,7 +1,8 @@
-import { useState, type Ref } from "react";
+import { useEffect, useState, type Ref } from "react";
 import { ending, isSharedRank, rankOf, score } from "../../game/scoring";
 import type { Player } from "../../game/types";
 import { Icon } from "../icon/icon";
+import { rain } from "../../motion/fx";
 import "./results-panel.css";
 
 function badgeFor(rankings: Player[], player: Player): string {
@@ -19,6 +20,12 @@ export function ResultsPanel({
   onPlayAgain: () => void;
 }) {
   const [page, setPage] = useState(0);
+  // A year survived deserves a proper confetti shower, twice.
+  useEffect(() => {
+    rain({ count: 70 });
+    const encore = setTimeout(() => rain({ count: 40 }), 1400);
+    return () => clearTimeout(encore);
+  }, []);
   const shown = rankings[page] ?? rankings[0];
   const story = ending(shown);
   return (
