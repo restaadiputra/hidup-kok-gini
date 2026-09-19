@@ -7,9 +7,12 @@ import "./styles/base.css";
 import "./styles/keyframes.css";
 import "./styles/shared.css";
 import App from "./app";
+import { registerServiceWorker } from "./register-service-worker";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
   </StrictMode>,
 );
+
+registerServiceWorker();

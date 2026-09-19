@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#ffeccf" />
+    <title>Nyasar, ya? — Hidup Kok Gini?</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <style>
+      @font-face {
+        font-family: Roboto;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url("/fonts/roboto-latin.woff2") format("woff2");
+      }
+      :root {
+        color-scheme: light dark;
+        --page: #ffeccf;
+        --ink: #2a1c3f;
+        --muted: #6f5f86;
+        --edge: #2a1c3f;
+        --accent: #ff5d2e;
+        --accent-ink: #331704;
+        --glow: #ffd23f;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --page: #1a1030;
+          --ink: #ffeede;
+          --muted: #b9a9d4;
+          --edge: #100a1f;
+          --glow: #7a5c00;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: var(--page);
+        color: var(--ink);
+        font-family: Roboto, system-ui, sans-serif;
+        text-align: center;
+      }
+      main {
+        max-width: 26rem;
+      }
+      .code {
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(5rem, 28vw, 6rem);
+        font-weight: 900;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        text-shadow: 0 5px 0 var(--glow);
+      }
+      h1 {
+        margin: 12px 0 8px;
+        font-size: 1.5rem;
+        font-weight: 900;
+        text-wrap: balance;
+      }
+      p {
+        margin: 0 0 28px;
+        line-height: 1.6;
+        color: var(--muted);
+        text-wrap: balance;
+      }
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 12px 22px;
+        background: var(--accent);
+        color: var(--accent-ink);
+        border: 2.5px solid var(--edge);
+        border-radius: 11px;
+        box-shadow: 0 5px 0 -1px var(--edge);
+        font-weight: 900;
+        text-decoration: none;
+      }
+      a:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 7px 0 -1px var(--edge);
+      }
+      a:active {
+        transform: translateY(3px);
+        box-shadow: 0 1px 0 -1px var(--edge);
+      }
+      a:focus-visible {
+        outline: 3px solid #4a2ddb;
+        outline-offset: 3px;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        a {
+          transition:
+            transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+            box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="code" aria-hidden="true">404</p>
+      <h1>Nyasar, ya?</h1>
+      <p>
+        Halaman ini nggak ada. Mungkin dulu ada, terus hilang kayak gaji
+        tanggal 25.
+      </p>
+      <a href="/">Balik ke papan</a>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "Hidup Kok Gini?",
+  "short_name": "Hidup Kok Gini?",
+  "description": "Board game komedi kehidupan Indonesia untuk 2–4 pemain.",
+  "lang": "id",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffeccf",
+  "theme_color": "#ffeccf",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
