@@ -3,6 +3,40 @@
   display: grid;
   gap: 14px;
   margin-top: 14px;
+  animation: payday-turn-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.payday-turn-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 11px;
+  border: 2px solid var(--edge);
+  border-radius: 10px;
+  background: var(--fixed);
+  color: var(--fixed-ink);
+  box-shadow: 0 3px 0 -1px var(--edge);
+  line-height: 1.2;
+  animation: payday-turn-banner-in 420ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+.payday-turn-step {
+  flex-shrink: 0;
+  font: 800 10px/1 "Roboto Mono", ui-monospace, monospace;
+  letter-spacing: 0.6px;
+}
+.payday-turn-banner strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+.payday-turn-banner > span:last-child {
+  margin-left: auto;
+  color: var(--fixed-ink);
+  font-size: 11px;
+  opacity: 0.78;
+  white-space: nowrap;
 }
 
 .paycheck-roster {
@@ -166,4 +200,20 @@
 }
 .paycheck .primary-button {
   font-size: 14px;
+}
+
+@media (max-width: 760px) and (min-height: 501px) {
+  .payday-turn-banner {
+    gap: 6px;
+    padding: 8px 9px;
+  }
+  .payday-turn-step {
+    font-size: 9px;
+  }
+  .payday-turn-banner strong {
+    font-size: 13px;
+  }
+  .payday-turn-banner > span:last-child {
+    font-size: 10px;
+  }
 }

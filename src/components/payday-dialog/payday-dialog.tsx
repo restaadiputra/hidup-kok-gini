@@ -32,17 +32,23 @@ export function PaydayDialog({ month, playerName, playerNumber, playerCount, pay
 }) {
   const [ready, setReady] = useState(false);
   useEffect(() => {
+    setReady(false);
     const timer = setTimeout(() => setReady(true), READ_DELAY_MS);
     return () => clearTimeout(timer);
-  }, []);
+  }, [playerNumber]);
   const choose = (index: number) => ready && onChoose(index);
   const loss = paycheck.net < 0;
   const hasDebtLines = paycheck.interest > 0 || paycheck.installment > 0 || paycheck.statusEffects.length > 0;
 
   return (
     <Dialog title={`Payday bulan ${month}: ${playerName}`} onClose={() => undefined} dismissible={false}>
-      <div className="paycheck">
-        <p className="paycheck-punchline">Pemain {playerNumber} dari {playerCount}. Semua menerima gaji, tapi kamu yang memilih nasib uangmu.</p>
+      <div className="paycheck" key={`${month}-${playerNumber}`}>
+        <div className="payday-turn-banner" role="status" aria-live="polite">
+          <span className="payday-turn-step">PAYDAY {playerNumber}/{playerCount}</span>
+          <strong>{playerName}</strong>
+          <span>pilih nasib uangmu</span>
+        </div>
+        <p className="paycheck-punchline">Semua menerima gaji, tapi keputusan payday ini milik {playerName}.</p>
         <dl className="paycheck-lines">
           <Line label="Gaji masuk" amount={`+${rupiah(paycheck.salary)}`} why="Akhirnya ada notifikasi yang ditunggu." />
           <Line label="Biaya hidup" amount={`−${rupiah(paycheck.livingCost)}`} why="Kos, makan, listrik. Trio penunggu gajian." />
