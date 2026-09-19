@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Icon } from "../icon/icon";
 import "./dialog.css";
 
@@ -22,6 +22,7 @@ export function Dialog({
   stickyContent?: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const dialog = ref.current!;
     dialog.showModal();
@@ -34,7 +35,16 @@ export function Dialog({
   }, []);
   useEffect(() => {
     if (scrollKey !== undefined) ref.current?.scrollTo({ top: 0, behavior: "auto" });
+    if (scrollKey !== undefined) setScrolled(false);
   }, [scrollKey]);
+  useEffect(() => {
+    const dialog = ref.current;
+    if (!dialog || !stickyContent) return;
+    const onScroll = () => setScrolled(dialog.scrollTop > 2);
+    dialog.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => dialog.removeEventListener("scroll", onScroll);
+  }, [Boolean(stickyContent)]);
   const header = (
     <div className="dialog-header">
       <h2 id="dialog-title">{title}</h2>
@@ -59,7 +69,7 @@ export function Dialog({
       }}
     >
       <div className="dialog-inner">
-        {stickyContent ? <div className="dialog-sticky">{header}{stickyContent}</div> : header}
+        {stickyContent ? <div className={`dialog-sticky${scrolled ? " is-scrolled" : ""}`}>{header}{stickyContent}</div> : header}
         {children}
       </div>
     </dialog>

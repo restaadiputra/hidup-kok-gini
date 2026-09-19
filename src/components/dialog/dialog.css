@@ -29,6 +29,10 @@
   margin: calc(var(--dialog-pad) * -1) calc(var(--dialog-pad) * -1) 14px;
   padding: var(--dialog-pad) var(--dialog-pad) 0;
   background: var(--paper);
+  transition: box-shadow 180ms ease;
+}
+.dialog-sticky.is-scrolled {
+  box-shadow: 0 8px 14px -12px var(--edge);
 }
 .dialog-sticky .payday-turn-banner {
   margin-top: 14px;
