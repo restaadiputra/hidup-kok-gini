@@ -44,7 +44,9 @@ export default function App() {
   const players = game?.players ?? draft.previews;
   const activeId = game && !finished ? game.currentPlayer : null;
   // The paycheck popover owns the screen until it is acknowledged.
-  const dialogsAllowed = game?.phase !== "payday" && game?.phase !== "payday-event";
+  // The native payday dialog already owns the screen. Other phases, including
+  // the shared payday event, should keep footer navigation usable.
+  const dialogsAllowed = game?.phase !== "payday";
   const closeModal = () => setModal(null);
 
   function startOver() {
