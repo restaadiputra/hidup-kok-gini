@@ -6,6 +6,12 @@
   flex: 1;
 }
 .secondary-button {
+  width: 100%;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
   background: var(--raised);
   border: 2.5px solid var(--edge);
   border-radius: 11px;
@@ -13,6 +19,13 @@
   padding: 12px;
   font-size: 12px;
   font-weight: 650;
+  text-align: left;
+}
+.dialog-actions .primary-button {
+  justify-content: flex-start;
+}
+.dialog-actions > button > svg:last-child {
+  margin-left: auto;
 }
 @media (max-width: 760px) and (min-height: 501px) {
   .dialog-actions {

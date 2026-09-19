@@ -11,7 +11,7 @@ export function RestartDialog({ onCancel, onConfirm }: { onCancel: () => void; o
       </p>
       <div className="dialog-actions">
         <button className="secondary-button" onClick={onCancel}>
-          Lanjut yang ini
+          Lanjut yang ini <Icon name="arrow" size={17} />
         </button>
         <button className="primary-button" onClick={onConfirm}>
           Ya, mulai ulang <Icon name="reset" size={17} />
