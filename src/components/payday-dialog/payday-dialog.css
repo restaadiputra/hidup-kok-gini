@@ -1,58 +1,132 @@
 .paycheck {
+  --inset: 14px;
   display: grid;
-  gap: 16px;
-}
-.paycheck-celebration {
-  display: flex;
-  align-items: center;
   gap: 14px;
-  padding: 16px;
-  border: 2.5px solid var(--edge);
-  border-radius: 14px;
-  background: var(--tile-6);
-  color: var(--tile-ink);
-  box-shadow: 0 4px 0 -1px var(--edge);
-  font-weight: 700;
+  margin-top: 14px;
 }
-.paycheck-celebration svg {
-  transform: rotate(-8deg);
+.paycheck-lines {
+  margin: 0;
 }
-.paycheck-celebration svg { flex-shrink: 0; }
-.paycheck-celebration p { margin: 0; }
-.paycheck-lines { margin: 0; }
-.paycheck-lines > div {
+/* Label and amount share a baseline; the joke sits under the label. */
+.paycheck-line {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "label amount"
+    "why why";
   align-items: baseline;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--edge);
+  column-gap: 12px;
+  row-gap: 3px;
+  padding: 12px var(--inset);
+  border-bottom: 1px dashed var(--line);
 }
-.paycheck-lines dt { font-weight: 700; }
-.paycheck-lines dt small {
-  display: block;
-  margin-top: 5px;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.5;
+.paycheck-line dt {
+  grid-area: label;
+  font-size: 15px;
+  font-weight: 700;
 }
-.paycheck-lines dd {
+.paycheck-line dd {
   margin: 0;
+}
+.paycheck-line dd:first-of-type {
+  grid-area: amount;
+  font-size: 15px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+  text-align: right;
 }
-.paycheck-lines .paycheck-total {
-  padding: 16px 12px;
-  margin-top: 12px;
+.paycheck-why {
+  grid-area: why;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.paycheck-bad dt,
+.paycheck-bad dd:first-of-type {
+  color: var(--negative-ink);
+}
+.paycheck-line:has(+ .paycheck-total) {
+  border-bottom: 0;
+}
+.paycheck-debt > .paycheck-line:nth-last-child(1) {
+  border-bottom: 0;
+}
+.paycheck-debt {
+  border-top: 1px dashed var(--line);
+}
+/* The net is the peak of the screen: loudest number, tilted like a loose piece. */
+.paycheck-total {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  margin-top: 8px;
+  padding: 14px calc(var(--inset) - 2.5px) 12px;
   border: 2.5px solid var(--edge);
   border-radius: 14px;
   box-shadow: 0 4px 0 -1px var(--edge);
+  transform: rotate(-1.2deg);
+}
+.paycheck-total dt {
+  font-size: 14px;
+  font-weight: 700;
+}
+.paycheck-total dd {
+  margin: 0;
+  font-size: 29px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -1.3px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.paycheck-total::after {
+  position: absolute;
+  top: -11px;
+  right: 12px;
+  padding: 3px 8px;
+  border: 2px solid var(--edge);
+  border-radius: 6px;
+  box-shadow: 0 2px 0 -0.5px var(--edge);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  transform: rotate(4deg);
 }
 .paycheck-gain { background: var(--positive-bg); color: var(--positive-ink); }
+.paycheck-gain::after {
+  content: "MASUK";
+  background: var(--fixed);
+  color: var(--fixed-ink);
+}
 .paycheck-loss { background: var(--negative-bg); color: var(--negative-ink); }
-.paycheck-punchline { margin: 0; font-weight: 700; line-height: 1.5; }
-@media (max-width: 420px) {
-  .paycheck-lines > div { grid-template-columns: 1fr; gap: 6px; }
-  .paycheck-lines dd { text-align: right; }
+.paycheck-loss::after {
+  content: "NOMBOK";
+  background: var(--negative-ink);
+  color: var(--negative-bg);
+}
+.paycheck-punchline {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+}
+.paycheck-hint {
+  margin: -6px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+/* The button stays reachable however short the screen is. */
+.paycheck-foot {
+  position: sticky;
+  bottom: calc(var(--dialog-pad) * -1);
+  margin: 0 calc(var(--dialog-pad) * -1) calc(var(--dialog-pad) * -1);
+  padding: 12px var(--dialog-pad) var(--dialog-pad);
+  background: var(--paper);
+  border-top: 1px dashed var(--line);
+}
+.paycheck .primary-button {
+  font-size: 14px;
 }

@@ -2,6 +2,8 @@
   margin: auto;
   padding: 0;
   width: min(570px, calc(100% - 28px));
+  /* The browser's own modal max-width would otherwise beat the width above. */
+  max-width: none;
   max-height: calc(100dvh - 40px);
   overflow: auto;
   background: var(--paper);
@@ -17,7 +19,8 @@
   backdrop-filter: blur(4px);
 }
 .dialog-inner {
-  padding: 24px;
+  --dialog-pad: 24px;
+  padding: var(--dialog-pad);
 }
 .dialog-header {
   display: flex;
@@ -43,7 +46,7 @@
     border-radius: 15px;
   }
   .dialog-inner {
-    padding: 20px;
+    --dialog-pad: 20px;
   }
   .dialog-header h2 {
     font-size: 22px;
@@ -55,6 +58,6 @@
 }
 @media (max-height: 500px) {
   .dialog-inner {
-    padding: 18px;
+    --dialog-pad: 18px;
   }
 }
