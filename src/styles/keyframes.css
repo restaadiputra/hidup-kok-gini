@@ -27,6 +27,70 @@
     transform: rotate(348deg) translateY(0);
   }
 }
+@keyframes dice-land {
+  0% {
+    transform: rotate(-8deg) scale(0.78, 0.9);
+  }
+  55% {
+    transform: rotate(-13deg) scale(1.06, 0.96);
+  }
+  100% {
+    transform: rotate(-8deg) scale(1);
+  }
+}
+@keyframes tile-active-pulse {
+  0%, 100% {
+    box-shadow:
+      0 3px 0 -1px var(--edge),
+      0 0 0 5px var(--title-glow);
+  }
+  50% {
+    box-shadow:
+      0 3px 0 -1px var(--edge),
+      0 0 0 9px transparent;
+  }
+}
+@keyframes month-stamp {
+  0% {
+    transform: rotate(-7deg) scale(0.78);
+  }
+  65% {
+    transform: rotate(-10deg) scale(1.14);
+  }
+  100% {
+    transform: rotate(-7deg) scale(1.1);
+  }
+}
+@keyframes stack-card-a-in {
+  from {
+    transform: translateY(8px) rotate(-7deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(-2.6deg);
+    opacity: 1;
+  }
+}
+@keyframes stack-card-b-in {
+  from {
+    transform: translateY(5px) rotate(8deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(2.3deg);
+    opacity: 1;
+  }
+}
+@keyframes effect-land {
+  from {
+    transform: translateY(5px) scale(0.86);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
 @keyframes card-drop {
   0% {
     transform: translateY(-25px) rotate(-7deg) scale(0.92);

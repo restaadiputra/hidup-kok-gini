@@ -71,6 +71,9 @@
     0 0 0 8px var(--title-glow);
   z-index: 2;
 }
+.tile-active:not(.tile-landing) {
+  animation: tile-active-pulse 2.2s ease-in-out infinite;
+}
 .tile-pawns {
   position: absolute;
   left: 50%;

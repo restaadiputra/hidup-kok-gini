@@ -80,6 +80,7 @@
   border: 2px solid var(--edge);
   transform: rotate(-7deg) scale(1.1);
   box-shadow: 0 3px 0 -1px var(--edge);
+  animation: month-stamp 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .month-list .month-current small {
   color: var(--ink);

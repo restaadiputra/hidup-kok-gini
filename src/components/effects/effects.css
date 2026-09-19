@@ -15,6 +15,13 @@
   border: 1.5px solid currentColor;
   border-radius: 20px;
   font-weight: 700;
+  animation: effect-land 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.effect:nth-child(2) {
+  animation-delay: 45ms;
+}
+.effect:nth-child(3) {
+  animation-delay: 90ms;
 }
 .effect-positive {
   background: var(--positive-bg);

@@ -18,9 +18,11 @@
 }
 .stack-card-a {
   transform: rotate(-2.6deg);
+  animation: stack-card-a-in 360ms cubic-bezier(0.16, 1, 0.3, 1) 70ms both;
 }
 .stack-card-b {
   transform: rotate(2.3deg);
+  animation: stack-card-b-in 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .event-content {
   position: relative;
