@@ -21,6 +21,10 @@ function Line({ label, amount, why, bad = false }: { label: string; amount: stri
   );
 }
 
+function signedMoney(value: number) {
+  return `${value < 0 ? "−" : "+"}${rupiah(Math.abs(value))}`;
+}
+
 export function PaydayDialog({ month, playerName, playerNumber, playerCount, paycheck, choiceEffects, onChoose }: {
   month: number;
   playerName: string;
@@ -75,11 +79,25 @@ export function PaydayDialog({ month, playerName, playerNumber, playerCount, pay
         <span className="field-label choice-label">SETELAH GAJIAN, KAMU...</span>
         <div className="choices payday-choices">
           {PAYDAY_OPTIONS.map((option, index) => (
-            <button className="choice" key={option.label} onClick={() => choose(index)}>
+            (() => {
+              const choiceMoney = choiceEffects[index]?.dompet ?? 0;
+              const netMoney = paycheck.net + choiceMoney;
+              return <button className="choice" key={option.label} onClick={() => choose(index)}>
               <span className="choice-top"><strong>{option.label}</strong><Icon name="arrow" size={17} /></span>
               <Effects effects={choiceEffects[index]} />
+              <span
+                className={`payday-choice-breakdown ${netMoney < 0 ? "payday-choice-loss" : "payday-choice-gain"}`}
+                aria-label={`Gajian ${signedMoney(paycheck.net)}, pilihan ${signedMoney(choiceMoney)}, net Dompet ${signedMoney(netMoney)}`}
+              >
+                <Icon name="wallet" size={14} />
+                <span>
+                  <small>Gajian {signedMoney(paycheck.net)} · pilihan {signedMoney(choiceMoney)}</small>
+                  <strong>Net Dompet {signedMoney(netMoney)}</strong>
+                </span>
+              </span>
               <small>{option.result}</small>
-            </button>
+              </button>;
+            })()
           ))}
         </div>
       </div>

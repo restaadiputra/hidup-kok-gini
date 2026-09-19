@@ -201,6 +201,43 @@
 .paycheck .primary-button {
   font-size: 14px;
 }
+.payday-choice-breakdown {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
+  padding: 8px 9px;
+  border: 1.5px dashed currentColor;
+  border-radius: 8px;
+  line-height: 1.2;
+}
+.payday-choice-breakdown > svg {
+  flex-shrink: 0;
+}
+.payday-choice-breakdown > span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+.payday-choice-breakdown small {
+  color: currentColor;
+  font-size: 10px;
+  font-weight: 650;
+  opacity: 0.82;
+  line-height: 1.25;
+}
+.payday-choice-breakdown strong {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.payday-choice-gain {
+  background: var(--positive-bg);
+  color: var(--positive-ink);
+}
+.payday-choice-loss {
+  background: var(--negative-bg);
+  color: var(--negative-ink);
+}
 
 @media (max-width: 760px) and (min-height: 501px) {
   .payday-turn-banner {
@@ -215,5 +252,9 @@
   }
   .payday-turn-banner > span:last-child {
     font-size: 10px;
+  }
+  .payday-choice-breakdown {
+    margin-top: 7px;
+    padding: 7px 8px;
   }
 }
