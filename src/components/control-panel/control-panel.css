@@ -104,3 +104,30 @@
     display: none;
   }
 }
+@media (max-width: 599px) {
+  .sheet-mode.sheet-open:has(.setup-content):focus-within .control-panel {
+    flex: 0 1 auto;
+    max-height: calc(100dvh - 16px);
+    overflow: auto;
+    border-radius: 15px;
+  }
+  .sheet-mode.sheet-open:has(.setup-content):focus-within .panel-topline {
+    display: flex;
+    height: 40px;
+    padding: 0 13px;
+    position: sticky;
+    top: 0;
+    z-index: 4;
+    background: var(--paper);
+  }
+  .sheet-mode.sheet-open:has(.setup-content):focus-within .sheet-close {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    background: transparent;
+  }
+  .sheet-mode.sheet-open:has(.setup-content):focus-within .panel-code {
+    display: none;
+  }
+}

@@ -247,3 +247,28 @@
     display: none;
   }
 }
+/* Preserve portrait form sizing when the on-screen keyboard shrinks height. */
+@media (max-width: 599px) {
+  .setup-heading h2 {
+    font-size: clamp(23px, 6vw, 27px);
+    line-height: 1.05;
+    white-space: normal;
+    text-wrap: balance;
+  }
+  .setup-heading p {
+    font-size: 12px;
+    line-height: 1.35;
+    white-space: normal;
+  }
+  .setup-content .player-count label {
+    min-width: 0;
+    height: 44px;
+    font-size: 12px;
+  }
+  .name-input {
+    min-height: 44px;
+  }
+  .name-input input {
+    font-size: 16px;
+  }
+}

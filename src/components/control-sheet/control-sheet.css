@@ -52,3 +52,22 @@
     min-height: 44px;
   }
 }
+/* A portrait phone can fall below 500px when its keyboard opens. Keep name
+   entry as a full-width sheet instead of the landscape side drawer. */
+@media (max-width: 599px) {
+  .play-layout:has(.sheet-mode.sheet-open:focus-within .setup-content) .sheet-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    border-radius: 0;
+    background: var(--page);
+  }
+  .sheet-mode.sheet-open:has(.setup-content):focus-within {
+    top: 8px;
+    right: 8px;
+    bottom: auto;
+    left: 8px;
+    width: auto;
+    max-height: calc(100dvh - 16px);
+  }
+}
