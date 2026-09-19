@@ -71,10 +71,45 @@ export function applyPressure(effects: Partial<Stats>): Partial<Stats> {
     }
     const stat = key as Stat;
     const factor = value < 0
-      ? (isMoney(stat) ? 1.6 : 3)
+      ? (isMoney(stat) ? 1.4 : 2.25)
       : (isMoney(stat) ? 0.8 : 0.5);
     const step = isMoney(stat) ? MONEY_STEP : 1;
     pressured[stat] = Math.sign(value) * Math.ceil((Math.abs(value) * factor) / step) * step;
   }
   return pressured;
+}
+
+// Compare choices on a common score-like scale, then gently compress outliers
+// toward the card's median. Signs and stat trade-offs stay intact; only an
+// obviously dominant or punishing magnitude is pulled closer to the table's
+// real decision range.
+export function choiceUtility(effects: Partial<Stats>): number {
+  return (effects.dompet ?? 0) / 100_000 - (effects.hutang ?? 0) / 100_000 +
+    (effects.kewarasan ?? 0) + (effects.relasi ?? 0) + (effects.hoki ?? 0);
+}
+
+export function balanceChoiceEffects(allEffects: Partial<Stats>[]): Partial<Stats>[] {
+  const utilities = allEffects.map(choiceUtility);
+  const magnitudes = utilities.map(Math.abs).filter((value) => value > 0);
+  if (magnitudes.length < 2) return allEffects;
+  const sorted = [...magnitudes].sort((a, b) => a - b);
+  const reference = sorted[Math.floor(sorted.length / 2)];
+  return allEffects.map((effects, index) => {
+    const utility = utilities[index];
+    if (!utility || !reference) return effects;
+    const target = Math.abs(utility) * 0.45 + reference * 0.55;
+    const scale = Math.max(0.55, Math.min(1.45, target / Math.abs(utility)));
+    const balanced: Partial<Stats> = {};
+    for (const [key, value] of Object.entries(effects)) {
+      if (value === undefined || value === 0) {
+        balanced[key as Stat] = value;
+        continue;
+      }
+      const stat = key as Stat;
+      const step = isMoney(stat) ? MONEY_STEP : 1;
+      const amount = Math.max(1, Math.round((Math.abs(value) * scale) / step)) * step;
+      balanced[stat] = Math.sign(value) * amount;
+    }
+    return balanced;
+  });
 }

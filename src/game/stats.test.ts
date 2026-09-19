@@ -3,7 +3,7 @@ import { test } from "vitest";
 import { EVENT_BY_ID, EVENTS } from "../data/events";
 import { createGame } from "./create-game";
 import { gameReducer } from "./reducer";
-import { applyEffects, appliedChanges, randomizeEffects } from "./stats";
+import { applyEffects, appliedChanges, balanceChoiceEffects, choiceUtility, randomizeEffects } from "./stats";
 import type { GameState } from "./types";
 
 test("random effects preserve stat keys, signs, bounds and vary across seeds", () => {
@@ -55,4 +55,24 @@ test("applied changes report borrowing even when the choice never named hutang",
     appliedChanges(before, { ...before, dompet: 0, hutang: 120 }, { dompet: -100_100 }),
     { dompet: -100_000, hutang: 120 },
   );
+});
+
+test("choice balancing compresses dominant and punishing options without flipping trade-offs", () => {
+  const balanced = balanceChoiceEffects([
+    { dompet: 500_000, relasi: 10 },
+    { dompet: -50_000, kewarasan: -2 },
+    { dompet: 100_000, hoki: 3 },
+  ]);
+  const before = [
+    choiceUtility({ dompet: 500_000, relasi: 10 }),
+    choiceUtility({ dompet: -50_000, kewarasan: -2 }),
+    choiceUtility({ dompet: 100_000, hoki: 3 }),
+  ];
+  const after = balanced.map(choiceUtility);
+  assert.equal(Math.sign(after[0]), Math.sign(before[0]));
+  assert.equal(Math.sign(after[1]), Math.sign(before[1]));
+  assert.equal(Math.sign(after[2]), Math.sign(before[2]));
+  assert.ok(Math.max(...after.map(Math.abs)) / Math.min(...after.map(Math.abs)) < 3);
+  assert.ok(Math.abs(after[0]) < Math.abs(before[0]));
+  assert.ok(Math.abs(after[1]) > Math.abs(before[1]));
 });

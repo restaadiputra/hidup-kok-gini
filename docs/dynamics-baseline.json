@@ -1,12 +1,12 @@
 {
   "games": 300,
   "players": 900,
-  "crises": 587,
-  "dangerByJune": 0.49333333333333335,
-  "borrowed": 0.014444444444444444,
-  "crisisRecovery": 0.24361158432708688,
-  "comeback": 0,
+  "crises": 683,
+  "dangerByJune": 0.5688888888888889,
+  "borrowed": 0.034444444444444444,
+  "crisisRecovery": 0.4128843338213763,
+  "comeback": 0.17,
   "suddenCoverage": 1,
-  "averageScoreSpread": 72.90666666666667,
+  "averageScoreSpread": 89.56333333333333,
   "averageRecentThemeCount": 2
 }

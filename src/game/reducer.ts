@@ -7,7 +7,7 @@ import { drawEvent } from "./deck";
 import { addToLog, choiceMessage, rollMessage } from "./log-messages";
 import { PAYDAY_OPTIONS, rollPaycheck, settlePayday } from "./payday";
 import { random, rollDie } from "./random";
-import { appliedChanges, applyPressure, randomizeEffects } from "./stats";
+import { appliedChanges, applyPressure, balanceChoiceEffects, randomizeEffects } from "./stats";
 import { clearStatuses, expireStatuses, gainStatuses, statusChanges, syncAutomatic } from "./statuses";
 import type { Action, GameState, Paycheck, Player, Stats } from "./types";
 
@@ -48,11 +48,12 @@ function rollTurn(state: GameState): GameState {
 
   const draw = drawEvent(state.drawn, encounterTile, rng, mover, undefined, undefined, state.recentThemes ?? [], forcedSudden);
   rng = draw.rng;
-  const choiceEffects = draw.event.choices.map((choice) => {
+  const rawChoiceEffects = draw.event.choices.map((choice) => {
     const rolled = randomizeEffects(choice.effects, rng);
     rng = rolled.rng;
     return applyPressure(rolled.effects);
   });
+  const choiceEffects = balanceChoiceEffects(rawChoiceEffects);
 
   return {
     ...state,
@@ -108,12 +109,12 @@ function continuePayday(state: GameState, destination: number | null): GameState
 
 function paydayOptions(rng: number): { effects: Partial<Stats>[]; rng: number } {
   let next = rng;
-  const effects = PAYDAY_OPTIONS.map((option) => {
+  const raw = PAYDAY_OPTIONS.map((option) => {
     const rolled = randomizeEffects(option.effects, next);
     next = rolled.rng;
     return applyPressure(rolled.effects);
   });
-  return { effects, rng: next };
+  return { effects: balanceChoiceEffects(raw), rng: next };
 }
 
 function choosePayday(state: GameState, index: number): GameState {
