@@ -66,7 +66,16 @@ export function BoardTile({
       style={tileStyle}
       aria-label={ariaLabel}
     >
-      <span className="tile-number">{number}</span>
+      <span className="tile-number">
+        {index === 0 ? (
+          <>
+            <span className="number-full">START</span>
+            <span className="number-short">00</span>
+          </>
+        ) : (
+          number
+        )}
+      </span>
       {countEl}
       <span className="tile-token">
         <Icon name={tile.icon} size={25} />
