@@ -1,19 +1,163 @@
+.history-overview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0 12px;
+  border-bottom: 1px solid var(--line);
+}
+.history-overview > div {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.history-overview span,
+.history-overview p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.history-overview strong {
+  color: var(--accent-text);
+  font-size: 20px;
+  line-height: 1;
+}
+.history-overview p {
+  text-align: right;
+}
+
 .game-log {
+  --timeline: var(--line);
   list-style: none;
-  padding: 0;
+  padding: 0 0 4px;
   margin: 0;
 }
-.game-log li {
-  display: flex;
+.game-log-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
   gap: 11px;
-  padding: 14px 0;
-  border-top: 1px dashed var(--line);
-  font-size: 12px;
-  line-height: 1.6;
-  color: var(--muted);
+  padding: 15px 0 16px;
 }
-.game-log li > span {
-  font-size: 11px;
+.game-log-item:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  top: 41px;
+  bottom: -1px;
+  left: 14px;
+  width: 1px;
+  background: var(--timeline);
+}
+.game-log-marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  color: var(--ink);
+  background: var(--raised);
+  border: 2px solid var(--edge);
+  border-radius: 50%;
+  box-shadow: 0 2px 0 -0.5px var(--edge);
+}
+.kind-start .game-log-marker,
+.kind-payday .game-log-marker {
+  color: var(--accent-ink);
+  background: var(--fixed);
+}
+.kind-shared .game-log-marker {
+  color: var(--accent-ink);
+  background: var(--accent);
+}
+.game-log-content {
+  min-width: 0;
+  padding-bottom: 1px;
+}
+.game-log-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 1px 0 4px;
+}
+.game-log-label {
   color: var(--accent-text);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.kind-start .game-log-label,
+.kind-payday .game-log-label {
+  color: var(--positive-ink);
+}
+.kind-shared .game-log-label {
+  color: var(--accent-text);
+}
+.game-log-index {
+  color: var(--muted);
+  font-family: "Roboto Mono", ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+}
+.game-log h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+.game-log-content > p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+.game-log-effects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 8px;
+}
+.game-log-effects span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 3px 7px;
+  color: var(--ink);
+  background: var(--raised);
+  border: 1.5px solid var(--edge);
+  border-radius: 20px;
+  font-size: 10px;
   font-weight: 750;
+  line-height: 1.1;
+}
+.game-log-effects .is-positive {
+  color: var(--positive-ink);
+  background: var(--positive-bg);
+  border-color: var(--positive-ink);
+}
+.game-log-effects .is-negative {
+  color: var(--negative-ink);
+  background: var(--negative-bg);
+  border-color: var(--negative-ink);
+}
+@media (max-width: 430px) {
+  .game-log-item {
+    grid-template-columns: 28px minmax(0, 1fr);
+    gap: 9px;
+    padding: 13px 0 14px;
+  }
+  .game-log-marker {
+    width: 28px;
+    height: 28px;
+  }
+  .game-log-item:not(:last-child)::before {
+    left: 13px;
+    top: 39px;
+  }
+  .game-log h3 {
+    font-size: 13px;
+  }
 }

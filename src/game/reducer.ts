@@ -4,7 +4,8 @@ import { EVENT_BY_ID } from "../data/events";
 import { choiceAvailability } from "./availability";
 import { applyWithDebt } from "./debt";
 import { drawEvent } from "./deck";
-import { addToLog, choiceMessage, rollMessage } from "./log-messages";
+import { addToLog, choiceMessage, effectsMessage, rollMessage } from "./log-messages";
+import { rupiah } from "./format";
 import { PAYDAY_OPTIONS, rollPaycheck, settlePayday } from "./payday";
 import { random, rollDie } from "./random";
 import { appliedChanges, applyPressure, balanceChoiceEffects, randomizeEffects } from "./stats";
@@ -137,7 +138,7 @@ function choosePayday(state: GameState, index: number): GameState {
       paydayPlayer: nextPlayer,
       paydayChoiceEffects: nextOptions.effects,
       rng: nextOptions.rng,
-      log: addToLog(state.log, `${player.name} memilih ${option.label} saat payday.`),
+      log: addToLog(state.log, `${player.name} memilih ${option.label} saat payday.${effectsMessage(effects)}`),
     };
   }
   const bonusTile = BOARD.find((candidate) => candidate.category === "gajian")!;
@@ -162,7 +163,7 @@ function choosePayday(state: GameState, index: number): GameState {
     recentThemes: draw.recentThemes,
     rng,
     resolution: "",
-    log: addToLog(state.log, `${player.name} memilih ${option.label} saat payday. Event gajian bersama muncul.`),
+    log: addToLog(state.log, `${player.name} memilih ${option.label} saat payday.${effectsMessage(effects)} Event gajian bersama muncul.`),
   };
 }
 
@@ -180,6 +181,7 @@ function choose(state: GameState, eventId: string, index: number): GameState {
   );
   const borrowed = availability.kind === "debt" ? availability.added : 0;
   const target = choice.target ?? "self";
+  const changes = appliedChanges(player.stats, stats, effects);
   const players = state.players.map((p) => {
     const applies = target === "all" || (target === "others" ? p.id !== state.currentPlayer : p.id === state.currentPlayer);
     return applies ? applyChoiceToPlayer(p, effects, state, choice) : p;
@@ -188,11 +190,11 @@ function choose(state: GameState, eventId: string, index: number): GameState {
     ...state,
     phase: "resolved",
     resolution: choice.result,
-    lastEffects: appliedChanges(player.stats, stats, effects),
+    lastEffects: changes,
     players,
     log: addToLog(
       state.log,
-      choiceMessage(player.name, choice, borrowed, statusChanges(player.statuses, statuses)) +
+      choiceMessage(player.name, choice, borrowed, statusChanges(player.statuses, statuses), changes) +
         (target === "all" ? " Efeknya kena satu meja." : target === "others" ? " Yang lain ikut kena." : ""),
     ),
   };
@@ -214,6 +216,13 @@ function settleMonth(state: GameState): GameState {
   });
   const options = paydayOptions(rng);
   rng = options.rng;
+  const paydaySummary = monthPaychecks
+    .map(({ playerId, paycheck }) => {
+      const name = state.players.find((player) => player.id === playerId)?.name ?? "Pemain";
+      const outcome = paycheck.net < 0 ? `nombok ${rupiah(Math.abs(paycheck.net))}` : `masuk ${rupiah(paycheck.net)}`;
+      return `${name} ${outcome}`;
+    })
+    .join(" · ");
   return {
     ...state,
     rng,
@@ -227,7 +236,7 @@ function settleMonth(state: GameState): GameState {
     paydayChoiceEffects: options.effects,
     paydayEventId: null,
     pendingPosition: null,
-    log: addToLog(state.log, `Akhir bulan ${state.month}: semua pemain menerima gajian dan membayar biaya hidup.`),
+    log: addToLog(state.log, `Akhir bulan ${state.month}: semua pemain menerima gajian dan membayar biaya hidup. Ringkasan: ${paydaySummary}.`),
   };
 }
 
