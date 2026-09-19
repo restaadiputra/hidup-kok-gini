@@ -8,9 +8,9 @@ import type { DebtRules, Paycheck, Player, StatusCatalog } from "./types";
 export type PaycheckRoll = Omit<Paycheck, "statusEffects" | "interest" | "installment">;
 
 export const PAYDAY_OPTIONS = [
-  { label: "Bayar aman", effects: { dompet: -150_000, hutang: -250_000, kewarasan: 4 }, result: "Hutang turun sedikit. Napas naik sedikit." },
-  { label: "Gaya dulu", effects: { dompet: -200_000, relasi: 6, hoki: 2 }, result: "Gajian belum dingin, traktiran sudah jalan." },
-  { label: "Simpan rapat-rapat", effects: { dompet: 150_000, kewarasan: -3, relasi: -3 }, result: "Saldo aman. Ajakan nongkrong masuk arsip." },
+  { label: "Bayar aman", walletLabel: "Bayar utang", effects: { dompet: -150_000, hutang: -250_000, kewarasan: 4 }, result: "Hutang turun sedikit. Napas naik sedikit." },
+  { label: "Gaya dulu", walletLabel: "Traktiran", effects: { dompet: -200_000, relasi: 6, hoki: 2 }, result: "Gajian belum dingin, traktiran sudah jalan." },
+  { label: "Simpan rapat-rapat", walletLabel: "Uang dihemat", effects: { dompet: 150_000, kewarasan: -3, relasi: -3 }, result: "Saldo aman. Ajakan nongkrong masuk arsip." },
 ] as const;
 
 // Draw order is part of the save format: salary, living cost, rare roll, bill amount, reason.

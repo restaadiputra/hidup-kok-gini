@@ -94,11 +94,11 @@ export function PaydayDialog({ month, playerName, playerNumber, playerCount, pay
               <Effects effects={choiceEffects[index]} />
               <span
                 className={`payday-choice-breakdown ${netMoney < 0 ? "payday-choice-loss" : "payday-choice-gain"}`}
-                aria-label={`Gajian ${signedMoney(paycheck.net)}, pilihan ${signedMoney(choiceMoney)}, net Dompet ${signedMoney(netMoney)}`}
+                aria-label={`Sisa gajian ${signedMoney(paycheck.net)}, ${option.walletLabel} ${signedMoney(choiceMoney)}, net Dompet ${signedMoney(netMoney)}`}
               >
                 <Icon name="wallet" size={14} />
                 <span>
-                  <small>Gajian {signedMoney(paycheck.net)} · pilihan {signedMoney(choiceMoney)}</small>
+                  <small>Sisa gajian {signedMoney(paycheck.net)} · {option.walletLabel} {signedMoney(choiceMoney)}</small>
                   <strong>Net Dompet {signedMoney(netMoney)}</strong>
                 </span>
               </span>
