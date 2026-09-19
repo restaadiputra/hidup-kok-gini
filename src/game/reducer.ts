@@ -85,6 +85,7 @@ function continuePayday(state: GameState, destination: number | null): GameState
       phase: "ready",
       payday: false,
       paydayDetails: null,
+      monthPaychecks: [],
       eventId: null,
       choiceEffects: [],
       resolution: "",
@@ -142,10 +143,12 @@ const isEndOfRound = (state: GameState) => state.currentPlayer === state.players
 function settleMonth(state: GameState): GameState {
   let rng = state.rng;
   let paydayDetails: Paycheck | null = null;
+  const monthPaychecks: Array<{ playerId: number; paycheck: Paycheck }> = [];
   const players = state.players.map((player, index) => {
     const rolled = rollPaycheck(rng);
     rng = rolled.rng;
     const settled = settlePayday(player, rolled.paycheck);
+    monthPaychecks.push({ playerId: player.id, paycheck: settled.paycheck });
     if (index === state.currentPlayer) paydayDetails = settled.paycheck;
     return settled.player;
   });
@@ -156,6 +159,7 @@ function settleMonth(state: GameState): GameState {
     phase: "payday",
     payday: true,
     paydayDetails,
+    monthPaychecks,
     pendingPosition: null,
     log: addToLog(state.log, `Akhir bulan ${state.month}: semua pemain menerima gajian dan membayar biaya hidup.`),
   };

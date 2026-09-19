@@ -9,6 +9,7 @@ import { HELP_TAG } from "../game/status-ids";
 import type { Choice } from "../game/types";
 import { COLLECTOR_CARDS, KRISIS_CARDS } from "./special-decks";
 import { SUDDEN_EVENTS } from "./sudden-events";
+import { TRANSFER_EVENTS } from "./transfer-events";
 
 const SPECIAL_CARDS = [...KRISIS_CARDS, ...COLLECTOR_CARDS];
 
@@ -168,4 +169,10 @@ test("expanded pool carries audience themes and table-wide hooks", () => {
   assert.ok(EVENTS.filter((event) => event.theme === "gen-z").length >= 14);
   assert.ok(EVENTS.filter((event) => event.theme === "gen-alpha").length >= 14);
   assert.ok([...EVENTS, ...SUDDEN_EVENTS].some((event) => event.choices.some((choice) => choice.target === "all")));
+});
+
+test("bonus tile has its own economic deck", () => {
+  assert.equal(TRANSFER_EVENTS.length, 4);
+  assert.ok(TRANSFER_EVENTS.every((event) => event.category === "gajian"));
+  assert.ok(TRANSFER_EVENTS.some((event) => event.choices.some((choice) => choice.target === "all")));
 });

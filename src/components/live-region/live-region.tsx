@@ -3,7 +3,7 @@ import type { GameState, Player } from "../../game/types";
 import type { TurnMotion } from "../../hooks/use-turn-motion";
 
 function phaseAnnouncement(game: GameState): string {
-  if (game.phase === "payday") return "Gajian! Cek gaji dan tagihan sebelum lanjut jalan.";
+  if (game.phase === "payday") return `Rekap bulan ${game.month}. Semua pemain menerima gaji dan biaya hidup dipotong.`;
   if (game.phase === "event") return EVENT_BY_ID[game.eventId!].title;
   if (game.phase === "resolved") return game.resolution;
   return "Siap lempar dadu.";

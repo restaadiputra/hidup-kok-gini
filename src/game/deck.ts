@@ -5,10 +5,11 @@ import { pickIndex, random } from "./random";
 import { APES, BURNOUT, DEBT_COLLECTOR } from "./status-ids";
 import { hasStatus } from "./statuses";
 import { SUDDEN_EVENTS } from "../data/sudden-events";
+import { TRANSFER_EVENTS } from "../data/transfer-events";
 import type { EventCard, Player, Tile } from "./types";
 
-export interface Decks { events: EventCard[]; krisis: EventCard[]; collector: EventCard[]; sudden?: EventCard[] }
-const DEFAULT_DECKS: Decks = { events: EVENTS, krisis: KRISIS_CARDS, collector: COLLECTOR_CARDS, sudden: SUDDEN_EVENTS };
+export interface Decks { events: EventCard[]; krisis: EventCard[]; collector: EventCard[]; sudden?: EventCard[]; bonus?: EventCard[] }
+const DEFAULT_DECKS: Decks = { events: EVENTS, krisis: KRISIS_CARDS, collector: COLLECTOR_CARDS, sudden: SUDDEN_EVENTS, bonus: TRANSFER_EVENTS };
 const isWildcard = (tile: Tile) => tile.category === "gajian" || tile.category === "kejutan";
 
 function choosePool(player: Player, tile: Tile, rng: number, decks: Decks, collectorChance: number) {
@@ -16,6 +17,7 @@ function choosePool(player: Player, tile: Tile, rng: number, decks: Decks, colle
   if (tile.category === "kejutan" && hasStatus(player, APES))
     return { pool: decks.krisis.filter((card) => card.crisis === "apes"), rng };
   if (tile.category === "kejutan" && decks.sudden?.length) return { pool: decks.sudden, rng };
+  if (tile.category === "gajian" && decks.bonus?.length) return { pool: decks.bonus, rng };
   let next = rng;
   if (hasStatus(player, DEBT_COLLECTOR)) {
     const roll = random(rng);

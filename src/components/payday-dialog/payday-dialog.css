@@ -4,6 +4,43 @@
   gap: 14px;
   margin-top: 14px;
 }
+
+.paycheck-roster {
+  display: grid;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.paycheck-player {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: var(--paper);
+}
+
+.paycheck-player-loss {
+  border-color: var(--negative-ink);
+}
+
+.paycheck-player summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  list-style: none;
+}
+
+.paycheck-player summary::-webkit-details-marker {
+  display: none;
+}
+
+.paycheck-player summary b {
+  color: var(--positive-ink);
+}
+
+.paycheck-player-loss summary b {
+  color: var(--negative-ink);
+}
 .paycheck-lines {
   margin: 0;
 }

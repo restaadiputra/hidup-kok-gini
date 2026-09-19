@@ -19,10 +19,10 @@ function Line({ label, amount, why, bad = false }: { label: string; amount: stri
   );
 }
 
-export function PaydayDialog({ name, paycheck, steps, onContinue }: {
-  name: string;
-  paycheck: Paycheck;
-  steps: number;
+export function PaydayDialog({ month, settlements, final, onContinue }: {
+  month: number;
+  settlements: Array<{ name: string; paycheck: Paycheck }>;
+  final: boolean;
   onContinue: () => void;
 }) {
   const [ready, setReady] = useState(false);
@@ -32,50 +32,41 @@ export function PaydayDialog({ name, paycheck, steps, onContinue }: {
   }, []);
   const proceed = () => ready && onContinue();
 
-  const loss = paycheck.net < 0;
-  const hasDebtLines = paycheck.interest > 0 || paycheck.installment > 0 || paycheck.statusEffects.length > 0;
   return (
-    <Dialog title={`Selamat, ${name}! Gajian akhir bulan!`} onClose={proceed} dismissible={false}>
+    <Dialog title={`Rekap bulan ${month}: semua sudah gajian`} onClose={proceed} dismissible={false}>
       <div className="paycheck">
-        <dl className="paycheck-lines">
-          <Line label="Gaji masuk" amount={`+${rupiah(paycheck.salary)}`} why="Akhirnya ada notifikasi yang ditunggu." />
-          <Line label="Biaya hidup" amount={`−${rupiah(paycheck.livingCost)}`} why="Kos, makan, listrik. Trio penunggu gajian." />
-          <Line
-            label={paycheck.rare ? "Musibah edisi langka" : "Tagihan dadakan"}
-            amount={`−${rupiah(paycheck.deduction)}`}
-            why={paycheck.reason}
-          />
-          <div className={`paycheck-total ${loss ? "paycheck-loss" : "paycheck-gain"}`}>
-            <dt>{loss ? "Dompet nombok" : "Sisa masuk dompet"}</dt>
-            <dd>{loss ? "−" : "+"}{rupiah(Math.abs(paycheck.net))}</dd>
-          </div>
-        </dl>
-        {hasDebtLines ? (
-          <dl className="paycheck-lines paycheck-debt">
-            {paycheck.interest > 0 ? (
-              <Line label="Bunga utang" amount={`+${rupiah(paycheck.interest)}`} why="Ditambahkan ke Hutang." bad />
-            ) : null}
-            {paycheck.installment > 0 ? (
-              <Line label="Cicilan debt collector" amount={`−${rupiah(paycheck.installment)}`} why="Dipotong dari Dompet." bad />
-            ) : null}
-            {paycheck.statusEffects.map(({ status, effects }) => (
-              <Line
-                key={status}
-                label={statusLabel(status)}
-                amount={(Object.entries(effects) as [Stat, number][])
-                  .map(([stat, value]) => `${STAT_LABELS[stat]} ${effectLabel(stat, value)}`)
-                  .join(", ")}
-              />
-            ))}
-          </dl>
-        ) : null}
-        <p className="paycheck-punchline">
-          {loss ? "Selamat atas gajinya. Turut berduka atas sisanya." : "Gaji mampir sebentar. Tagihan udah nunggu dari tadi."}
-        </p>
-        {loss ? <p className="paycheck-hint">Kalau Dompet nggak cukup, sisanya jadi Hutang.</p> : null}
+        <p className="paycheck-punchline">Gaji masuk untuk semua pemain. Yang berbeda cuma alasan dompetnya langsung berkurang.</p>
+        <div className="paycheck-roster">
+          {settlements.map(({ name, paycheck }) => {
+            const loss = paycheck.net < 0;
+            const hasDebtLines = paycheck.interest > 0 || paycheck.installment > 0 || paycheck.statusEffects.length > 0;
+            return (
+              <details className={loss ? "paycheck-player paycheck-player-loss" : "paycheck-player"} key={name}>
+                <summary>
+                  <strong>{name}</strong>
+                  <b>{effectLabel("dompet", paycheck.net)}</b>
+                </summary>
+                <dl className="paycheck-lines">
+                  <Line label="Gaji masuk" amount={`+${rupiah(paycheck.salary)}`} />
+                  <Line label="Biaya hidup" amount={`−${rupiah(paycheck.livingCost)}`} />
+                  <Line label={paycheck.rare ? "Musibah edisi langka" : "Tagihan dadakan"} amount={`−${rupiah(paycheck.deduction)}`} why={paycheck.reason} />
+                </dl>
+                {hasDebtLines ? (
+                  <dl className="paycheck-lines paycheck-debt">
+                    {paycheck.interest > 0 ? <Line label="Bunga utang" amount={`+${rupiah(paycheck.interest)}`} bad /> : null}
+                    {paycheck.installment > 0 ? <Line label="Cicilan debt collector" amount={`−${rupiah(paycheck.installment)}`} bad /> : null}
+                    {paycheck.statusEffects.map(({ status, effects }) => (
+                      <Line key={status} label={statusLabel(status)} amount={(Object.entries(effects) as [Stat, number][]).map(([stat, value]) => `${STAT_LABELS[stat]} ${effectLabel(stat, value)}`).join(", ")} />
+                    ))}
+                  </dl>
+                ) : null}
+              </details>
+            );
+          })}
+        </div>
         <div className="paycheck-foot">
           <button className="primary-button" onClick={proceed}>
-            {steps > 0 ? `Lanjut ${steps} langkah` : "Lanjut ke bulan berikutnya"}
+            {final ? "Lihat hasil akhir" : "Mulai bulan berikutnya"}
             <Icon name="arrow" size={18} />
           </button>
         </div>

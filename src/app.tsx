@@ -158,9 +158,12 @@ export default function App() {
       <LiveRegion game={game} player={player} motion={motion} />
       {!motion && game?.phase === "payday" && game.paydayDetails && player ? (
         <PaydayDialog
-          name={player.name}
-          paycheck={game.paydayDetails}
-          steps={game.pendingPosition ?? 0}
+          month={game.month}
+          final={game.month === 12}
+          settlements={(game.monthPaychecks ?? []).map(({ playerId, paycheck }) => ({
+            name: game.players.find((candidate) => candidate.id === playerId)?.name ?? "Pemain",
+            paycheck,
+          }))}
           onContinue={acknowledgePayday}
         />
       ) : null}

@@ -4,7 +4,7 @@ export type TileKind = keyof typeof import("../data/content/categories.json");
 export type SpecialTile = "gajian" | "kejutan";
 export type Category = Exclude<TileKind, SpecialTile>;
 export type SpecialDeck = "krisis" | "debt-collector";
-export type DeckId = Category | SpecialDeck;
+export type DeckId = Category | SpecialDeck | "gajian";
 export type Crisis = "burnout" | "apes";
 export interface TileMeta {
   label: string;
@@ -134,6 +134,7 @@ export interface GameState {
   lastEffects: Partial<Stats>;
   payday: boolean;
   paydayDetails: Paycheck | null;
+  monthPaychecks?: Array<{ playerId: number; paycheck: Paycheck }>;
   pendingPosition: number | null;
   log: string[];
   turn: number;
