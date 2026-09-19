@@ -50,13 +50,20 @@ export function PaydayDialog({ month, playerName, playerNumber, playerCount, pay
       onClose={() => undefined}
       dismissible={false}
       scrollKey={`${month}-${playerNumber}`}
-    >
-      <div className="paycheck" key={`${month}-${playerNumber}`}>
-        <div className="payday-turn-banner" role="status" aria-live="polite">
+      stickyContent={
+        <div
+          key={`${month}-${playerNumber}`}
+          className="payday-turn-banner"
+          role="status"
+          aria-live="polite"
+        >
           <span className="payday-turn-step">PAYDAY {playerNumber}/{playerCount}</span>
           <strong>{playerName}</strong>
           <span>pilih nasib uangmu</span>
         </div>
+      }
+    >
+      <div className="paycheck" key={`${month}-${playerNumber}`}>
         <p className="paycheck-punchline">Semua menerima gaji, tapi keputusan payday ini milik {playerName}.</p>
         <dl className="paycheck-lines">
           <Line label="Gaji masuk" amount={`+${rupiah(paycheck.salary)}`} why="Akhirnya ada notifikasi yang ditunggu." />

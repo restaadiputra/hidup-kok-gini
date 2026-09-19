@@ -10,6 +10,7 @@ export function Dialog({
   onClose,
   dismissible = true,
   scrollKey,
+  stickyContent,
 }: {
   title: string;
   children: ReactNode;
@@ -17,6 +18,8 @@ export function Dialog({
   dismissible?: boolean;
   /** Reset the modal scroll position when a new step replaces its content. */
   scrollKey?: string | number;
+  /** Optional content that stays attached to the dialog header while it scrolls. */
+  stickyContent?: ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -32,6 +35,16 @@ export function Dialog({
   useEffect(() => {
     if (scrollKey !== undefined) ref.current?.scrollTo({ top: 0, behavior: "auto" });
   }, [scrollKey]);
+  const header = (
+    <div className="dialog-header">
+      <h2 id="dialog-title">{title}</h2>
+      {dismissible ? (
+        <button className="icon-button" onClick={onClose} aria-label="Tutup">
+          <Icon name="close" />
+        </button>
+      ) : null}
+    </div>
+  );
   return (
     <dialog
       ref={ref}
@@ -46,14 +59,7 @@ export function Dialog({
       }}
     >
       <div className="dialog-inner">
-        <div className="dialog-header">
-          <h2 id="dialog-title">{title}</h2>
-          {dismissible ? (
-            <button className="icon-button" onClick={onClose} aria-label="Tutup">
-              <Icon name="close" />
-            </button>
-          ) : null}
-        </div>
+        {stickyContent ? <div className="dialog-sticky">{header}{stickyContent}</div> : header}
         {children}
       </div>
     </dialog>

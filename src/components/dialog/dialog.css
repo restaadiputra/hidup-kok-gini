@@ -22,6 +22,17 @@
   --dialog-pad: 24px;
   padding: var(--dialog-pad);
 }
+.dialog-sticky {
+  position: sticky;
+  top: calc(var(--dialog-pad) * -1);
+  z-index: 3;
+  margin: calc(var(--dialog-pad) * -1) calc(var(--dialog-pad) * -1) 14px;
+  padding: var(--dialog-pad) var(--dialog-pad) 0;
+  background: var(--paper);
+}
+.dialog-sticky .payday-turn-banner {
+  margin-top: 14px;
+}
 .dialog-header {
   display: flex;
   align-items: center;
