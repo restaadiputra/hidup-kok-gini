@@ -12,6 +12,23 @@ Ini bukan adaptasi resmi, edisi digital, port, atau produk yang berafiliasi deng
 
 Kalau kamu menyukai premisnya, dukung pembuat aslinya melalui situs resmi WNI Simulator.
 
+## Main online
+
+Game ini tayang gratis di <https://hidup-kok-gini.pages.dev>. Setelah dibuka sekali, game bisa dimainkan tanpa internet dan bisa dipasang ke layar utama HP.
+
+### Deploy ke Cloudflare Pages
+
+Situs ini statis, jadi cukup hubungkan repositori GitHub di Workers & Pages → Create → Pages → Connect to Git:
+
+| Pengaturan | Nilai |
+|---|---|
+| Nama proyek | `hidup-kok-gini` |
+| Production branch | `master` |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+
+Versi Node dikunci di `.node-version`. Header keamanan dan cache ada di `public/_headers`. URL kanonis di `index.html`, `public/robots.txt`, dan `public/sitemap.xml` memakai `https://hidup-kok-gini.pages.dev`; ganti ketiganya kalau nanti memakai domain sendiri.
+
 ## Mainkan secara lokal
 
 Butuh Node.js 22.18 atau lebih baru dan npm.

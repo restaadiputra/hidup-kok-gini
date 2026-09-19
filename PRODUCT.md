@@ -20,7 +20,7 @@ Make an original, playable Indonesian comedy board game about navigating everyda
 - The core workflow is setup names → roll a die → move the pawn → encounter a tile event → choose a response → apply stat changes → pass the turn.
 - A twelve-month timeline tracks progress. The game ends with final scores and humorous personal endings.
 - Phone use is the priority; the interface must also work on desktop and use the available screen size without visible scrollbars.
-- Same-network phone access serves the web app from the development computer. This does not provide synchronized multiplayer between devices.
+- The game is played from a public static site, `https://hidup-kok-gini.pages.dev`, or from a phone home-screen install of it. During development, same-network phone access serves the app from the development computer. Neither provides synchronized multiplayer between devices.
 
 ## Capabilities and Constraints
 
@@ -47,13 +47,17 @@ These describe the existing implementation, not additional product decisions app
 - Kewarasan, Relasi, and Hoki are bounded from 0 to 100. Dompet may be negative; debt does not eliminate a player.
 - Score is `floor(Dompet / 100,000) + Kewarasan + Relasi + Hoki`. Equal scores share a rank.
 - A seeded reducer and version 4 action journal support deterministic replay and browser-local saves. Choice magnitudes vary within 60–140% of their base values, keeping their original stats and signs; amounts are fixed when the card is drawn. Old version 1–3 journals remain untouched and trigger a new-game notice. Theme preferences are saved separately.
-- Fonts and artwork are bundled locally. The app has no service worker; loading or refreshing requires a running server.
+- Fonts and artwork are bundled locally. A build-generated service worker precaches every built file, so after one online visit the game reloads and plays offline. It is registered in production builds only, never by the dev server. An unknown URL shows a themed 404 page (`public/404.html`) when online.
 - Long panels and dialogs retain internal scrolling when necessary, while the page fits the viewport and hides scrollbars.
 - Reduced-motion preferences skip animations. Motion is presentation only; a roll is saved before its animation starts.
 
+### Hosting
+
+The user chose free static hosting on Cloudflare Pages, deployed from the GitHub repository's `master` branch at `https://hidup-kok-gini.pages.dev`. There is still no backend. Security and cache headers live in `public/_headers`. The canonical URL appears in `index.html`, `public/robots.txt`, and `public/sitemap.xml`; change all three together if a custom domain is ever adopted.
+
 ### Open decisions
 
-Public hosting, monetization, online multiplayer architecture, accounts, and an explicit age rating have not been decided. Do not invent commitments in these areas.
+Monetization, online multiplayer architecture, accounts, and an explicit age rating have not been decided. Do not invent commitments in these areas.
 
 ## Brand Commitments
 
@@ -63,6 +67,7 @@ Public hosting, monetization, online multiplayer architecture, accounts, and an 
 - Keep a fun board-game identity with Gen Z energy and original Indonesian comedy/satire rooted in everyday life.
 - Use researched current Indonesian pop-culture language sparingly; essential game actions must remain understandable.
 - All cards, rules, names, text, and artwork must be original. Do not copy WNI Simulator material.
+- Credit the inspiration openly: the rules dialog links to WNI Simulator by Hecticholic and states that this game is not official and not affiliated. Keep that credit while the game is public.
 
 These are existing user constraints, not a new visual direction chosen by initialization.
 
@@ -75,6 +80,7 @@ These are existing user constraints, not a new visual direction chosen by initia
 - `src/game/` and its `*.test.ts` files: deterministic game rules (dice, deck, payday, reducer, scoring, replay) and automated coverage.
 - `src/components/board/neighborhood.tsx`, `src/components/icon/icon.tsx`, and `public/favicon.svg`: existing original code-based artwork.
 - `public/fonts/`: locally bundled Roboto and its license notice.
+- `public/`: the social preview `og-image.png`, home-screen icons and `manifest.webmanifest`, `404.html`, `robots.txt`, `sitemap.xml`, and `_headers`, all generated for the public deploy from the existing favicon and tokens.
 - `docs/design-notes.md`: research sources and reasoning for the existing Indonesian slang and motion treatment.
 
 The existing interface is implemented and playable. There are no supplied testimonials, user research studies, adoption metrics, or external endorsements; future work must not fabricate them.
