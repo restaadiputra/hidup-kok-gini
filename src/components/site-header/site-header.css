@@ -30,7 +30,7 @@
 }
 .brand-subtitle {
   position: absolute;
-  left: 49px;
+  left: 30px;
   bottom: 0;
   color: var(--muted);
   font-family: "Roboto Mono", monospace;
@@ -65,7 +65,7 @@
 }
 @media (max-width: 760px) and (min-height: 501px) {
   .site-header {
-    height: 76px;
+    height: 64px;
     gap: 10px;
     padding-bottom: 15px;
   }
@@ -77,8 +77,8 @@
     height: 32px;
   }
   .brand-subtitle {
-    left: 43px;
-    top: 40px;
+    left: 26px;
+    top: 26px;
     bottom: auto;
     font-family: Roboto, sans-serif;
     font-size: 10px;
@@ -103,7 +103,8 @@
     height: 28px;
   }
   .brand-subtitle {
-    left: 37px;
+    top: 22px;
+    left: 22px;
   }
   .site-header nav {
     gap: 6px;
