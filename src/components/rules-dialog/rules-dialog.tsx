@@ -51,6 +51,17 @@ function Rules({ onClose }: { onClose: () => void }) {
           bermain. Refresh aman, hapus data browser = mulai dari nol.
         </p>
       </div>
+      <p className="rules-credit">
+        Terinspirasi{" "}
+        <a
+          href="https://wnisimulator.hecticholic.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WNI Simulator
+        </a>{" "}
+        karya Hecticholic. Bukan produk resmi dan tidak berafiliasi.
+      </p>
       <a
         className="rules-source"
         href="https://github.com/restaadiputra/hidup-kok-gini"

@@ -30,6 +30,20 @@
   line-height: 1.6;
   color: var(--muted);
 }
+.rules-credit {
+  margin: -8px 0 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--muted);
+}
+.rules-credit a {
+  font-weight: 700;
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .rules-source {
   display: flex;
   align-items: center;
