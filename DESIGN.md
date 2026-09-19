@@ -583,3 +583,14 @@ Phones keep the same printed-cardboard world; this pass changed how it fits, not
 - **The verdict cannot be skipped by a double-tap.** "Lanjut giliran" ignores taps for 500ms after the result appears.
 - **The handoff beat.** When the turn moves to the next player, a full-screen flood in that player's seat colour ("Hape pindah ke NAME", a tilted numbered token) clips open from the bottom for 1.8s. It ignores taps for the first 450ms, dismisses on tap, and is skipped entirely under `prefers-reduced-motion` (the roll panel already names who is up).
 - **Hard edge everywhere.** The phone-only blurred shadows on the board panel, control panel, sheet and roll button were removed; phones use the same hard bottom edges as every other breakpoint.
+
+## Payday slip — September 2026
+
+The GAJIAN popover is a slip, not a banner. It supersedes the green celebration banner described above.
+
+- **Rows are label left, amount right, joke beneath.** Each line is a two-row grid (`label | amount`, then the joke in muted 12px) at every width; the phone-only stacked layout is gone. Dividers are `1px dashed var(--line)`. Line amounts and the net share one right edge (`--inset`).
+- **The net is the peak.** The total is 29px/900 in a piece-colour box tilted -1.2° with a tilted stamp: yellow **MASUK** for a gain (reward), inverted negative **NOMBOK** for a loss. The red box is never paired with a green banner.
+- **Debt is on the slip.** Interest ("+ ke Hutang"), instalments ("− dari Dompet") and status effects appear as a second block under the total only when they apply, in `--negative-ink`. A loss adds "Kalau Dompet nggak cukup, sisanya jadi Hutang."
+- **The button is always reachable.** `.paycheck-foot` is sticky at the bottom of the dialog, bleeding to its edges through `--dialog-pad` (24px, 20px on phones, 18px in landscape).
+- **It must be answered.** `Dialog` takes `dismissible={false}`: no close button, backdrop taps ignored. Escape and the button continue, and both ignore input for the first 500ms.
+- **Dialogs use the width they declare.** `.dialog` sets `max-width: none` so the browser's modal max-width no longer shrinks phone dialogs by 14px.
