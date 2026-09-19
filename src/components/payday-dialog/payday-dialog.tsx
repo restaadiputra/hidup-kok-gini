@@ -41,7 +41,12 @@ export function PaydayDialog({ month, playerName, playerNumber, playerCount, pay
   const hasDebtLines = paycheck.interest > 0 || paycheck.installment > 0 || paycheck.statusEffects.length > 0;
 
   return (
-    <Dialog title={`Payday bulan ${month}: ${playerName}`} onClose={() => undefined} dismissible={false}>
+    <Dialog
+      title={`Payday bulan ${month}: ${playerName}`}
+      onClose={() => undefined}
+      dismissible={false}
+      scrollKey={`${month}-${playerNumber}`}
+    >
       <div className="paycheck" key={`${month}-${playerNumber}`}>
         <div className="payday-turn-banner" role="status" aria-live="polite">
           <span className="payday-turn-step">PAYDAY {playerNumber}/{playerCount}</span>

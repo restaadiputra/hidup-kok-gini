@@ -9,11 +9,14 @@ export function Dialog({
   children,
   onClose,
   dismissible = true,
+  scrollKey,
 }: {
   title: string;
   children: ReactNode;
   onClose: () => void;
   dismissible?: boolean;
+  /** Reset the modal scroll position when a new step replaces its content. */
+  scrollKey?: string | number;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
@@ -26,6 +29,9 @@ export function Dialog({
       document.body.style.overflow = previousOverflow;
     };
   }, []);
+  useEffect(() => {
+    if (scrollKey !== undefined) ref.current?.scrollTo({ top: 0, behavior: "auto" });
+  }, [scrollKey]);
   return (
     <dialog
       ref={ref}
