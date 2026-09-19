@@ -4,15 +4,15 @@ import { MAX_PLAYERS } from "./limits";
 import { gameReducer } from "./reducer";
 import type { Action, GameState, Session } from "./types";
 
-export const SAVE_VERSION = 6;
-const ACTIONS_PER_TURN = 4;
+export const SAVE_VERSION = 7;
+const ACTIONS_PER_TURN = 6;
 const MAX_JOURNAL_LENGTH = MAX_PLAYERS * TOTAL_MONTHS * ACTIONS_PER_TURN;
 
 function parseAction(item: unknown): Action | null {
   if (!item || typeof item !== "object") return null;
   const { type, index } = item as { type?: unknown; index?: unknown };
   if (type === "ROLL" || type === "NEXT" || type === "CONTINUE_PAYDAY") return { type };
-  if (type === "CHOOSE" && Number.isInteger(index)) return { type, index: index as number };
+  if ((type === "CHOOSE" || type === "PAYDAY_CHOOSE") && Number.isInteger(index)) return { type, index: index as number };
   return null;
 }
 

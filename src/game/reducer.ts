@@ -5,11 +5,11 @@ import { choiceAvailability } from "./availability";
 import { applyWithDebt } from "./debt";
 import { drawEvent } from "./deck";
 import { addToLog, choiceMessage, rollMessage } from "./log-messages";
-import { rollPaycheck, settlePayday } from "./payday";
+import { PAYDAY_OPTIONS, rollPaycheck, settlePayday } from "./payday";
 import { random, rollDie } from "./random";
 import { appliedChanges, applyPressure, randomizeEffects } from "./stats";
 import { clearStatuses, expireStatuses, gainStatuses, statusChanges, syncAutomatic } from "./statuses";
-import type { Action, GameState, Paycheck, Player } from "./types";
+import type { Action, GameState, Paycheck, Player, Stats } from "./types";
 
 const currentPlayer = (state: GameState) => state.players[state.currentPlayer];
 
@@ -106,6 +106,65 @@ function continuePayday(state: GameState, destination: number | null): GameState
   };
 }
 
+function paydayOptions(rng: number): { effects: Partial<Stats>[]; rng: number } {
+  let next = rng;
+  const effects = PAYDAY_OPTIONS.map((option) => {
+    const rolled = randomizeEffects(option.effects, next);
+    next = rolled.rng;
+    return applyPressure(rolled.effects);
+  });
+  return { effects, rng: next };
+}
+
+function choosePayday(state: GameState, index: number): GameState {
+  const paydayPlayer = state.paydayPlayer ?? 0;
+  const option = PAYDAY_OPTIONS[index];
+  const effects = state.paydayChoiceEffects?.[index];
+  if (!option || !effects || !Number.isInteger(index)) return state;
+  const player = state.players[paydayPlayer];
+  if (!player) return state;
+  const stats = applyWithDebt(player.stats, effects);
+  const statuses = syncAutomatic(player.statuses, stats);
+  const players = state.players.map((candidate, i) => i === paydayPlayer ? { ...candidate, stats, statuses } : candidate);
+  const nextPlayer = paydayPlayer + 1;
+  if (nextPlayer < state.players.length) {
+    const nextOptions = paydayOptions(state.rng);
+    return {
+      ...state,
+      players,
+      currentPlayer: nextPlayer,
+      paydayPlayer: nextPlayer,
+      paydayChoiceEffects: nextOptions.effects,
+      rng: nextOptions.rng,
+      log: addToLog(state.log, `${player.name} memilih ${option.label} saat payday.`),
+    };
+  }
+  const bonusTile = BOARD.find((candidate) => candidate.category === "gajian")!;
+  const draw = drawEvent(state.drawn, bonusTile, state.rng, players[0], undefined, undefined, state.recentThemes ?? []);
+  let rng = draw.rng;
+  const choiceEffects = draw.event.choices.map((choice) => {
+    const rolled = randomizeEffects(choice.effects, rng);
+    rng = rolled.rng;
+    return applyPressure(rolled.effects);
+  });
+  return {
+    ...state,
+    players,
+    currentPlayer: 0,
+    paydayPlayer: nextPlayer - 1,
+    paydayChoiceEffects: [],
+    paydayEventId: draw.event.id,
+    phase: "payday-event",
+    eventId: draw.event.id,
+    choiceEffects,
+    drawn: draw.drawn,
+    recentThemes: draw.recentThemes,
+    rng,
+    resolution: "",
+    log: addToLog(state.log, `${player.name} memilih ${option.label} saat payday. Event gajian bersama muncul.`),
+  };
+}
+
 function choose(state: GameState, eventId: string, index: number): GameState {
   const choice = EVENT_BY_ID[eventId]?.choices[index];
   const effects = state.choiceEffects[index];
@@ -152,14 +211,20 @@ function settleMonth(state: GameState): GameState {
     if (index === state.currentPlayer) paydayDetails = settled.paycheck;
     return settled.player;
   });
+  const options = paydayOptions(rng);
+  rng = options.rng;
   return {
     ...state,
     rng,
     players,
+    currentPlayer: 0,
     phase: "payday",
     payday: true,
     paydayDetails,
     monthPaychecks,
+    paydayPlayer: 0,
+    paydayChoiceEffects: options.effects,
+    paydayEventId: null,
     pendingPosition: null,
     log: addToLog(state.log, `Akhir bulan ${state.month}: semua pemain menerima gajian dan membayar biaya hidup.`),
   };
@@ -169,6 +234,32 @@ function settleMonth(state: GameState): GameState {
 export const isFinalTurn = (state: GameState) => isEndOfRound(state) && state.month === TOTAL_MONTHS;
 
 function nextTurn(state: GameState): GameState {
+  if (state.payday && state.paydayEventId) {
+    if (state.month === TOTAL_MONTHS) return { ...state, phase: "finished", payday: false, paydayDetails: null, monthPaychecks: [] };
+    const month = state.month + 1;
+    return {
+      ...state,
+      currentPlayer: 0,
+      month,
+      phase: "ready",
+      payday: false,
+      paydayDetails: null,
+      monthPaychecks: [],
+      paydayPlayer: 0,
+      paydayChoiceEffects: [],
+      paydayEventId: null,
+      eventId: null,
+      choiceEffects: [],
+      resolution: "",
+      lastEffects: {},
+      pendingPosition: null,
+      players: state.players.map((p) => {
+        const statuses = expireStatuses(p.statuses, month);
+        return statuses === p.statuses ? p : { ...p, statuses };
+      }),
+      turn: state.turn + 1,
+    };
+  }
   const endOfRound = isEndOfRound(state);
   if (endOfRound) return settleMonth(state);
   const month = state.month;
@@ -189,6 +280,8 @@ function nextTurn(state: GameState): GameState {
     lastEffects: {},
     payday: false,
     paydayDetails: null,
+    paydayChoiceEffects: [],
+    paydayEventId: null,
     pendingPosition: null,
     turn: state.turn + 1,
   };
@@ -201,11 +294,13 @@ export function gameReducer(state: GameState, action: Action): GameState {
     case "ROLL":
       return state.phase === "ready" ? rollTurn(state) : state;
     case "CONTINUE_PAYDAY":
-      return state.phase === "payday"
+      return state.phase === "payday" && state.pendingPosition !== null
         ? continuePayday(state, state.pendingPosition)
         : state;
+    case "PAYDAY_CHOOSE":
+      return state.phase === "payday" ? choosePayday(state, action.index) : state;
     case "CHOOSE":
-      return state.phase === "event" && state.eventId ? choose(state, state.eventId, action.index) : state;
+      return (state.phase === "event" || state.phase === "payday-event") && state.eventId ? choose(state, state.eventId, action.index) : state;
     case "NEXT":
       return state.phase === "resolved" ? nextTurn(state) : state;
   }

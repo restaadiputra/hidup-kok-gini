@@ -69,6 +69,10 @@ export function useGame() {
     dispatch({ type: "PLAY", action: { type: "CHOOSE", index } });
   }
 
+  function paydayChoose(index: number) {
+    dispatch({ type: "PLAY", action: { type: "PAYDAY_CHOOSE", index } });
+  }
+
   function next() {
     dispatch({ type: "PLAY", action: { type: "NEXT" } });
     setSheetOpen(true);
@@ -98,6 +102,7 @@ export function useGame() {
     roll,
     continuePayday,
     choose,
+    paydayChoose,
     next,
     quit,
   };

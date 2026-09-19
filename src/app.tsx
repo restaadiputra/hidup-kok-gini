@@ -44,17 +44,12 @@ export default function App() {
   const players = game?.players ?? draft.previews;
   const activeId = game && !finished ? game.currentPlayer : null;
   // The paycheck popover owns the screen until it is acknowledged.
-  const dialogsAllowed = game?.phase !== "payday";
+  const dialogsAllowed = game?.phase !== "payday" && game?.phase !== "payday-event";
   const closeModal = () => setModal(null);
 
   function startOver() {
     session.quit();
     closeModal();
-  }
-
-  function acknowledgePayday() {
-    closeModal();
-    session.continuePayday();
   }
 
   function turnContent() {
@@ -90,12 +85,22 @@ export default function App() {
             onChoose={session.choose}
           />
         ) : null}
+        {!motion && game.phase === "payday-event" ? (
+          <EventPanel
+            key={game.turn + "-payday-" + game.eventId}
+            dice={1}
+            tileLabel="Event gajian bersama"
+            event={EVENT_BY_ID[game.eventId!]}
+            choiceEffects={game.choiceEffects}
+            onChoose={session.choose}
+          />
+        ) : null}
         {!motion && game.phase === "resolved" ? (
           <ResolvedPanel
             key={game.turn}
             resolution={game.resolution}
             effects={game.lastEffects}
-            finalTurn={isFinalTurn(game)}
+            finalTurn={isFinalTurn(game) || (game.paydayEventId !== null && game.month === 12)}
             nextPlayerName={nextPlayer.name}
             onNext={session.next}
           />
@@ -156,15 +161,15 @@ export default function App() {
         onOpenLog={() => setModal("log")}
       />
       <LiveRegion game={game} player={player} motion={motion} />
-      {!motion && game?.phase === "payday" && game.paydayDetails && player ? (
+      {!motion && game?.phase === "payday" && game.paydayDetails && game.paydayPlayer !== undefined ? (
         <PaydayDialog
           month={game.month}
-          final={game.month === 12}
-          settlements={(game.monthPaychecks ?? []).map(({ playerId, paycheck }) => ({
-            name: game.players.find((candidate) => candidate.id === playerId)?.name ?? "Pemain",
-            paycheck,
-          }))}
-          onContinue={acknowledgePayday}
+          playerName={game.players[game.paydayPlayer]?.name ?? "Pemain"}
+          playerNumber={game.paydayPlayer + 1}
+          playerCount={game.players.length}
+          paycheck={game.monthPaychecks?.find(({ playerId }) => playerId === game.paydayPlayer)?.paycheck ?? game.paydayDetails}
+          choiceEffects={game.paydayChoiceEffects ?? []}
+          onChoose={session.paydayChoose}
         />
       ) : null}
       {handoff ? <HandoffBeat key={handoff.turn} player={handoff.player} onDone={dismissHandoff} /> : null}

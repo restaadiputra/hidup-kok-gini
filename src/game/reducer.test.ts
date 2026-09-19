@@ -147,7 +147,7 @@ for (const count of [2, 3, 4]) {
     for (let seed = 0; seed < 30; seed++) {
       const names = Array.from({ length: count }, (_, i) => `Pemain ${i + 1}`);
       let state = createGame(names, seed);
-      const session: Session = { version: 6, names, seed, actions: [] };
+      const session: Session = { version: 7, names, seed, actions: [] };
       const turns = Array(count).fill(0) as number[];
       let salaryCount = 0;
       for (let turn = 0; turn < 12 * count; turn++) {
@@ -193,9 +193,18 @@ for (const count of [2, 3, 4]) {
           salaryCount++;
           assert.equal(state.phase, "payday");
           assert.deepEqual(replaySession(session)?.game, state, "refresh keeps the pending monthly paycheck");
-          const continueAction: Action = { type: "CONTINUE_PAYDAY" };
-          state = gameReducer(state, continueAction);
-          session.actions.push(continueAction);
+          for (let paydayPlayer = 0; paydayPlayer < count; paydayPlayer++) {
+            const paydayAction: Action = { type: "PAYDAY_CHOOSE", index: 0 };
+            state = gameReducer(state, paydayAction);
+            session.actions.push(paydayAction);
+            assert.equal(state.phase, paydayPlayer === count - 1 ? "payday-event" : "payday");
+          }
+          const paydayEventChoice: Action = { type: "CHOOSE", index: 0 };
+          state = gameReducer(state, paydayEventChoice);
+          session.actions.push(paydayEventChoice);
+          assert.equal(state.phase, "resolved");
+          state = gameReducer(state, { type: "NEXT" });
+          session.actions.push({ type: "NEXT" });
         }
         for (const p of state.players) {
           assert.ok(p.position >= 0 && p.position < BOARD.length);

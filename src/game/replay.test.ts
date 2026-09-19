@@ -11,7 +11,7 @@ test("pending choices survive refresh and apply exactly the previewed effects", 
   const names = ["A", "B"];
   const seed = 57;
   const rolled = gameReducer(createGame(names, seed), { type: "ROLL" });
-  const restored = replaySession({ version: 6, names, seed, actions: [{ type: "ROLL" }] })!;
+  const restored = replaySession({ version: 7, names, seed, actions: [{ type: "ROLL" }] })!;
   assert.deepEqual(restored.game, rolled);
   for (let index = 0; index < rolled.choiceEffects.length; index++) {
     const resolved = gameReducer(restored.game, { type: "CHOOSE", index });
@@ -24,7 +24,7 @@ test("pending choices survive refresh and apply exactly the previewed effects", 
 });
 
 test("save replay rejects corrupt, oversized and impossible journals", () => {
-  const base: Session = { version: 6, names: ["A", "B"], seed: 1, actions: [] };
+  const base: Session = { version: 7, names: ["A", "B"], seed: 1, actions: [] };
   for (const invalid of [
     null,
     {},
