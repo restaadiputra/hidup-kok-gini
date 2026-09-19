@@ -10,7 +10,7 @@
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0;
   font-size: 23px;
   font-weight: 900;
   letter-spacing: -1.1px;
@@ -25,18 +25,12 @@
   white-space: nowrap;
   transform: translateY(-5px);
 }
-.brand-lead {
-  display: inline-block;
-  font-weight: 950;
-  transform: rotate(-4deg) translateY(-1px);
-  transform-origin: 60% 70%;
-}
 .brand-question {
   color: var(--accent-text);
 }
 .brand-subtitle {
   position: absolute;
-  left: 46px;
+  left: 52px;
   bottom: 0;
   color: var(--muted);
   font-family: "Roboto Mono", monospace;
@@ -44,20 +38,17 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.45px;
-  text-transform: uppercase;
   white-space: nowrap;
 }
 .brand-mark {
   width: 36px;
   height: 36px;
-  background: var(--fixed);
-  color: var(--fixed-ink);
-  border: 2px solid var(--edge);
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  transform: rotate(-8deg);
-  box-shadow: 0 4px 0 -1px var(--edge);
+  display: block;
+  flex: none;
+  margin-right: -4px;
+  image-rendering: pixelated;
+  transform: translateY(-5px) rotate(-8deg);
+  filter: drop-shadow(0 3px 0 var(--edge));
 }
 .site-header nav {
   display: flex;
@@ -75,19 +66,25 @@
 }
 @media (max-width: 760px) and (min-height: 501px) {
   .site-header {
-    height: 61px;
+    height: 76px;
     gap: 10px;
+    padding-bottom: 15px;
   }
   .brand {
     font-size: 21px;
-    gap: 8px;
   }
   .brand-mark {
     width: 32px;
     height: 32px;
   }
   .brand-subtitle {
-    left: 40px;
+    left: 46px;
+    top: 40px;
+    bottom: auto;
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0;
   }
   .site-header nav {
     gap: 6px;
@@ -95,23 +92,19 @@
 }
 @media (max-width: 390px) and (min-height: 501px) {
   .site-header {
-    height: 55px;
+    height: 70px;
     gap: 6px;
   }
   .brand {
     font-size: 18px;
-    gap: 6px;
     letter-spacing: -0.8px;
   }
   .brand-mark {
     width: 28px;
-    height: 29px;
-  }
-  .brand-mark svg {
-    width: 20px;
+    height: 28px;
   }
   .brand-subtitle {
-    left: 34px;
+    left: 40px;
   }
   .site-header nav {
     gap: 6px;
@@ -124,15 +117,9 @@
     inset: -8px -4px;
   }
 }
-@media (max-width: 480px) {
-  /* Only the first half of the tagline fits beside three 40px buttons. */
-  .brand-subtitle-tail {
-    display: none;
-  }
-}
 @media (max-height: 680px) and (max-width: 760px) and (min-height: 501px) {
   .site-header {
-    height: 53px;
+    height: 68px;
   }
 }
 @media (max-height: 500px) {
@@ -145,5 +132,22 @@
   .brand-mark {
     height: 28px;
     width: 28px;
+  }
+  .brand-subtitle {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+}
+@media (max-height: 500px) and (max-width: 480px) {
+  .site-header {
+    height: 60px;
+    padding-bottom: 15px;
+  }
+  .brand-subtitle {
+    left: 36px;
+    top: 37px;
+    bottom: auto;
   }
 }

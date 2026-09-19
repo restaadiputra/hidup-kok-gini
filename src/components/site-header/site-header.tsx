@@ -19,11 +19,9 @@ export function SiteHeader({
   return (
     <header className="site-header">
       <a href="./" className="brand" aria-label="Hidup Kok Gini? Beranda">
-        <span className="brand-mark">
-          <Icon name="sun" size={23} />
-        </span>
+        <img className="brand-mark" src="/favicon.svg" alt="" width="36" height="36" />
         <span className="brand-copy">
-          <span className="brand-lead">H</span>idup kok gini<span className="brand-question">?</span>
+          idup kok gini<span className="brand-question">?</span>
         </span>
         <span className="brand-subtitle">
           Ekspektasi tinggi<span className="brand-subtitle-tail"> · saldo nanti dulu</span>

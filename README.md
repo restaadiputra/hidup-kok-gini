@@ -126,6 +126,8 @@ Proyek hobi ini bersifat **open source** dan tersedia di bawah [MIT License](LIC
 
 Roboto dan Roboto Mono tetap menggunakan SIL Open Font License 1.1; teks lisensinya tersedia di `public/fonts/`. Paket npm memiliki lisensi masing-masing.
 
+Logo H pixel art dan matahari kecil dibuat khusus untuk proyek ini. Favicon serta ikon aplikasi dihasilkan dari satu sumber melalui `npm run generate:icons` (`scripts/generate-brand-icons.mjs`); paletnya mengikuti warna tema terang di `src/styles/tokens.css`.
+
 ## Catatan proyek
 
 Proyek ini dibuat untuk belajar, bercanda, dan bermain bareng teman. Proses pengembangannya menggunakan bantuan AI untuk perencanaan, penulisan kode dan konten, pengujian, serta dokumentasi. Arah kreatif, keputusan akhir, peninjauan hasil, dan tanggung jawab atas proyek tetap berada pada pemilik proyek.
