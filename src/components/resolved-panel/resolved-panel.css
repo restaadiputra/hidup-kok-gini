@@ -45,7 +45,6 @@
   line-height: 1.12;
   letter-spacing: -1px;
   color: var(--ink);
-  text-wrap: balance;
 }
 .resolved-content > .effects {
   justify-content: flex-start;
