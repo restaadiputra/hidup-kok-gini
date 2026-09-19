@@ -30,8 +30,12 @@
   line-height: 1.6;
   color: var(--muted);
 }
+.rules-footer {
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
 .rules-credit {
-  margin: -8px 0 8px;
+  margin: 0 0 8px;
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
@@ -48,9 +52,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: fit-content;
+  max-width: 100%;
   gap: 6px;
   min-height: 44px;
-  margin: -8px 0 12px;
+  margin: 0 auto 12px;
   font-size: 12px;
   font-weight: 700;
   color: var(--accent-text);
